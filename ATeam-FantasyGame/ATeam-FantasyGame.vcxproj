@@ -129,6 +129,9 @@
   <ItemGroup>
     <ClCompile Include="ATeam-FantasyGame.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Backstory.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
