@@ -32,7 +32,8 @@ public:
         }
 
         // Prompt user for input to continue the introduction
-        waitForUserInput();
+        system("pause");
+        cout << "\n";
 
         // Transition to the next phase of the story
         ApproachMushroomRing();
@@ -45,8 +46,6 @@ public:
             "With each step, your heart beats louder in your chest. The world around you seems to blur, the forest fading into obscurity. You're now standing at the very edge of the mystical ring, tingling with anticipation.",
             "As you take one final, hesitant step into the ring, a powerful gust of wind envelops you. The air is thick with an ancient presence, and you feel an irresistible force pulling you toward the center. Your surroundings spin, and reality itself seems to unravel.",
             "You are surrounded by a kaleidoscope of colors and sounds. Whispers fill the air as you are transported into a realm unknown.",
-            "There are several arrangements of flowers you can see here. Everything looks gloomy in the lighting. To the east is the entrance to Blarney Castle. To the north there is a prison.",
-            "You can also see a large black cat with a white spot on its chest, staring at you with curiosit "
         };
 
         // Loop through and display each approach text
@@ -54,7 +53,8 @@ public:
             displayTextAndWait(approachText);
         }
 
-        waitForUserInput();
+        system("pause");
+        cout << "\n";
     }
 
     // Function to display text and delay between displaying it
@@ -89,14 +89,6 @@ public:
 
         // std::this_thread::sleep_for is used to pause execution for a specific duration
         std::this_thread::sleep_for(seconds * 1s);
-    }
-
-    // Function to wait for user input to continue
-    void waitForUserInput() {
-        cout << "<Press any key to continue>" << endl;
-        cin.ignore();
-        cin.get();
-        cout << endl;
     }
 };
 
