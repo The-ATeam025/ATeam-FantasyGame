@@ -9,6 +9,8 @@
 
 using namespace std;
 
+// Backstory class ...
+
 class Backstory {
 public:
     Backstory() {}
