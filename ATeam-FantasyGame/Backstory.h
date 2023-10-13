@@ -9,6 +9,8 @@
 
 using namespace std;
 
+// Backstory class ...
+
 class Backstory {
 public:
     Backstory() {}
@@ -42,7 +44,7 @@ public:
     // Describe the moment of stepping into the mushroom ring
     void ApproachMushroomRing() {
         // Define the approach texts
-        string approachTexts[5] = {
+        string approachTexts[3] = {
             "With each step, your heart beats louder in your chest. The world around you seems to blur, the forest fading into obscurity. You're now standing at the very edge of the mystical ring, tingling with anticipation.",
             "As you take one final, hesitant step into the ring, a powerful gust of wind envelops you. The air is thick with an ancient presence, and you feel an irresistible force pulling you toward the center. Your surroundings spin, and reality itself seems to unravel.",
             "You are surrounded by a kaleidoscope of colors and sounds. Whispers fill the air as you are transported into a realm unknown.",
@@ -62,8 +64,8 @@ public:
         wrap(text, 130, cout, 0);
         cout << endl << endl;
 
-        // Pause for 2 seconds between outputting text.
-        pauseForAWhile(2);
+        // Pause for 4 seconds between outputting text.
+        wait(4);
 
     }
 
@@ -85,7 +87,7 @@ public:
     }
 
     // Function to pause the program for a specified duration in seconds
-    void pauseForAWhile(int seconds) {
+    void wait(int seconds) {
 
         // std::this_thread::sleep_for is used to pause execution for a specific duration
         std::this_thread::sleep_for(seconds * 1s);
