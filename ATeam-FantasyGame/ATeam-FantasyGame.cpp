@@ -1,11 +1,20 @@
 // ATeam-FantasyGame.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// test test
 
 #include <iostream>
+#include "Backstory.h"
 
-int main()
-{
-    std::cout << "Hello World!\n";
+using namespace std;
+
+int main() {
+    // Create an instance of the Backstory class
+    Backstory backstory;
+
+    // Call the displayIntro function to start the game
+    backstory.displayIntro();
+
+
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
