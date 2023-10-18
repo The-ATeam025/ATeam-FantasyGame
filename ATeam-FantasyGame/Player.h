@@ -10,6 +10,6 @@ private:
 
 
 public:
-	Player(std::string name) : name(name), currentLocation(nullptr) {} // Player Constructor
+	Player(std::string newName) : name(newName), currentLocation(nullptr) {} // Player Constructor
 	void walkToLocation(Location* newLocation) {} // Sets the Players currentLocation to a newLocation
 };

@@ -11,7 +11,7 @@ private:
 	std::string description; // A description of the Location
 
 public:
-	Location(std::string name, std::string description) : name(name), description(description) {} // Location Constructor
+	Location(std::string newName, std::string newDescription) : name(newName), description(newDescription) {} // Location Constructor
 	std::string getName() {} // Returns a string Name
 	std::string getDescription() {}  // Returns a string Description
 };

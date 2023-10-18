@@ -1,12 +1,13 @@
 #include "Location.h"
 
 //Location class
+//Sets a Locations name and description
+//Returns a Locations name and description
 
 //Constructor
-Location::Location(std::string name, std::string description)
+Location::Location(std::string newName, std::string newDescription)
 {
-	name = name;
-	description = description;
+
 }
 
 // Returns a string of the Locations name
