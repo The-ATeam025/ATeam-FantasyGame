@@ -3,10 +3,14 @@
 
 #include <iostream>
 #include "Backstory.h"
+#include "dialogue.h"
 
 using namespace std;
 
 int main() {
+
+    Dialogue dial;
+    dial.CatIntro();
     // Create an instance of the Backstory class
     Backstory backstory;
 

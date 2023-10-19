@@ -129,9 +129,11 @@
   <ItemGroup>
     <ClCompile Include="ATeam-FantasyGame.cpp" />
     <ClCompile Include="Backstory.cpp" />
+    <ClCompile Include="dialogue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Backstory.h" />
+    <ClInclude Include="dialogue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
