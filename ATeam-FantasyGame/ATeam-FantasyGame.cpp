@@ -30,6 +30,7 @@ int main() {
     Backstory backstory;
 
     backstory.displayIntro();
+    system("CLS");
 
 
     //Create an instance of the Dialogue class
@@ -37,6 +38,7 @@ int main() {
 
     //Call the CatIntro function to continue the story 
     dial.CatIntro();
+//<<<<<<< ATEAM-38-Look-around-Grand-Hall
 
     // Game loop
 
@@ -64,6 +66,9 @@ int main() {
 
 
 
+
+    system("CLS");
+//>>>>>>> master
    
 
 
