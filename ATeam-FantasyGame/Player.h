@@ -1,15 +1,17 @@
 #pragma once
 #include "Location.h"
 
+using namespace std;
 
 class Player
 {
 private:
-	std::string name; // Player name
+	string name; // Player name
 	Location* currentLocation; // Pointer to Players Current Location
 
 
 public:
-	Player(std::string newName) : name(newName), currentLocation(nullptr) {} // Player Constructor
-	void walkToLocation(Location* newLocation) {} // Sets the Players currentLocation to a newLocation
+	Player(string newName); // Constructor
+	void walkToLocation(Location* newLocation); // Sets the Players currentLocation to a newLocation
+	Location* getCurrentLocation(); // Getter for player location
 };
