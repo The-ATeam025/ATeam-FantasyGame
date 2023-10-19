@@ -16,13 +16,14 @@ int main() {
 
     // Call the displayIntro function to start the game
     backstory.displayIntro();
+    system("CLS");
 
     //Create an instance of the Dialogue class
     Dialogue dial;
 
     //Call the CatIntro function to continue the story 
     dial.CatIntro();
-
+    system("CLS");
    
 
 
