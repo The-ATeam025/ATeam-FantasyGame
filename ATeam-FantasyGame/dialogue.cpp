@@ -16,7 +16,11 @@ void Dialogue::CatIntro()
 	Node1();
 }
 
-void Dialogue::Node1()                                                 //
+/* Every Node method follows the same format. It displays dialogue spoken by the cat character, and allows the user to choose between two responses. 
+Depending on the response, the appropriate next node is called. This forms a rudimentary dialogue tree. */
+
+
+void Dialogue::Node1()                                                 
 {
 	cout << endl;
 	cout << endl;
@@ -105,8 +109,10 @@ void Dialogue::Node3()
 		Node5();
 	}
 	else
+	{
 		cout << "YOU: The Otherworld? What do you mean?" << endl;
-		Node5();
+		Node6();
+	}
 
 }
 
@@ -135,8 +141,10 @@ void Dialogue::Node4()
 		Node3();
 	}
 	else
+	{
 		cout << "YOU: Wait...survive?" << endl;
 		Node5();
+	}
 
 }
 
@@ -165,8 +173,10 @@ void Dialogue::Node5()
 		Node6(); //explain otherworld in detail
 	}
 	else
+	{
 		cout << "YOU: You're freaking me out, I've heard enough. How do I get out of here?" << endl;
 		Node7();
+	}
 
 }
 
@@ -192,11 +202,15 @@ void Dialogue::Node6()
 	if (choice == 1)
 	{
 		cout << "YOU: That sounds horrible. How do I leave?" << endl;
+		Node7();
 	}
 	else
+	{
 		cout << "YOU: . ...Why am I in a cursed fairy realm? I was just on vacation." << endl;
+		Node7();
+	}
 
-	Node7();
+	
 
 }
 
@@ -222,11 +236,16 @@ void Dialogue::Node7()
 	if (choice == 1)
 	{
 		cout << "YOU:  How do I do that? Why are you telling me all this?" << endl;
+		CatOutro();
 	}
 	else
+	{
 		cout << "YOU: Man, I'm scared and I want to go home. Can you just help me leave?" << endl;
-
-	CatOutro();
+		CatOutro();
+	}
+		
+	
+	
 };
 
 void Dialogue::CatOutro()
@@ -237,4 +256,5 @@ void Dialogue::CatOutro()
 	cout << endl;
 	cout << "Before you can say anything, the cat turns around and melts into the shadows, leaving you questioning your own sanity. Did it really talk to you?" << endl;
 	cout << endl;
+	
 }

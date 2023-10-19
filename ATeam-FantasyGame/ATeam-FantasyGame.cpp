@@ -12,10 +12,10 @@ int main() {
    
     
     // Create an instance of the Backstory class
-    Backstory backstory;
+   // Backstory backstory;
 
     // Call the displayIntro function to start the game
-    backstory.displayIntro();
+   // backstory.displayIntro();
 
     //Create an instance of the Dialogue class
     Dialogue dial;
