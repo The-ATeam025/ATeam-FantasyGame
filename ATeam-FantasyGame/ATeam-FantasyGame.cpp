@@ -21,10 +21,7 @@ int main() {
     GameWorld gameWorld;
 
     // Initialize the game world (including locations and items)
-    gameWorld.init(player);
-
-
-   
+    gameWorld.init(player);   
     
     // Create an instance of the Backstory class
     Backstory backstory;
@@ -38,7 +35,10 @@ int main() {
 
     //Call the CatIntro function to continue the story 
     dial.CatIntro();
-//<<<<<<< ATEAM-38-Look-around-Grand-Hall
+
+    system("pause");
+
+    system("CLS");
 
     // Game loop
 
@@ -63,14 +63,6 @@ int main() {
             break;
         }
     }
-
-
-
-
-    system("CLS");
-//>>>>>>> master
-   
-
 
     return 0;
 }

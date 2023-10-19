@@ -13,8 +13,8 @@ public:
 
     void init(Player& player) {
         // Initialize locations
-        mushroomRing = new Location("Mushroom Ring",
-            "You find yourself in a mystical circle of mushrooms. The air is filled with an otherworldly energy, and the sun is hidden behind the clouds");
+        mushroomRing = new Location("Courtyard",
+            "You find yourself surrounded by a cirlce of dead grass replacing the mushrooms that brought you here. The air is filled with an otherworldly energy, and the sun is hidden behind the clouds");
         greatHall = new Location("Great Hall",
             "You step into a grand chamber adorned with towering arches and elaborately decorated walls. A sense of history and mystery fills the air."
         );
