@@ -16,18 +16,26 @@ void Dialogue::CatIntro()
 	Node1();
 }
 
-void Dialogue::Node1()
+void Dialogue::Node1()                                                 //
 {
 	cout << endl;
 	cout << endl;
 	cout << "CAT: Hello there. Lost, aren't ya?" << endl;
 	cout << endl;
+
 	cout << "CHOOSE YOUR RESPONSE" << endl;
 	cout << endl;
 	cout << "1. Who are you?" << endl;
 	cout << "2. Where am I?";
 	cout << endl;
 	cin >> choice;
+
+
+	while ((choice != 1)&&(choice !=2))
+	{
+		cout << "Cat got your tongue? Enter 1 or 2 to reply." << endl;
+		cin >> choice;
+	}
 
 	if (choice == 1)
 	{
@@ -52,6 +60,12 @@ void Dialogue::Node2()
 	cout << "2. Where is 'here', exactly?";
 	cout << endl;
 	cin >> choice;
+
+	while ((choice != 1) && (choice != 2))
+	{
+		cout << "Cat got your tongue? Enter 1 or 2 to reply." << endl;
+		cin >> choice;
+	}
 
 	if (choice == 1)
 	{
@@ -79,6 +93,12 @@ void Dialogue::Node3()
 	cout << endl;
 	cin >> choice;
 
+	while ((choice != 1) && (choice != 2))
+	{
+		cout << "Cat got your tongue? Enter 1 or 2 to reply." << endl;
+		cin >> choice;
+	}
+
 	if (choice == 1)
 	{
 		cout << "YOU: Wait, what do you mean,'didn't make it'?" << endl;
@@ -102,6 +122,12 @@ void Dialogue::Node4()
 	cout << "2. Wait...survive?";
 	cout << endl;
 	cin >> choice;
+
+	while ((choice != 1) && (choice != 2))
+	{
+		cout << "Cat got your tongue? Enter 1 or 2 to reply." << endl;
+		cin >> choice;
+	}
 
 	if (choice == 1)
 	{
@@ -127,6 +153,12 @@ void Dialogue::Node5()
 	cout << endl;
 	cin >> choice;
 
+	while ((choice != 1) && (choice != 2))
+	{
+		cout << "Cat got your tongue? Enter 1 or 2 to reply." << endl;
+		cin >> choice;
+	}
+
 	if (choice == 1)
 	{
 		cout << "YOU: Well, that sounds ominous. What exactly is the Otherworld?" << endl;
@@ -150,6 +182,12 @@ void Dialogue::Node6()
 	cout << "2. ...Why am I in a cursed fairy realm? I was just on vacation.";
 	cout << endl;
 	cin >> choice;
+
+	while ((choice != 1) && (choice != 2))
+	{
+		cout << "Cat got your tongue? Enter 1 or 2 to reply." << endl;
+		cin >> choice;
+	}
 
 	if (choice == 1)
 	{
@@ -175,6 +213,12 @@ void Dialogue::Node7()
 	cout << endl;
 	cin >> choice;
 
+	while ((choice != 1) && (choice != 2))
+	{
+		cout << "Cat got your tongue? Enter 1 or 2 to reply." << endl;
+		cin >> choice;
+	}
+
 	if (choice == 1)
 	{
 		cout << "YOU:  How do I do that? Why are you telling me all this?" << endl;
@@ -182,10 +226,10 @@ void Dialogue::Node7()
 	else
 		cout << "YOU: Man, I'm scared and I want to go home. Can you just help me leave?" << endl;
 
-	Node8();
+	CatOutro();
 };
 
-void Dialogue::Node8()
+void Dialogue::CatOutro()
 {
 	cout << endl;
 	cout << endl;

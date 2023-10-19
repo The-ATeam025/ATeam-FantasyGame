@@ -2,16 +2,18 @@
 class Dialogue
 {
 public:
-	Dialogue();
-	int choice;
+	Dialogue(); //constructor
+	int choice; //user input
 
-	void CatIntro();
-	void Node1();
+	void CatIntro(); //intro to cat character 
+
+	void Node1(); //explained more in dialogue.cpp
 	void Node2();
 	void Node3();
 	void Node4();
 	void Node5();
 	void Node6();
 	void Node7();
-	void Node8();
+
+	void CatOutro(); //cat character leaves 
 };
