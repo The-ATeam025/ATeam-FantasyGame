@@ -11,7 +11,8 @@ void Dialogue::CatIntro()
 {
 	cout << "As you emerge in this new and altered version of the garden, the atmosphere feels denser and the surroundings take on an otherworldly hue. Amidst" << endl;
 	cout << "the mystical setting, your gaze is drawn to a striking sight - a towering black cat, standing upright on its hind legs, seemingly unfazed by your" << endl;
-	cout<<"sudden appearance. As you stand there in shock, your reality bends even more as you hear it start speaking to you." << endl;
+	cout << "sudden appearance. Unsure of what to do next, you start walking towards it, wondering if it has some sort of spine condition causing it to stand" << endl;
+	cout<<" like that. Your attempts at applying logic to your situation fail as the cat opens its mouth and starts speaking to you in a human voice." << endl;
 
 	Node1();
 }
