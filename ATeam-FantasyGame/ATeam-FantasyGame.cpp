@@ -3,27 +3,72 @@
 
 #include <iostream>
 #include "Backstory.h"
+#include "Player.h"
+#include "Location.h"
+#include "UI.h"
+#include "GameWorld.h"
 #include "dialogue.h"
 
 using namespace std;
 
+// Testing a pull request
+
 int main() {
+    // Create a player instance
+    Player player("Player's Name");
+
+    // Create a game world instance
+    GameWorld gameWorld;
+
+    // Initialize the game world (including locations and items)
+    gameWorld.init(player);
+
 
    
     
     // Create an instance of the Backstory class
     Backstory backstory;
 
-    // Call the displayIntro function to start the game
     backstory.displayIntro();
     system("CLS");
+
 
     //Create an instance of the Dialogue class
     Dialogue dial;
 
     //Call the CatIntro function to continue the story 
     dial.CatIntro();
+//<<<<<<< ATEAM-38-Look-around-Grand-Hall
+
+    // Game loop
+
+    UI::displayCurrentLocation(player);
+    while (true) {
+        // Display the current location and menu
+        UI::displayMenu();
+
+        // Handle player input
+        int choice;
+        cin >> choice;
+
+        switch (choice) {
+        case 1:
+            UI::movePlayer(player);
+            break;
+        case 2:
+            UI::lookAround(player.getCurrentLocation());
+            break;
+        default:
+            cout << "Invalid choice. Please select a valid option." << endl;
+            break;
+        }
+    }
+
+
+
+
     system("CLS");
+//>>>>>>> master
    
 
 
