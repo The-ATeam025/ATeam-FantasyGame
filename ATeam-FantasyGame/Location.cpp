@@ -1,16 +1,20 @@
 #include "Location.h"
+#include "Item.h"
+#include "Player.h"
 
 using namespace std;
 
 //Location class
 //Sets a Locations name and description
 //Returns a Locations name and description
+//Allows for items to be added to a location
+//Allows for two locations to be connected (next to each other)
 
 //Constructor
-Location::Location(string newName, string newDescription)
-{
-
+Location::Location(string newName, string newDescription) : name(newName), description(newDescription) {
+    // Initialize other members as needed...
 }
+
 
 // Returns a string of the Locations name
 string Location::getName()
@@ -26,21 +30,13 @@ string Location::getDescription()
 }
 
 // Add a connected location to this location
-void Location::addConnectedLocation(string locationName) {
-    connectedLocations.push_back(locationName);
+void Location::addConnectedLocation(Location* location) {
+    connectedLocations.push_back(location);
 }
 
 // Get the list of connected locations
-vector<string> Location::getConnectedLocations() const {
+vector<Location*> Location::getConnectedLocations() const {
     return connectedLocations;
-}
-
-// Display items present in the location
-void Location::lookAround() const {
-    cout << "You look around the " << name << ". You see the following items:" << endl;
-    for (Item* item : items) {
-        cout << item->getName() << " - " << item->getDescription() << endl;
-    }
 }
 
 // Add an item to the location
@@ -50,16 +46,18 @@ void Location::addItem(Item* item) {
 
 // Create a new location with specified properties
 Location* Location::createLocation(
-    string name, string description, vector<string> connectedLocations, vector<Item*> items) {
-    Location* location = new Location(name, description);
+    string name, string description, vector<Location*> connectedLocations, vector<Item*> items) {
+    Location* newLocation = new Location(name, description);
 
-    for (const string& loc : connectedLocations) {
-        location->addConnectedLocation(loc);
+    // Add connected locations
+    for (Location* location : connectedLocations) {
+        newLocation->addConnectedLocation(location);
     }
 
+    // Add items to the location
     for (Item* item : items) {
-        location->addItem(item);
+        newLocation->addItem(item);
     }
 
-    return location;
+    return newLocation;
 }

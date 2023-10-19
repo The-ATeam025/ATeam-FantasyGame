@@ -1,4 +1,6 @@
 #include "Item.h"
+// Item Class
+// Allows for creation of items with descriptions
 
 using namespace std;
 
