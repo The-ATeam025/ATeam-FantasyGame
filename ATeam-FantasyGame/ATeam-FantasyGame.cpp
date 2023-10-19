@@ -7,6 +7,7 @@
 #include "Location.h"
 #include "UI.h"
 #include "GameWorld.h"
+#include "dialogue.h"
 
 using namespace std;
 
@@ -22,10 +23,20 @@ int main() {
     // Initialize the game world (including locations and items)
     gameWorld.init(player);
 
+
+   
+    
     // Create an instance of the Backstory class
     Backstory backstory;
 
     backstory.displayIntro();
+
+
+    //Create an instance of the Dialogue class
+    Dialogue dial;
+
+    //Call the CatIntro function to continue the story 
+    dial.CatIntro();
 
     // Game loop
 
@@ -52,6 +63,8 @@ int main() {
     }
 
 
+
+   
 
 
     return 0;
