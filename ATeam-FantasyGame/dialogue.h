@@ -13,4 +13,5 @@ public:
 	void Node5();
 	void Node6();
 	void Node7();
+	void Node8();
 };

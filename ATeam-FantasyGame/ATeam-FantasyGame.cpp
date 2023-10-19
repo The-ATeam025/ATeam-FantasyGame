@@ -9,13 +9,18 @@ using namespace std;
 
 int main() {
 
-    Dialogue dial;
-    dial.CatIntro();
+    
     // Create an instance of the Backstory class
     Backstory backstory;
 
     // Call the displayIntro function to start the game
     backstory.displayIntro();
+
+    //Create an instance of the Dialogue class
+    Dialogue dial;
+
+    //Call the CatIntro function to continue the story 
+    dial.CatIntro();
 
 
     return 0;

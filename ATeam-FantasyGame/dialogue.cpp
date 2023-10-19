@@ -1,4 +1,4 @@
-#include "dialogue.h"
+  #include "dialogue.h"
 #include <iostream>
 
 using namespace std;
@@ -9,9 +9,9 @@ Dialogue::Dialogue()
 
 void Dialogue::CatIntro()
 {
-	cout << "As you emerge in this new and altered version of the garden, the atmosphere feels denser" << endl;
-	cout << " and the surroundings take on an otherworldly hue. Amidst the mystical setting, your gaze is drawn to a striking sight" << endl;
-	cout << " - a towering black cat, standing upright on its hind legs, seemingly unfazed by your sudden appearance. To your suprise, it starts speaking to you." << endl;
+	cout << "As you emerge in this new and altered version of the garden, the atmosphere feels denser and the surroundings take on an otherworldly hue. Amidst" << endl;
+	cout << "the mystical setting, your gaze is drawn to a striking sight - a towering black cat, standing upright on its hind legs, seemingly unfazed by your" << endl;
+	cout<<"sudden appearance. As you stand there in shock, your reality bends even more as you hear it start speaking to you." << endl;
 
 	Node1();
 }
@@ -31,9 +31,11 @@ void Dialogue::Node1()
 
 	if (choice == 1)
 	{
+		cout << "YOU: Who are you?" << endl;
 		Node2();
 	}
 	else
+		cout << "YOU: Where am I?" << endl;
 		Node3();
 
 }
@@ -46,16 +48,18 @@ void Dialogue::Node2()
 	cout << endl;
 	cout << "CHOOSE YOUR RESPONSE" << endl;
 	cout << endl;
-	cout << "1. Probably shouldn't tell you mine either, then." << endl;
+	cout << "1. I probably shouldn't tell you mine either, then." << endl;
 	cout << "2. Where is 'here', exactly?";
 	cout << endl;
 	cin >> choice;
 
 	if (choice == 1)
 	{
+		cout << "YOU: I probably shouldn't tell you mine either, then." << endl;
 		Node4();
 	}
 	else
+		cout << "YOU: Where is 'here', exactly?" << endl;
 		Node3(); //explain otherworld in detail
 
 
@@ -70,16 +74,18 @@ void Dialogue::Node3()
 	cout << endl;
 	cout << "CHOOSE YOUR RESPONSE" << endl;
 	cout << endl;
-	cout << "1. What do you mean, 'didn't make it;?" << endl;
-	cout << "2. What do you mean, the Otherworld?";
+	cout << "1. Wait, what do you mean,'didn't make it'?" << endl;
+	cout << "2. The Otherworld? What do you mean?" << endl;
 	cout << endl;
 	cin >> choice;
 
 	if (choice == 1)
 	{
+		cout << "YOU: Wait, what do you mean,'didn't make it'?" << endl;
 		Node5();
 	}
 	else
+		cout << "YOU: The Otherworld? What do you mean?" << endl;
 		Node5();
 
 }
@@ -88,20 +94,22 @@ void Dialogue::Node4()
 {
 	cout << endl;
 	cout << endl;
-	cout << "CAT: Smart. You might survive this place after all." << endl;
+	cout << "CAT: That's smart. You might survive this place after all." << endl;
 	cout << endl;
 	cout << "CHOOSE YOUR RESPONSE" << endl;
 	cout << endl;
-	cout << "1. What do you mean, 'this place?'" << endl;
+	cout << "1. Look, you keep saying that. What do you mean, 'this place?'" << endl;
 	cout << "2. Wait...survive?";
 	cout << endl;
 	cin >> choice;
 
 	if (choice == 1)
 	{
+		cout << "YOU: Look, you keep saying that. What do you mean, 'this place?'" << endl;
 		Node3();
 	}
 	else
+		cout << "YOU: Wait...survive?" << endl;
 		Node5();
 
 }
@@ -110,20 +118,22 @@ void Dialogue::Node5()
 {
 	cout << endl;
 	cout << endl;
-	cout << "CAT: It's a dangerous place, the Otherworld. You don't really hear about it for a reason." << endl;
+	cout << "CAT: It's a dangerous place, the Otherworld. Suprising amount of people end up here, but much fewer get to leave." << endl;
 	cout << endl;
 	cout << "CHOOSE YOUR RESPONSE" << endl;
 	cout << endl;
-	cout << "1. Jesus. What exactly is the Otherworld?'" << endl;
-	cout << "2. I've heard enough. How do I get out of here?";
+	cout << "1. Well, that sounds ominous. What exactly is the Otherworld?" << endl;
+	cout << "2. You're freaking me out, I've heard enough. How do I get out of here?";
 	cout << endl;
 	cin >> choice;
 
 	if (choice == 1)
 	{
+		cout << "YOU: Well, that sounds ominous. What exactly is the Otherworld?" << endl;
 		Node6(); //explain otherworld in detail
 	}
 	else
+		cout << "YOU: You're freaking me out, I've heard enough. How do I get out of here?" << endl;
 		Node7();
 
 }
@@ -132,14 +142,21 @@ void Dialogue::Node6()
 {
 	cout << endl;
 	cout << endl;
-	cout << "CAT: Fairy hell, basically." << endl;
+	cout << "CAT: It's a cursed fairy realm, essentially." << endl;
 	cout << endl;
 	cout << "CHOOSE YOUR RESPONSE" << endl;
 	cout << endl;
-	cout << "1. That sounds horrible. How do I leave??'" << endl;
-	cout << "2. And I'm just stuck here? Why am I here?";
+	cout << "1. That sounds horrible. How do I leave?" << endl;
+	cout << "2. ...Why am I in a cursed fairy realm? I was just on vacation.";
 	cout << endl;
 	cin >> choice;
+
+	if (choice == 1)
+	{
+		cout << "YOU: That sounds horrible. How do I leave?" << endl;
+	}
+	else
+		cout << "YOU: . ...Why am I in a cursed fairy realm? I was just on vacation." << endl;
 
 	Node7();
 
@@ -153,11 +170,27 @@ void Dialogue::Node7()
 	cout << endl;
 	cout << "CHOOSE YOUR RESPONSE" << endl;
 	cout << endl;
-	cout << "1. That sounds horrible. How do I leave??'" << endl;
-	cout << "2. And I'm just stuck here? Why am I here?";
+	cout << "1. How do I do that? Why are you telling me all this?" << endl;
+	cout << "2. Man, I'm scared and I want to go home. Can you just help me leave?";
 	cout << endl;
 	cin >> choice;
 
+	if (choice == 1)
+	{
+		cout << "YOU:  How do I do that? Why are you telling me all this?" << endl;
+	}
+	else
+		cout << "YOU: Man, I'm scared and I want to go home. Can you just help me leave?" << endl;
 
-
+	Node8();
 };
+
+void Dialogue::Node8()
+{
+	cout << endl;
+	cout << endl;
+	cout << "CAT: Look, I don't care about you, or your home. I just like to watch you mortals try to to escape, it's so fun. Here's a hint: stop by the castle, you're gonna need a Celtic cross for later." << endl;
+	cout << endl;
+	cout << "Before you can say anything, the cat turns around and melts into the shadows, leaving you questioning your own sanity. Did it really talk to you?" << endl;
+	cout << endl;
+}
