@@ -11,7 +11,7 @@ private:
 
 
 public:
-	Player(string newName, Location* currentLocation); // Constructor
+	Player(string newName); // Constructor
 	void walkToLocation(Location* newLocation); // Sets the Players currentLocation to a newLocation
 	Location* getCurrentLocation(); // Getter for player location
 };

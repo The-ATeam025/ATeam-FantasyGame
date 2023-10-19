@@ -6,37 +6,21 @@
 #include "Player.h"
 #include "Location.h"
 #include "UI.h"
+#include "GameWorld.h"
 
 using namespace std;
 
 // Testing a pull request
 
 int main() {
+    // Create a player instance
+    Player player("Player's Name");
 
+    // Create a game world instance
+    GameWorld gameWorld;
 
-    //ToDo - Create a class that will initialize locations, items, etc
-    // Declaring Instances of Rooms
-    // Will connect to greatHall after it is declared.
-    Location* mushroomRing = Location::createLocation("Mushroom Ring",
-        "You find yourself in a mystical circle of mushrooms. The air is filled with an otherworldly energy, and the sun is hidden behind the clouds",
-        {},
-        {});
-
-    // Item to be stored in greatHall
-    Item* rustyKey = new Item("A Key",
-        "There is a key on the ground, its surface covered almost entirely rust");
-
-    // Create the "Great Hall" location with the "Key" item and a connection to the "Mushroom Ring"
-    Location* greatHall = Location::createLocation("Great Hall",
-        "You are in the Great Hall of Blarney Castle, a large room with ancient tapestries and dimly lit chandeliers",
-        {mushroomRing},
-        { rustyKey });
-
-    // Connect mushroomRing to greatHall
-    mushroomRing->addConnectedLocation(greatHall);
-
-    //Create Player instance and start his location in the mushroomRing
-    Player player("Player's Name", mushroomRing);
+    // Initialize the game world (including locations and items)
+    gameWorld.init(player);
 
     // Create an instance of the Backstory class
     Backstory backstory;

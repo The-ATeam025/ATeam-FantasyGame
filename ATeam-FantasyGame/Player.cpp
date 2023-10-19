@@ -3,7 +3,7 @@
 // Sets a Players name and changes Players current Location
 
 // Constructor
-Player::Player(string newName, Location* startingLocation) : name(newName), currentLocation(startingLocation) {}
+Player::Player(std::string newName) : name(newName), currentLocation(nullptr) {}
 
 // Changes the Players currentLocation* to a newLocation*
 // To Do: How to validate the argument(example: incorrect values that can lead to crashes)
