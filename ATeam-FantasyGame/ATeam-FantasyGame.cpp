@@ -58,8 +58,14 @@ int main() {
         case 2:
             UI::lookAround(player.getCurrentLocation());
             break;
+        case 3:
+            UI::pickUpItem(player);
+            break;
+        case 4:
+            UI::displayInventory(player);
+            break;
         default:
-            cout << "Invalid choice. Please select a valid option." << endl;
+            cout << "Invalid choice 3. Please select a valid option." << endl;
             break;
         }
     }

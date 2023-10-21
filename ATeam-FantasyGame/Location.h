@@ -23,6 +23,8 @@ public:
     void addConnectedLocation(Location* locationName); // Add a connected location to this location
     vector<Location*> getConnectedLocations() const; // Get the list of connected locations
     void addItem(Item* item); // Add an item to the location
+	void removeItem(Item* item); // Remove an item from a location
+	bool hasItem(const Item* item) const; // Check if an item is in a location
     static Location* createLocation(
         string name, string description, vector<Location*> connectedLocations, vector<Item*> items); // Create a new location with specified properties
 

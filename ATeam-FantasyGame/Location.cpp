@@ -61,3 +61,17 @@ Location* Location::createLocation(
 
     return newLocation;
 }
+
+// Remove an item from a location
+void Location::removeItem(Item* item) {
+    // Find and remove the specified item from the location's item list.
+    auto it = std::remove(items.begin(), items.end(), item);
+    if (it != items.end()) {
+        items.erase(it, items.end());
+    }
+}
+
+// Check if the specified item exists in the location's item list.
+bool Location::hasItem(const Item* item) const {
+    return std::find(items.begin(), items.end(), item) != items.end();
+}
