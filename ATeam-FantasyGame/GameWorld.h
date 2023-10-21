@@ -21,7 +21,7 @@ public:
 
         // Create an item
         Item* rustyKey = new Item("Rusty Key", "A normal looking key, besides the rust covering its surface");
-        Item* celticCross = new Item("Celtic Cross", "An ornate, ancient cross symbolizing Celtic heritage and spirituality.");
+        Item* celticCross = new Item("Celtic Cross", "An ornate, ancient cross symbolizing Celtic heritage and spirituality");
 
         // Connect the locations
         courtyard->addConnectedLocation(greatHall);

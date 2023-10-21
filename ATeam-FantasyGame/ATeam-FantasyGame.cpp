@@ -36,12 +36,17 @@ int main() {
     //Call the CatIntro function to continue the story 
     dial.CatIntro();
 
+    //Prompt user to continue
     system("pause");
 
+    //Clear the screen
     system("CLS");
 
     // Game loop
 
+
+    //ToDo - Implement some way to verify the input is a numeric value or does not have spaces. If it has either
+    //       the switch case loops infinitely, as well as any prompt for choices in the UI
     UI::displayCurrentLocation(player);
     while (true) {
         // Display the current location and menu

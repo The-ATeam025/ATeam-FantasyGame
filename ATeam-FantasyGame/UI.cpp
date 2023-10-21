@@ -59,13 +59,14 @@ void UI::movePlayer(Player& player) {
     cin >> choice;
     // Get the player's choice.
 
+    // Clear the current screen
+    system("CLS");
+
     if (choice >= 1 && choice <= connectedLocations.size()) {
         // Check if the choice is valid.
         player.walkToLocation(connectedLocations[choice - 1]);
-        // Clear the current screen
-        system("CLS");
         // Move the player to the chosen location.
-        cout << endl << endl << "You have moved to the " << player.getCurrentLocation()->getName() << "." << endl;
+        cout << "You have moved to the " << player.getCurrentLocation()->getName() << "." << endl;
         // Display a message about the successful move.
         Location* currentLocation = player.getCurrentLocation();
         // Get the player's new location.
@@ -86,12 +87,13 @@ void UI::lookAround(Location* currentLocation) {
     const vector<Item*>& items = currentLocation->items;
     // Get the list of items in the current location.
     cout << endl;
+    system("CLS");
     if (items.empty()) {
         cout << "You see nothing interesting in the area." << endl;
         // If there are no items, display a message about the empty area.
     }
     else {
-        cout << endl << "You look around the " << currentLocation->getName() << ". You see:" << endl;
+        cout << "You look around the " << currentLocation->getName() << ". You see:" << endl;
         // Display the name of the current location.
         for (size_t i = 0; i < items.size(); ++i) {
             cout << i + 1 << ". " << items[i]->getName() << " - " << items[i]->getDescription() << endl;
@@ -108,15 +110,20 @@ void UI::pickUpItem(Player& player) {
     vector<Item*>& items = currentLocation->items;
 
     if (!items.empty()) {
-        cout << "Choose an item to pick up:" << endl;
+        cout << endl << "Choose an item to pick up:" << endl;
+        cout << "0. Do not pick up an item" << endl;
         for (size_t i = 0; i < items.size(); ++i) {
             cout << i + 1 << ". " << items[i]->getName() << " - " << items[i]->getDescription() << endl;
         }
 
         int choice;
         cin >> choice;
-
-        if (choice >= 1 && choice <= items.size()) {
+        system("CLS");
+        if (choice == 0) {
+            cout << "You have decided not to pick up an item" << endl;
+        }
+        else if (choice >= 1 && choice <= items.size()) {
+     
             // Move the item to the player's inventory and remove it from the location.
             Item* pickedItem = items[choice - 1];
             player.addItemToInventory(pickedItem);
@@ -128,6 +135,7 @@ void UI::pickUpItem(Player& player) {
         }
     }
     else {
+        system("CLS");
         cout << "There are no items to pick up in this area." << endl;
     }
 }
@@ -135,7 +143,7 @@ void UI::pickUpItem(Player& player) {
 // Implement the displayInventory method.
 void UI::displayInventory(const Player& player) {
     vector<Item*> inventory = player.getInventory();
-
+    system("CLS");
     if (!inventory.empty()) {
         cout << "Inventory:" << endl;
         for (size_t i = 0; i < inventory.size(); ++i) {
