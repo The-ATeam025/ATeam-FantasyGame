@@ -1,8 +1,9 @@
   #include "dialogue.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
-
+string choice; //user input
 Dialogue::Dialogue()
 {
 }
@@ -33,16 +34,18 @@ void Dialogue::Node1()
 	cout << "1. Who are you?" << endl;
 	cout << "2. Where am I?";
 	cout << endl;
-	cin >> choice;
+	getline(cin, choice);
 
-
-	while ((choice != 1)&&(choice !=2))
+	
+	while ((choice[0] != '1') && (choice[0] != '2') || (choice.length() >= 2))
 	{
 		cout << "Cat got your tongue? Enter 1 or 2 to reply." << endl;
-		cin >> choice;
+		getline(cin, choice);
 	}
+	
 
-	if (choice == 1)
+
+	if (choice == "1")
 	{
 		cout << "YOU: Who are you?" << endl;
 		Node2();
@@ -64,15 +67,17 @@ void Dialogue::Node2()
 	cout << "1. I probably shouldn't tell you mine either, then." << endl;
 	cout << "2. Where is 'here', exactly?";
 	cout << endl;
-	cin >> choice;
+	getline(cin, choice);
 
-	while ((choice != 1) && (choice != 2))
+
+	while ((choice[0] != '1') && (choice[0] != '2') || (choice.length() >= 2))
 	{
 		cout << "Cat got your tongue? Enter 1 or 2 to reply." << endl;
-		cin >> choice;
+		getline(cin, choice);
 	}
 
-	if (choice == 1)
+
+	if (choice == "1")
 	{
 		cout << "YOU: I probably shouldn't tell you mine either, then." << endl;
 		Node4();
@@ -96,15 +101,17 @@ void Dialogue::Node3()
 	cout << "1. Wait, what do you mean,'didn't make it'?" << endl;
 	cout << "2. The Otherworld? What do you mean?" << endl;
 	cout << endl;
-	cin >> choice;
+	getline(cin, choice);
 
-	while ((choice != 1) && (choice != 2))
+
+	while ((choice[0] != '1') && (choice[0] != '2') || (choice.length() >= 2))
 	{
 		cout << "Cat got your tongue? Enter 1 or 2 to reply." << endl;
-		cin >> choice;
+		getline(cin, choice);
 	}
 
-	if (choice == 1)
+
+	if (choice == "1")
 	{
 		cout << "YOU: Wait, what do you mean,'didn't make it'?" << endl;
 		Node5();
@@ -128,15 +135,17 @@ void Dialogue::Node4()
 	cout << "1. Look, you keep saying that. What do you mean, 'this place?'" << endl;
 	cout << "2. Wait...survive?";
 	cout << endl;
-	cin >> choice;
+	getline(cin, choice);
 
-	while ((choice != 1) && (choice != 2))
+
+	while ((choice[0] != '1') && (choice[0] != '2') || (choice.length() >= 2))
 	{
 		cout << "Cat got your tongue? Enter 1 or 2 to reply." << endl;
-		cin >> choice;
+		getline(cin, choice);
 	}
 
-	if (choice == 1)
+
+	if (choice == "1")
 	{
 		cout << "YOU: Look, you keep saying that. What do you mean, 'this place?'" << endl;
 		Node3();
@@ -160,15 +169,17 @@ void Dialogue::Node5()
 	cout << "1. Well, that sounds ominous. What exactly is the Otherworld?" << endl;
 	cout << "2. You're freaking me out, I've heard enough. How do I get out of here?";
 	cout << endl;
-	cin >> choice;
+	getline(cin, choice);
 
-	while ((choice != 1) && (choice != 2))
+
+	while ((choice[0] != '1') && (choice[0] != '2') || (choice.length() >= 2))
 	{
 		cout << "Cat got your tongue? Enter 1 or 2 to reply." << endl;
-		cin >> choice;
+		getline(cin, choice);
 	}
 
-	if (choice == 1)
+
+	if (choice == "1")
 	{
 		cout << "YOU: Well, that sounds ominous. What exactly is the Otherworld?" << endl;
 		Node6(); //explain otherworld in detail
@@ -192,15 +203,17 @@ void Dialogue::Node6()
 	cout << "1. That sounds horrible. How do I leave?" << endl;
 	cout << "2. ...Why am I in a cursed fairy realm? I was just on vacation.";
 	cout << endl;
-	cin >> choice;
+	getline(cin, choice);
 
-	while ((choice != 1) && (choice != 2))
+
+	while ((choice[0] != '1') && (choice[0] != '2') || (choice.length() >= 2))
 	{
 		cout << "Cat got your tongue? Enter 1 or 2 to reply." << endl;
-		cin >> choice;
+		getline(cin, choice);
 	}
 
-	if (choice == 1)
+
+	if (choice == "1")
 	{
 		cout << "YOU: That sounds horrible. How do I leave?" << endl;
 		Node7();
@@ -226,15 +239,17 @@ void Dialogue::Node7()
 	cout << "1. How do I do that? Why are you telling me all this?" << endl;
 	cout << "2. Man, I'm scared and I want to go home. Can you just help me leave?";
 	cout << endl;
-	cin >> choice;
+	getline(cin, choice);
 
-	while ((choice != 1) && (choice != 2))
+
+	while ((choice[0] != '1') && (choice[0] != '2') || (choice.length() >= 2))
 	{
 		cout << "Cat got your tongue? Enter 1 or 2 to reply." << endl;
-		cin >> choice;
+		getline(cin, choice);
 	}
 
-	if (choice == 1)
+
+	if (choice == "1")
 	{
 		cout << "YOU:  How do I do that? Why are you telling me all this?" << endl;
 		CatOutro();

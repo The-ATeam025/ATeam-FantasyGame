@@ -3,7 +3,6 @@ class Dialogue
 {
 public:
 	Dialogue(); //constructor
-	int choice; //user input
 
 	void CatIntro(); //intro to cat character 
 
