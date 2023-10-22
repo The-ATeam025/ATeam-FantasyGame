@@ -38,7 +38,7 @@ void Dialogue::Node1()
 
 	
 	/*
-	Input verificaiton takes the first character of the input string and compares to 1 or 2. Forces uses to re-enter input if not equal to 1 or 2,
+	Input verificaiton takes the first character of the input string and compares to '1' or '2'. Forces uses to re-enter input if not equal to 1 or 2,
 	or if more than 1 character has been entered
 	*/
 	while ((choice[0] != '1') && (choice[0] != '2') || (choice.length() >= 2)) 
