@@ -17,7 +17,7 @@ void UI::displayCurrentLocation(Player& player) {
         cout << "You are in the " << currentLocation->getName() << endl;
         // Display the name of the location.
         cout << currentLocation->getDescription() << endl;
-        // Display the name of the location.
+        // Display the description of the location.
     }
     else {
         cout << "Player's location is unknown." << endl;
@@ -34,7 +34,7 @@ void UI::displayMenu() {
     cout << "4. Check your inventory" << endl;
 }
 
-
+// Handles moving player from location to location
 void UI::movePlayer(Player& player) {
     Location* currentLocation = player.getCurrentLocation();
     list<Location*> connectedLocations = currentLocation->getConnectedLocations();
