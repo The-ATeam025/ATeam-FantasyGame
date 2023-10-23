@@ -25,7 +25,7 @@ void Player::addItemToInventory(Item* item) {
 }
 
 // Implement the getInventory method.
-vector<Item*> Player::getInventory() const {
+list<Item*> Player::getInventory() const {
     return inventory;
 }
 

@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "Item.h"
+#include <list>
 
 using namespace std;
 
@@ -12,20 +13,18 @@ class Location
 private:
 	string name; // Name of the Location
 	string description; // A description of the Location
-	vector<Location*> connectedLocations; // Connected one room to another
+	list<Location*> connectedLocations; // Connected one room to another
+	list<Item*> items; // Conenct an item toa room
 
 
 public:
-	vector<Item*> items; // Connect an item to a room
 	Location(string newName, string newDescription); // Location Constructor
 	string getName(); // Returns a string Name
 	string getDescription();  // Returns a string Description
     void addConnectedLocation(Location* locationName); // Add a connected location to this location
-    vector<Location*> getConnectedLocations() const; // Get the list of connected locations
+	list<Location*> getConnectedLocations() const; // Get the list of connected locations
     void addItem(Item* item); // Add an item to the location
-	void removeItem(Item* item); // Remove an item from a location
+	list<Item*> getItems() const; // Get an item
+	bool removeItem(Item* item); // Remove an item from a location
 	bool hasItem(const Item* item) const; // Check if an item is in a location
-    static Location* createLocation(
-        string name, string description, vector<Location*> connectedLocations, vector<Item*> items); // Create a new location with specified properties
-
 };

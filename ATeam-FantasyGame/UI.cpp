@@ -1,15 +1,11 @@
 #include "UI.h"
 #include "Location.h"
+#include <list>
 
 // UI Class
 // This class manages the user interface and interactions in the game.
 
 using namespace std;
-
-// Display the game's introductory text.
-void UI::displayIntro() {
-    cout << "Welcome to the adventure!" << endl;
-}
 
 // Display the player's current location and description.
 void UI::displayCurrentLocation(Player& player) {
@@ -21,7 +17,7 @@ void UI::displayCurrentLocation(Player& player) {
         cout << "You are in the " << currentLocation->getName() << endl;
         // Display the name of the location.
         cout << currentLocation->getDescription() << endl;
-        // Display the description of the location.
+        // Display the name of the location.
     }
     else {
         cout << "Player's location is unknown." << endl;
@@ -38,90 +34,95 @@ void UI::displayMenu() {
     cout << "4. Check your inventory" << endl;
 }
 
-// Handle moving the player to another location.
+
 void UI::movePlayer(Player& player) {
     Location* currentLocation = player.getCurrentLocation();
     list<Location*> connectedLocations = currentLocation->getConnectedLocations();
-
-    vector<Location*> connectedLocations = currentLocation->getConnectedLocations();
-    // Get a list of locations connected to the current location.
+    // Get the current location of the player and its connected locations
 
     cout << endl << "Choose a location to move to:" << endl;
     cout << "0. Stay in the area" << endl;
-    for (size_t i = 0; i < connectedLocations.size(); ++i) {
-        cout << i + 1 << ". " << connectedLocations[i]->getName() << endl;
+    int i = 1;
+    for (list<Location*>::iterator it = connectedLocations.begin(); it != connectedLocations.end(); ++it) {
+        cout << i << ". " << (*it)->getName() << endl;
+        ++i;
     }
     // Display a list of connected locations that the player can move to.
-
     int choice;
-    cin >> choice;
+
     // Get the player's choice.
+    cin >> choice;
 
     // Clear the current screen
     system("CLS");
 
     if (choice >= 1 && choice <= connectedLocations.size()) {
-        // Check if the choice is valid.
-        player.walkToLocation(connectedLocations[choice - 1]);
-        // Move the player to the chosen location.
+        list<Location*>::iterator it = connectedLocations.begin();
+        advance(it, choice - 1);
+        player.walkToLocation(*it);
         cout << "You have moved to the " << player.getCurrentLocation()->getName() << "." << endl;
-        // Display a message about the successful move.
-        Location* currentLocation = player.getCurrentLocation();
-        // Get the player's new location.
-        cout << currentLocation->getDescription() << endl;
-        // Display the description of the new location.
+        Location* newLocation = player.getCurrentLocation();
+        cout << newLocation->getDescription() << endl;
     }
-    else if(choice >= 0) {
+    else if (choice >= 0) {
         cout << "You have decided to stay in the area." << endl;
     }
     else {
         cout << "Invalid choice. Please select a valid option." << endl;
-        // Display an error message for an invalid choice.
     }
 }
 
 // Handle looking around the current location and displaying items.
 void UI::lookAround(Location* currentLocation) {
-    const vector<Item*>& items = currentLocation->items;
+    const list<Item*>& items = currentLocation->getItems();
     // Get the list of items in the current location.
     cout << endl;
     system("CLS");
+
     if (items.empty()) {
         cout << "You see nothing interesting in the area." << endl;
         // If there are no items, display a message about the empty area.
     }
     else {
         cout << "You look around the " << currentLocation->getName() << ". You see:" << endl;
+        int i = 1;
         // Display the name of the current location.
-        for (size_t i = 0; i < items.size(); ++i) {
-            cout << i + 1 << ". " << items[i]->getName() << " - " << items[i]->getDescription() << endl;
+        for (list<Item*>::const_iterator it = items.begin(); it != items.end(); ++it) {
+            cout << i << ". " << (*it)->getName() << " - " << (*it)->getDescription() << endl;
+            ++i;
+            // Loop through and display each item in the area.
         }
-        // Loop through and display each item in the area.
     }
 }
 
 // Allows player to pick up items from a room
 void UI::pickUpItem(Player& player) {
     Location* currentLocation = player.getCurrentLocation();
+    // Get the list of items in the current location.
     list<Item*> items = currentLocation->getItems(); // Corrected to list<Item*>
 
     if (!items.empty()) {
         cout << endl << "Choose an item to pick up:" << endl;
         cout << "0. Do not pick up an item" << endl;
-        for (size_t i = 0; i < items.size(); ++i) {
-            cout << i + 1 << ". " << items[i]->getName() << " - " << items[i]->getDescription() << endl;
+        int i = 1;
+        for (list<Item*>::iterator it = items.begin(); it != items.end(); ++it) { // Corrected to list<Item*>::iterator
+            cout << i << ". " << (*it)->getName() << " - " << (*it)->getDescription() << endl;
+            ++i;
         }
 
         int choice;
         cin >> choice;
         system("CLS");
+
         if (choice == 0) {
-            cout << "You have decided not to pick up an item" << endl;
+            cout << "You have decided not to pick up an item." << endl;
         }
         else if (choice >= 1 && choice <= items.size()) {
-     
+            list<Item*>::iterator it = items.begin();
+            advance(it, choice - 1);
+
             // Move the item to the player's inventory and remove it from the location.
-            Item* pickedItem = items[choice - 1];
+            Item* pickedItem = *it;
             player.addItemToInventory(pickedItem);
             currentLocation->removeItem(pickedItem);
             cout << "You have picked up the " << pickedItem->getName() << "." << endl;
@@ -136,21 +137,22 @@ void UI::pickUpItem(Player& player) {
     }
 }
 
-// Implement the displayInventory method.
+// Allows for player to access their inventory
 void UI::displayInventory(const Player& player) {
-    vector<Item*> inventory = player.getInventory();
+    list<Item*> inventory = player.getInventory();
     system("CLS");
+
     if (!inventory.empty()) {
         cout << "Inventory:" << endl;
-        for (size_t i = 0; i < inventory.size(); ++i) {
-            cout << i + 1 << ". " << inventory[i]->getName() << " - " << inventory[i]->getDescription() << endl;
+        int i = 1;
+        for (list<Item*>::const_iterator it = inventory.begin(); it != inventory.end(); ++it) {
+            cout << i << ". " << (*it)->getName() << " - " << (*it)->getDescription() << endl;
+            ++i;
         }
     }
     else {
         cout << "Your inventory is empty." << endl;
     }
 }
-
-
 
 
