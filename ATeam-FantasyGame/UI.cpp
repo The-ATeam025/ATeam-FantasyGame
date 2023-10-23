@@ -25,7 +25,6 @@ void UI::displayCurrentLocation(Player& player) {
     }
     else {
         cout << "Player's location is unknown." << endl;
-        // If the current location is not known, display a message.
     }
 }
 
@@ -37,13 +36,12 @@ void UI::displayMenu() {
     cout << "2. Look around" << endl;
     cout << "3. Pick up an item" << endl;
     cout << "4. Check your inventory" << endl;
-    // Display the options the player has, such as moving or looking around.
 }
 
 // Handle moving the player to another location.
 void UI::movePlayer(Player& player) {
     Location* currentLocation = player.getCurrentLocation();
-    // Get the current location of the player.
+    list<Location*> connectedLocations = currentLocation->getConnectedLocations();
 
     vector<Location*> connectedLocations = currentLocation->getConnectedLocations();
     // Get a list of locations connected to the current location.
@@ -105,9 +103,7 @@ void UI::lookAround(Location* currentLocation) {
 // Allows player to pick up items from a room
 void UI::pickUpItem(Player& player) {
     Location* currentLocation = player.getCurrentLocation();
-
-    // Get the list of items in the current location.
-    vector<Item*>& items = currentLocation->items;
+    list<Item*> items = currentLocation->getItems(); // Corrected to list<Item*>
 
     if (!items.empty()) {
         cout << endl << "Choose an item to pick up:" << endl;
