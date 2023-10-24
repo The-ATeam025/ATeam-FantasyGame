@@ -26,27 +26,24 @@ int main() {
     // Create an instance of the Backstory class
     Backstory backstory;
 
-    backstory.displayIntro();
-    system("CLS");
+    //backstory.displayIntro();
+    //system("CLS");
 
 
     //Create an instance of the Dialogue class
     Dialogue dial;
 
     //Call the CatIntro function to continue the story 
-    dial.CatIntro();
+    //dial.CatIntro();
 
     //Prompt user to continue
-    system("pause");
+    //system("pause");
 
     //Clear the screen
-    system("CLS");
+    //system("CLS");
 
     // Game loop
 
-
-    //ToDo - Implement some way to verify the input is a numeric value or does not have spaces. If it has either
-    //       the switch case loops infinitely, as well as any prompt for choices in the UI
     UI::displayCurrentLocation(player);
     while (true) {
         // Display the current location and menu
@@ -54,8 +51,14 @@ int main() {
 
         // Handle player input
         int choice;
-        cin >> choice;
-
+        while(!(cin >> choice) || cin.peek() != '\n') {
+            // Handle non-numeric input or input with spaces
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("CLS");
+            cout << "Enter a non-spaced, numeric value." << endl;
+            UI::displayMenu();
+        }
         switch (choice) {
         case 1:
             UI::movePlayer(player);
@@ -70,7 +73,13 @@ int main() {
             UI::displayInventory(player);
             break;
         default:
-            cout << "Invalid choice 3. Please select a valid option." << endl;
+            system("CLS");
+
+            cout << "Invalid choice. Please select a valid option." << endl;
+
+            // FIXED INPUT LOOPING with cin.clear() and cin.ignore after every invalid input
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             break;
         }
     }

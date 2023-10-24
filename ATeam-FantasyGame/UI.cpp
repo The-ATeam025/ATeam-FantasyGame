@@ -7,6 +7,8 @@
 
 using namespace std;
 
+// FIXED INPUT LOOPING with cin.clear() and cin.ignore after every invalid input
+
 // Display the player's current location and description.
 void UI::displayCurrentLocation(Player& player) {
     // Get the current location the player is in.
@@ -51,9 +53,13 @@ void UI::movePlayer(Player& player) {
     int choice;
 
     // Get the player's choice.
-    cin >> choice;
+    while (!(cin >> choice) || cin.peek() != '\n') {
+        // Handle non-numeric input or input with spaces
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Enter a non-spaced, numeric value." << endl << endl;
+    }
 
-    // Clear the current screen
     system("CLS");
 
     if (choice >= 1 && choice <= connectedLocations.size()) {
@@ -64,7 +70,7 @@ void UI::movePlayer(Player& player) {
         Location* newLocation = player.getCurrentLocation();
         cout << newLocation->getDescription() << endl;
     }
-    else if (choice >= 0) {
+    else if (choice == 0) {
         cout << "You have decided to stay in the area." << endl;
     }
     else {
@@ -111,7 +117,13 @@ void UI::pickUpItem(Player& player) {
         }
 
         int choice;
-        cin >> choice;
+        while (!(cin >> choice) || cin.peek() != '\n') {
+            // Handle non-numeric input or input with spaces
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Enter a non-spaced, numeric value." << endl << endl;
+        }
+
         system("CLS");
 
         if (choice == 0) {
@@ -128,11 +140,10 @@ void UI::pickUpItem(Player& player) {
             cout << "You have picked up the " << pickedItem->getName() << "." << endl;
         }
         else {
-            cout << "Invalid choice. Please select a valid option." << endl;
+                cout << "Invalid choice. Please select a valid option." << endl;
         }
     }
     else {
-        system("CLS");
         cout << "There are no items to pick up in this area." << endl;
     }
 }
