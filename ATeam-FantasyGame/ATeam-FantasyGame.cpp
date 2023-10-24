@@ -26,20 +26,21 @@ int main() {
     // Create an instance of the Backstory class
     Backstory backstory;
 
-    //backstory.displayIntro();
+    // Display backstory
+    backstory.displayIntro();
     system("CLS");
 
 
-    //Create an instance of the Dialogue class
+    // Create an instance of the Dialogue class
     Dialogue dial;
 
-    //Call the CatIntro function to continue the story 
+    // Call the CatIntro function to continue the story 
     dial.CatIntro();
 
-    //Prompt user to continue
+    // Prompt user to continue
     system("pause");
 
-    //Clear the screen
+    // Clear the screen
     system("CLS");
 
     // Game loop
