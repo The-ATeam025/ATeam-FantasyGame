@@ -27,20 +27,20 @@ int main() {
     Backstory backstory;
 
     //backstory.displayIntro();
-    //system("CLS");
+    system("CLS");
 
 
     //Create an instance of the Dialogue class
     Dialogue dial;
 
     //Call the CatIntro function to continue the story 
-    //dial.CatIntro();
+    dial.CatIntro();
 
     //Prompt user to continue
-    //system("pause");
+    system("pause");
 
     //Clear the screen
-    //system("CLS");
+    system("CLS");
 
     // Game loop
 
