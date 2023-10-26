@@ -35,7 +35,7 @@ void Location::addConnectedLocation(Location* location) {
 }
 
 // Get the list of connected locations
-vector<Location*> Location::getConnectedLocations() const {
+list<Location*> Location::getConnectedLocations() const {
     return connectedLocations;
 }
 
@@ -44,20 +44,18 @@ void Location::addItem(Item* item) {
     items.push_back(item);
 }
 
-// Create a new location with specified properties
-Location* Location::createLocation(
-    string name, string description, vector<Location*> connectedLocations, vector<Item*> items) {
-    Location* newLocation = new Location(name, description);
+// Get an item from the location
+list<Item*> Location::getItems() const {
+    return items;
+}
 
-    // Add connected locations
-    for (Location* location : connectedLocations) {
-        newLocation->addConnectedLocation(location);
-    }
+// Remove an item from a location
+bool Location::removeItem(Item* item) {
+    items.remove(item);
+    return true; // Return true if the item was found and removed, you can add error handling if needed.
+}
 
-    // Add items to the location
-    for (Item* item : items) {
-        newLocation->addItem(item);
-    }
-
-    return newLocation;
+// Check if the specified item exists in the location's item list.
+bool Location::hasItem(const Item* item) const {
+    return std::find(items.begin(), items.end(), item) != items.end();
 }

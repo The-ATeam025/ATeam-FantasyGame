@@ -26,18 +26,21 @@ int main() {
     // Create an instance of the Backstory class
     Backstory backstory;
 
+    // Display backstory
     backstory.displayIntro();
     system("CLS");
 
 
-    //Create an instance of the Dialogue class
+    // Create an instance of the Dialogue class
     Dialogue dial;
 
-    //Call the CatIntro function to continue the story 
+    // Call the CatIntro function to continue the story 
     dial.CatIntro();
 
+    // Prompt user to continue
     system("pause");
 
+    // Clear the screen
     system("CLS");
 
     // Game loop
@@ -49,8 +52,14 @@ int main() {
 
         // Handle player input
         int choice;
-        cin >> choice;
-
+        while(!(cin >> choice) || cin.peek() != '\n') {
+            // Handle non-numeric input or input with spaces
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("CLS");
+            cout << "Enter a non-spaced, numeric value." << endl;
+            UI::displayMenu();
+        }
         switch (choice) {
         case 1:
             UI::movePlayer(player);
@@ -58,8 +67,20 @@ int main() {
         case 2:
             UI::lookAround(player.getCurrentLocation());
             break;
+        case 3:
+            UI::pickUpItem(player);
+            break;
+        case 4:
+            UI::displayInventory(player);
+            break;
         default:
+            system("CLS");
+
             cout << "Invalid choice. Please select a valid option." << endl;
+
+            // FIXED INPUT LOOPING with cin.clear() and cin.ignore after every invalid input
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             break;
         }
     }

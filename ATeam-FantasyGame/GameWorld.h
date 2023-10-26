@@ -5,35 +5,37 @@
 
 class GameWorld {
 private:
-    Location* mushroomRing;
+    Location* courtyard;
     Location* greatHall;
 
 public:
-    GameWorld() : mushroomRing(nullptr), greatHall(nullptr) {}
+    GameWorld() : courtyard(nullptr), greatHall(nullptr) {}
 
     void init(Player& player) {
         // Initialize locations
-        mushroomRing = new Location("Courtyard",
+        courtyard = new Location("Courtyard",
             "You find yourself surrounded by a cirlce of dead grass replacing the mushrooms that brought you here. The air is filled with an otherworldly energy, and the sun is hidden behind the clouds");
         greatHall = new Location("Great Hall",
             "You step into a grand chamber adorned with towering arches and elaborately decorated walls. A sense of history and mystery fills the air."
         );
 
         // Create an item
-        Item* rustyKey = new Item("A Key", "There is a key on the ground, its surface covered almost entirely in rust");
+        Item* rustyKey = new Item("Rusty Key", "A normal looking key, besides the rust covering its surface");
+        Item* celticCross = new Item("Celtic Cross", "An ornate, ancient cross symbolizing Celtic heritage and spirituality");
 
         // Connect the locations
-        mushroomRing->addConnectedLocation(greatHall);
-        greatHall->addConnectedLocation(mushroomRing);
+        courtyard->addConnectedLocation(greatHall);
+        greatHall->addConnectedLocation(courtyard);
 
-        // Add the item to the great hall
+        // Add items to the great hall
         greatHall->addItem(rustyKey);
+        greatHall->addItem(celticCross);
 
         // Set the player's initial location
-        player.walkToLocation(mushroomRing);
+        player.walkToLocation(courtyard);
     }
 
     // Return the pointers to the locations so they can be accessed in the game
-    Location* getMushroomRing() { return mushroomRing; }
+    Location* getCourtyard() { return courtyard; }
     Location* getGreatHall() { return greatHall; }
 };
