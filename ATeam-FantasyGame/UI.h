@@ -11,6 +11,7 @@ public:
     static void lookAround(Location* currentLocation); // Handle looking around the current location and displaying items.
     static void pickUpItem(Player& player); // Handle picking up item and adding it to the players inventory
     static void displayInventory(const Player& player); // Handle displaying the user's current inventory
+    //Maybe add an option to approach an npc and start dialogue. 
 };
 
 

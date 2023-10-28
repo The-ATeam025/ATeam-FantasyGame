@@ -78,16 +78,21 @@ void UI::movePlayer(Player& player) {
     }
 }
 
-// Handle looking around the current location and displaying items.
+// Handle looking around the current location and displaying items and Npcs.
 void UI::lookAround(Location* currentLocation) {
     const list<Item*>& items = currentLocation->getItems();
     // Get the list of items in the current location.
+
+    //Get the list of Npcs in the current location
+    const list<NPC*>& npcs = currentLocation->getNpcs();
+
     cout << endl;
     system("CLS");
 
-    if (items.empty()) {
+    if (items.empty() && npcs.empty()) {;
+        //cout << npcs.size(); 0
         cout << "You see nothing interesting in the area." << endl;
-        // If there are no items, display a message about the empty area.
+        // If there are no items or npcs, display a message about the empty area.
     }
     else {
         cout << "You look around the " << currentLocation->getName() << ". You see:" << endl;
@@ -97,6 +102,12 @@ void UI::lookAround(Location* currentLocation) {
             cout << i << ". " << (*it)->getName() << " - " << (*it)->getDescription() << endl;
             ++i;
             // Loop through and display each item in the area.
+        }
+        // Go through the list of npcs in that location and print them
+        for (list<NPC*>::const_iterator it = npcs.begin(); it != npcs.end(); ++it)
+        {
+            cout << i << ". " << (*it)->getName() << " - " << (*it)->getDescription() << endl;
+            ++i; 
         }
     }
 }

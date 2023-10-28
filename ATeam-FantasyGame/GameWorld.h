@@ -37,7 +37,7 @@ public:
         greatHall->addItem(rustyKey);
         greatHall->addItem(celticCross);
 
-        //Add npc to dungeon
+        //Add npc to the dungeon
         dungeon->addNpc(redCap);
 
         // Set the player's initial location

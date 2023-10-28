@@ -64,7 +64,7 @@ bool Location::hasItem(const Item* item) const {
 // Add an Npc to the location
 void Location::addNpc(NPC* npc)
 {
-
+    npcs.push_back(npc);
 }
 
 //Get an Npc from the location
