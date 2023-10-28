@@ -9,6 +9,7 @@ using namespace std;
 //Returns a Locations name and description
 //Allows for items to be added to a location
 //Allows for two locations to be connected (next to each other)
+//Allows for an npc to be added to a location
 
 //Constructor
 Location::Location(string newName, string newDescription) : name(newName), description(newDescription) {
@@ -58,4 +59,27 @@ bool Location::removeItem(Item* item) {
 // Check if the specified item exists in the location's item list.
 bool Location::hasItem(const Item* item) const {
     return std::find(items.begin(), items.end(), item) != items.end();
+}
+
+// Add an Npc to the location
+void Location::addNpc(NPC* npc)
+{
+
+}
+
+//Get an Npc from the location
+list<NPC*> Location::getNpcs() const {
+    return npcs;
+}
+
+//Remove an Npc from a location
+bool Location::removeNpc(NPC* npc)
+{
+    npcs.remove(npc);
+    return true;
+}
+
+// Check if there is an npc in the locations NPC List
+bool Location::hasNpc(const NPC* npc) const {
+    return std::find(npcs.begin(), npcs.end(), npc) != npcs.end();
 }

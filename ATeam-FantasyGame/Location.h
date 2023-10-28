@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "Item.h"
+#include "NPC.h"
 #include <list>
 
 using namespace std;
@@ -14,7 +15,8 @@ private:
 	string name; // Name of the Location
 	string description; // A description of the Location
 	list<Location*> connectedLocations; // Connected one room to another
-	list<Item*> items; // Conenct an item toa room
+	list<Item*> items; // Conncet an item to a room
+	list<NPC*> npcs; // Connect NPCS to a room
 
 
 public:
@@ -27,4 +29,9 @@ public:
 	list<Item*> getItems() const; // Get an item
 	bool removeItem(Item* item); // Remove an item from a location
 	bool hasItem(const Item* item) const; // Check if an item is in a location
+	void addNpc(NPC* npc); // Add an npc to the location
+	list<NPC*> getNpcs() const; // Returns an Npc
+	bool removeNpc(NPC* npc); // Remove an npc from a location
+	bool hasNpc(const NPC* npc) const ; // Check if there is an npc in a location
+
 };

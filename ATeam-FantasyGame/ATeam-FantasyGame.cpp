@@ -65,7 +65,7 @@ int main() {
             UI::movePlayer(player);
             break;
         case 2:
-            UI::lookAround(player.getCurrentLocation());
+            UI::lookAround(player.getCurrentLocation()); //Change this so it also shows Npcs in the room
             break;
         case 3:
             UI::pickUpItem(player);

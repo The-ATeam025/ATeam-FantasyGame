@@ -24,6 +24,9 @@ public:
         Item* rustyKey = new Item("Rusty Key", "A normal looking key, besides the rust covering its surface");
         Item* celticCross = new Item("Celtic Cross", "An ornate, ancient cross symbolizing Celtic heritage and spirituality");
 
+        //Create an NPC
+        NPC* redCap = new NPC("Red Cap", "Placeholder");
+
         // Connect the locations
         courtyard->addConnectedLocation(greatHall);
         greatHall->addConnectedLocation(courtyard);
@@ -33,6 +36,9 @@ public:
         // Add items to the great hall
         greatHall->addItem(rustyKey);
         greatHall->addItem(celticCross);
+
+        //Add npc to dungeon
+        dungeon->addNpc(redCap);
 
         // Set the player's initial location
         player.walkToLocation(courtyard);

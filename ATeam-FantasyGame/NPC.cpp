@@ -4,7 +4,7 @@
 
 
 //Constructor
-NPC::NPC(std::string newName, std::string newDescription, Location* newLocation) : name(newName), description(newDescription), location(newLocation) {}
+NPC::NPC(std::string newName, std::string newDescription) : name(newName), description(newDescription){}
 
 //Setter for NPC Name
 void NPC::setName(std::string newName)
