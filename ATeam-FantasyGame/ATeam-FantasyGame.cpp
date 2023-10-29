@@ -27,7 +27,7 @@ int main() {
     Backstory backstory;
 
     // Display backstory
-    backstory.displayIntro();
+    //backstory.displayIntro();
     system("CLS");
 
 
@@ -35,10 +35,10 @@ int main() {
     Dialogue dial;
 
     // Call the CatIntro function to continue the story 
-    dial.CatIntro();
+    //dial.CatIntro();
 
     // Prompt user to continue
-    system("pause");
+    //system("pause");
 
     // Clear the screen
     system("CLS");
@@ -49,10 +49,9 @@ int main() {
     while (true) {
         // Display the current location and menu
         UI::displayMenu();
-
         // Handle player input
         int choice;
-        while(!(cin >> choice) || cin.peek() != '\n') {
+        while (!(cin >> choice) || cin.peek() != '\n') {
             // Handle non-numeric input or input with spaces
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -73,17 +72,20 @@ int main() {
         case 4:
             UI::displayInventory(player);
             break;
+        case 5:
+            system("CLS");
+            UI::equipmentMenu(player);
+            break;
         default:
             system("CLS");
-
             cout << "Invalid choice. Please select a valid option." << endl;
-
             // FIXED INPUT LOOPING with cin.clear() and cin.ignore after every invalid input
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             break;
         }
     }
+
 
     return 0;
 }

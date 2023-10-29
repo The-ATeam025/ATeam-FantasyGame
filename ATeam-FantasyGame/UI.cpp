@@ -34,6 +34,7 @@ void UI::displayMenu() {
     cout << "2. Look around" << endl;
     cout << "3. Pick up an item" << endl;
     cout << "4. Check your inventory" << endl;
+    cout << "5. Manage your equipment" << endl;
 }
 
 // Handles moving player from location to location
@@ -111,9 +112,8 @@ void UI::lookAround(Location* currentLocation) {
         }
     }
 }
-
 // Allows player to pick up items from a room
-void UI::pickUpItem(Player& player) {
+void UI::pickUpItem(Player & player) {
     Location* currentLocation = player.getCurrentLocation();
     // Get the list of items in the current location.
     list<Item*> items = currentLocation->getItems(); // Corrected to list<Item*>
@@ -151,10 +151,11 @@ void UI::pickUpItem(Player& player) {
             cout << "You have picked up the " << pickedItem->getName() << "." << endl;
         }
         else {
-                cout << "Invalid choice. Please select a valid option." << endl;
+            cout << "Invalid choice. Please select a valid option." << endl;
         }
     }
     else {
+        system("CLS");
         cout << "There are no items to pick up in this area." << endl;
     }
 }
@@ -176,5 +177,161 @@ void UI::displayInventory(const Player& player) {
         cout << "Your inventory is empty." << endl;
     }
 }
+
+// Function to display what the user has equipped
+void UI::displayEquipment(const Player& player) {
+    cout << "Current Equipment:" << endl;
+    cout << "1. Head - " << (player.getHeadSlot() ? player.getHeadSlot()->getName() : "None") << endl;
+    cout << "2. Torso - " << (player.getTorsoSlot() ? player.getTorsoSlot()->getName() : "None") << endl;
+    cout << "3. Legs - " << (player.getFeetSlot() ? player.getFeetSlot()->getName() : "None") << endl;
+    cout << "4. Hands - " << (player.getWeaponSlot() ? player.getWeaponSlot()->getName() : "None") << endl << endl;
+}
+// Function to equip an item to a selected slot
+void UI::equipItem(Player& player) {
+    cout << "Choose a slot to equip the item:" << endl;
+    cout << "0. Return to menu" << endl;
+    cout << "1. Head" << endl;
+    cout << "2. Torso" << endl;
+    cout << "3. Legs" << endl;
+    cout << "4. Hands" << endl;
+    int choice;
+    while (!(cin >> choice) || cin.peek() != '\n') {
+        // Handle non-numeric input or input with spaces
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Enter a non-spaced, numeric value." << endl << endl;
+    }
+    // Gets the choice of the user for what slot they would like to fill
+    if (choice >= 1 && choice <= 4) {
+        string slot;
+        if (choice == 1) slot = "head";
+        else if (choice == 2) slot = "torso";
+        else if (choice == 3) slot = "legs";
+        else if (choice == 4) slot = "hands";
+        list<Item*> inventory = player.getInventory();
+        // Display inventory that can fill the selected slot
+        if (!inventory.empty()) {
+            int i = 1;
+            cout << endl;
+            for (list<Item*>::iterator it = inventory.begin(); it != inventory.end(); ++it) {
+                if ((*it)->getType() == slot) {
+                    cout << i << ". " << (*it)->getName() << " - " << (*it)->getDescription() << endl;
+                    i++;
+                }
+            }
+
+            if (i == 1) {
+                system("CLS");
+                cout << "No equippable items in your inventory for the selected slot." << endl << endl;
+                return;
+            }
+            // Gets the users choice for which item they would like to equip and filters it so it matches a choice
+            int itemChoice;
+            while (!(cin >> itemChoice) || cin.peek() != '\n') {
+                // Handle non-numeric input or input with spaces
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Enter a non-spaced, numeric value." << endl << endl;
+            }
+
+            system("CLS");
+            // Checks if the item choice is in the list of the provided items
+            if (itemChoice >= 1 && itemChoice <= i - 1) {
+                list<Item*>::iterator it = inventory.begin();
+                advance(it, itemChoice - 1);
+                Item* item = *it;
+                player.wearItem(item, slot);
+            }
+            else {
+                system("CLS");
+                cout << "Invalid item choice. Please select a valid option." << endl << endl;
+            }
+        }
+        else if (choice == 0) {
+            cout << "You have decided to keep your equipment the same";
+        }
+        else {
+            cout << "Your inventory is empty." << endl << endl;
+        }
+    }
+    else {
+        cout << "Invalid slot choice. Please select a valid option." << endl << endl;
+    }
+}
+// Fucntion to let the user unequip items
+void UI::unequipItem(Player& player) {
+    cout << "Choose a slot to unequip:" << endl;
+    cout << "0. Nothing" << endl;
+    cout << "1. Head" << endl;
+    cout << "2. Torso" << endl;
+    cout << "3. Legs" << endl;
+    cout << "4. Hands" << endl;
+    int choice;
+    while (!(cin >> choice) || cin.peek() != '\n') {
+        // Handle non-numeric input or input with spaces
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Enter a non-spaced, numeric value." << endl << endl;
+    }
+    system("CLS");
+
+    if (choice >= 1 && choice <= 4) {
+        string slot;
+        if (choice == 1) slot = "head";
+        else if (choice == 2) slot = "torso";
+        else if (choice == 3) slot = "legs";
+        else if (choice == 4) slot = "hands";
+        Item* item = player.removeItem(slot);
+        // Unequips item from that slot and moves it to the user's inventory
+        if (item) {
+            cout << "You have unequipped " << item->getName() << " from the " << slot << " slot." << endl << endl;
+            player.addItemToInventory(item); // Add the item back to inventory
+        }
+        else {
+            cout << "No item was equipped in the " << slot << " slot." << endl << endl;
+        }
+    }
+    else if (choice == 0) {
+        cout << "You have decided to keep all your equipment on." << endl << endl;
+    }
+    else {
+        cout << "Invalid slot choice. Please select a valid option." << endl << endl;
+    }
+}
+// Function displays the options for the user to take in regards to their inventory
+void UI::equipmentMenu(Player& player) {
+    while (true) {
+        cout << "Equipment Menu:" << endl;
+        cout << "0. Back to Main Menu" << endl;
+        cout << "1. Display Equipment" << endl;
+        cout << "2. Equip Item" << endl;
+        cout << "3. Unequip Item" << endl;
+        int choice;
+        while (!(cin >> choice) || cin.peek() != '\n') {
+            // Handle non-numeric input or input with spaces
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Enter a non-spaced, numeric value." << endl << endl;
+        }
+        system("CLS");
+        switch (choice) {
+        case 0:
+            cout << "You have returned to the main menu:";
+            return; // Return to the main menu
+        case 1:
+            displayEquipment(player);
+            break;
+        case 2:
+            equipItem(player);
+            break;
+        case 3:
+            unequipItem(player);
+            break;
+        default:
+            cout << "Invalid choice. Please select a valid option." << endl << endl;
+        }
+    }
+}
+
 
 

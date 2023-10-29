@@ -21,8 +21,9 @@ public:
         dungeon = new Location("Dungeon", "placeholder");
 
         // Create an item
-        Item* rustyKey = new Item("Rusty Key", "A normal looking key, besides the rust covering its surface");
-        Item* celticCross = new Item("Celtic Cross", "An ornate, ancient cross symbolizing Celtic heritage and spirituality");
+        // "Name", "Description", "Equipment Slot - If none leave as null"
+        Item* rustyKey = new Item("Rusty Key", "A normal looking key, besides the rust covering its surface", "hands");
+        Item* celticCross = new Item("Celtic Cross", "An ornate, ancient cross symbolizing Celtic heritage and spirituality", "hands");
 
         //Create an NPC
         NPC* redCap = new NPC("Red Cap", "Placeholder");
