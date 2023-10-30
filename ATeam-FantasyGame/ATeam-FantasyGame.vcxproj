@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Backstory.h" />
+    <ClInclude Include="DialogueNPC.h" />
     <ClInclude Include="GameWorld.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Location.h" />
