@@ -4,8 +4,8 @@
 // Sets a NPC name and NPC current Location
 
 //Constructor
-NPC::NPC(std::string newName, std::string newDescription) :
-	name(newName), description(newDescription), item(nullptr), dialogue(nullptr){}
+NPC::NPC(std::string newName, std::string newDescription) : name(newName),
+description(newDescription), item(nullptr), dialogue(nullptr), location(nullptr){}
 
 //Sets NPC location
 void NPC::setLocation(Location* newLocation)
@@ -23,6 +23,11 @@ Location* NPC::getCurrentLocation() {
 void NPC::setDialogue(DialogueNPC* newDialogue)
 {
 	dialogue = newDialogue;
+}
+
+//Returns the NPC dialogue
+DialogueNPC* NPC::getDialogue() {
+	return dialogue;
 }
 
 

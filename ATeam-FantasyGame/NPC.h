@@ -18,10 +18,12 @@ public:
     void setLocation(Location* newLocation); // Sets NPC location
     Location* getCurrentLocation(); // Getter for NPC location
     void setDialogue(DialogueNPC* newDialogue); //Sets Dialogue for NPC
+    DialogueNPC* getDialogue(); // Get the dialogue for the NPC
     void setItem(Item* newItem); //Sets item for NPC
-    Item* dropItem(); //returns the item from the NPC ivnentory and returns it
+    Item* dropItem(); //Retruns the item from the NPC and removes it from their inventory
     void setName(std::string newName); //Setter for Npc name
     std::string getName(); // Getter for NPC name
     void setDescription(std::string newDescription); // Setter for NPC description
     std::string getDescription(); // Getter for NPC description
+
 };

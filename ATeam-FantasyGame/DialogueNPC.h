@@ -9,8 +9,12 @@
 //@Jack
 
 class DialogueNPC {
+private:
+    bool NPCDefeated;
 public:
-    bool NPCDefeated = false;
+
     virtual void startDialogue(Player& player) = 0;
     virtual void defeatedDialogue() = 0;
+    bool isNPCDefeated();
+    void setNPCDefeated(bool defeated);
 };

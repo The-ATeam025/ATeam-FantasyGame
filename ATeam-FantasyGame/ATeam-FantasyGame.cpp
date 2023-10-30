@@ -27,7 +27,7 @@ int main() {
     Backstory backstory;
 
     // Display backstory
-    //backstory.displayIntro();
+    backstory.displayIntro();
     system("CLS");
 
 
@@ -35,10 +35,10 @@ int main() {
     Dialogue dial;
 
     // Call the CatIntro function to continue the story 
-    //dial.CatIntro();
+    dial.CatIntro();
 
     // Prompt user to continue
-    //system("pause");
+    system("pause");
 
     // Clear the screen
     system("CLS");
@@ -64,15 +64,18 @@ int main() {
             UI::movePlayer(player);
             break;
         case 2:
-            UI::lookAround(player.getCurrentLocation()); //Change this so it also shows Npcs in the room
+            UI::lookAround(player.getCurrentLocation(), gameWorld); //Change this so it also shows Npcs in the room
             break;
-        case 3:
-            UI::pickUpItem(player);
+        case 3: 
+            UI::interactWithNPC(player, gameWorld);
             break;
         case 4:
-            UI::displayInventory(player);
+            UI::pickUpItem(player);
             break;
         case 5:
+            UI::displayInventory(player);
+            break;
+        case 6:
             system("CLS");
             UI::equipmentMenu(player);
             break;
