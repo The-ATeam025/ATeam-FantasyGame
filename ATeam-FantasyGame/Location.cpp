@@ -60,26 +60,3 @@ bool Location::removeItem(Item* item) {
 bool Location::hasItem(const Item* item) const {
     return std::find(items.begin(), items.end(), item) != items.end();
 }
-
-// Add an Npc to the location
-void Location::addNpc(NPC* npc)
-{
-    npcs.push_back(npc);
-}
-
-//Get an Npc from the location
-list<NPC*> Location::getNpcs() const {
-    return npcs;
-}
-
-//Remove an Npc from a location
-bool Location::removeNpc(NPC* npc)
-{
-    npcs.remove(npc);
-    return true;
-}
-
-// Check if there is an npc in the locations NPC List
-bool Location::hasNpc(const NPC* npc) const {
-    return std::find(npcs.begin(), npcs.end(), npc) != npcs.end();
-}

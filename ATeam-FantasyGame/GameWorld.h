@@ -3,12 +3,17 @@
 #include "Location.h"
 #include "Player.h"
 #include "NPC.h"
+#include "DialogueNPC.h"
+#include "redCapDialogue.h"
+#include <list>
 
 class GameWorld {
 private:
     Location* courtyard;
     Location* greatHall;
     Location* redCapDungeon;
+    redCapDialogue* redCapDialogue;
+    vector<NPC*> npcs;
 
 public:
     GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr) {}
@@ -27,10 +32,17 @@ public:
         Item* celticCross = new Item("Celtic Cross", "An ornate, ancient cross symbolizing Celtic heritage and spirituality", "hands");
 
         // Create an NPC
-        NPC* redCap = new NPC("Red Cap", "Placeholder");
+        NPC* redCap = new NPC("Redcap", "Placeholder");
 
-        // Add items to NPC
+        // Add all NPCs to the npcs list
+        npcs.push_back(redCap);
+
+        // Add items/Dialogue to NPC
+
+        // Redcap
         redCap->setItem(rustyKey);
+        redCap->setDialogue(redCapDialogue);
+
 
         // Connect the locations
         courtyard->addConnectedLocation(greatHall);
@@ -47,11 +59,9 @@ public:
 
         // Locate NPC's into their locations
 
-        // Dungeon
-        redCapDungeon->addNpc(redCap);
-
         // Set the player's initial location
         player.walkToLocation(courtyard);
+
     }
 
     // Return the pointers to the locations so they can be accessed in the game

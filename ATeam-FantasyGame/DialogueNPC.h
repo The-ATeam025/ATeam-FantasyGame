@@ -1,4 +1,6 @@
 #pragma once
+#include "Player.h"
+#include "Item.h"
 
 //Defines all the class for NPC Dialogue that can then be redefined in a derived class for multiple NPC's
 //Allows for each NPC to have different dialogue that can be created in multiple cpp's and worked
@@ -6,7 +8,9 @@
 
 //@Jack
 
-class Dialogue {
+class DialogueNPC {
 public:
-    virtual void startDialogue() = 0;
+    bool NPCDefeated = false;
+    virtual void startDialogue(Player& player) = 0;
+    virtual void defeatedDialogue() = 0;
 };

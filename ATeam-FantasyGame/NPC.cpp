@@ -1,10 +1,30 @@
 #include "NPC.h"
+
 //NPC class
 // Sets a NPC name and NPC current Location
-// 
+
 //Constructor
 NPC::NPC(std::string newName, std::string newDescription) :
-	name(newName), description(newDescription), item(nullptr){}
+	name(newName), description(newDescription), item(nullptr), dialogue(nullptr){}
+
+//Sets NPC location
+void NPC::setLocation(Location* newLocation)
+{
+		location = newLocation;
+}
+
+// Get the current location of the NPC
+Location* NPC::getCurrentLocation() {
+	return location;
+	// Return the current location of the player.
+}
+
+//Set Dialogue for NPC
+void NPC::setDialogue(DialogueNPC* newDialogue)
+{
+	dialogue = newDialogue;
+}
+
 
 //Set NPC Item
 void NPC::setItem(Item* newItem)
