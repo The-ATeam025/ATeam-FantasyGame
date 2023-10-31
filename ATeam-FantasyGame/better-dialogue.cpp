@@ -23,35 +23,37 @@ DialogueTree::DialogueTree() //constructor
 void DialogueTree::init() //set up tree with dialogue, make this one virtual?
 {
 	DialogueNode* node0 = new DialogueNode("Greetings! Care to join us for a feast?");
-	DialogueNode* node1 = new DialogueNode("I don't want to talk");
-	DialogueNode* node2 = new DialogueNode("I have a quest for you");
-	DialogueNode* node3 = new DialogueNode("You will get money");
-	DialogueNode* node4 = new DialogueNode("Collect flowers");
+	DialogueNode* node1 = new DialogueNode("You seem nervous. Don't you think we look nice?");
+	DialogueNode* node2 = new DialogueNode("You're polite for a human. I invite you to a game of riddles, as is customary. ");
+	DialogueNode* node3 = new DialogueNode("That's not very nice. Let's play a game. Riddle? ");
+	DialogueNode* node4 = new DialogueNode("That's ok. Riddle ? ");
 
 	//Node 0
-	node0->dialogueOptions.push_back(DialogueOption("Sure, I would love to", 0, node1));
-	node0->dialogueOptions.push_back(DialogueOption("Uhh...I guess, yeah", 0, node2));
+	node0->dialogueOptions.push_back(DialogueOption("Sure, I would love to", 1, node2));
+	node0->dialogueOptions.push_back(DialogueOption("Uhh...I guess, yeah", 0, node1));
 	dialogueNodes.push_back(node0);
 
 	//Node 1
-	node1->dialogueOptions.push_back(DialogueOption("Aww", 0, nullptr));
+	node1->dialogueOptions.push_back(DialogueOption("No, you look nice, I'm just new here.", 0, node2));
+	node1->dialogueOptions.push_back(DialogueOption("You're a bit unsettling to look at, to be honest.", 0, nullptr));
 	dialogueNodes.push_back(node1);
 
 	//Node 2
-	node2->dialogueOptions.push_back(DialogueOption("Bye", 0, nullptr));
-	node2->dialogueOptions.push_back(DialogueOption("What is it", 0, node4));
-	node2->dialogueOptions.push_back(DialogueOption("Pay", 0, node3));
+	node2->dialogueOptions.push_back(DialogueOption("Thank you, what is the riddle?", 1, nullptr));
+	node2->dialogueOptions.push_back(DialogueOption("Who plays games before dinner? I don't want to do this.", 0, node3));
 	dialogueNodes.push_back(node2);
 
 	//Node 3
-	node2->dialogueOptions.push_back(DialogueOption("What is it", 0, node4));
-	node2->dialogueOptions.push_back(DialogueOption("Ew", 0, nullptr));
+	node3->dialogueOptions.push_back(DialogueOption("tttt", 0, node4));
+	node3->dialogueOptions.push_back(DialogueOption("aaa", 0, nullptr));
 	dialogueNodes.push_back(node3);
 
 	//Node 4
-	node2->dialogueOptions.push_back(DialogueOption("What is it", 0, node4));
-	node2->dialogueOptions.push_back(DialogueOption("Ew", 0, nullptr));
-	dialogueNodes.push_back(node3);
+	node4->dialogueOptions.push_back(DialogueOption("Sure", 0, nullptr));
+	node4->dialogueOptions.push_back(DialogueOption("You're weird.", 0, nullptr));
+	dialogueNodes.push_back(node4);
+
+	performDialogue();
 }
 
 void DialogueTree::destroyTree()
@@ -63,6 +65,17 @@ void DialogueTree::destroyTree()
 	dialogueNodes.clear();
 }
 
+int DialogueTree::consequences(int code)
+{
+	
+	if (code == 0)
+	{
+		cout << "You were rude" << endl;
+	}
+	else
+		cout << "You were polite" << endl;
+	return 0;
+}
 int DialogueTree::performDialogue()
 {
 	if (dialogueNodes.empty())
@@ -96,7 +109,10 @@ int DialogueTree::performDialogue()
 		{
 			if (currentNode->dialogueOptions[input].nextNode == nullptr)
 			{
-				return currentNode->dialogueOptions[input].returnCode;
+				//cout << "reee";
+				int code= currentNode ->dialogueOptions[input].returnCode;
+				consequences(code);
+				return 1;
 			}
 			currentNode = currentNode->dialogueOptions[input].nextNode;
 		}
@@ -106,3 +122,4 @@ int DialogueTree::performDialogue()
 
 	}
 }
+

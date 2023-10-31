@@ -39,18 +39,16 @@ int main() {
     //dial.CatIntro();
 
     // Prompt user to continue
-    system("pause");
+    //system("pause");
 
     // Clear the screen
-    system("CLS");
+   // system("CLS");
 
     DialogueTree dtree;
     dtree.init();
+    
 
-    int rv = dtree.performDialogue();
-
-    if (rv == 1)
-        cout << "You accepted the quest" << endl;
+    
 
 
     // Game loop

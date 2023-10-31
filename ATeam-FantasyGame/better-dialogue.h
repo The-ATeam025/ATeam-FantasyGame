@@ -35,8 +35,13 @@ public:
 	void init(); //start 
 	void destroyTree(); //saves memory be deleting all nodes 
 	int performDialogue();
+	int consequences(int code);
+
+
+
 
 private:
 	vector <DialogueNode*> dialogueNodes;
 
 };
+
