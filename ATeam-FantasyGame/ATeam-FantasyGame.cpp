@@ -8,6 +8,7 @@
 #include "UI.h"
 #include "GameWorld.h"
 #include "dialogue.h"
+#include "better-dialogue.h"
 
 using namespace std;
 
@@ -42,6 +43,15 @@ int main() {
 
     // Clear the screen
     system("CLS");
+
+    DialogueTree dtree;
+    dtree.init();
+
+    int rv = dtree.performDialogue();
+
+    if (rv == 1)
+        cout << "You accepted the quest" << endl;
+
 
     // Game loop
 
