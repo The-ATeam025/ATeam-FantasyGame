@@ -131,6 +131,7 @@
     <ClCompile Include="DialogueNPC.cpp" />
     <ClCompile Include="GameWorld.cpp" />
     <ClCompile Include="better-dialogue.cpp" />
+    <ClCompile Include="consequences.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Location.cpp" />
     <ClCompile Include="Player.cpp" />

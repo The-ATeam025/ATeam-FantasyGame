@@ -46,12 +46,7 @@ int main() {
 
     DialogueTree dtree;
     dtree.init();
-
-    int rv = dtree.performDialogue();
-
-    if (rv == 1)
-        cout << "You accepted the quest" << endl;
-
+    
 
     // Game loop
 
