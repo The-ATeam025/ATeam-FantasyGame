@@ -59,5 +59,11 @@
     <ClInclude Include="worldObjects.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GameWorld.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="better-dialogue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
