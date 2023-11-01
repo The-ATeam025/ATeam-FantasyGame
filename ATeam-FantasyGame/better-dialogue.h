@@ -31,6 +31,7 @@ public:
 class DialogueTree
 {
 public:
+	int ending;
 	DialogueTree();
 	void init(); //start 
 	void destroyTree(); //saves memory be deleting all nodes 
