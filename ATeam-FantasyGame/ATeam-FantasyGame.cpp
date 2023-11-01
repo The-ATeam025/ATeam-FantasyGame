@@ -31,7 +31,6 @@ int main() {
     backstory.displayIntro();
     system("CLS");
 
-
     // Create an instance of the Dialogue class
     Dialogue dial;
 
@@ -46,8 +45,6 @@ int main() {
 
     DialogueTree dtree;
     dtree.init();
-    
-  
 
 
     // Game loop
