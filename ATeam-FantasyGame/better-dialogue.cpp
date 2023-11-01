@@ -99,9 +99,11 @@ int DialogueTree::consequences(int code)
 			break;
 
 		}
-		cout << "You have messed up the riddle. The fairies keep you imprisoned forever." << endl;
-		code = 0;
 		cout << endl;
+		cout << "You have messed up the riddle. The fairies keep you imprisoned forever." << endl;
+		cout << endl;
+		code = 0;
+		
 
 		break;
 	case 2:
@@ -124,10 +126,10 @@ int DialogueTree::consequences(int code)
 				return code;
 			}
 		}
-
-		cout << "You have messed up the riddle. The fairies keep you imprisoned forever." << endl;
-		code = 0;
 		cout << endl;
+		cout << "You have messed up the riddle. The fairies keep you imprisoned forever." << endl;
+		cout << endl;
+		code = 0;
 
 		break;
 
