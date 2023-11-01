@@ -75,18 +75,25 @@ int DialogueTree::consequences(int code)
 	case 0:
 		cout << "The fairy shakes its head in dissapointment. 'I hate rude people.', it says. It eats you whole." << endl;
 		cout << endl;
+		system("pause");
+		cout << "Game will now close" << endl;
+		cout << endl;
+		exit(0);
+		
 		break;
 	case 1:
 		cout << "The fairy shakes its head, grinning menacingly." << endl;
 		cout << "Fairy: Can't stand rude people. For your insolence, we will make you guess a hard riddle. You have three tries." << endl;
 		cout << "What is the beginning of eternity, the end of time and space, the beginning of every end, and the end of every place?" << endl;
+
 		cout << endl;
-		for (int i =2; i>=0; i--)
+		for (int i = 2; i >= 0; i--)
 		{
 			cout << "What is your answer? Answer wisely, lest you anger the fairies." << endl;
+			cout << endl;
 			cin >> answer;
 
-			if ((answer != "e") && (answer != "E"))
+			if ((answer != "E") && (answer != "e"))
 			{
 				cout << "Incorrect. You have " << i << " tries left." << endl;
 			}
@@ -99,9 +106,13 @@ int DialogueTree::consequences(int code)
 			break;
 
 		}
-		cout << "You have messed up the riddle. The fairies keep you imprisoned forever." << endl;
-		code = 0;
 		cout << endl;
+		cout << "You have messed up the riddle. The fairies keep you imprisoned forever." << endl;
+		system("pause");
+		cout << "Game will now close" << endl;
+		cout << endl;
+		exit(0);
+		//code = 0;
 
 		break;
 	case 2:
@@ -124,10 +135,13 @@ int DialogueTree::consequences(int code)
 				return code;
 			}
 		}
-
-		cout << "You have messed up the riddle. The fairies keep you imprisoned forever." << endl;
-		code = 0;
 		cout << endl;
+		cout << "You have messed up the riddle. The fairies keep you imprisoned forever." << endl;
+		system("pause");
+		cout << "Game will now close" << endl;
+		cout << endl;
+		exit(0);
+		//code = 0;
 
 		break;
 
