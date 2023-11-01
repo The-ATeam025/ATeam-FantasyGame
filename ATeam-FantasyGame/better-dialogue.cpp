@@ -1,4 +1,6 @@
 #include "better-dialogue.h"
+#include <iostream>
+#include <string>
 using namespace std;
 
 DialogueNode::DialogueNode(string Text)
@@ -22,11 +24,16 @@ DialogueTree::DialogueTree() //constructor
 
 void DialogueTree::init() //set up tree with dialogue, make this one virtual?
 {
-	DialogueNode* node0 = new DialogueNode("Greetings! Care to join us for a feast?");
-	DialogueNode* node1 = new DialogueNode("You seem nervous. Don't you think we look nice?");
-	DialogueNode* node2 = new DialogueNode("You're polite for a human. I invite you to a game of riddles, as is customary. ");
-	DialogueNode* node3 = new DialogueNode("That's not very nice. Let's play a game. Riddle? ");
-	DialogueNode* node4 = new DialogueNode("That's ok. Riddle ? ");
+	cout << "As you approach the old banquet hall, you can hear laughter and see a warm light coming from the room. This is odd, because the rest of the castle is dusty and abandoned. You creep up to the room and see that the table is laden with all sorts of delicious food, but what is even stranger than the food are the people seated there. " << endl;
+
+	cout << "A group of humanoid creatures with shimmering wings are enjoying the feast, but there is a sinister air that contrasts with their beautiful appearance.You get the feeling that you do not want to mess with them.As you stand hesitantly in the corner, one fairy notices you." << endl;
+
+	cout << endl;
+
+	DialogueNode* node0 = new DialogueNode("Fairy: Greetings! Care to join us for a feast?");
+	DialogueNode* node1 = new DialogueNode("Fairy: You seem nervous. Don't you think we look nice?");
+	DialogueNode* node2 = new DialogueNode("Fairy: You're polite for a human. I invite you to a game of riddles, as is customary. ");
+	DialogueNode* node3 = new DialogueNode("Fairy: That's not very nice. I will offer one more time. Riddle? ");
 
 	//Node 0
 	node0->dialogueOptions.push_back(DialogueOption("Sure, I would love to", 1, node2));
@@ -34,24 +41,20 @@ void DialogueTree::init() //set up tree with dialogue, make this one virtual?
 	dialogueNodes.push_back(node0);
 
 	//Node 1
-	node1->dialogueOptions.push_back(DialogueOption("No, you look nice, I'm just new here.", 0, node2));
-	node1->dialogueOptions.push_back(DialogueOption("You're a bit unsettling to look at, to be honest.", 0, nullptr));
+	node1->dialogueOptions.push_back(DialogueOption("No, you look nice, I'm just new here.", 2, node2));
+	node1->dialogueOptions.push_back(DialogueOption("You're a bit unsettling to look at, to be honest.", 0, node3));
 	dialogueNodes.push_back(node1);
 
 	//Node 2
-	node2->dialogueOptions.push_back(DialogueOption("Thank you, what is the riddle?", 1, nullptr));
-	node2->dialogueOptions.push_back(DialogueOption("Who plays games before dinner? I don't want to do this.", 0, node3));
+	node2->dialogueOptions.push_back(DialogueOption("Thank you, what is the riddle?",2, nullptr));
+	node2->dialogueOptions.push_back(DialogueOption("Who plays games before dinner? I don't want to do this.", 1, node3));
 	dialogueNodes.push_back(node2);
 
 	//Node 3
-	node3->dialogueOptions.push_back(DialogueOption("tttt", 0, node4));
-	node3->dialogueOptions.push_back(DialogueOption("aaa", 0, nullptr));
+	node3->dialogueOptions.push_back(DialogueOption("Ugh fine, I'll take your stupid riddle.", 1, nullptr));
+	node3->dialogueOptions.push_back(DialogueOption("You're being weird. I don't want the riddle", 0, nullptr));
 	dialogueNodes.push_back(node3);
 
-	//Node 4
-	node4->dialogueOptions.push_back(DialogueOption("Sure", 0, nullptr));
-	node4->dialogueOptions.push_back(DialogueOption("You're weird.", 0, nullptr));
-	dialogueNodes.push_back(node4);
 
 	performDialogue();
 }
@@ -67,14 +70,72 @@ void DialogueTree::destroyTree()
 
 int DialogueTree::consequences(int code)
 {
-	
-	if (code == 0)
-	{
-		cout << "You were rude" << endl;
-	}
-	else
-		cout << "You were polite" << endl;
-	return 0;
+	string answer;
+	switch (code) {
+	case 0:
+		cout << "The fairy shakes its head in dissapointment. 'I hate rude people.', it says. It eats you whole." << endl;
+		cout << endl;
+		break;
+	case 1:
+		cout << "The fairy shakes its head, grinning menacingly." << endl;
+		cout << "Fairy: Can't stand rude people. For your insolence, we will make you guess a hard riddle. You have three tries." << endl;
+		cout << "What is the beginning of eternity, the end of time and space, the beginning of every end, and the end of every place?" << endl;
+		cout << endl;
+		for (int i =2; i>=0; i--)
+		{
+			cout << "What is your answer? Answer wisely, lest you anger the fairies." << endl;
+			cin >> answer;
+
+			if ((answer != "e") && (answer != "E"))
+			{
+				cout << "Incorrect. You have " << i << " tries left." << endl;
+			}
+			else
+			{
+				cout << "Correct! As a reward for your participation, the fairies give you a map of the castle." << endl;
+				return code;
+			}
+			
+			break;
+
+		}
+		cout << "You have messed up the riddle. The fairies keep you imprisoned forever." << endl;
+		code = 0;
+		cout << endl;
+
+		break;
+	case 2:
+		cout << "Fairy: You were nice, so you get an easy riddle. Your answer will be one word. Still, you only have three tries." << endl;
+		cout << "What has hands, but can't hold anything?" << endl;
+		cout << endl;
+		for (int i = 2; i >= 0; i--)
+		{
+			cout << "What is your answer? Answer wisely, lest you anger the fairies." << endl;
+			cout << endl;
+			cin >> answer;
+
+			if ((answer != "clock") && (answer != "Clock") && (answer != "CLOCK"))
+			{
+				cout << "Incorrect. You have " << i << " tries left." << endl;
+			}
+			else
+			{
+				cout << "Correct! As a reward for your participation, the fairies give you a map of the castle." << endl;
+				return code;
+			}
+		}
+
+		cout << "You have messed up the riddle. The fairies keep you imprisoned forever." << endl;
+		code = 0;
+		cout << endl;
+
+		break;
+
+	default:
+		cout << "Error: no code given" << endl;
+		break;
+	};
+	return code;
 }
 int DialogueTree::performDialogue()
 {
@@ -112,7 +173,7 @@ int DialogueTree::performDialogue()
 				//cout << "reee";
 				int code= currentNode ->dialogueOptions[input].returnCode;
 				consequences(code);
-				return 1;
+				return code;
 			}
 			currentNode = currentNode->dialogueOptions[input].nextNode;
 		}
