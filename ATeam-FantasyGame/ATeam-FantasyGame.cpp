@@ -25,7 +25,7 @@ int main() {
     gameWorld.init(player);   
     
     // Create an instance of the Backstory class
-    Backstory backstory;
+    //Backstory backstory;
 
     // Display backstory
     //backstory.displayIntro();
@@ -33,13 +33,13 @@ int main() {
 
 
     // Create an instance of the Dialogue class
-    Dialogue dial;
+    //Dialogue dial;
 
     // Call the CatIntro function to continue the story 
-    //dial.CatIntro();
+   // dial.CatIntro();
 
     // Prompt user to continue
-    //system("pause");
+   // system("pause");
 
     // Clear the screen
    // system("CLS");
