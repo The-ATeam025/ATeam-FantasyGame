@@ -7,6 +7,7 @@
 class fairyDialogue : public DialogueNPC {
 private:
     bool NPCDefeated;
+    bool talkedTo;
     DialogueTree dtree;
 public:
     fairyDialogue();

@@ -49,9 +49,9 @@ void GameWorld::init(Player& player) {
     // Connect the locations
     courtyard->addConnectedLocation(greatHall);
 
-    greatHall->addConnectedLocation(courtyard);
-    greatHall->addConnectedLocation(redCapDungeon);
     greatHall->addConnectedLocation(banquetHall);
+    greatHall->addConnectedLocation(redCapDungeon);
+    greatHall->addConnectedLocation(courtyard);
 
     redCapDungeon->addConnectedLocation(greatHall);
 

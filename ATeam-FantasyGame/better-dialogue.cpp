@@ -1,6 +1,7 @@
 #include "better-dialogue.h"
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 DialogueNode::DialogueNode(string Text)
@@ -99,7 +100,9 @@ int DialogueTree::consequences(int code)
 			}
 			else
 			{
-				cout << "Correct! As a reward for your participation, the fairies give you a map of the castle." << endl;
+				cout << "That's correct. For your reward, I'll give you a little information" << endl;
+				cout << "If you havent met him already, the Redcap in the dungeon is a nasty fellow." << endl;
+				cout << "I have heard if you hold up a Celtic Cross to him though, he does not fare so well." << endl << endl;
 				return code;
 			}
 			
@@ -131,7 +134,9 @@ int DialogueTree::consequences(int code)
 			}
 			else
 			{
-				cout << "Correct! As a reward for your participation, the fairies give you a map of the castle." << endl;
+				cout << "That's correct. For your reward, I'll give you a little information" << endl;
+				cout << "If you havent met him already, the Redcap in the dungeon is a nasty fellow." << endl;
+				cout << "I have heard if you hold up a Celtic Cross to him though, he does not fare so well." << endl << endl;
 				return code;
 			}
 		}
@@ -173,24 +178,22 @@ int DialogueTree::performDialogue()
 
 		cout << endl;
 		int input;
-		cin >> input;
-		input--;
 
-		if (input<0 || input>currentNode->dialogueOptions.size())
-		{
-			cout << "invalid" << endl;
+		while (!(cin >> input) || cin.peek() != '\n' || input < 0 || input > currentNode->dialogueOptions.size()) {
+			// Handle non-numeric input or input with spaces
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << "Enter a non-spaced, numeric value listed." << endl << endl;
 		}
-		else
+		input--;
+		if (currentNode->dialogueOptions[input].nextNode == nullptr)
 		{
-			if (currentNode->dialogueOptions[input].nextNode == nullptr)
-			{
-				//cout << "reee";
-				int code= currentNode ->dialogueOptions[input].returnCode;
-				consequences(code);
-				return code;
-			}
-			currentNode = currentNode->dialogueOptions[input].nextNode;
+			//cout << "reee";
+			int code= currentNode ->dialogueOptions[input].returnCode;
+			consequences(code);
+			return code;
 		}
+		currentNode = currentNode->dialogueOptions[input].nextNode;
 
 		cout << endl;
 
