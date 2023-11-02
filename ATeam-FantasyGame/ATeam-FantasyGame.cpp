@@ -43,19 +43,6 @@ int main() {
     // Clear the screen
    // system("CLS");
 
-    DialogueTree dtree;
-    dtree.init();
-    
-  
-
-
-    
-
-
-    DialogueTree dtree;
-    dtree.init();
-
-
     // Game loop
 
     UI::displayCurrentLocation(player);

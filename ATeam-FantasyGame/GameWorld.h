@@ -5,6 +5,7 @@
 #include "NPC.h"
 #include "DialogueNPC.h"
 #include "redCapDialogue.h"
+#include "fairyDialogue.h"
 #include <list>
 #include <vector>
 
@@ -13,6 +14,7 @@ private:
     Location* courtyard;
     Location* greatHall;
     Location* redCapDungeon;
+    Location* banquetHall;
     std::vector<NPC*> npcs;
 
 public:
@@ -23,6 +25,7 @@ public:
     Location* getCourtyard();
     Location* getGreatHall();
     Location* getRedCapDungeon();
+    Location* getBanquetHall();
 
     // Declarations for managing NPCs
     void addNPC(NPC* npc);
