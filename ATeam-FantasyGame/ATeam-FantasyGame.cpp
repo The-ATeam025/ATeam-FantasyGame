@@ -20,6 +20,8 @@ int main() {
 
     // Create a game world instance
     GameWorld gameWorld;
+
+    gameWorld.init(player);
     
     // Create an instance of the Backstory class
     Backstory backstory;
