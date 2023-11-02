@@ -14,8 +14,7 @@ private:
 	string name; // Name of the Location
 	string description; // A description of the Location
 	list<Location*> connectedLocations; // Connected one room to another
-	list<Item*> items; // Conenct an item toa room
-
+	list<Item*> items; // Conncet an item to a room
 
 public:
 	Location(string newName, string newDescription); // Location Constructor

@@ -9,6 +9,7 @@ using namespace std;
 //Returns a Locations name and description
 //Allows for items to be added to a location
 //Allows for two locations to be connected (next to each other)
+//Allows for an npc to be added to a location
 
 //Constructor
 Location::Location(string newName, string newDescription) : name(newName), description(newDescription) {

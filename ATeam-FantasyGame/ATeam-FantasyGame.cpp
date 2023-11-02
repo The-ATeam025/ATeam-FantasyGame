@@ -49,10 +49,9 @@ int main() {
     while (true) {
         // Display the current location and menu
         UI::displayMenu();
-
         // Handle player input
         int choice;
-        while(!(cin >> choice) || cin.peek() != '\n') {
+        while (!(cin >> choice) || cin.peek() != '\n') {
             // Handle non-numeric input or input with spaces
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -65,25 +64,31 @@ int main() {
             UI::movePlayer(player);
             break;
         case 2:
-            UI::lookAround(player.getCurrentLocation());
+            UI::lookAround(player.getCurrentLocation(), gameWorld); //Change this so it also shows Npcs in the room
             break;
-        case 3:
-            UI::pickUpItem(player);
+        case 3: 
+            UI::interactWithNPC(player, gameWorld);
             break;
         case 4:
+            UI::pickUpItem(player);
+            break;
+        case 5:
             UI::displayInventory(player);
+            break;
+        case 6:
+            system("CLS");
+            UI::equipmentMenu(player);
             break;
         default:
             system("CLS");
-
             cout << "Invalid choice. Please select a valid option." << endl;
-
             // FIXED INPUT LOOPING with cin.clear() and cin.ignore after every invalid input
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             break;
         }
     }
+
 
     return 0;
 }
