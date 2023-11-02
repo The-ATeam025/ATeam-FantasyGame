@@ -354,7 +354,7 @@ void UI::unequipItem(Player& player) {
 void UI::equipmentMenu(Player& player) {
     while (true) {
         cout << "Equipment Menu:" << endl << endl;
-        cout << "0. Back to Equipment Menu" << endl;
+        cout << "0. Back to Main Menu" << endl;
         cout << "1. Display Equipment" << endl;
         cout << "2. Equip Item" << endl;
         cout << "3. Unequip Item" << endl;
