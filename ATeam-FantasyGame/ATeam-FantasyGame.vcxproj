@@ -129,7 +129,10 @@
   <ItemGroup>
     <ClCompile Include="ATeam-FantasyGame.cpp" />
     <ClCompile Include="DialogueNPC.cpp" />
+    <ClCompile Include="fairyDialogue.cpp" />
     <ClCompile Include="GameWorld.cpp" />
+    <ClCompile Include="better-dialogue.cpp" />
+    <ClCompile Include="consequences.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Location.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -141,7 +144,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Backstory.h" />
+    <ClInclude Include="better-dialogue.h" />
     <ClInclude Include="DialogueNPC.h" />
+    <ClInclude Include="fairyDialogue.h" />
     <ClInclude Include="GameWorld.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Location.h" />

@@ -2,7 +2,7 @@
 
 
 //Constructor
-GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr) {}
+GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr) {}
 
 
 void GameWorld::init(Player& player) {
@@ -13,6 +13,8 @@ void GameWorld::init(Player& player) {
         "You step into a grand chamber adorned with towering arches and elaborately decorated walls. A sense of history and mystery fills the air.");
     redCapDungeon = new Location("Dungeon",
         "The air is damp and cold, and the stench of decay lingers in the underground chamber. An unsettling feeling creeps over you. ");
+    banquetHall = new Location("Banquet Hall",
+        "The doors of this magnificent banquet hall are slightly tilted, but you can see light and hear laughter coming from within.");
 
     // Create an item
     // "Name", "Description", "Equipment Slot - If none, leave as null"
@@ -22,12 +24,16 @@ void GameWorld::init(Player& player) {
     // Create an NPC
     NPC* redCap = new NPC("Redcap", 
         "Its skin is as red as fresh blood, and its eyes gleam with sinister intent. Dressed in tattered rags, it carries an aura of malevolence.");
+    NPC* fairies = new NPC("Fairies",
+        "Winged humanoid figures seated at a table, their radiant wings shimmering in the dim candlelight, laughing in hushed tones. Disturbingly enough, you notice their unnatural amount of sharp teeth.");
 
     // Add all NPCs to the npcs list
     npcs.push_back(redCap);
+    npcs.push_back(fairies);
 
     // Initalize Dialogues
     DialogueNPC* DialogueRedCap = new redCapDialogue();
+    DialogueNPC* Dialoguefairies = new fairyDialogue();
 
     // Add items/Dialogue/lcoation to NPC
 
@@ -36,20 +42,26 @@ void GameWorld::init(Player& player) {
     redCap->setLocation(redCapDungeon);
     redCap->setDialogue(DialogueRedCap);
 
+    /// Fairies
+    fairies->setLocation(banquetHall);
+    fairies->setDialogue(Dialoguefairies);
+
     // Connect the locations
     courtyard->addConnectedLocation(greatHall);
 
+    greatHall->addConnectedLocation(banquetHall);
+    //
     greatHall->addConnectedLocation(courtyard);
-    greatHall->addConnectedLocation(redCapDungeon);
 
     redCapDungeon->addConnectedLocation(greatHall);
+
+    banquetHall->addConnectedLocation(greatHall);
+    banquetHall->addConnectedLocation(redCapDungeon);
 
     // Add items to locations
 
     // Great Hall
     greatHall->addItem(celticCross);
-
-    // Locate NPCs in their locations
 
     // Set the player's initial location
     player.walkToLocation(courtyard);
@@ -58,6 +70,7 @@ void GameWorld::init(Player& player) {
 Location* GameWorld::getCourtyard() { return courtyard; }
 Location* GameWorld::getGreatHall() { return greatHall; }
 Location* GameWorld::getRedCapDungeon() { return redCapDungeon; }
+Location* GameWorld::getBanquetHall() { return banquetHall; }
 
 void GameWorld::addNPC(NPC* npc) {
     npcs.push_back(npc);
