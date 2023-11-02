@@ -20,15 +20,12 @@ int main() {
 
     // Create a game world instance
     GameWorld gameWorld;
-
-    // Initialize the game world (including locations and items)
-    gameWorld.init(player);   
     
     // Create an instance of the Backstory class
     Backstory backstory;
 
     // Display backstory
-    //backstory.displayIntro();
+    backstory.displayIntro();
     system("CLS");
 
     // Create an instance of the Dialogue class
