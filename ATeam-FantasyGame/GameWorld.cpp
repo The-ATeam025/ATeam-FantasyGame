@@ -14,7 +14,7 @@ void GameWorld::init(Player& player) {
     redCapDungeon = new Location("Dungeon",
         "The air is damp and cold, and the stench of decay lingers in the underground chamber. An unsettling feeling creeps over you. ");
     banquetHall = new Location("Banquet Hall",
-        "A magnificent banquet hall filled with Celtic fairies reveling in a grand feast of mystical delights.");
+        "The doors of this magnificent banquet hall are slightly tilted, but you can see light and hear laughter coming from within.");
 
     // Create an item
     // "Name", "Description", "Equipment Slot - If none, leave as null"
@@ -25,7 +25,7 @@ void GameWorld::init(Player& player) {
     NPC* redCap = new NPC("Redcap", 
         "Its skin is as red as fresh blood, and its eyes gleam with sinister intent. Dressed in tattered rags, it carries an aura of malevolence.");
     NPC* fairies = new NPC("Fairies",
-        "Ethereal and mischievous Celtic fairies, their radiant wings shimmering with every flutter, delight in their whimsical revelry.");
+        "Winged humanoid figures seated at a table, their radiant wings shimmering in the dim candlelight, laughing in hushed tones. Disturbingly enough, you notice their unnatural amount of sharp teeth.");
 
     // Add all NPCs to the npcs list
     npcs.push_back(redCap);
@@ -50,12 +50,13 @@ void GameWorld::init(Player& player) {
     courtyard->addConnectedLocation(greatHall);
 
     greatHall->addConnectedLocation(banquetHall);
-    greatHall->addConnectedLocation(redCapDungeon);
+    //
     greatHall->addConnectedLocation(courtyard);
 
     redCapDungeon->addConnectedLocation(greatHall);
 
     banquetHall->addConnectedLocation(greatHall);
+    banquetHall->addConnectedLocation(redCapDungeon);
 
     // Add items to locations
 

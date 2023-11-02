@@ -25,9 +25,9 @@ DialogueTree::DialogueTree() //constructor
 
 void DialogueTree::init() //set up tree with dialogue, make this one virtual?
 {
-	cout << "As you approach the old banquet hall, you can hear laughter and see a warm light coming from the room. This is odd, because the rest of the castle is dusty and abandoned. You creep up to the room and see that the table is laden with all sorts of delicious food, but what is even stranger than the food are the people seated there. " << endl;
+	cout << "As you eneter the room, you see a group of figures around a table laden with all sorts of delicious foods and wines. This is odd, because the rest of the room is dusty and abandoned, but what is even stranger than the food are the people seated there. " << endl;
 
-	cout << "A group of humanoid creatures with shimmering wings are enjoying the feast, but there is a sinister air that contrasts with their beautiful appearance.You get the feeling that you do not want to mess with them.As you stand hesitantly in the corner, one fairy notices you." << endl;
+	cout << "A group of humanoid creatures with shimmering wings are enjoying the feast, but there is a sinister air that contrasts with their beautiful appearance.You get the feeling that you do not want to mess with them. As you stand hesitantly in the corner, one fairy notices you." << endl;
 
 	cout << endl;
 
