@@ -1,6 +1,5 @@
 #include "GameWorld.h"
 
-
 //Constructor
 GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr) {}
 
@@ -72,10 +71,13 @@ Location* GameWorld::getGreatHall() { return greatHall; }
 Location* GameWorld::getRedCapDungeon() { return redCapDungeon; }
 Location* GameWorld::getBanquetHall() { return banquetHall; }
 
+
+// Add's NPC's to the list of all
 void GameWorld::addNPC(NPC* npc) {
     npcs.push_back(npc);
 }
 
+// Allows for the UI to check for if a certain NPC is in an area
 std::list<NPC*> GameWorld::getNPCsInLocation(const Location* location) {
     list<NPC*> locationNPCs;
     for (NPC* npc : npcs) {

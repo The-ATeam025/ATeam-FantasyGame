@@ -1,7 +1,9 @@
 #pragma once
 #include "DialogueNPC.h"
 
-//Class to override the npc dialogue for the Red Cap
+// Class to override the npc dialogue for the Redcap
+// Will allow the Redcap to display different dialouge dependant on whether
+//  the player has the cross equipped or not.
 
 class redCapDialogue : public DialogueNPC {
 private:
