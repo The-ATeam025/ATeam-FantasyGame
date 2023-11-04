@@ -135,6 +135,7 @@
     <ClCompile Include="consequences.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Location.cpp" />
+    <ClCompile Include="Objects.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="redCapDialogue.cpp" />
@@ -143,6 +144,7 @@
     <ClCompile Include="dialogue.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArmoryChest.h" />
     <ClInclude Include="Backstory.h" />
     <ClInclude Include="better-dialogue.h" />
     <ClInclude Include="DialogueNPC.h" />
@@ -151,6 +153,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="Location.h" />
     <ClInclude Include="NPC.h" />
+    <ClInclude Include="Objects.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="redCapDialogue.h" />
     <ClInclude Include="UI.h" />
