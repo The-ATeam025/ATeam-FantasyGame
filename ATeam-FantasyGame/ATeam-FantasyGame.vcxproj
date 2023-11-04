@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArmoryChest.cpp" />
     <ClCompile Include="ATeam-FantasyGame.cpp" />
     <ClCompile Include="DialogueNPC.cpp" />
     <ClCompile Include="fairyDialogue.cpp" />

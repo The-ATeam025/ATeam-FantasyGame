@@ -9,7 +9,7 @@
 // Will create some base functions that can be called through inheritance
 // Note that game objects are different from items, as they can be interacted with
 
-class Object {
+class Objects{
 private:
     std::string name; // Object Name
     std::string description; // Object Description
@@ -17,7 +17,7 @@ private:
     Location* location; // Keeps hold of the Object's location
 
 public:
-    Object(std::string newName, std::string newDescription); // Constructor
+    Objects(std::string newName, std::string newDescription); // Constructor
     virtual void interactWithObject(Player& player) = 0; // Function to be overwritten
     void setLocation(Location* newLocation); // Sets Object location
     Location* getCurrentLocation(); // Getter for Object location

@@ -1,27 +1,27 @@
 #include "Objects.h"
 
 // Constructor for the Object class
-Object::Object(std::string newName, std::string newDescription) : name(newName), description(newDescription), location(nullptr) {
+Objects::Objects(std::string newName, std::string newDescription) : name(newName), description(newDescription), location(nullptr) {
     // Initialize the object with a name and description
 }
 
 // Set the location of the object
-void Object::setLocation(Location* newLocation) {
+void Objects::setLocation(Location* newLocation) {
     location = newLocation;
 }
 
 // Get the current location of the object
-Location* Object::getCurrentLocation() {
+Location* Objects::getCurrentLocation() {
     return location;
 }
 
 // Add an item to the object's items list
-void Object::addItemToInventory(Item* item) {
+void Objects::addItemToInventory(Item* item) {
     items.push_back(item);
 }
 
 // Give all items held by the object to a player
-void Object::giveItemsToPlayer(Player& player) {
+void Objects::giveItemsToPlayer(Player& player) {
     for (Item* item : items) {
         player.addItemToInventory(item);
     }
@@ -29,7 +29,7 @@ void Object::giveItemsToPlayer(Player& player) {
 }
 
 // Drop all items from the object and add them to the location's inventory
-void Object::dropItems() {
+void Objects::dropItems() {
     if (!items.empty() && location != nullptr) {
         for (Item* item : items) {
             location->addItem(item);
@@ -39,26 +39,26 @@ void Object::dropItems() {
 }
 
 // Setter for the object's name
-void Object::setName(std::string newName) {
+void Objects::setName(std::string newName) {
     name = newName;
 }
 
 // Getter for the object's name
-std::string Object::getName() {
+std::string Objects::getName() {
     return name;
 }
 
 // Setter for the object's description
-void Object::setDescription(std::string newDescription) {
+void Objects::setDescription(std::string newDescription) {
     description = newDescription;
 }
 
 // Getter for the object's description
-std::string Object::getDescription() {
+std::string Objects::getDescription() {
     return description;
 }
 
 // Virtual function for interacting with the object (to be implemented in derived classes)
-void Object::interactWithObject(Player& player) {
+void Objects::interactWithObject(Player& player) {
     // Implement interaction logic specific to each derived object
 }

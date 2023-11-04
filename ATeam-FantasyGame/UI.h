@@ -1,6 +1,4 @@
 #include <iostream>
-#include "Location.h"
-#include "Player.h"
 #include "GameWorld.h"
 
 // Handles all interaction of the player and the GameWorld
@@ -18,7 +16,7 @@ public:
     static void equipItem(Player& player); // Prompt the player to equip an item.
     static void unequipItem(Player& player); // Prompt the player to unequip an item.
     static void equipmentMenu(Player& player); //Displays the users equipment
-    static void interactWithNPC(Player& player, GameWorld& world); // Displays and allows for interacting with NPCS
+    static void interactWith(Player& player, GameWorld& world); // Shows the interactions and causes the interactions between players and NPC/Objects
 };
 
 
