@@ -32,4 +32,5 @@ public:
 	Item* getWeaponSlot() const; // Same for weapon/hand
 	void setShouldRestartGame(bool newRestartGame); // Changes the bool in shouldRestartGame
 	void clearInventoryAndEquipment(); // Clears the inventory of the player and sets all slots to null
+	bool getShouldRestartGame(); // Getter for shouldRestartGame
 };

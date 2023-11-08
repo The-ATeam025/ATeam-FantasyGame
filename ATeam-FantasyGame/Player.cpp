@@ -130,3 +130,7 @@ void Player::clearInventoryAndEquipment() {
     weaponSlot = nullptr;
 }
 
+// Getter for shouldRestartGame
+bool Player::getShouldRestartGame() {
+    return shouldRestartGame;
+}
