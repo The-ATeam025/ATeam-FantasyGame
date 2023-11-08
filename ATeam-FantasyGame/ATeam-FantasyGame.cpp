@@ -63,7 +63,7 @@ int main() {
             UI::lookAround(player.getCurrentLocation(), gameWorld); //Change this so it also shows Npcs in the room
             break;
         case 3: 
-            UI::interactWithNPC(player, gameWorld);
+            UI::interactWith(player, gameWorld);
             break;
         case 4:
             UI::pickUpItem(player);
