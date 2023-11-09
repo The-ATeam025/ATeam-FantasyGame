@@ -31,7 +31,7 @@ int main() {
     DialogueTree catConvo;
 
     // Call the CatIntro function to continue the story 
-    catConvo.init_cat();
+    catConvo.init_cat(player);
 
     // Prompt user to continue
     system("pause");
@@ -41,11 +41,10 @@ int main() {
 
     // Flag to control the game loop
     bool quitGame = false;
-
+    UI::displayCurrentLocation(player);
     // Game loop
     while (!quitGame) {
         // Display the current location and menu
-        UI::displayCurrentLocation(player);
         UI::displayMenu();
 
         // Handle player input
@@ -58,8 +57,6 @@ int main() {
             cout << "Enter a non-spaced, numeric value." << endl;
         
         }
-
-        system("CLS");
 
         switch (choice) {
         case 1:
@@ -82,7 +79,6 @@ int main() {
             UI::equipmentMenu(player);
             break;
         default:
-            system("CLS");
             cout << "Invalid choice. Please select a valid option." << endl;
             // FIXED INPUT LOOPING with cin.clear() and cin.ignore after every invalid input
             cin.clear();
@@ -93,7 +89,7 @@ int main() {
         // Check if a game-ending condition occurred
         if (player.getShouldRestartGame() == true) {
             int restartChoice;
-            cout << "You have been doomed to stay in this dimension forever." << endl;
+            cout << endl << "You have been doomed to stay in this dimension forever." << endl;
             cout << "Would you like to restart the game (after meeting the cat) or quit?" << endl;
             cout << "1. Restart" << endl;
             cout << "2. Quit" << endl;
@@ -106,9 +102,15 @@ int main() {
 
             if (restartChoice == 1) {
                 system("CLS");
+                player.setShouldRestartGame(false); // Resets the shouldRestartGame check to false;
+                player.clearInventoryAndEquipment(); // Clears the players inventory and slots
+
                 // Restart the game by recreating the game world
                 gameWorld.~GameWorld(); // Destruct the current game world
                 new (&gameWorld) GameWorld(); // Recreate a new game world
+                gameWorld.init(player); // Reinitalize the gameWorld
+
+                UI::displayCurrentLocation(player); // Redisplays the current location
             }
             else {
                 // Quit the game
