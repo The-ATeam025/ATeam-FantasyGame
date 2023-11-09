@@ -97,7 +97,7 @@ int main() {
             while (!(cin >> restartChoice) || restartChoice < 1 || restartChoice > 2) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Invalid choice. Please enter 1 to restart or 2 to quit." << endl;
+                cout << "Invalid choice. Please enter 1 to restart or 2 to quit." << endl << endl;
             }
 
             if (restartChoice == 1) {
