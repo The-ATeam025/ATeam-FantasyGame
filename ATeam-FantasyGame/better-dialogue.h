@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include "Player.h"
 using namespace std;
 
 class DialogueNode;
@@ -33,10 +34,10 @@ class DialogueTree
 public:
 	int ending;
 	DialogueTree();
-	void init(); //start 
+	void init(Player& player); //start 
 	void destroyTree(); //saves memory be deleting all nodes 
-	int performDialogue();
-	int consequences(int code);
+	int performDialogue(Player& player);
+	int consequences(int code, Player& player);
 
 
 

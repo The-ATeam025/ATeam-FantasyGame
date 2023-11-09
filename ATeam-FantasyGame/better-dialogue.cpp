@@ -23,7 +23,7 @@ DialogueTree::DialogueTree() //constructor
 
 }
 
-void DialogueTree::init() //set up tree with dialogue, make this one virtual?
+void DialogueTree::init(Player& player) //set up tree with dialogue, make this one virtual?
 {
 	cout << "As you enter the room, you see a group of figures around a table laden with all sorts of delicious foods and wines. This is odd, because the rest of the room is dusty and abandoned, but what is even stranger than the food are the people seated there. " << endl;
 
@@ -57,7 +57,7 @@ void DialogueTree::init() //set up tree with dialogue, make this one virtual?
 	dialogueNodes.push_back(node3);
 
 
-	performDialogue();
+	performDialogue(player);
 }
 
 void DialogueTree::destroyTree()
@@ -69,19 +69,16 @@ void DialogueTree::destroyTree()
 	dialogueNodes.clear();
 }
 
-int DialogueTree::consequences(int code)
+int DialogueTree::consequences(int code, Player& player)
 {
 	string answer;
 	switch (code) {
 	case 0:
-		cout << "The fairy shakes its head in dissapointment. 'I hate rude people.', it says. It eats you whole." << endl;
-		cout << endl;
-		system("pause");
-		cout << "Game will now close" << endl;
-		cout << endl;
-		exit(0);
-		
-		break;
+		system("CLS");
+		player.setShouldRestartGame(true);
+		cout << "You have messed up the riddle. The fairies keep you imprisoned forever." << endl;
+
+		return code;
 	case 1:
 		cout << "The fairy shakes its head, grinning menacingly." << endl;
 		cout << "Fairy: Can't stand rude people. For your insolence, we will make you guess a hard riddle. You have three tries." << endl;
@@ -109,15 +106,13 @@ int DialogueTree::consequences(int code)
 			break;
 
 		}
-		cout << endl;
+		system("CLS");
+		player.setShouldRestartGame(true);
 		cout << "You have messed up the riddle. The fairies keep you imprisoned forever." << endl;
-		system("pause");
-		cout << "Game will now close" << endl;
-		cout << endl;
-		exit(0);
-		//code = 0;
 
-		break;
+		return code;
+
+		return code;
 	case 2:
 		cout << "Fairy: You were nice, so you get an easy riddle. Your answer will be one word. Still, you only have three tries." << endl;
 		cout << "What has hands, but can't hold anything?" << endl;
@@ -140,15 +135,11 @@ int DialogueTree::consequences(int code)
 				return code;
 			}
 		}
-		cout << endl;
+		system("CLS");
+		player.setShouldRestartGame(true);
 		cout << "You have messed up the riddle. The fairies keep you imprisoned forever." << endl;
-		system("pause");
-		cout << "Game will now close" << endl;
-		cout << endl;
-		exit(0);
-		//code = 0;
 
-		break;
+		return code;
 
 	default:
 		cout << "Error: no code given" << endl;
@@ -156,7 +147,7 @@ int DialogueTree::consequences(int code)
 	};
 	return code;
 }
-int DialogueTree::performDialogue()
+int DialogueTree::performDialogue(Player& player)
 {
 	if (dialogueNodes.empty())
 	{
@@ -190,7 +181,7 @@ int DialogueTree::performDialogue()
 		{
 			//cout << "reee";
 			int code= currentNode ->dialogueOptions[input].returnCode;
-			consequences(code);
+			consequences(code, player);
 			return code;
 		}
 		currentNode = currentNode->dialogueOptions[input].nextNode;
