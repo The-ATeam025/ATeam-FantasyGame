@@ -1,7 +1,7 @@
 #include "GameWorld.h"
 
 //Constructor
-GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr) {}
+GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), outside(nullptr) {}
 
 
 void GameWorld::init(Player& player) {
@@ -14,6 +14,8 @@ void GameWorld::init(Player& player) {
         "The air is damp and cold, and the stench of decay lingers in the underground chamber. An unsettling feeling creeps over you. ");
     banquetHall = new Location("Banquet Hall",
         "The doors of this magnificent banquet hall are slightly tilted, but you can see light and hear laughter coming from within.");
+    outside = new Location("Outside",
+        "You manage to exit the castle, ");
 
     // Create an item
     // "Name", "Description", "Equipment Slot - If none, leave as null"
@@ -57,6 +59,8 @@ void GameWorld::init(Player& player) {
     banquetHall->addConnectedLocation(greatHall);
     banquetHall->addConnectedLocation(redCapDungeon);
 
+
+
     // Add items to locations
 
     // Great Hall
@@ -70,6 +74,7 @@ Location* GameWorld::getCourtyard() { return courtyard; }
 Location* GameWorld::getGreatHall() { return greatHall; }
 Location* GameWorld::getRedCapDungeon() { return redCapDungeon; }
 Location* GameWorld::getBanquetHall() { return banquetHall; }
+Location* GameWorld::getOutside() { return outside; }
 
 
 // Add's NPC's to the list of all

@@ -20,6 +20,7 @@ private:
     Location* greatHall;
     Location* redCapDungeon;
     Location* banquetHall;
+    Location* outside;
     std::vector<NPC*> npcs;
 
 public:
@@ -31,6 +32,7 @@ public:
     Location* getGreatHall();
     Location* getRedCapDungeon();
     Location* getBanquetHall();
+    Location* getOutside();
 
     // Declarations for managing NPCs
     void addNPC(NPC* npc);
