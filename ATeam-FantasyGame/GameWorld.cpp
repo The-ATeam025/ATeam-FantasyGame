@@ -15,7 +15,7 @@ void GameWorld::init(Player& player) {
     banquetHall = new Location("Banquet Hall",
         "The doors of this magnificent banquet hall are slightly tilted, but you can see light and hear laughter coming from within.");
     outside = new Location("Outside",
-        "You manage to exit the castle, ");
+        "You've unlocked a newfound passage out of the castle. An untamed, enigmatic forest lies ahead, teeming with uncharted adventures and exhilarating challenges waiting to be conquered");
 
     // Create an item
     // "Name", "Description", "Equipment Slot - If none, leave as null"
@@ -58,8 +58,9 @@ void GameWorld::init(Player& player) {
 
     banquetHall->addConnectedLocation(greatHall);
     banquetHall->addConnectedLocation(redCapDungeon);
+    banquetHall->addConnectedLocation(outside);
 
-
+    outside->addConnectedLocation(banquetHall);
 
     // Add items to locations
 
