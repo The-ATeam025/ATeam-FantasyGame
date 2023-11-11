@@ -22,6 +22,7 @@ private:
     Location* redCapDungeon;
     Location* banquetHall;
     Location* armory;
+    Location* outside;
     std::list<NPC*> npcs;
     std::list<Objects*> objects;
 

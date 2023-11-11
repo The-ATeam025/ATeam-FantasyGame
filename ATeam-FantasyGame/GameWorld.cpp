@@ -1,7 +1,7 @@
 #include "GameWorld.h"
 
 //Constructor
-GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr) {}
+GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr) {}
 
 
 void GameWorld::init(Player& player) {
@@ -16,6 +16,8 @@ void GameWorld::init(Player& player) {
         "The doors of this magnificent banquet hall are slightly tilted, but you can see light and hear laughter coming from within.");
     armory = new Location("Armory",
         "In the armory, all that remains is a lonely chest. The nearby shelves are bare, and must have already been looted by someone or something.");
+    outside = new Location("Outside",
+        "You've unlocked a newfound passage out of the castle. An untamed, enigmatic forest lies ahead, teeming with uncharted adventures and exhilarating challenges waiting to be conquered.");
 
     // Create an item
     // "Name", "Description", "Equipment Slot - If none, leave as null"
