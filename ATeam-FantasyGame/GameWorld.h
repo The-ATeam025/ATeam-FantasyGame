@@ -6,6 +6,7 @@
 #include "DialogueNPC.h"
 #include "redCapDialogue.h"
 #include "fairyDialogue.h"
+#include "ArmoryChest.h"
 #include <list>
 #include <vector>
 
@@ -20,8 +21,9 @@ private:
     Location* greatHall;
     Location* redCapDungeon;
     Location* banquetHall;
-    Location* outside;
-    std::vector<NPC*> npcs;
+    Location* armory;
+    std::list<NPC*> npcs;
+    std::list<Objects*> objects;
 
 public:
     GameWorld();
@@ -37,5 +39,10 @@ public:
     // Declarations for managing NPCs
     void addNPC(NPC* npc);
     std::list<NPC*> getNPCsInLocation(const Location* location);
+
+    // Declarations for managing objects
+    void addObject(Objects* object);
+    std::list<Objects*> getObjectsInLocation(const Location* location);
+
 };
 

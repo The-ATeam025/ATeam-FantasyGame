@@ -1,7 +1,7 @@
 #include "GameWorld.h"
 
 //Constructor
-GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), outside(nullptr) {}
+GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr) {}
 
 
 void GameWorld::init(Player& player) {
@@ -14,47 +14,63 @@ void GameWorld::init(Player& player) {
         "The air is damp and cold, and the stench of decay lingers in the underground chamber. An unsettling feeling creeps over you. ");
     banquetHall = new Location("Banquet Hall",
         "The doors of this magnificent banquet hall are slightly tilted, but you can see light and hear laughter coming from within.");
-    outside = new Location("Outside",
-        "You've unlocked a newfound passage out of the castle. An untamed, enigmatic forest lies ahead, teeming with uncharted adventures and exhilarating challenges waiting to be conquered");
+    armory = new Location("Armory",
+        "In the armory, all that remains is a lonely chest. The nearby shelves are bare, and must have already been looted by someone or something.");
 
     // Create an item
     // "Name", "Description", "Equipment Slot - If none, leave as null"
-    Item* rustyKey = new Item("Rusty Key", "A normal looking key, besides the rust covering its surface", "hands");
-    Item* celticCross = new Item("Celtic Cross", "An ornate, ancient cross symbolizing Celtic heritage and spirituality", "hands");
+    Item* rustyKey = new Item("Rusty Key", "A normal looking key, besides the rust covering its surface.", "hands");
+    Item* celticCross = new Item("Celtic Cross", "An ornate, ancient cross symbolizing Celtic heritage and spirituality.", "hands");
+    Item* sword = new Item("Sword", "A sharp and sturdy sword for combat.", "hands");
+    Item* helmet = new Item("Helmet", "A protective helmet for your head.", "head");
 
+
+    // Create room Objects
+    Objects* armoryChest = new ArmoryChest("Chest", "An old chest that has had its surface almost compleltely consumed by moss.");
+   
     // Create an NPC
     NPC* redCap = new NPC("Redcap", 
         "Its skin is as red as fresh blood, and its eyes gleam with sinister intent. Dressed in tattered rags, it carries an aura of malevolence.");
     NPC* fairies = new NPC("Fairies",
         "Winged humanoid figures seated at a table, their radiant wings shimmering in the dim candlelight, laughing in hushed tones. Disturbingly enough, you notice their unnatural amount of sharp teeth.");
 
+
     // Add all NPCs to the npcs list
     npcs.push_back(redCap);
     npcs.push_back(fairies);
+
+    // Add all objects to the objects list
+    objects.push_back(armoryChest);
 
     // Initalize Dialogues
     DialogueNPC* DialogueRedCap = new redCapDialogue();
     DialogueNPC* Dialoguefairies = new fairyDialogue();
 
-    // Add items/Dialogue/lcoation to NPC
-
+    // Add items/Dialogue/location to NPC/Object
     // Redcap
     redCap->setItem(rustyKey);
     redCap->setLocation(redCapDungeon);
     redCap->setDialogue(DialogueRedCap);
 
-    /// Fairies
+    // Fairies
     fairies->setLocation(banquetHall);
     fairies->setDialogue(Dialoguefairies);
+
+    // armoryChest
+    armoryChest->setLocation(armory);
+    armoryChest->addItemToInventory(sword);
+    armoryChest->addItemToInventory(helmet);
 
     // Connect the locations
     courtyard->addConnectedLocation(greatHall);
 
     greatHall->addConnectedLocation(banquetHall);
-    //
     greatHall->addConnectedLocation(courtyard);
+    greatHall->addConnectedLocation(armory);
 
-    redCapDungeon->addConnectedLocation(greatHall);
+    armory->addConnectedLocation(greatHall);
+
+    redCapDungeon->addConnectedLocation(banquetHall);
 
     banquetHall->addConnectedLocation(greatHall);
     banquetHall->addConnectedLocation(redCapDungeon);
@@ -78,9 +94,13 @@ Location* GameWorld::getBanquetHall() { return banquetHall; }
 Location* GameWorld::getOutside() { return outside; }
 
 
-// Add's NPC's to the list of all
+// Add's NPC's to the GameWorld instance
 void GameWorld::addNPC(NPC* npc) {
     npcs.push_back(npc);
+}
+
+void GameWorld::addObject(Objects* object) {
+    objects.push_back(object);
 }
 
 // Allows for the UI to check for if a certain NPC is in an area
@@ -93,3 +113,17 @@ std::list<NPC*> GameWorld::getNPCsInLocation(const Location* location) {
     }
     return locationNPCs;
 }
+
+// Allows for the UI to check for if a certain Object is in an area
+std::list<Objects*> GameWorld::getObjectsInLocation(const Location* location) {
+    std::list<Objects*> locationObjects;
+
+    for (Objects* obj : objects) {
+        if (obj->getCurrentLocation() == location) {
+            locationObjects.push_back(obj);
+        }
+    }
+
+    return locationObjects;
+}
+

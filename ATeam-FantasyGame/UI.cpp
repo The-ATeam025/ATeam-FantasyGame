@@ -1,7 +1,4 @@
 #include "UI.h"
-#include "Location.h"
-#include <list>
-#include "gameWorld.h"
 
 // UI Class
 // This class manages the user interface and interactions in the game.
@@ -33,7 +30,7 @@ void UI::displayMenu() {
     cout << "What would you like to do?" << endl;
     cout << "1. Move to a nearby area" << endl;
     cout << "2. Look around" << endl;
-    cout << "3. Talk to someone" << endl;
+    cout << "3. Interact" << endl;
     cout << "4. Pick up an item" << endl;
     cout << "5. Check your inventory" << endl;
     cout << "6. Manage your equipment" << endl;
@@ -81,16 +78,17 @@ void UI::movePlayer(Player& player) {
     }
 }
 
-// Handle looking around the current location and displaying items and Npcs.
+// Handle looking around the current location and displaying items, objects NPCs.
 void UI::lookAround(Location* currentLocation, GameWorld& world) {
-    // Get the list of items and NPCs in the current location.
+    // Get the list of items, objects, and NPCs in the current location.
     const list<Item*>& items = currentLocation->getItems();
     const list<NPC*>& npcs = world.getNPCsInLocation(currentLocation);
+    list<Objects*> locationObjects = world.getObjectsInLocation(currentLocation);
 
     cout << endl;
     system("CLS");
 
-    if (items.empty() && npcs.empty()) {
+    if (items.empty() && npcs.empty() && locationObjects.empty()) {
         cout << "You see nothing interesting in the area." << endl;
     }
     else {
@@ -101,6 +99,13 @@ void UI::lookAround(Location* currentLocation, GameWorld& world) {
         // Display items in the area.
         for (list<Item*>::const_iterator it = items.begin(); it != items.end(); ++it) {
             cout << i << ". " << (*it)->getName() << " - " << (*it)->getDescription() << endl;
+            ++i;
+        }
+
+
+        // Display Objects in the area
+        for (list<Objects*>::iterator it = locationObjects.begin(); it != locationObjects.end(); ++it) {
+            std::cout << i << ". " << (*it)->getName() << " - " << (*it)->getDescription() << endl;
             ++i;
         }
 
@@ -385,25 +390,37 @@ void UI::equipmentMenu(Player& player) {
     }
 }
 
-void UI::interactWithNPC(Player& player, GameWorld& world) {
+
+
+void UI::interactWith(Player& player, GameWorld& world) {
     Location* currentLocation = player.getCurrentLocation();
 
-    // Get NPCs in the current location from the GameWorld
+    // Get NPCs and objects in the current location from the GameWorld
     list<NPC*> locationNPCs = world.getNPCsInLocation(currentLocation);
+    list<Objects*> locationObjects = world.getObjectsInLocation(currentLocation);
     system("CLS");
-    if (!locationNPCs.empty()) {
-        cout << "You see someone in the area:" << endl;
+
+    if (!locationNPCs.empty() || !locationObjects.empty()) {
+        cout << "Who or what would you like to interact with?:" << endl;
         int i = 1;
-        cout << "0. Do not talk to anyone" << endl;
+        cout << "0. Do not interact with anyone or anything" << endl;
+
+        // List NPCs in the current location
         for (list<NPC*>::iterator it = locationNPCs.begin(); it != locationNPCs.end(); ++it) {
             std::cout << i << ". " << (*it)->getName() << endl << endl;
             ++i;
         }
 
-        std::cout << "Choose someone to interact with" << endl;
+        // List objects in the current location
+        for (list<Objects*>::iterator it = locationObjects.begin(); it != locationObjects.end(); ++it) {
+            std::cout << i << ". " << (*it)->getName() << endl << endl;
+            ++i;
+        }
+
+        cout << "Choose someone or something to interact with" << endl;
         int choice;
 
-        while (!(cin >> choice) || cin.peek() != '\n' || choice < 0 || choice > locationNPCs.size()) {
+        while (!(cin >> choice) || cin.peek() != '\n' || choice < 0 || choice > locationNPCs.size() + locationObjects.size()) {
             // Handle non-numeric input or input with spaces
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -413,31 +430,32 @@ void UI::interactWithNPC(Player& player, GameWorld& world) {
         system("CLS");
 
         if (choice == 0) {
-            std::cout << "You have decided not to interact with any anyone." << endl;
+            cout << "You have decided not to interact with anyone or anything." << endl;
         }
-        else {
+        else if (choice <= locationNPCs.size()) {
             list<NPC*>::iterator it = locationNPCs.begin();
             advance(it, choice - 1);
             NPC* npc = *it;
             DialogueNPC* dialogue = npc->getDialogue();
-
             dialogue->startDialogue(player);
 
-            // Call NPC-specific interactions or actions
-            // For example, you can check if the NPC is defeated and drop an item if necessary
-            if (dialogue->isNPCDefeated() == true) {
-                // Call defeated dialogue
+            if (dialogue->isNPCDefeated()) {
                 dialogue->defeatedDialogue();
                 Item* item = npc->dropItem();
                 currentLocation->addItem(item);
                 npc->setLocation(nullptr);
-                // Implement other interactions as needed
             }
+        }
+        else {
+            list<Objects*>::iterator it = locationObjects.begin();
+            advance(it, choice - locationNPCs.size() - 1);
+            Objects* object = *it;
+            object->interactWithObject(player);
         }
     }
     else {
         system("CLS");
-        cout << "There is nobody in this area." << endl;
+        cout << "There is nobody or nothing in this area." << endl;
     }
 }
 
