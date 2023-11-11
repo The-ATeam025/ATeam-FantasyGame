@@ -18,12 +18,12 @@ DialogueOption::DialogueOption(string Text, int ReturnCode, DialogueNode* NextNo
 
 }
 
-DialogueTree::DialogueTree() //constructor
+kotDialogue::kotDialogue() //constructor
 {
 
 }
 
-void DialogueTree::init_fairy() //set up tree with dialogue, make this one virtual?
+void kotDialogue::init() //set up tree with dialogue, make this one virtual?
 {
 	cout << "As you enter the room, you see a group of figures around a table laden with all sorts of delicious foods and wines. This is odd, because the rest of the room is dusty and abandoned, but what is even stranger than the food are the people seated there. " << endl;
 
@@ -47,7 +47,7 @@ void DialogueTree::init_fairy() //set up tree with dialogue, make this one virtu
 	dialogueNodes.push_back(node1);
 
 	//Node 2
-	node2->dialogueOptions.push_back(DialogueOption("Thank you, what is the riddle?",2, nullptr));
+	node2->dialogueOptions.push_back(DialogueOption("Thank you, what is the riddle?", 2, nullptr));
 	node2->dialogueOptions.push_back(DialogueOption("Who plays games before dinner? I don't want to do this.", 1, node3));
 	dialogueNodes.push_back(node2);
 
@@ -60,63 +60,7 @@ void DialogueTree::init_fairy() //set up tree with dialogue, make this one virtu
 	performDialogue();
 }
 
-void DialogueTree::init_cat() //set up tree with dialogue, make this one virtual?
-{
-
-	cout << "As you emerge in this new and altered version of the garden, the atmosphere feels denser and the surroundings take on an otherworldly hue. Amidst" << endl;
-	cout << "the mystical setting, your gaze is drawn to a striking sight - a towering black cat, standing upright on its hind legs, seemingly unfazed by your" << endl;
-	cout << "sudden appearance. Unsure of what to do next, you start walking towards it, wondering if it has some sort of spine condition causing it to stand" << endl;
-	cout << " like that. Your attempts at applying logic to your situation fail as the cat opens its mouth and starts speaking to you in a human voice." << endl;
-
-	DialogueNode* node0 = new DialogueNode("CAT: Hello there. Lost, aren't ya?");
-	DialogueNode* node1 = new DialogueNode("CAT: Names hold a lot of power here. Won't say mine to a stranger. And you are?");
-	DialogueNode* node2 = new DialogueNode("CAT: The Otherworld, obviously. The last guy actually didn't make it this far.");
-	DialogueNode* node3 = new DialogueNode("CAT: That's smart. You might survive this place after all.");
-	DialogueNode* node4 = new DialogueNode("CAT: It's a dangerous place, the Otherworld. Suprising amount of people end up here, but much fewer get to leave. ");
-	DialogueNode* node5 = new DialogueNode("CAT: It's a cursed fairy realm, essentially.");
-	DialogueNode* node6 = new DialogueNode("CAT: You got here by stepping in a mushroom circle. You'll get out pretty much the same way, if you don't get killed or trapped first.");
-
-
-	//Node 0
-	node0->dialogueOptions.push_back(DialogueOption("Who are you?", 3, node1));
-	node0->dialogueOptions.push_back(DialogueOption("Where am I?", 3, node2));
-	dialogueNodes.push_back(node0);
-
-	//Node 1
-	node1->dialogueOptions.push_back(DialogueOption("I probably shouldn't tell you mine either, then.", 3, node3));
-	node1->dialogueOptions.push_back(DialogueOption("Where is 'here', exactly?", 3, node2));
-	dialogueNodes.push_back(node1);
-
-	//Node 2
-	node2->dialogueOptions.push_back(DialogueOption("Wait, what do you mean,'didn't make it'?", 3, node4));
-	node2->dialogueOptions.push_back(DialogueOption("The Otherworld? What do you mean?", 3, node5));
-	dialogueNodes.push_back(node2);
-
-	//Node 3
-	node3->dialogueOptions.push_back(DialogueOption("Look, you keep saying that. What do you mean, 'this place?'", 3, node2));
-	node3->dialogueOptions.push_back(DialogueOption("Wait...survive?", 3, node4));
-	dialogueNodes.push_back(node3);
-
-	//Node 4
-	node4->dialogueOptions.push_back(DialogueOption("Well, that sounds ominous. What exactly is the Otherworld?", 3, node5));
-	node4->dialogueOptions.push_back(DialogueOption("You're freaking me out, I've heard enough. How do I get out of here?", 3, node6));
-	dialogueNodes.push_back(node4);
-
-	//Node 5
-	node5->dialogueOptions.push_back(DialogueOption("That sounds horrible. How do I leave?", 3, node6));
-	node5->dialogueOptions.push_back(DialogueOption(" ...Why am I in a cursed fairy realm? I was just on vacation.", 3, node6));
-	dialogueNodes.push_back(node5);
-
-	//Node 6
-	node6->dialogueOptions.push_back(DialogueOption("How do I do that? Why are you telling me all this?", 3, nullptr));
-	node6->dialogueOptions.push_back(DialogueOption("Man, I'm scared and I want to go home. Can you just help me leave?", 3, nullptr));
-	dialogueNodes.push_back(node6);
-
-
-	performDialogue();
-}
-
-void DialogueTree::destroyTree()
+void kotDialogue::destroyTree()
 {
 	for (int i = 0; i < dialogueNodes.size(); i++)
 	{
@@ -125,7 +69,7 @@ void DialogueTree::destroyTree()
 	dialogueNodes.clear();
 }
 
-int DialogueTree::consequences(int code)
+int kotDialogue::consequences(int code)
 {
 	string answer;
 	switch (code) {
@@ -136,7 +80,7 @@ int DialogueTree::consequences(int code)
 		cout << "Game will now close" << endl;
 		cout << endl;
 		exit(0);
-		
+
 		break;
 	case 1:
 		cout << "The fairy shakes its head, grinning menacingly." << endl;
@@ -161,7 +105,7 @@ int DialogueTree::consequences(int code)
 				cout << "I have heard if you hold up a Celtic Cross to him though, he does not fare so well." << endl << endl;
 				return code;
 			}
-			
+
 			break;
 
 		}
@@ -205,12 +149,6 @@ int DialogueTree::consequences(int code)
 		//code = 0;
 
 		break;
-	case 3:
-		cout << "CAT: Look, I don't care about you, or your home. I just like to watch you mortals try to to escape, it's so fun. Here's a hint: stop by the castle, you're gonna need a Celtic cross for later." << endl;
-		cout << endl;
-		cout << "Before you can say anything, the cat turns around and melts into the shadows, leaving you questioning your own sanity. Did it really talk to you?" << endl;
-		return code;
-		break;
 
 	default:
 		cout << "Error: no code given" << endl;
@@ -218,7 +156,7 @@ int DialogueTree::consequences(int code)
 	};
 	return code;
 }
-int DialogueTree::performDialogue()
+int kotDialogue::performDialogue()
 {
 	if (dialogueNodes.empty())
 	{
@@ -251,7 +189,7 @@ int DialogueTree::performDialogue()
 		if (currentNode->dialogueOptions[input].nextNode == nullptr)
 		{
 			//cout << "reee";
-			int code= currentNode ->dialogueOptions[input].returnCode;
+			int code = currentNode->dialogueOptions[input].returnCode;
 			consequences(code);
 			return code;
 		}
