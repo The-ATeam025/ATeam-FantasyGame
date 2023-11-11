@@ -37,7 +37,7 @@ public:
 	void init_cat(); //start cat dialogue
 
 	void destroyTree(); //saves memory be deleting all nodes 
-	int performDialogue();
+	int performDialogue(string errorMessage);
 	int consequences(int code);
 
 

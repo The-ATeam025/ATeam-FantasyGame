@@ -25,6 +25,8 @@ DialogueTree::DialogueTree() //constructor
 
 void DialogueTree::init_fairy() //set up tree with dialogue, make this one virtual?
 {
+	string message = "Don't stutter. "; //custom error message for this character interaction--the warning the player gets if the input is invalid 
+
 	cout << "As you enter the room, you see a group of figures around a table laden with all sorts of delicious foods and wines. This is odd, because the rest of the room is dusty and abandoned, but what is even stranger than the food are the people seated there. " << endl;
 
 	cout << "A group of humanoid creatures with shimmering wings are enjoying the feast, but there is a sinister air that contrasts with their beautiful appearance.You get the feeling that you do not want to mess with them. As you stand hesitantly in the corner, one fairy notices you." << endl;
@@ -57,11 +59,12 @@ void DialogueTree::init_fairy() //set up tree with dialogue, make this one virtu
 	dialogueNodes.push_back(node3);
 
 
-	performDialogue();
+	performDialogue(message);
 }
 
 void DialogueTree::init_cat() //set up tree with dialogue, make this one virtual?
 {
+	string message = "Cat got your tongue? "; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
 	cout << "As you emerge in this new and altered version of the garden, the atmosphere feels denser and the surroundings take on an otherworldly hue. Amidst" << endl;
 	cout << "the mystical setting, your gaze is drawn to a striking sight - a towering black cat, standing upright on its hind legs, seemingly unfazed by your" << endl;
@@ -113,7 +116,7 @@ void DialogueTree::init_cat() //set up tree with dialogue, make this one virtual
 	dialogueNodes.push_back(node6);
 
 
-	performDialogue();
+	performDialogue(message);
 }
 
 void DialogueTree::destroyTree()
@@ -218,8 +221,10 @@ int DialogueTree::consequences(int code)
 	};
 	return code;
 }
-int DialogueTree::performDialogue()
+int DialogueTree::performDialogue(string message)
 {
+	string errorMessage = message;
+
 	if (dialogueNodes.empty())
 	{
 		return -1;
@@ -245,7 +250,7 @@ int DialogueTree::performDialogue()
 			// Handle non-numeric input or input with spaces
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << "Enter a non-spaced, numeric value listed." << endl << endl;
+			cout << errorMessage << "Enter 1 or 2" << endl << endl;
 		}
 		input--;
 		if (currentNode->dialogueOptions[input].nextNode == nullptr)
