@@ -135,7 +135,7 @@ int DialogueTree::consequences(int code, Player& player)
 	case 0:
 		system("CLS");
 		player.setShouldRestartGame(true);
-		cout << "You have messed up the riddle. The fairies keep you imprisoned forever." << endl;
+		cout << "The fairy shakes its head in disappointment. 'I hate rude people.', it says. It eats you whole" << endl;
 
 		return code;
 	case 1:
