@@ -23,6 +23,7 @@ private:
     Location* banquetHall;
     Location* armory;
     Location* outside;
+    Location* swamp;
     std::list<NPC*> npcs;
     std::list<Objects*> objects;
 
@@ -36,6 +37,7 @@ public:
     Location* getRedCapDungeon();
     Location* getBanquetHall();
     Location* getOutside();
+    Location* getSwamp();
 
     // Declarations for managing NPCs
     void addNPC(NPC* npc);
