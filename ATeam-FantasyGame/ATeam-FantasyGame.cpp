@@ -113,6 +113,9 @@ int main() {
                 UI::displayCurrentLocation(player); // Redisplays the current location
             }
             else {
+                system("CLS");
+                court << "The Otherworld claims another soul. Farewell" << endl;
+                
                 // Quit the game
                 quitGame = true;
             }
