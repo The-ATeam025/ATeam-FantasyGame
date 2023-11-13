@@ -106,6 +106,7 @@ Location* GameWorld::getGreatHall() { return greatHall; }
 Location* GameWorld::getRedCapDungeon() { return redCapDungeon; }
 Location* GameWorld::getBanquetHall() { return banquetHall; }
 Location* GameWorld::getOutside() { return outside; }
+Location* GameWorld::getSwamp() { return swamp; }
 
 
 
