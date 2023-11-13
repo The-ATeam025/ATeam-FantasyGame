@@ -27,11 +27,11 @@ void Player::addItemToInventory(Item* item) {
 
 // Removes the item from the inventory if it is present
 void Player::removeItemFromInventory(Item* item) {
-    for (list<Item*>::iterator it = inventory.begin(); it != inventory.end(); ++it) {
-        if (*it == item) {
-            inventory.erase(it);
-            return; // Found and removed the item
-        }
+    auto it = std::find(inventory.begin(), inventory.end(), item);
+
+    if (it != inventory.end()) {
+        // Item found, erase it
+        it = inventory.erase(it);
     }
 }
 
