@@ -35,6 +35,7 @@ public:
 	DialogueTree();
 	void init_fairy(); //start fairy dialogue
 	void init_cat(); //start cat dialogue
+	void init_hare(); //start hare dialogue
 
 	void destroyTree(); //saves memory be deleting all nodes 
 	int performDialogue(string errorMessage);
