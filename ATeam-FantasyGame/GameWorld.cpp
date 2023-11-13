@@ -27,6 +27,7 @@ void GameWorld::init(Player& player) {
     Item* celticCross = new Item("Celtic Cross", "An ornate, ancient cross symbolizing Celtic heritage and spirituality.", "hands");
     Item* sword = new Item("Sword", "A sharp and sturdy sword for combat.", "hands");
     Item* helmet = new Item("Helmet", "A protective helmet for your head.", "head");
+    Item* carrot = new Item("carrot", "Normal looking carrot","hands");
 
 
     // Create room Objects
@@ -93,10 +94,13 @@ void GameWorld::init(Player& player) {
 
     swamp->addConnectedLocation(outside);
 
-    // Add items to locations
+    // Add pre-existing items to locations
 
     // Great Hall
     greatHall->addItem(celticCross);
+
+    //Outside
+    outside->addItem(carrot);
 
     // Set the player's initial location
     player.walkToLocation(courtyard);
