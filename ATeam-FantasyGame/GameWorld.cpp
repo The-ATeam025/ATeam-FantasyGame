@@ -19,7 +19,7 @@ void GameWorld::init(Player& player) {
     outside = new Location("Outside",
         "You've unlocked a newfound passage out of the castle. An untamed, enigmatic forest lies ahead, teeming with uncharted adventures and exhilarating challenges waiting to be conquered.");
     swamp = new Location("Swamp",
-        "The Cúlra Swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Light filters through the canopy, casting shifting shadows across the landscape.");
+        "The Culra Swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Light filters through the canopy, casting shifting shadows across the landscape.");
 
     // Create an item
     // "Name", "Description", "Equipment Slot - If none, leave as null"
