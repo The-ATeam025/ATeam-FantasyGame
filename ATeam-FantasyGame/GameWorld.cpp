@@ -52,7 +52,7 @@ void GameWorld::init(Player& player) {
     // Initalize Dialogues
     DialogueNPC* DialogueRedCap = new redCapDialogue();
     DialogueNPC* Dialoguefairies = new fairyDialogue();
-    DialogueNPC* DialogueOneEyedHare;
+    DialogueNPC* DialogueOneEyedHare = new hareDialogue();
 
     // Add items/Dialogue/location to NPC/Object
     // Redcap
@@ -71,6 +71,7 @@ void GameWorld::init(Player& player) {
 
     // One Eyed Hare
     oneEyedHare->setLocation(swamp);
+    oneEyedHare->setDialogue(DialogueOneEyedHare);
 
     // Connect the locations
     courtyard->addConnectedLocation(greatHall);
