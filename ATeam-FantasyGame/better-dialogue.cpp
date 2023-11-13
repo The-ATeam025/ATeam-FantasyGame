@@ -120,6 +120,43 @@ void DialogueTree::init_cat() //set up tree with dialogue, make this one virtual
 	performDialogue(message);
 }
 
+void DialogueTree::init_hare() //set up tree with dialogue, make this one virtual?
+{
+	string message = "I couldn't understand that. "; //custom error message for this character interaction--the warning the player gets if the input is invalid 
+
+	cout << "You step towards the one-eyed hare, its fur glistening in the sunlight. It looks at you with a knowing gaze and speaks in a gentle voice. " << endl;
+
+	cout << endl;
+
+	DialogueNode* node0 = new DialogueNode("Hare: Good afternoon, traveler. I am in search of a rare flower known as the Sunlit Blossom. It only blooms in the light of the afternoon sun and is essential for a healing potion I am preparing. Could you assist me in finding it?");
+	DialogueNode* node1 = new DialogueNode("Hare: Of course. The Sunlit Blossom is a rare flower with healing properties. It shines brightest when the sun is high, making it easier to spot. Its petals are a vibrant yellow.");
+	DialogueNode* node2 = new DialogueNode("Hare: Thank you, kind traveler. The Sunlit Blossom thrives in sunny spots. Look for a bright yellow flower with a soft glow. Please, handle it with care. ");
+	DialogueNode* node3 = new DialogueNode("Hare: That's not very nice. I will offer one more time. Riddle? ");
+
+	//Node 0
+	node0->dialogueOptions.push_back(DialogueOption("I would be honored to assist you. Where can I find this Sunlit Blossom?", 1, node2));
+	node0->dialogueOptions.push_back(DialogueOption("I'm not sure. Can you tell me more about this blossom?", 0, node1));
+	dialogueNodes.push_back(node0);
+
+	//Node 1
+	node1->dialogueOptions.push_back(DialogueOption("No, you look nice, I'm just new here.", 2, node2));
+	node1->dialogueOptions.push_back(DialogueOption("You're a bit unsettling to look at, to be honest.", 0, node3));
+	dialogueNodes.push_back(node1);
+
+	//Node 2
+	node2->dialogueOptions.push_back(DialogueOption("Thank you, what is the riddle?", 2, nullptr));
+	node2->dialogueOptions.push_back(DialogueOption("Who plays games before dinner? I don't want to do this.", 1, node3));
+	dialogueNodes.push_back(node2);
+
+	//Node 3
+	node3->dialogueOptions.push_back(DialogueOption("Ugh fine, I'll take your stupid riddle.", 1, nullptr));
+	node3->dialogueOptions.push_back(DialogueOption("You're being weird. I don't want the riddle", 0, nullptr));
+	dialogueNodes.push_back(node3);
+
+
+	performDialogue(message);
+}
+
 void DialogueTree::destroyTree()
 {
 	for (int i = 0; i < dialogueNodes.size(); i++)
