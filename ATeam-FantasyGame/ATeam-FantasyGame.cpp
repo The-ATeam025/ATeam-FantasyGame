@@ -114,7 +114,7 @@ int main() {
             }
             else {
                 system("CLS");
-                court << "The Otherworld claims another soul. Farewell" << endl;
+                cout << "The Otherworld claims another soul. Farewell" << endl;
                 
                 // Quit the game
                 quitGame = true;
