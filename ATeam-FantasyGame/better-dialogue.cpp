@@ -70,6 +70,7 @@ void DialogueTree::init_cat() //set up tree with dialogue, make this one virtual
 	cout << "the mystical setting, your gaze is drawn to a striking sight - a towering black cat, standing upright on its hind legs, seemingly unfazed by your" << endl;
 	cout << "sudden appearance. Unsure of what to do next, you start walking towards it, wondering if it has some sort of spine condition causing it to stand" << endl;
 	cout << " like that. Your attempts at applying logic to your situation fail as the cat opens its mouth and starts speaking to you in a human voice." << endl;
+	cout << endl;
 
 	DialogueNode* node0 = new DialogueNode("CAT: Hello there. Lost, aren't ya?");
 	DialogueNode* node1 = new DialogueNode("CAT: Names hold a lot of power here. Won't say mine to a stranger. And you are?");
