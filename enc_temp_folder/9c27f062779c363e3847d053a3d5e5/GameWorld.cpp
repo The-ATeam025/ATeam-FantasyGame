@@ -29,7 +29,7 @@ void GameWorld::init(Player& player) {
 
     // Create room Objects
     Objects* armoryChest = new ArmoryChest("Chest", "An old chest that has had its surface almost compleltely consumed by moss.");
-    Objects* MarbleBust = new marbleBust("Marble Bust", "A pristine looking statued of a head you do not recognize. It's eyes somehow seem to follow you around.", outside);
+    Objects* MarbleBust = new marbleBust("Marble Bust", "A pristine looking statued of a head you do not recognize. It's eyes someone seem to follow you around.", outside);
     
     // Create an NPC
     NPC* redCap = new NPC("Redcap", 
