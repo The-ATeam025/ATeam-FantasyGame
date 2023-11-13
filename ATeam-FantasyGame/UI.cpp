@@ -244,16 +244,21 @@ void UI::equipItem(Player& player) {
         }
 
         list<Item*> inventory = player.getInventory();
+        list<Item*> equippableItems;
+
+        for (auto it = inventory.begin(); it != inventory.end(); ++it) {
+            if ((*it)->getType() == slot) {
+                equippableItems.push_back(*it);
+            }
+        }
 
         if (!inventory.empty()) {
             int i = 1;
             cout << endl;
 
-            for (list<Item*>::iterator it = inventory.begin(); it != inventory.end(); ++it) {
-                if ((*it)->getType() == slot) {
-                    cout << i << ". " << (*it)->getName() << " - " << (*it)->getDescription() << endl;
-                    i++;
-                }
+            for (auto it = equippableItems.begin(); it != equippableItems.end(); ++it) {
+                cout << i << ". " << (*it)->getName() << " - " << (*it)->getDescription() << endl;
+                i++;
             }
 
             if (i == 1) {
@@ -273,7 +278,7 @@ void UI::equipItem(Player& player) {
             system("CLS");
 
             if (itemChoice >= 1 && itemChoice <= i - 1) {
-                list<Item*>::iterator it = inventory.begin();
+                auto it = equippableItems.begin();
                 advance(it, itemChoice - 1);
                 Item* item = *it;
 

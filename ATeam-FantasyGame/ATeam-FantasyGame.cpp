@@ -28,10 +28,10 @@ int main() {
     system("CLS");
 
     // Create an instance of the Dialogue class
-    Dialogue dial;
+    DialogueTree catConvo;
 
     // Call the CatIntro function to continue the story 
-    dial.CatIntro();
+    catConvo.init_cat();
 
     // Prompt user to continue
     system("pause");
