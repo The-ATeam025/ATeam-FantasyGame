@@ -21,7 +21,7 @@ void hareDialogue::startDialogue(Player& player) {
 		}
 		else
 		{
-			cout << "Hunfry" << endl;
+			cout << "The hare twitches its nose at you. It looks hungry." << endl;
 		}
 	}
 		else if (talkedTo == true) {

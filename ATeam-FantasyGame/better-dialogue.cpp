@@ -124,18 +124,18 @@ void DialogueTree::init_hare() //set up tree with dialogue, make this one virtua
 {
 	string message = "I couldn't understand that. "; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
-	cout << "You step towards the one-eyed hare, its fur glistening in the sunlight. It looks at you with a knowing gaze and speaks in a gentle voice. " << endl;
+	cout << "As you hold out the carrot, the hare approaches it and eats it from your hand. After crunching down on it for a few minutes, it begins to speak. " << endl;
 
 	cout << endl;
 
-	DialogueNode* node0 = new DialogueNode("Hare: Good afternoon, traveler. I am in search of a rare flower known as the Sunlit Blossom. It only blooms in the light of the afternoon sun and is essential for a healing potion I am preparing. Could you assist me in finding it?");
+	DialogueNode* node0 = new DialogueNode("Hare: That was a good carrot. You're an odd-looking creature. Are you a wingless fairy, or a hornless troll?");
 	DialogueNode* node1 = new DialogueNode("Hare: Of course. The Sunlit Blossom is a rare flower with healing properties. It shines brightest when the sun is high, making it easier to spot. Its petals are a vibrant yellow.");
 	DialogueNode* node2 = new DialogueNode("Hare: Thank you, kind traveler. The Sunlit Blossom thrives in sunny spots. Look for a bright yellow flower with a soft glow. Please, handle it with care. ");
 	DialogueNode* node3 = new DialogueNode("Hare: That's not very nice. I will offer one more time. Riddle? ");
 
 	//Node 0
-	node0->dialogueOptions.push_back(DialogueOption("I would be honored to assist you. Where can I find this Sunlit Blossom?", 1, node2));
-	node0->dialogueOptions.push_back(DialogueOption("I'm not sure. Can you tell me more about this blossom?", 0, node1));
+	node0->dialogueOptions.push_back(DialogueOption("Neither. I'm just a person.", 1, node2));
+	node0->dialogueOptions.push_back(DialogueOption("Are you a pet bunny rabbit or some one-eyed abomination?", 0, node1));
 	dialogueNodes.push_back(node0);
 
 	//Node 1
