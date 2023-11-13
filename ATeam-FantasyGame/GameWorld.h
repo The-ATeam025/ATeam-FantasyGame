@@ -7,6 +7,7 @@
 #include "redCapDialogue.h"
 #include "fairyDialogue.h"
 #include "ArmoryChest.h"
+#include "hareDialogue.h"
 #include <list>
 #include <vector>
 
