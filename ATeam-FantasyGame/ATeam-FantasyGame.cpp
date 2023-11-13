@@ -24,8 +24,8 @@ int main() {
     Backstory backstory;
 
     // Display backstory
-    //backstory.displayIntro();
-    //system("CLS");
+    backstory.displayIntro();
+    system("CLS");
 
     // Create an instance of the Dialogue class
     DialogueTree catConvo;
