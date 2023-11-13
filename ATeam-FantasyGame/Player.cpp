@@ -4,7 +4,7 @@
 
 // Constructor
 Player::Player(std::string newName) : name(newName), currentLocation(nullptr), torsoSlot(nullptr),
-headSlot(nullptr), feetSlot(nullptr), weaponSlot(nullptr){}
+headSlot(nullptr), feetSlot(nullptr), weaponSlot(nullptr), shouldRestartGame(false){}
 
 // Changes the Players currentLocation* to a newLocation*
 // To Do: How to validate the argument(example: incorrect values that can lead to crashes)
@@ -113,3 +113,24 @@ Item* Player::getWeaponSlot() const {
     return weaponSlot;
 }
 
+// Setter for shouldResetGame
+void Player::setShouldRestartGame(bool newRestartGame) {
+    shouldRestartGame = newRestartGame;
+}
+
+// Clears the players inventory and sets all slots to null
+void Player::clearInventoryAndEquipment() {
+    // Clear the inventory
+    inventory.clear();
+
+    // Set equipment slots to nullptr
+    torsoSlot = nullptr;
+    headSlot = nullptr;
+    feetSlot = nullptr;
+    weaponSlot = nullptr;
+}
+
+// Getter for shouldRestartGame
+bool Player::getShouldRestartGame() {
+    return shouldRestartGame;
+}

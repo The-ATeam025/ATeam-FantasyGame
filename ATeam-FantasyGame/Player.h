@@ -14,6 +14,7 @@ private:
 	Item* headSlot;   // Equipment slot for head
 	Item* feetSlot;   // Equipment slot for feet
 	Item* weaponSlot; // Equipment slot for hands (as a weapon)
+	bool shouldRestartGame; // Checks if the player met the need to restart the game
 
 public:
 	Player(string newName); // Constructor
@@ -29,4 +30,7 @@ public:
 	Item* getTorsoSlot() const; // Same for torso
 	Item* getFeetSlot() const; // Same for feet
 	Item* getWeaponSlot() const; // Same for weapon/hand
+	void setShouldRestartGame(bool newRestartGame); // Changes the bool in shouldRestartGame
+	void clearInventoryAndEquipment(); // Clears the inventory of the player and sets all slots to null
+	bool getShouldRestartGame(); // Getter for shouldRestartGame
 };

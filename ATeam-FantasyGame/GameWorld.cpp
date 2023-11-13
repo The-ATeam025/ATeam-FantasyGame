@@ -3,6 +3,18 @@
 //Constructor
 GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr) {}
 
+//Deconstructor
+GameWorld::~GameWorld() {
+    // Delete the dynamically allocated locations (if they exist)
+    delete courtyard;
+    delete greatHall;
+    delete redCapDungeon;
+    delete banquetHall;
+    delete armory; // Include this line if armory is dynamically allocated
+
+    // You might also need to delete other dynamically allocated resources
+    // related to the game world, like NPCs, items, dialogues, etc.
+}
 
 void GameWorld::init(Player& player) {
     // Initialize locations

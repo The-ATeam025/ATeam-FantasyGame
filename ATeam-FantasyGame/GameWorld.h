@@ -27,6 +27,7 @@ private:
 
 public:
     GameWorld();
+    ~GameWorld();
 
     void init(Player& player);
 
