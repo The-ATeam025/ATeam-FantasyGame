@@ -117,7 +117,7 @@ void DialogueTree::init_cat() //set up tree with dialogue, make this one virtual
 	dialogueNodes.push_back(node6);
 
 
-	performDialogue(message);
+	performDialogue(message); 
 }
 
 void DialogueTree::init_hare() //set up tree with dialogue, make this one virtual?
@@ -129,23 +129,23 @@ void DialogueTree::init_hare() //set up tree with dialogue, make this one virtua
 	cout << endl;
 
 	DialogueNode* node0 = new DialogueNode("Hare: That was a good carrot. You're an odd-looking creature. Are you a wingless fairy, or a hornless troll?");
-	DialogueNode* node1 = new DialogueNode("Hare: Of course. The Sunlit Blossom is a rare flower with healing properties. It shines brightest when the sun is high, making it easier to spot. Its petals are a vibrant yellow.");
-	DialogueNode* node2 = new DialogueNode("Hare: Thank you, kind traveler. The Sunlit Blossom thrives in sunny spots. Look for a bright yellow flower with a soft glow. Please, handle it with care. ");
+	DialogueNode* node1 = new DialogueNode("Hare: You're definitely from the boring world if you think I'm odd,");
+	DialogueNode* node2 = new DialogueNode("Hare: We sure do. No magic over there. What do you people even do for fun, taxes? ");
 	DialogueNode* node3 = new DialogueNode("Hare: That's not very nice. I will offer one more time. Riddle? ");
 
 	//Node 0
-	node0->dialogueOptions.push_back(DialogueOption("Neither. I'm just a person.", 1, node2));
-	node0->dialogueOptions.push_back(DialogueOption("Are you a pet bunny rabbit or some one-eyed abomination?", 0, node1));
+	node0->dialogueOptions.push_back(DialogueOption("Neither. I'm just a person who's really, really lost. People keep giving me riddles.", 1, node2));
+	node0->dialogueOptions.push_back(DialogueOption("I've never been called odd by a one eyed bunny rabbit before.", 0, node1));
 	dialogueNodes.push_back(node0);
 
 	//Node 1
-	node1->dialogueOptions.push_back(DialogueOption("No, you look nice, I'm just new here.", 2, node2));
-	node1->dialogueOptions.push_back(DialogueOption("You're a bit unsettling to look at, to be honest.", 0, node3));
+	node1->dialogueOptions.push_back(DialogueOption("The boring world? Is that what you call where I'm from?", 2, node2));
+	node1->dialogueOptions.push_back(DialogueOption("You can call my world boring, but at least people there don't offer me riddles threateningly.", 0, node3));
 	dialogueNodes.push_back(node1);
 
 	//Node 2
-	node2->dialogueOptions.push_back(DialogueOption("Thank you, what is the riddle?", 2, nullptr));
-	node2->dialogueOptions.push_back(DialogueOption("Who plays games before dinner? I don't want to do this.", 1, node3));
+	node2->dialogueOptions.push_back(DialogueOption("I admit, it can get pretty mundane over there, but I do want to go home. ", 2, nullptr));
+	node2->dialogueOptions.push_back(DialogueOption("Well, it's n", 1, node3));
 	dialogueNodes.push_back(node2);
 
 	//Node 3
@@ -166,10 +166,11 @@ void DialogueTree::destroyTree()
 	dialogueNodes.clear();
 }
 
-int DialogueTree::consequences(int code)
+int DialogueTree::consequences_all_creatures(int code)
 {
 	string answer;
 	switch (code) {
+		//Consequences for fairy: it eats you because you decline a riddle
 	case 0:
 		cout << "The fairy shakes its head in dissapointment. 'I hate rude people.', it says. It eats you whole." << endl;
 		cout << endl;
@@ -292,7 +293,7 @@ int DialogueTree::performDialogue(string message)
 		{
 			//cout << "reee";
 			int code= currentNode ->dialogueOptions[input].returnCode;
-			consequences(code);
+			consequences_all_creatures(code);
 			return code;
 		}
 		currentNode = currentNode->dialogueOptions[input].nextNode;

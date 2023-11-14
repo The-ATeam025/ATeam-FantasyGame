@@ -39,7 +39,7 @@ public:
 
 	void destroyTree(); //saves memory be deleting all nodes 
 	int performDialogue(string errorMessage);
-	int consequences(int code);
+	int consequences_all_creatures(int code);
 
 
 
