@@ -30,7 +30,12 @@ void marbleBust::interactWithObject(Player& player) {
     // Get the player's choice.
     int choice;
     while (true) {
-        std::cin >> choice;
+        while (!(cin >> choice) || cin.peek() != '\n') {
+            // Handle non-numeric input or input with spaces
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Enter a non-spaced, numeric value." << endl << endl;
+        }
 
         if (choice >= 1 && choice <= i - 1) {
             // Valid choice
