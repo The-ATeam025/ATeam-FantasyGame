@@ -1,7 +1,7 @@
 #include "GameWorld.h"
 
 //Constructor
-GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr) {}
+GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr) {}
 
 //Deconstructor
 GameWorld::~GameWorld() {
@@ -28,6 +28,8 @@ void GameWorld::init(Player& player) {
         "The doors of this magnificent banquet hall are slightly tilted, but you can see light and hear laughter coming from within.");
     armory = new Location("Armory",
         "In the armory, all that remains is a lonely chest. The nearby shelves are bare, and must have already been looted by someone or something.");
+    outside = new Location("Outside",
+        "An untamed, enigmatic forest lies ahead, teeming with otherwordly magic and energy you have never experienced.");
 
     // Create an item
     // "Name", "Description", "Equipment Slot - If none, leave as null"
@@ -39,7 +41,8 @@ void GameWorld::init(Player& player) {
 
     // Create room Objects
     Objects* armoryChest = new ArmoryChest("Chest", "An old chest that has had its surface almost compleltely consumed by moss.");
-   
+    Objects* MarbleBust = new marbleBust("Marble Bust", "A pristine looking statued of a head you do not recognize. It's eyes somehow seem to follow you around.", outside);
+    
     // Create an NPC
     NPC* redCap = new NPC("Redcap", 
         "Its skin is as red as fresh blood, and its eyes gleam with sinister intent. Dressed in tattered rags, it carries an aura of malevolence.");
@@ -53,6 +56,7 @@ void GameWorld::init(Player& player) {
 
     // Add all objects to the objects list
     objects.push_back(armoryChest);
+    objects.push_back(MarbleBust);
 
     // Initalize Dialogues
     DialogueNPC* DialogueRedCap = new redCapDialogue();
@@ -73,6 +77,9 @@ void GameWorld::init(Player& player) {
     armoryChest->addItemToInventory(sword);
     armoryChest->addItemToInventory(helmet);
 
+    // MarbleBust
+    MarbleBust->setLocation(greatHall);
+
     // Connect the locations
     courtyard->addConnectedLocation(greatHall);
 
@@ -87,6 +94,8 @@ void GameWorld::init(Player& player) {
     banquetHall->addConnectedLocation(greatHall);
     banquetHall->addConnectedLocation(redCapDungeon);
 
+    outside->addConnectedLocation(greatHall);
+
     // Add items to locations
 
     // Great Hall
@@ -100,6 +109,7 @@ Location* GameWorld::getCourtyard() { return courtyard; }
 Location* GameWorld::getGreatHall() { return greatHall; }
 Location* GameWorld::getRedCapDungeon() { return redCapDungeon; }
 Location* GameWorld::getBanquetHall() { return banquetHall; }
+Location* GameWorld::getOutside() { return outside; }
 
 
 // Add's NPC's to the GameWorld instance
@@ -134,4 +144,3 @@ std::list<Objects*> GameWorld::getObjectsInLocation(const Location* location) {
 
     return locationObjects;
 }
-
