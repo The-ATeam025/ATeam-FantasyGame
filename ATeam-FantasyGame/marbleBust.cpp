@@ -22,9 +22,12 @@ void marbleBust::interactWithObject(Player& player) {
 
     // Display the player's inventory with numbered options
     int i = 1;
-    for (Item* inventoryItem : player.getInventory()) {
-        std::cout << i << ". " << inventoryItem->getName() << std::endl;
-        ++i;
+
+    list<Item*> inventory = player.getInventory();
+
+    for (list<Item*>::iterator it = inventory.begin(); it != inventory.end(); ++it) {
+        cout << i << ". " << (*it)->getName() << endl;
+        i++;
     }
 
     // Get the player's choice.
@@ -39,13 +42,15 @@ void marbleBust::interactWithObject(Player& player) {
 
         if (choice >= 1 && choice <= i - 1) {
             // Valid choice
-            auto chosenItemIterator = std::next(player.getInventory().begin(), choice - 1);
-
+            list<Item*>::iterator it = inventory.begin();
+            advance(it, choice - 1);
+            Item* chosenItem = *it;
+            string itemName = (chosenItem->getName());
             // Check if the chosen item is the right one
-            if ((*chosenItemIterator)->getName() == "Helmet") {
+            if (itemName == "Helmet") {
                 system("CLS");
                 setDescription("A magical aura surrounds the activated marble bust.");
-                std::cout<< "You place the " << (*chosenItemIterator)->getName() << " on the marble bust, and its magical aura consumes the room." << std::endl;
+                std::cout<< "You place the " << itemName << " on the marble bust, and its magical aura consumes the room." << std::endl;
                 std::cout << "A power beyond your comprehension connects to the helmet, and ties it to the bust." << std::endl;
 
                 // Iterate through player's inventory to place items on the bust
@@ -53,11 +58,11 @@ void marbleBust::interactWithObject(Player& player) {
 
                 // Connect the hidden location when the bust is activated
                 player.getCurrentLocation()->addConnectedLocation(hiddenLocation);                
-                items.push_back(*chosenItemIterator);
-                player.removeItemFromInventory(*chosenItemIterator);
+                items.push_back(chosenItem);
+                player.removeItemFromInventory(chosenItem);
             }
             else {
-                std::cout << "Nothing happens. The marble bust doesn't react to the " << (*chosenItemIterator)->getName() << "." << std::endl;
+                std::cout << "Nothing happens. The marble bust doesn't react to the " << itemName << "." << std::endl;
             }
 
             break;
