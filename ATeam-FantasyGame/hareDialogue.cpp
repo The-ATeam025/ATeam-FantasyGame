@@ -8,8 +8,7 @@ hareDialogue::hareDialogue() : NPCDefeated(false), talkedTo(false) {
 
 void hareDialogue::startDialogue(Player& player) {
 	Item* hands = player.getWeaponSlot();
-
-
+	
 	if (talkedTo == false) {
 		talkedTo = true;
 
@@ -25,7 +24,14 @@ void hareDialogue::startDialogue(Player& player) {
 		}
 	}
 		else if (talkedTo == true) {
-			cout << "The hare twitches its nose at you." << endl;
+		if (hands) {
+			string handName = hands->getName();
+			if (handName == "carrot") {
+				dtree.init_hare();
+			}
+			else cout << "The hare twitches its nose at you. It looks hungry" << endl;	
+		}
+		else cout << "The hare twitches its nose at you." << endl;
 		}
 	}
 
