@@ -270,6 +270,45 @@ int DialogueTree::consequences_all_creatures(int code)
 		cout << "Before you can say anything, the cat turns around and melts into the shadows, leaving you questioning your own sanity. Did it really talk to you?" << endl;
 		return code;
 		break;
+	case 4:
+		cout << "\nThe Hare did not like your answer." << endl;
+		cout << "\nHare: No riddle, eh? Fine then. You will regret this." << endl;
+		return code;
+		break;
+	case 5:
+		cout << "Hare: I will give you a simple riddle for being such a nice human. If you answer correctly within three tries, I'll give you advice to help you along the way!" << endl;
+		cout << endl;
+		cout << "I sit in the sun and stand in the shade," << endl;
+		cout << "I follow no orders, but I often parade." << endl;
+		cout << "When I'm high, I'm admired far and wide," << endl;
+		cout << "When I'm low, I hide as if shy.\nWhat am I ?" << endl;
+		cout << endl;
+		for (int i = 2; i >= 0; i--)
+		{
+			cout << "Answer wisely. If you do not answer, you could miss out on important information! " << endl;
+			cout << endl;
+			cin >> answer;
+
+			if ((answer != "shadow") && (answer != "Shadow") && (answer != "SHADOW"))
+			{
+				cout << "Incorrect. You have " << i << " tries left." << endl;
+			}
+			else
+			{
+				cout << "Hare: That's correct. For your reward, I'll give you a little information" << endl;
+				cout << "Rathad! If you want to leave the underworld, you will need to speak to Aine, the most beautiful goddess there is." << endl;
+				cout << "She will help you get out of here. While you're there, mind asking her on a date for me? I get really shy around her." << endl << endl;
+				return code;
+			}
+		}
+		cout << endl;
+		cout << "You have messed up the riddle. You have lost the chance at getting important information!" << endl;
+		cout << "The Hare shakes his head in disbelief and hops away." << endl;
+		cout << endl;
+		return code;
+		//code = 0;
+
+		break;
 
 	default:
 		cout << "Error: no code given" << endl;
