@@ -1,6 +1,9 @@
 #include "better-dialogue.h"
 #include <iostream>
 #include <string>
+//both files below are used for riddle answers, making sure there is no case sensitivity
+#include <algorithm> // for std::transform
+#include <cctype>    // for ::tolower
 
 using namespace std;
 
@@ -289,16 +292,21 @@ int DialogueTree::consequences_all_creatures(int code)
 			cout << endl;
 			cin >> answer;
 
-			if ((answer != "shadow") && (answer != "Shadow") && (answer != "SHADOW"))
-			{
-				cout << "Incorrect. You have " << i << " tries left." << endl;
-			}
-			else
+			//code to accept the user answer and transform answer into all lowercase, no matter how it is written.
+			std::string answerLowerCase = answer; // Make a copy of answer
+			std::transform(answerLowerCase.begin(), answerLowerCase.end(), answerLowerCase.begin(),
+				[](unsigned char c) { return std::tolower(c); });
+
+			if (answerLowerCase == "shadow") //uses transformed answer, if the transformed answer matches 'shadow', then user is correct.
 			{
 				cout << "Hare: That's correct. For your reward, I'll give you a little information" << endl;
 				cout << "Rathad! If you want to leave the underworld, you will need to speak to Aine, the most beautiful goddess there is." << endl;
 				cout << "She will help you get out of here. While you're there, mind asking her on a date for me? I get really shy around her." << endl << endl;
 				return code;
+			}
+			else
+			{
+				cout << "Incorrect. You have " << i << " tries left." << endl;
 			}
 		}
 		cout << endl;
