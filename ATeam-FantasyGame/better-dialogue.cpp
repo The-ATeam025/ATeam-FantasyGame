@@ -130,7 +130,7 @@ void DialogueTree::init_hare() //set up tree with dialogue, make this one virtua
 
 	DialogueNode* node0 = new DialogueNode("Hare: That was a good carrot. You're an odd-looking creature. Are you a wingless fairy, or a hornless troll?");
 	DialogueNode* node1 = new DialogueNode("Hare: You're definitely from the boring world if you think I'm odd,");
-	DialogueNode* node2 = new DialogueNode("Hare: Ha! I see you've dealt with the Fae already. They're sticklers for politeness. ");
+	DialogueNode* node2 = new DialogueNode("Hare: Ha! I see you've dealt with the Fae already. They sure love their riddles. ");
 	DialogueNode* node3 = new DialogueNode("Hare: We sure do.No magic over there.What do you people even do for fun, taxes ? ");
 	DialogueNode* node4 = new DialogueNode("Hare: I do love a good battle of wits, but I won't force you to listen to mine. Offer's up, though.");
 	DialogueNode* node5 = new DialogueNode("Hare: I don't care about you, so I don't care what you say. If you tick me off I'll just hop away.");
@@ -139,7 +139,7 @@ void DialogueTree::init_hare() //set up tree with dialogue, make this one virtua
 
 
 	//Node 0
-	node0->dialogueOptions.push_back(DialogueOption("Neither. I'm just a person who's really, really lost. I want to go home but people keep giving me riddles.", 1, node2));
+	node0->dialogueOptions.push_back(DialogueOption("Yes. I'm a wingless fairy. Obviously. God, more fucking riddles.", 1, node2));
 	node0->dialogueOptions.push_back(DialogueOption("I've never been called odd by a one eyed bunny rabbit before.", 0, node1));
 	dialogueNodes.push_back(node0);
 
@@ -149,8 +149,8 @@ void DialogueTree::init_hare() //set up tree with dialogue, make this one virtua
 	dialogueNodes.push_back(node1);
 
 	//Node 2
-	node2->dialogueOptions.push_back(DialogueOption("They really are. Are you like them? ", 2, node5));
-	node2->dialogueOptions.push_back(DialogueOption("Yep, that and riddles.", 1, node4));
+	node2->dialogueOptions.push_back(DialogueOption("They really do. They were also sticklers about politeness. Are you like that too? ", 2, node5));
+	node2->dialogueOptions.push_back(DialogueOption("Let me guess, you're going to offer me a riddle too?.", 1, node4));
 	dialogueNodes.push_back(node2);
 
 	//Node 3
@@ -168,7 +168,7 @@ void DialogueTree::init_hare() //set up tree with dialogue, make this one virtua
 	node5->dialogueOptions.push_back(DialogueOption("I don't care about you either, but I just want to get back home.", 5, node6));
 	dialogueNodes.push_back(node5);
 
-	//node 5
+	//node 6
 	node6->dialogueOptions.push_back(DialogueOption("Not another riddle. I think I'll pass. ", 4, nullptr));
 	node6->dialogueOptions.push_back(DialogueOption("Let me guess, another riddle? I'll take what I can get.", 5, nullptr));
 	dialogueNodes.push_back(node6);
