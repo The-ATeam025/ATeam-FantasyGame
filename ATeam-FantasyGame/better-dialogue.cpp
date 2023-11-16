@@ -281,7 +281,7 @@ int DialogueTree::consequences(int code, Player& player)
 		{
 			cout << "Answer wisely. If you do not answer, you could miss out on important information! " << endl;
 			cout << endl;
-			//cin >> answer;
+
 			std::getline(std::cin, answer); //reads the whole line of input, including spaces, until it encounters a newline character.
 
 
