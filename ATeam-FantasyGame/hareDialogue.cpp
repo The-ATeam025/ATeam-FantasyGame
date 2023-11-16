@@ -17,7 +17,7 @@ void hareDialogue::startDialogue(Player& player) {
 			if (handName == "carrot") {
 				player.removeItem("hands");
 				player.removeItemFromInventory(hands);
-				dtree.init_hare();
+				dtree.init_hare(player);
 			}
 		}
 		else
@@ -31,7 +31,7 @@ void hareDialogue::startDialogue(Player& player) {
 			if (handName == "carrot") {
 				player.removeItem("hands");
 				player.removeItemFromInventory(hands);
-				dtree.init_hare();
+				dtree.init_hare(player);
 			}
 			else cout << "The hare twitches its nose at you. It looks hungry" << endl;	
 		}

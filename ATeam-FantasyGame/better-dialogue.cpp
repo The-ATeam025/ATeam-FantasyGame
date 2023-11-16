@@ -123,7 +123,7 @@ void DialogueTree::init_cat(Player& player) //set up tree with dialogue, make th
 	performDialogue(player, message);
 }
 
-void DialogueTree::init_hare() //set up tree with dialogue, make this one virtual?
+void DialogueTree::init_hare(Player& player) //set up tree with dialogue, make this one virtual?
 {
 	string message = "Hare: Sorry, what did you say?"; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
@@ -177,7 +177,7 @@ void DialogueTree::init_hare() //set up tree with dialogue, make this one virtua
 	dialogueNodes.push_back(node6);
 
 
-	performDialogue(message);
+	performDialogue(player, message);
 }
 
 void DialogueTree::destroyTree()
@@ -276,36 +276,37 @@ int DialogueTree::consequences(int code, Player& player)
 		cout << "When I'm high, I'm admired far and wide," << endl;
 		cout << "When I'm low, I hide as if shy.\nWhat am I ?" << endl;
 		cout << endl;
+
 		for (int i = 2; i >= 0; i--)
 		{
 			cout << "Answer wisely. If you do not answer, you could miss out on important information! " << endl;
 			cout << endl;
 			cin >> answer;
-			std::getline(std::cin, answer); //reads the whole line of input, including spaces, until it encounters a newline character.
 
 			//code to accept the user answer and transform answer into all lowercase, no matter how it is written.
 			std::string answerLowerCase = answer; // Make a copy of answer
 			std::transform(answerLowerCase.begin(), answerLowerCase.end(), answerLowerCase.begin(),
 				[](unsigned char c) { return std::tolower(c); });
 
-			if (answerLowerCase == "shadow") //uses transformed answer, if the transformed answer matches 'shadow', then user is correct.
+
+			if (answerLowerCase != "shadow")
+			{
+				cout << "Incorrect. You have " << i << " tries left." << endl;
+			}
+			else
 			{
 				cout << "Hare: That's correct. For your reward, I'll give you a little information" << endl;
 				cout << "Rathad! If you want to leave the underworld, you will need to speak to Aine, the most beautiful goddess there is." << endl;
 				cout << "She will help you get out of here. While you're there, mind asking her on a date for me? I get really shy around her." << endl << endl;
 				return code;
-			}
-			else
-			{
-				cout << "Incorrect. You have " << i << " tries left." << endl;
+
 			}
 		}
-		cout << endl;
+		system("CLS");
 		cout << "You have messed up the riddle. You have lost the chance at getting important information!" << endl;
 		cout << "The Hare shakes his head in disbelief and hops away." << endl;
 		cout << endl;
 		return code;
-		//code = 0;
 
 		break;
 
