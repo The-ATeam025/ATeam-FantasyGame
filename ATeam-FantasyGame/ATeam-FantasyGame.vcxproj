@@ -133,7 +133,7 @@
     <ClCompile Include="fairyDialogue.cpp" />
     <ClCompile Include="GameWorld.cpp" />
     <ClCompile Include="better-dialogue.cpp" />
-    <ClCompile Include="consequences.cpp" />
+    <ClCompile Include="hareDialogue.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Location.cpp" />
     <ClCompile Include="marbleBust.cpp" />
@@ -151,6 +151,7 @@
     <ClInclude Include="DialogueNPC.h" />
     <ClInclude Include="fairyDialogue.h" />
     <ClInclude Include="GameWorld.h" />
+    <ClInclude Include="hareDialogue.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Location.h" />
     <ClInclude Include="marbleBust.h" />

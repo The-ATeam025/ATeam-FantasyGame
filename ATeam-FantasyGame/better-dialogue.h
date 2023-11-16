@@ -36,6 +36,8 @@ public:
 	DialogueTree();
 	void init_fairy(Player& player); //start fairy dialogue
 	void init_cat(Player& player); //start cat dialogue
+	void init_hare(Player& player); //start hare dialogue
+
 	void destroyTree(); //saves memory be deleting all nodes 
 	int performDialogue(Player& player, string errorMessage);
 	int consequences(int code, Player& player);

@@ -1,7 +1,7 @@
 #include "GameWorld.h"
 
 //Constructor
-GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr) {}
+GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr), swamp(nullptr) {}
 
 //Deconstructor
 GameWorld::~GameWorld() {
@@ -30,6 +30,8 @@ void GameWorld::init(Player& player) {
         "In the armory, all that remains is a lonely chest. The nearby shelves are bare, and must have already been looted by someone or something.");
     outside = new Location("Outside",
         "An untamed, enigmatic forest lies ahead, teeming with otherwordly magic and energy you have never experienced.");
+         swamp = new Location("Swamp",
+        "The Culra Swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Light filters through the canopy, casting shifting shadows across the landscape.");
 
     // Create an item
     // "Name", "Description", "Equipment Slot - If none, leave as null"
@@ -37,6 +39,7 @@ void GameWorld::init(Player& player) {
     Item* celticCross = new Item("Celtic Cross", "An ornate, ancient cross symbolizing Celtic heritage and spirituality.", "hands");
     Item* sword = new Item("Sword", "A sharp and sturdy sword for combat.", "hands");
     Item* helmet = new Item("Helmet", "A protective helmet for your head.", "head");
+    Item* carrot = new Item("carrot", "Normal looking carrot","hands");
 
 
     // Create room Objects
@@ -48,11 +51,14 @@ void GameWorld::init(Player& player) {
         "Its skin is as red as fresh blood, and its eyes gleam with sinister intent. Dressed in tattered rags, it carries an aura of malevolence.");
     NPC* fairies = new NPC("Fairies",
         "Winged humanoid figures seated at a table, their radiant wings shimmering in the dim candlelight, laughing in hushed tones. Disturbingly enough, you notice their unnatural amount of sharp teeth.");
+    NPC* oneEyedHare = new NPC("One Eyed Hare",
+        "The one-eyed hare, with its silvery coat, moves gracefully through the forest, its solitary emerald eye gleaming with a mysterious wisdom.");
 
 
     // Add all NPCs to the npcs list
     npcs.push_back(redCap);
     npcs.push_back(fairies);
+    npcs.push_back(oneEyedHare);
 
     // Add all objects to the objects list
     objects.push_back(armoryChest);
@@ -61,6 +67,7 @@ void GameWorld::init(Player& player) {
     // Initalize Dialogues
     DialogueNPC* DialogueRedCap = new redCapDialogue();
     DialogueNPC* Dialoguefairies = new fairyDialogue();
+    DialogueNPC* DialogueOneEyedHare = new hareDialogue();
 
     // Add items/Dialogue/location to NPC/Object
     // Redcap
@@ -80,6 +87,10 @@ void GameWorld::init(Player& player) {
     // MarbleBust
     MarbleBust->setLocation(greatHall);
 
+    // One Eyed Hare
+    oneEyedHare->setLocation(swamp);
+    oneEyedHare->setDialogue(DialogueOneEyedHare);
+
     // Connect the locations
     courtyard->addConnectedLocation(greatHall);
 
@@ -93,13 +104,21 @@ void GameWorld::init(Player& player) {
 
     banquetHall->addConnectedLocation(greatHall);
     banquetHall->addConnectedLocation(redCapDungeon);
+    //test: testing: banquetHall->addConnectedLocation(outside);
+
 
     outside->addConnectedLocation(greatHall);
+    outside->addConnectedLocation(swamp);
 
-    // Add items to locations
+    swamp->addConnectedLocation(outside);
+
+    // Add pre-existing items to locations
 
     // Great Hall
     greatHall->addItem(celticCross);
+
+    //Outside
+    outside->addItem(carrot);
 
     // Set the player's initial location
     player.walkToLocation(courtyard);
@@ -110,6 +129,8 @@ Location* GameWorld::getGreatHall() { return greatHall; }
 Location* GameWorld::getRedCapDungeon() { return redCapDungeon; }
 Location* GameWorld::getBanquetHall() { return banquetHall; }
 Location* GameWorld::getOutside() { return outside; }
+Location* GameWorld::getSwamp() { return swamp; }
+
 
 
 // Add's NPC's to the GameWorld instance
