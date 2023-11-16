@@ -123,7 +123,7 @@ void DialogueTree::init_cat(Player& player) //set up tree with dialogue, make th
 	performDialogue(player, message);
 }
 
-void DialogueTree::init_hare() //set up tree with dialogue, make this one virtual?
+void DialogueTree::init_hare(Player& player) //set up tree with dialogue, make this one virtual?
 {
 	string message = "Hare: Sorry, what did you say?"; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
@@ -177,7 +177,7 @@ void DialogueTree::init_hare() //set up tree with dialogue, make this one virtua
 	dialogueNodes.push_back(node6);
 
 
-	performDialogue(message);
+	performDialogue(player, message);
 }
 
 void DialogueTree::destroyTree()
