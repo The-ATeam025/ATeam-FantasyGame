@@ -302,7 +302,7 @@ int DialogueTree::consequences(int code, Player& player)
 			}
 			else
 			{
-				cout << "Hare: That's correct. For your reward, I'll give you a little information" << endl;
+				cout << "Hare: That's correct. For your reward, I'll give you a little information." << endl;
 				cout << "Rathad! If you want to leave the underworld, you will need to speak to Aine, the most beautiful goddess there is." << endl;
 				cout << "She will help you get out of here. While you're there, mind asking her on a date for me? I get really shy around her." << endl << endl;
 				return code;
