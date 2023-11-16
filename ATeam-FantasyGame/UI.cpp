@@ -442,7 +442,7 @@ void UI::interactWith(Player& player, GameWorld& world) {
             DialogueNPC* dialogue = npc->getDialogue();
             dialogue->startDialogue(player);
 
-            if (dialogue->isNPCDefeated()) {
+            if (dialogue->isNPCDefeated()==true) {
                 dialogue->defeatedDialogue();
                 Item* item = npc->dropItem();
                 currentLocation->addItem(item);
