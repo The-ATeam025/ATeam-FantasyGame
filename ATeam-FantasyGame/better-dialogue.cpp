@@ -4,6 +4,7 @@
 //both files below are used for riddle answers, making sure there is no case sensitivity
 #include <algorithm> // for std::transform
 #include <cctype>    // for ::tolower
+#include <limits> // The <limits> header is included to allow us to use std::numeric_limits. This is necessary for the std::cin.ignore line, to ensure we clear out the entire input buffer.
 
 using namespace std;
 
@@ -277,7 +278,7 @@ int DialogueTree::consequences(int code, Player& player)
 		cout << "When I'm low, I hide as if shy.\nWhat am I ?" << endl;
 		cout << endl;
 
-		// Clear any residual newline characters from the buffer
+		// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 		for (int i = 2; i >= 0; i--)
@@ -285,8 +286,9 @@ int DialogueTree::consequences(int code, Player& player)
 			cout << "Answer wisely. If you do not answer, you could miss out on important information! " << endl;
 			cout << endl;
 
-			std::getline(std::cin, answer); //reads the whole line of input, including spaces, until it encounters a newline character.
 
+			std::getline(std::cin, answer); //reads the whole line of input, including spaces, until it encounters a newline character.
+			
 
 			//code to accept the user answer and transform answer into all lowercase, no matter how it is written.
 			std::string answerLowerCase = answer; // Make a copy of answer
