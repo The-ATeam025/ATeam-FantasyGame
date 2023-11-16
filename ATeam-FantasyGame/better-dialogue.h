@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include "Player.h"
 using namespace std;
 
 class DialogueNode;
@@ -33,13 +34,13 @@ class DialogueTree
 public:
 	int ending;
 	DialogueTree();
-	void init_fairy(); //start fairy dialogue
-	void init_cat(); //start cat dialogue
-	void init_hare(); //start hare dialogue
+	void init_fairy(Player& player); //start fairy dialogue
+	void init_cat(Player& player); //start cat dialogue
+	void init_hare(Player& player); //start hare dialogue
 
 	void destroyTree(); //saves memory be deleting all nodes 
-	int performDialogue(string errorMessage);
-	int consequences_all_creatures(int code);
+	int performDialogue(Player& player, string errorMessage);
+	int consequences(int code, Player& player);
 
 
 

@@ -7,6 +7,7 @@
 #include "redCapDialogue.h"
 #include "fairyDialogue.h"
 #include "ArmoryChest.h"
+#include "marbleBust.h"
 #include "hareDialogue.h"
 #include <list>
 #include <vector>
@@ -27,9 +28,11 @@ private:
     Location* swamp;
     std::list<NPC*> npcs;
     std::list<Objects*> objects;
+    std::list<Location*> outsideLocations;
 
 public:
     GameWorld();
+    ~GameWorld();
 
     void init(Player& player);
 
@@ -47,6 +50,5 @@ public:
     // Declarations for managing objects
     void addObject(Objects* object);
     std::list<Objects*> getObjectsInLocation(const Location* location);
-
 };
 

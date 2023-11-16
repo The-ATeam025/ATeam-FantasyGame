@@ -26,7 +26,7 @@ DialogueTree::DialogueTree() //constructor
 
 }
 
-void DialogueTree::init_fairy() //set up tree with dialogue, make this one virtual?
+void DialogueTree::init_fairy(Player& player) //set up tree with dialogue, make this one virtual?
 {
 	string message = "It's not very polite to mumble. "; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
@@ -62,10 +62,10 @@ void DialogueTree::init_fairy() //set up tree with dialogue, make this one virtu
 	dialogueNodes.push_back(node3);
 
 
-	performDialogue(message);
+	performDialogue(player, message);
 }
 
-void DialogueTree::init_cat() //set up tree with dialogue, make this one virtual?
+void DialogueTree::init_cat(Player& player) //set up tree with dialogue, make this one virtual?
 {
 	string message = "Cat got your tongue? "; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
@@ -120,7 +120,7 @@ void DialogueTree::init_cat() //set up tree with dialogue, make this one virtual
 	dialogueNodes.push_back(node6);
 
 
-	performDialogue(message); 
+	performDialogue(player, message);
 }
 
 void DialogueTree::init_hare() //set up tree with dialogue, make this one virtual?
@@ -189,20 +189,17 @@ void DialogueTree::destroyTree()
 	dialogueNodes.clear();
 }
 
-int DialogueTree::consequences_all_creatures(int code)
+int DialogueTree::consequences(int code, Player& player)
 {
 	string answer;
 	switch (code) {
 		//Consequences for fairy: it eats you because you decline a riddle
 	case 0:
-		cout << "The fairy shakes its head in dissapointment. 'I hate rude people.', it says. It eats you whole." << endl;
-		cout << endl;
-		system("pause");
-		cout << "Game will now close" << endl;
-		cout << endl;
-		exit(0);
-		
-		break;
+		system("CLS");
+		player.setShouldRestartGame(true);
+		cout << "The fairy shakes its head in disappointment. 'I hate rude people.', it says. It eats you whole" << endl;
+
+		return code;
 	case 1:
 
 		cout << "Fairy: You were nice, so you get an easy riddle. Your answer will be one word. Still, you only have three tries." << endl;
@@ -226,14 +223,11 @@ int DialogueTree::consequences_all_creatures(int code)
 				return code;
 			}
 		}
-		cout << endl;
+		system("CLS");
+		player.setShouldRestartGame(true);
 		cout << "You have messed up the riddle. The fairies keep you imprisoned forever." << endl;
-		system("pause");
-		cout << "Game will now close" << endl;
-		cout << endl;
-		exit(0);
-		//code = 0;
 
+		return code;
 
 		break;
 	case 2:
@@ -258,13 +252,9 @@ int DialogueTree::consequences_all_creatures(int code)
 				return code;
 			}
 		}
-		cout << endl;
+		system("CLS");
+		player.setShouldRestartGame(true);
 		cout << "You have messed up the riddle. The fairies keep you imprisoned forever." << endl;
-		system("pause");
-		cout << "Game will now close" << endl;
-		cout << endl;
-		exit(0);
-		//code = 0;
 
 		break;
 	case 3:
@@ -325,7 +315,7 @@ int DialogueTree::consequences_all_creatures(int code)
 	};
 	return code;
 }
-int DialogueTree::performDialogue(string message)
+int DialogueTree::performDialogue(Player& player, string message)
 {
 	string errorMessage = message;
 
@@ -361,7 +351,7 @@ int DialogueTree::performDialogue(string message)
 		{
 			//cout << "reee";
 			int code= currentNode ->dialogueOptions[input].returnCode;
-			consequences_all_creatures(code);
+			consequences(code, player);
 			return code;
 		}
 		currentNode = currentNode->dialogueOptions[input].nextNode;

@@ -33,7 +33,7 @@ int main() {
     DialogueTree catConvo;
 
     // Call the CatIntro function to continue the story 
-    //catConvo.init_cat();
+    catConvo.init_cat(player);
 
     // Prompt user to continue
     system("pause");
@@ -41,12 +41,14 @@ int main() {
     // Clear the screen
     system("CLS");
 
-    // Game loop
-
+    // Flag to control the game loop
+    bool quitGame = false;
     UI::displayCurrentLocation(player);
-    while (true) {
+    // Game loop
+    while (!quitGame) {
         // Display the current location and menu
         UI::displayMenu();
+
         // Handle player input
         int choice;
         while (!(cin >> choice) || cin.peek() != '\n') {
@@ -55,8 +57,9 @@ int main() {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             system("CLS");
             cout << "Enter a non-spaced, numeric value." << endl;
-            UI::displayMenu();
+        
         }
+
         switch (choice) {
         case 1:
             UI::movePlayer(player);
@@ -64,7 +67,7 @@ int main() {
         case 2:
             UI::lookAround(player.getCurrentLocation(), gameWorld); //Change this so it also shows Npcs in the room
             break;
-        case 3: 
+        case 3:
             UI::interactWith(player, gameWorld);
             break;
         case 4:
@@ -78,15 +81,48 @@ int main() {
             UI::equipmentMenu(player);
             break;
         default:
-            system("CLS");
             cout << "Invalid choice. Please select a valid option." << endl;
             // FIXED INPUT LOOPING with cin.clear() and cin.ignore after every invalid input
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             break;
         }
-    }
 
+        // Check if a game-ending condition occurred
+        if (player.getShouldRestartGame() == true) {
+            int restartChoice;
+            cout << endl << "You have been doomed to stay in this dimension forever." << endl;
+            cout << "Would you like to restart the game (after meeting the cat) or quit?" << endl;
+            cout << "1. Restart" << endl;
+            cout << "2. Quit" << endl;
+
+            while (!(cin >> restartChoice) || restartChoice < 1 || restartChoice > 2) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid choice. Please enter 1 to restart or 2 to quit." << endl << endl;
+            }
+
+            if (restartChoice == 1) {
+                system("CLS");
+                player.setShouldRestartGame(false); // Resets the shouldRestartGame check to false;
+                player.clearInventoryAndEquipment(); // Clears the players inventory and slots
+
+                // Restart the game by recreating the game world
+                gameWorld.~GameWorld(); // Destruct the current game world
+                new (&gameWorld) GameWorld(); // Recreate a new game world
+                gameWorld.init(player); // Reinitalize the gameWorld
+
+                UI::displayCurrentLocation(player); // Redisplays the current location
+            }
+            else {
+                system("CLS");
+                cout << "The Otherworld claims another soul. Farewell" << endl;
+                
+                // Quit the game
+                quitGame = true;
+            }
+        }
+    }
 
     return 0;
 }

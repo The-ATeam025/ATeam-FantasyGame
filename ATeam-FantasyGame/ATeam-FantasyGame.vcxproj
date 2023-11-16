@@ -136,6 +136,7 @@
     <ClCompile Include="hareDialogue.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Location.cpp" />
+    <ClCompile Include="marbleBust.cpp" />
     <ClCompile Include="Objects.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="NPC.cpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="hareDialogue.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Location.h" />
+    <ClInclude Include="marbleBust.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="Objects.h" />
     <ClInclude Include="Player.h" />

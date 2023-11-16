@@ -4,7 +4,7 @@
 
 // Constructor
 Player::Player(std::string newName) : name(newName), currentLocation(nullptr), torsoSlot(nullptr),
-headSlot(nullptr), feetSlot(nullptr), weaponSlot(nullptr){}
+headSlot(nullptr), feetSlot(nullptr), weaponSlot(nullptr), shouldRestartGame(false){}
 
 // Changes the Players currentLocation* to a newLocation*
 // To Do: How to validate the argument(example: incorrect values that can lead to crashes)
@@ -27,11 +27,11 @@ void Player::addItemToInventory(Item* item) {
 
 // Removes the item from the inventory if it is present
 void Player::removeItemFromInventory(Item* item) {
-    for (list<Item*>::iterator it = inventory.begin(); it != inventory.end(); ++it) {
-        if (*it == item) {
-            inventory.erase(it);
-            return; // Found and removed the item
-        }
+    auto it = std::find(inventory.begin(), inventory.end(), item);
+
+    if (it != inventory.end()) {
+        // Item found, erase it
+        it = inventory.erase(it);
     }
 }
 
@@ -113,3 +113,24 @@ Item* Player::getWeaponSlot() const {
     return weaponSlot;
 }
 
+// Setter for shouldResetGame
+void Player::setShouldRestartGame(bool newRestartGame) {
+    shouldRestartGame = newRestartGame;
+}
+
+// Clears the players inventory and sets all slots to null
+void Player::clearInventoryAndEquipment() {
+    // Clear the inventory
+    inventory.clear();
+
+    // Set equipment slots to nullptr
+    torsoSlot = nullptr;
+    headSlot = nullptr;
+    feetSlot = nullptr;
+    weaponSlot = nullptr;
+}
+
+// Getter for shouldRestartGame
+bool Player::getShouldRestartGame() {
+    return shouldRestartGame;
+}

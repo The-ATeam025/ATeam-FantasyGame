@@ -3,6 +3,18 @@
 //Constructor
 GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr), swamp(nullptr) {}
 
+//Deconstructor
+GameWorld::~GameWorld() {
+    // Delete the dynamically allocated locations (if they exist)
+    delete courtyard;
+    delete greatHall;
+    delete redCapDungeon;
+    delete banquetHall;
+    delete armory; // Include this line if armory is dynamically allocated
+
+    // You might also need to delete other dynamically allocated resources
+    // related to the game world, like NPCs, items, dialogues, etc.
+}
 
 void GameWorld::init(Player& player) {
     // Initialize locations
@@ -17,8 +29,8 @@ void GameWorld::init(Player& player) {
     armory = new Location("Armory",
         "In the armory, all that remains is a lonely chest. The nearby shelves are bare, and must have already been looted by someone or something.");
     outside = new Location("Outside",
-        "You've unlocked a newfound passage out of the castle. An untamed, enigmatic forest lies ahead, teeming with uncharted adventures and exhilarating challenges waiting to be conquered.");
-    swamp = new Location("Swamp",
+        "An untamed, enigmatic forest lies ahead, teeming with otherwordly magic and energy you have never experienced.");
+         swamp = new Location("Swamp",
         "The Culra Swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Light filters through the canopy, casting shifting shadows across the landscape.");
 
     // Create an item
@@ -32,7 +44,8 @@ void GameWorld::init(Player& player) {
 
     // Create room Objects
     Objects* armoryChest = new ArmoryChest("Chest", "An old chest that has had its surface almost compleltely consumed by moss.");
-   
+    Objects* MarbleBust = new marbleBust("Marble Bust", "A pristine looking statued of a head you do not recognize. It's eyes somehow seem to follow you around.", outside);
+    
     // Create an NPC
     NPC* redCap = new NPC("Redcap", 
         "Its skin is as red as fresh blood, and its eyes gleam with sinister intent. Dressed in tattered rags, it carries an aura of malevolence.");
@@ -49,6 +62,7 @@ void GameWorld::init(Player& player) {
 
     // Add all objects to the objects list
     objects.push_back(armoryChest);
+    objects.push_back(MarbleBust);
 
     // Initalize Dialogues
     DialogueNPC* DialogueRedCap = new redCapDialogue();
@@ -70,6 +84,9 @@ void GameWorld::init(Player& player) {
     armoryChest->addItemToInventory(sword);
     armoryChest->addItemToInventory(helmet);
 
+    // MarbleBust
+    MarbleBust->setLocation(greatHall);
+
     // One Eyed Hare
     oneEyedHare->setLocation(swamp);
     oneEyedHare->setDialogue(DialogueOneEyedHare);
@@ -87,9 +104,8 @@ void GameWorld::init(Player& player) {
 
     banquetHall->addConnectedLocation(greatHall);
     banquetHall->addConnectedLocation(redCapDungeon);
-    banquetHall->addConnectedLocation(outside);
 
-    outside->addConnectedLocation(banquetHall);
+    outside->addConnectedLocation(greatHall);
     outside->addConnectedLocation(swamp);
 
     swamp->addConnectedLocation(outside);
@@ -147,4 +163,3 @@ std::list<Objects*> GameWorld::getObjectsInLocation(const Location* location) {
 
     return locationObjects;
 }
-

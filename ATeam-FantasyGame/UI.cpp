@@ -396,17 +396,16 @@ void UI::equipmentMenu(Player& player) {
 }
 
 
-
+// Function to interact with objects or NPCs in the current room
 void UI::interactWith(Player& player, GameWorld& world) {
     Location* currentLocation = player.getCurrentLocation();
 
     // Get NPCs and objects in the current location from the GameWorld
     list<NPC*> locationNPCs = world.getNPCsInLocation(currentLocation);
     list<Objects*> locationObjects = world.getObjectsInLocation(currentLocation);
-    system("CLS");
 
     if (!locationNPCs.empty() || !locationObjects.empty()) {
-        cout << "Who or what would you like to interact with?:" << endl;
+        cout << endl << "Who or what would you like to interact with?:" << endl;
         int i = 1;
         cout << "0. Do not interact with anyone or anything" << endl;
 
@@ -422,7 +421,6 @@ void UI::interactWith(Player& player, GameWorld& world) {
             ++i;
         }
 
-        cout << "Choose someone or something to interact with" << endl;
         int choice;
 
         while (!(cin >> choice) || cin.peek() != '\n' || choice < 0 || choice > locationNPCs.size() + locationObjects.size()) {
