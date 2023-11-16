@@ -7,45 +7,27 @@ hareDialogue::hareDialogue() : NPCDefeated(false), talkedTo(false) {
 }
 
 void hareDialogue::startDialogue(Player& player) {
-	Item* hands = player.getWeaponSlot();
+    Item* hands = player.getWeaponSlot();
 
-	if (talkedTo == false) {
-		talkedTo = true;
+    // Checks the user's hands to be filled and checks if the user is holding a carrot
+    if (hands && hands->getName() == "carrot") {
+        player.removeItem("hands");
+        player.removeItemFromInventory(hands);
+        talkedTo = true;
+        dtree.init_hare(player);
+    }
+    else {
+        cout << "The hare twitches its nose at you";
+        if (!talkedTo) {
+            cout << ", it looks hungry.";
+        }
+        else {
+            cout << ".";
+        }
+        cout << endl;
+    }
+}
 
-		if (hands) {
-			string handName = hands->getName();
-			if (handName == "carrot") {
-				player.removeItem("hands");
-				player.removeItemFromInventory(hands);
-				dtree.init_hare(player);
-
-			}
-			else
-			{
-				cout << "The hare twitches its nose at you. It looks hungry." << endl;
-			}
-
-		}
-		else
-		{
-			cout << "The hare twitches its nose at you. It looks hungry." << endl;
-		}
-	}
-	else if (talkedTo == true) {
-		if (hands) {
-			string handName = hands->getName();
-			if (handName == "carrot") {
-				player.removeItem("hands");
-				player.removeItemFromInventory(hands);
-				dtree.init_hare(player);
-			}
-			else cout << "The hare twitches its nose at you. It looks hungry" << endl;
-		}
-	}
-		else cout << "The hare twitches its nose at you." << endl;
-
-
-	}
 
 
 void hareDialogue::defeatedDialogue() {

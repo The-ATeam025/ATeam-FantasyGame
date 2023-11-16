@@ -277,6 +277,9 @@ int DialogueTree::consequences(int code, Player& player)
 		cout << "When I'm low, I hide as if shy.\nWhat am I ?" << endl;
 		cout << endl;
 
+		// Clear any residual newline characters from the buffer
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
 		for (int i = 2; i >= 0; i--)
 		{
 			cout << "Answer wisely. If you do not answer, you could miss out on important information! " << endl;
