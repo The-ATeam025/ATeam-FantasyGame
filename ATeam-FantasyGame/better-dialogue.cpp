@@ -281,7 +281,9 @@ int DialogueTree::consequences(int code, Player& player)
 		{
 			cout << "Answer wisely. If you do not answer, you could miss out on important information! " << endl;
 			cout << endl;
-			cin >> answer;
+			//cin >> answer;
+			std::getline(std::cin, answer); //reads the whole line of input, including spaces, until it encounters a newline character.
+
 
 			//code to accept the user answer and transform answer into all lowercase, no matter how it is written.
 			std::string answerLowerCase = answer; // Make a copy of answer
