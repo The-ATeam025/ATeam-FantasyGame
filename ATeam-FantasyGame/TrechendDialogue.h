@@ -24,7 +24,7 @@ public:
     ~TrechendDialogue();
 
     void resetBattle();
-    void promptUserForInstructions();
+    void promptUserForInstructions(Player& player);
     void promptUserWithWords();
     void processUserInput(Player& player);
     void dealDamage();
