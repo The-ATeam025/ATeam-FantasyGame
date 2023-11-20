@@ -24,42 +24,38 @@ void TrechendDialogue::promptUserForInstructions(Player& player) {
     }
 }
 
-void TrechendDialogue::promptUserWithWords() {
-    std::vector<std::string> battleWords = { "Bash", "Attack", "Strike", "Hit", "Swing" };
+std::string TrechendDialogue::promptUserWithWords() {
+    std::vector<std::string> battleWords = { "bash", "attack", "strike", "hit", "swing" };
     std::string promptWord = battleWords[std::rand() % battleWords.size()];
 
-    int randomPosition = std::rand() % 3;
-    std::string positionText;
-    switch (randomPosition) {
-    case 0:
-        positionText = "";
-        break;
-    case 1:
-        positionText = "                            ";
-        break;
-    case 2:
-        positionText = "                                                           ";
-        break;
-    default:
-        break;
-    }
+    int spacesBefore = std::rand() % 40; // Random number of spaces before the word
+    std::string spacePadding(spacesBefore, ' ');
 
-    std::cout << positionText << promptWord << std::endl;
+    std::cout << spacePadding << promptWord << std::endl;
+    return promptWord;
 }
 
 void TrechendDialogue::processUserInput(Player& player) {
+    std::string promptWord = promptUserWithWords();
     Item* weapon = player.getWeaponSlot();
     if (weapon && weapon->getName() == "Sword") {
-        std::cout << std::endl;
         std::string userInput;
+        auto startTime = std::chrono::high_resolution_clock::now();
         std::cin >> userInput;
+        auto endTime = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::seconds>(endTime - startTime).count();
         std::transform(userInput.begin(), userInput.end(), userInput.begin(), ::tolower);
         userInput.erase(std::remove_if(userInput.begin(), userInput.end(), ::isspace), userInput.end());
 
-        if (userInput == "bash" || userInput == "attack" || userInput == "strike" || userInput == "hit" || userInput == "swing") {
+
+        // Adjust the timeout duration as needed
+        constexpr int timeoutDuration = 2;
+
+        if (duration <= timeoutDuration && userInput == promptWord){
             dealDamage();
         }
         else {
+            std::cout << std::endl << "You could not react in time, leaving yourself open to the Vulture's attack." << std::endl;
             hitPlayerRandomly(player);
             return;
         }
@@ -108,7 +104,7 @@ bool TrechendDialogue::checkVictory() {
 }
 
 void TrechendDialogue::defeatTrechend() {
-    std::cout << "The giant monster tumbles to the ground. Lifeless, you chop off one of its heads and it rolls towards you on the ground." << std::endl;
+    std::cout << "The giant monster tumbles to the ground. Needing proof of your victory, you chop off one of its heads. It rolls towards you on the ground." << std::endl << std::endl;
     defeated = true;
     setNPCDefeated(true);
 }
@@ -119,33 +115,35 @@ void TrechendDialogue::hitPlayerRandomly(Player& player) {
     std::cout << std::endl;
     switch (randomHit) {
     case 0:
-        std::cout << "Trechend scratches you. ";
+        std::cout << "The Vulture spreads its claws and swings at you. ";
         break;
     case 1:
-        std::cout << "Trechend bites you. ";
+        std::cout << "The monster rears one of its head back and bites you. ";
         break;
     case 2:
-        std::cout << "Trechend spits venom at you. ";
+        std::cout << "Ellen Trechend spits venom at you. ";
         break;
     case 3:
-        std::cout << "Trechend tail-slaps you. ";
+        std::cout << "The creature tail-slaps you. ";
         break;
     case 4:
-        std::cout << "Trechend roars loudly, stunning you. ";
+        std::cout << "The beast flies in towards you, knocking you to the ground. ";
         break;
     default:
         break;
     }
     std::cout << std::endl;
 
-    int remainingHits = health - 1;
-
-    if (remainingHits <= 0) {
-        std::cout << "You topple to the ground." << std::endl;
+    maxAttempts--;
+  
+    if (maxAttempts <= 1) {
+        std::cout << "You topple to the ground, unable to stand back up." << std::endl;
+        system("pause");
+        system("CLS");
         handleLoss(player);
     }
     else {
-        std::cout << "You can only take " << remainingHits << " more hits." << std::endl;
+        std::cout << "You are badly beaten. The monster is much stronger than you, and you know you cannot be hit by it again." << std::endl;
         system("pause");
     }
 }
@@ -174,7 +172,12 @@ void TrechendDialogue::startDialogue(Player& player) {
         std::cout << "1. Yes" << std::endl;
         std::cout << "2. No" << std::endl << std::endl;
 
-        std::cin >> choice;
+        while (!(cin >> choice) || cin.peek() != '\n' || choice < 0 || choice > 2 ){
+            // Handle non-numeric input or input with spaces
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Enter a non-spaced, numeric value listed." << endl << endl;
+        }
 
         if (choice == 1) {
             break;
@@ -201,7 +204,6 @@ void TrechendDialogue::startDialogue(Player& player) {
             break;
         }
         else {
-            promptUserWithWords();
             processUserInput(player);
         }
     }
@@ -210,7 +212,7 @@ void TrechendDialogue::startDialogue(Player& player) {
 
 void TrechendDialogue::defeatedDialogue() {
     if (isNPCDefeated()) {
-        std::cout << "The defeated Trechend lies motionless on the ground." << std::endl;
+        std::cout << "The defeated monster dissolves into dush, leaving only the severed head on the ground." << std::endl;
     }
 }
 
