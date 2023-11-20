@@ -16,7 +16,6 @@ private:
     int maxAttempts;
     int health;
     bool defeated;
-
     
 
 public:
@@ -25,7 +24,7 @@ public:
 
     void resetBattle();
     void promptUserForInstructions(Player& player);
-    void promptUserWithWords();
+    std::string promptUserWithWords();
     void processUserInput(Player& player);
     void dealDamage();
     bool checkVictory();

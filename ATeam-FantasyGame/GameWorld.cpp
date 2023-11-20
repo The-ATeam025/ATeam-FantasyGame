@@ -135,7 +135,7 @@ void GameWorld::init(Player& player) {
     player.walkToLocation(courtyard);
 
     // Test for battle
-    nest->addItem(sword);
+    player.wearItem(sword, "hands");
     player.walkToLocation(nest);
 }
 
