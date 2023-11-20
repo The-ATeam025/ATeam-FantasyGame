@@ -10,10 +10,9 @@ GameWorld::~GameWorld() {
     delete greatHall;
     delete redCapDungeon;
     delete banquetHall;
-    delete armory; // Include this line if armory is dynamically allocated
-
-    // You might also need to delete other dynamically allocated resources
-    // related to the game world, like NPCs, items, dialogues, etc.
+    delete armory;
+    delete swamp;
+    delete nest;
 }
 
 void GameWorld::init(Player& player) {
@@ -33,7 +32,7 @@ void GameWorld::init(Player& player) {
     swamp = new Location("Swamp",
         "The Culra Swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Light filters through the canopy, casting shifting shadows across the landscape.");
     nest = new Location("Nest",
-        "A colossal tangle of twisted branches and weathered stones.");
+        "A colossal intertwining of twisted branches, their gnarled forms interwoven with moss-covered stones weathered by the passage of countless seasons.\nWithin this labyrinthine structure, ethereal feathers, shimmering like the moonlit night, are delicately entwined");
 
     // Create an item
     // "Name", "Description", "Equipment Slot - If none, leave as none"
@@ -42,7 +41,7 @@ void GameWorld::init(Player& player) {
     Item* sword = new Item("Sword", "A sharp and sturdy sword for combat.", "hands");
     Item* helmet = new Item("Helmet", "A protective helmet for your head.", "head");
     Item* carrot = new Item("carrot", "Normal looking carrot","hands");
-    Item* trechenHead = new Item("Severed Head", "One of Ellén Trechend's three heads.", "none");
+    Item* trechenHead = new Item("Severed Head", "One of Ellen Trechend", "none");
 
 
     // Create room Objects
@@ -56,8 +55,8 @@ void GameWorld::init(Player& player) {
         "Winged humanoid figures seated at a table, their radiant wings shimmering in the dim candlelight, laughing in hushed tones. Disturbingly enough, you notice their unnatural amount of sharp teeth.");
     NPC* oneEyedHare = new NPC("One Eyed Hare",
         "The one-eyed hare, with its silvery coat, moves gracefully through the forest, its solitary emerald eye gleaming with a mysterious wisdom.");
-    NPC* Trechend = new NPC("Ellen Trechend",
-        "A colossal vulture with three heads, its wings, adorned with mystic symbols. It exudes an air of both wisdom and malevolence");
+    NPC* Trechend = new NPC("Mythical Bird",
+        "A colossal vulture with three regal heads catches your gaze. Towering wings, adorned with mystic symbols, stretch majestically, \ncasting shadows that ripple across the landscape.");
 
     // Add all NPCs to the npcs list
     npcs.push_back(redCap);

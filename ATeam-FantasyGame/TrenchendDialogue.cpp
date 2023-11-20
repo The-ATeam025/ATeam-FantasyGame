@@ -7,7 +7,7 @@
 
 
 
-    void resetBattle();  - Reset the battle state
+    void resetBattle(); - Reset the battle state
 
     void promptUserForInstructions(Player& player); - Display initial instructions to the player
 
@@ -15,23 +15,23 @@
 
     void processUserInput(Player& player); - Process the player's input during the battle
 
-    void dealDamage();   - Decrease the monster's health and display corresponding messages
+    void dealDamage();  - Decrease the monster's health and display corresponding messages
 
     bool checkVictory(); - Check if the player has defeated the monster
 
-    void defeatTrechend();      - Display victory message and mark the monster as defeated
+    void defeatTrechend(); - Display victory message and mark the monster as defeated
 
     void hitPlayerRandomly(Player& player); - Simulate a random attack from the monster
 
-    void handleLoss(Player& player);   - Handle the player's loss in the battle
+    void handleLoss(Player& player);  - Handle the player's loss in the battle
 
-    void startDialogue(Player& player) override;   - Start the dialogue and initiate the battle
+    void startDialogue(Player& player) override;  - Start the dialogue and initiate the battle
 
     void defeatedDialogue() override;  - Display dialogue when the monster is defeated
 
 */
 
-TrechendDialogue::TrechendDialogue() : maxHealth(5), maxAttempts(3), health(maxHealth), defeated(false) {
+TrechendDialogue::TrechendDialogue() : maxHealth(6), maxAttempts(3), health(maxHealth), defeated(false) {
     // Sets randomizer based on current time
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
 }
@@ -46,22 +46,23 @@ void TrechendDialogue::resetBattle() {
 
 void TrechendDialogue::promptUserForInstructions(Player& player) {
     system("CLS");
-    std::cout << "You take a deep breath and stare at Ellen Trechend." << std::endl;
-    std::cout << "The creature stares at you. It appears as a mix of a hydra and a vulture, sporting multiple heads, feathers, and wings." << std::endl << std::endl;
+    std::cout << "You take a deep breath and step towards Ellen Trechend." << std::endl;
+    std::cout << "The creature stares at you. All three heads speak in harmony, 'You have brought this upon yourself'" << std::endl << std::endl;
     Item* weapon = player.getWeaponSlot();
     if (weapon && weapon->getName() == "Sword") {
         std::cout << "A word will be appear on the screen, type the word to deal damage to the monster." << std::endl;
-        std::cout << "You have a limited time for each attack. Be quick." << std::endl << std::endl;
+        std::cout << "You have a very limited time for each attack. If you are not quick enough, the creature will be able to strike." << std::endl << std::endl;
         std::cout << "You draw your sword and prepare to battle the beast." << std::endl;
         system("pause");
+        std::cout << std::endl;
     }
 }
 
 std::string TrechendDialogue::promptUserWithWords() {
-    std::vector<std::string> battleWords = { "bash", "attack", "strike", "hit", "swing" };
+    std::vector<std::string> battleWords = { "bash", "attack", "strike", "hit", "swing", "smite", "slam", "beat", "pound", "jab", "chop", "whack", };
     std::string promptWord = battleWords[std::rand() % battleWords.size()];
 
-    int spacesBefore = std::rand() % 40; // Random number of spaces before the word
+    int spacesBefore = std::rand() % 60; // Random number of spaces before the word
     std::string spacePadding(spacesBefore, ' ');
 
     std::cout << spacePadding << promptWord << std::endl;
@@ -85,17 +86,23 @@ void TrechendDialogue::processUserInput(Player& player) {
         userInput.erase(std::remove_if(userInput.begin(), userInput.end(), ::isspace), userInput.end());
 
 
-        // Adjust the timeout duration as needed
-        constexpr int timeoutDuration = 2;
+        // Adjust the timeout duration
+        constexpr int timeoutDuration = 1.5;
 
         if (duration <= timeoutDuration && userInput == promptWord){
             dealDamage();
         }
-        else {
+        else if (duration >= timeoutDuration){
             std::cout << std::endl << "You could not react in time, leaving yourself open to the Vulture's attack." << std::endl;
             hitPlayerRandomly(player);
             return;
         }
+        else {
+            std::cout << std::endl << "You try to hit the beast, but you miss. The bird takes advantage of this mistake." << std::endl;
+            hitPlayerRandomly(player);
+            return;
+        }
+
     }
     else if (weapon && weapon->getName() != "Sword") {
         system("CLS");
@@ -115,8 +122,8 @@ void TrechendDialogue::dealDamage() {
     std::cout << std::endl;
     switch(health) {
     case 0:
-        system("CLS");
-        std::cout << "Ellen Trechend lets out a final, agonizing cry as it succumbs to its injuries.";
+        std::cout << "Ellen Trechend lets out a final, agonizing cry as it succumbs to its injuries.\n";
+        system("pause");
         break;
     case 1:
         std::cout << "Battered and on the brink of defeat, the monstrosity struggles to stay upright.";
@@ -130,6 +137,8 @@ void TrechendDialogue::dealDamage() {
     case 4:
         std::cout << "Ellen Trechend winces in pain, showing the first signs of damage. ";
         break;
+    case 5:
+        std::cout << "The monster shurgs the hit off, barely effected by your efforts. ";
     default:
         break;
     }
@@ -142,7 +151,15 @@ bool TrechendDialogue::checkVictory() {
 }
 
 void TrechendDialogue::defeatTrechend() {
-    std::cout << "The giant monster tumbles to the ground. Needing proof of your victory, you chop off one of its heads. It rolls towards you on the ground." << std::endl << std::endl;
+    system("CLS");
+    std::cout << "As the player stands triumphant, the Ellen Trechend, wounded and on the verge of demise, offers its parting words, the voices of its three heads \nweaving a melancholic tapestry.\n" << std::endl;
+    std::cout << "First Head speaks with a resonance akin to ancient echoes, 'Alas, mortal, the threads of our existence unravel before you.'" << std::endl;
+    std::cout << "The Second Head, its words carrying a solemn weight, adds, 'Ancient understanding, now but whispers lost to the winds.'" << std::endl;
+    std::cout << "The Third Head, its voice a haunting melody, laments, 'Hear the fading echoes of our wings, a disrupted realm in our wake.'" << std::endl << std::endl;
+    std::cout << "First Head continues, 'No desire for conflict, yet destiny's winds have chosen a somber path.'" << std::endl << std::endl;
+    std::cout << "The Second Head, with a tone of fading wisdom, intones, 'Feathers fall, wisdom dissipates with the boundless sky.'" << std::endl;
+    std::cout << "The Third Head, a final plea in its voice, concludes, 'In demise, a reminder: balance falters when harmony's dance is disrupted.'" << std::endl << std::endl;
+    std::cout << "The giant monster tumbles to the ground and its breath halts. Needing proof of your victory, you chop off one of its heads. It rolls towards you." << std::endl << std::endl;
     defeated = true;
     setNPCDefeated(true);
 }
@@ -182,20 +199,23 @@ void TrechendDialogue::hitPlayerRandomly(Player& player) {
     }
     else {
         std::cout << "You are badly beaten. The monster is much stronger than you, and you know you cannot be hit by it again." << std::endl;
+        std::cout << "You dig your feet in, prepared to charge once again." << std::endl;
         system("pause");
+        std::cout << std::endl;
     }
 }
 
 void TrechendDialogue::handleLoss(Player& player) {
-    std::cout << "As you were struck down, your vision fades to black. The last thing you see is a black cat." << std::endl;
-    std::cout << "A magical aura surrounds you, and you find yourself back before Trechend." << std::endl;
+    std::cout << "As your vision fades to black, you see a black cat walking towards you on its hinds legs." << std::endl;
+    std::cout << "The cat whispers to you 'This will not be your final resting place.'" << std::endl << std::endl;
+    std::cout << "A magical aura surrounds you, and you find yourself back before Ellen Trechend. It speaks to you as if you had never met." << std::endl;
 
     system("pause");
     system("CLS");
 
     // Reset the battle and check if the player wants to continue fighting
     resetBattle();
-    defeated = true; // Mark Trechend as defeated to exit the loop in startDialogue
+    defeated = true; // Mark as defeated to exit the loop in startDialogue
     startDialogue(player);
 }
 
@@ -206,9 +226,16 @@ void TrechendDialogue::startDialogue(Player& player) {
     // Prompt the user to decide whether to battle the monster
     int choice;
     do {
-        std::cout << "The large vulture looks at you with all three of its heads. Would you like to fight it?" << std::endl;
-        std::cout << "1. Yes" << std::endl;
-        std::cout << "2. No" << std::endl << std::endl;
+        std::cout << "The creature's three heads turned in unison, eyes gleaming with a blend of wisdom and caution.\n" <<
+            "\nThe first head, its voice resonant and echoing speaks, 'Wanderer, heed the warning of these ancient crags and the skies above."
+            << "\nWe, the Ellen Trechend, guardians of the mystical realms, bear no quarrel with those who tread lightly.\n"
+            << "\nThe second head, its words a solemn echo, continues, 'Yet, venture no closer, for the tapestry of our existence is woven with threads of "
+            << "\nancient understanding. We do not seek conflict, but if you persist, the winds of fate may force our talons to defend the sanctity of these \ncelestial domains.'\n"
+            << "\nThe third head, its voice like a haunting melody, added, 'Turn back, mortal, for within our wings lies both the shadow and the wisdom of eons."
+            << "\nTread not the path of confrontation, for in our unity, we offer this plea: embrace the harmony of coexistence, or awaken the dormant storm \nthat slumbers within our avian hearts.'\n"
+            << std::endl;
+        std::cout << "1. Take a step forward" << std::endl;
+        std::cout << "2. Head its warning" << std::endl << std::endl;
 
         while (!(cin >> choice) || cin.peek() != '\n' || choice < 0 || choice > 2 ){
             // Handle non-numeric input or input with spaces
@@ -222,7 +249,7 @@ void TrechendDialogue::startDialogue(Player& player) {
         }
         else if (choice == 2) {
             system("CLS");
-            std::cout << "You chose not to battle Ellen Trechend right now." << std::endl;
+            std::cout << "You leave the creature to its own devices." << std::endl;
             defeated = true;
             return;
         }
@@ -250,7 +277,7 @@ void TrechendDialogue::startDialogue(Player& player) {
 
 void TrechendDialogue::defeatedDialogue() {
     if (isNPCDefeated()) {
-        std::cout << "The defeated monster dissolves into dush, leaving only the severed head on the ground." << std::endl;
+        std::cout << "The rest of its body fades into ash. The large pile is quickly picked up by the wind, dissapating in thousands of direction." << std::endl;
     }
 }
 
