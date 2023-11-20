@@ -1,6 +1,38 @@
 #include "TrechendDialogue.h"
 
+/*
+    TrechendDialogue();  - Constructor to initialize member variables
+
+    ~TrechendDialogue(); - Destructor (if needed)
+
+
+
+    void resetBattle();  - Reset the battle state
+
+    void promptUserForInstructions(Player& player); - Display initial instructions to the player
+
+    std::string promptUserWithWords(); - Generate and display a word for the player to type
+
+    void processUserInput(Player& player); - Process the player's input during the battle
+
+    void dealDamage();   - Decrease the monster's health and display corresponding messages
+
+    bool checkVictory(); - Check if the player has defeated the monster
+
+    void defeatTrechend();      - Display victory message and mark the monster as defeated
+
+    void hitPlayerRandomly(Player& player); - Simulate a random attack from the monster
+
+    void handleLoss(Player& player);   - Handle the player's loss in the battle
+
+    void startDialogue(Player& player) override;   - Start the dialogue and initiate the battle
+
+    void defeatedDialogue() override;  - Display dialogue when the monster is defeated
+
+*/
+
 TrechendDialogue::TrechendDialogue() : maxHealth(5), maxAttempts(3), health(maxHealth), defeated(false) {
+    // Sets randomizer based on current time
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
 }
 
@@ -8,6 +40,7 @@ TrechendDialogue::~TrechendDialogue() {}
 
 void TrechendDialogue::resetBattle() {
     health = maxHealth;
+    maxAttempts = 3;
     defeated = false;
 }
 
@@ -40,10 +73,14 @@ void TrechendDialogue::processUserInput(Player& player) {
     Item* weapon = player.getWeaponSlot();
     if (weapon && weapon->getName() == "Sword") {
         std::string userInput;
+
+        //Starts time for input
         auto startTime = std::chrono::high_resolution_clock::now();
         std::cin >> userInput;
         auto endTime = std::chrono::high_resolution_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::seconds>(endTime - startTime).count();
+
+        //Converts the input string to lower case and ignores spaces
         std::transform(userInput.begin(), userInput.end(), userInput.begin(), ::tolower);
         userInput.erase(std::remove_if(userInput.begin(), userInput.end(), ::isspace), userInput.end());
 
@@ -61,7 +98,8 @@ void TrechendDialogue::processUserInput(Player& player) {
         }
     }
     else if (weapon && weapon->getName() != "Sword") {
-        std::cout << "You swing your " << weapon->getName() << " at Trechend, but it's not effective." << std::endl;
+        system("CLS");
+        std::cout << "You swing your " << weapon->getName() << " at the creature, but it's not effective." << std::endl;
         handleLoss(player);
     }
     else {
