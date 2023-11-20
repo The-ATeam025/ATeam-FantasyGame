@@ -53,7 +53,8 @@ void GameWorld::init(Player& player) {
         "Winged humanoid figures seated at a table, their radiant wings shimmering in the dim candlelight, laughing in hushed tones. Disturbingly enough, you notice their unnatural amount of sharp teeth.");
     NPC* oneEyedHare = new NPC("One Eyed Hare",
         "The one-eyed hare, with its silvery coat, moves gracefully through the forest, its solitary emerald eye gleaming with a mysterious wisdom.");
-
+    NPC* Trechend = new NPC("Ellén Trechend",
+        "Scary monster");
 
     // Add all NPCs to the npcs list
     npcs.push_back(redCap);
