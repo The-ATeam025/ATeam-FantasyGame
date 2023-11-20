@@ -41,7 +41,7 @@ void GameWorld::init(Player& player) {
     Item* sword = new Item("Sword", "A sharp and sturdy sword for combat.", "hands");
     Item* helmet = new Item("Helmet", "A protective helmet for your head.", "head");
     Item* carrot = new Item("carrot", "Normal looking carrot","hands");
-    Item* trechenHead = new Item("Severed Head", "One of Ellen Trechend", "none");
+    Item* trechenHead = new Item("Severed Head", "One of Ellen Trechend's three heads", "none");
 
 
     // Create room Objects
