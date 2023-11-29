@@ -1,7 +1,7 @@
 #include "GameWorld.h"
 
 //Constructor
-GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr), swamp(nullptr) {}
+GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr), swamp(nullptr), meadow(nullptr) {}
 
 //Deconstructor
 GameWorld::~GameWorld() {
@@ -30,9 +30,9 @@ void GameWorld::init(Player& player) {
         "In the armory, all that remains is a lonely chest. The nearby shelves are bare, and must have already been looted by someone or something.");
     outside = new Location("Outside",
         "An untamed, enigmatic forest lies ahead, teeming with otherwordly magic and energy you have never experienced.");
-         swamp = new Location("Swamp",
+    swamp = new Location("Swamp",
         "The Culra Swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Light filters through the canopy, casting shifting shadows across the landscape.");
-
+    meadow = new Location("Meadow", "After emerging from the swamp, you see a clearing among the trees. This place seems quiet and delightfully boring: you don't see any more talking creatures. You do notice some thick vines hanging from trees.");
     // Create an item
     // "Name", "Description", "Equipment Slot - If none, leave as null"
     Item* rustyKey = new Item("Rusty Key", "A normal looking key, besides the rust covering its surface.", "hands");
@@ -40,6 +40,7 @@ void GameWorld::init(Player& player) {
     Item* sword = new Item("Sword", "A sharp and sturdy sword for combat.", "hands");
     Item* helmet = new Item("Helmet", "A protective helmet for your head.", "head");
     Item* carrot = new Item("carrot", "Normal looking carrot","hands");
+    Item* vine = new Item("vine", "Thick piece of flexible vine a few feet long", "hands");
 
 
     // Create room Objects
@@ -111,6 +112,8 @@ void GameWorld::init(Player& player) {
     outside->addConnectedLocation(swamp);
 
     swamp->addConnectedLocation(outside);
+    swamp->addConnectedLocation(meadow);
+
 
     // Add pre-existing items to locations
 
@@ -119,6 +122,9 @@ void GameWorld::init(Player& player) {
 
     //Outside
     outside->addItem(carrot);
+
+    //Meadow
+    meadow->addItem(vine);
 
     // Set the player's initial location
     player.walkToLocation(courtyard);
@@ -130,6 +136,7 @@ Location* GameWorld::getRedCapDungeon() { return redCapDungeon; }
 Location* GameWorld::getBanquetHall() { return banquetHall; }
 Location* GameWorld::getOutside() { return outside; }
 Location* GameWorld::getSwamp() { return swamp; }
+Location* GameWorld::getMeadow(){ return meadow;  }
 
 
 
