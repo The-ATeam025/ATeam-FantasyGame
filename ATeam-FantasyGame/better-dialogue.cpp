@@ -443,7 +443,7 @@ int DialogueTree::consequences(int code, Player& player)
 
 		} while (answer != "O_o-");
 
-		cout << "Troll: It's a bit odd looking, but it'll do the job." << endl;
+		cout << "Troll: It's a bit odd looking, but it'll get the job done. Not sure why you'd want to, but this should pacify that beastly kelpie." << endl;
 
 		return code;
 		break;
