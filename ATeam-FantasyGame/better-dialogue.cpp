@@ -181,6 +181,63 @@ void DialogueTree::init_hare(Player& player) //set up tree with dialogue, make t
 	performDialogue(player, message);
 }
 
+void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make this one virtual?
+{
+	string message = "Troll: Speak Correctly!"; //custom error message for this character interaction--the warning the player gets if the input is invalid 
+
+	cout << "As you approach the bridge, you see nothing but just mossy wooden planks. Everything is quiet... then suddenly a short hairy creature jumps out from under the bridge. " << endl;
+
+	cout << endl;
+
+	DialogueNode* node0 = new DialogueNode("Hare: That was a good carrot. You're an odd-looking creature. Are you a wingless fairy, or a hornless troll?");
+	DialogueNode* node1 = new DialogueNode("Hare: You're definitely from the boring world if you think I'm odd,");
+	DialogueNode* node2 = new DialogueNode("Hare: Ha! I see you've dealt with the Fae already. They sure love their riddles. ");
+	DialogueNode* node3 = new DialogueNode("Hare: We sure do.No magic over there.What do you people even do for fun, taxes ? ");
+	DialogueNode* node4 = new DialogueNode("Hare: I do love a good battle of wits, but I won't force you to listen to mine. Offer's up, though.");
+	DialogueNode* node5 = new DialogueNode("Hare: I don't care about you, so I don't care what you say. If you tick me off I'll just hop away.");
+	DialogueNode* node6 = new DialogueNode("Hare: You humans are always going on about going home. It's no fun if I just tell you how. I'll give you a hint though.");
+
+
+
+	//Node 0
+	node0->dialogueOptions.push_back(DialogueOption("Yes. I'm a wingless fairy. Obviously. God, more fucking riddles.", 1, node2));
+	node0->dialogueOptions.push_back(DialogueOption("I've never been called odd by a one eyed bunny rabbit before.", 0, node1));
+	dialogueNodes.push_back(node0);
+
+	//Node 1
+	node1->dialogueOptions.push_back(DialogueOption("The boring world? Is that what you call where I'm from?", 2, node3));
+	node1->dialogueOptions.push_back(DialogueOption("You can call my world boring, but at least people there don't offer me riddles threateningly.", 0, node3));
+	dialogueNodes.push_back(node1);
+
+	//Node 2
+	node2->dialogueOptions.push_back(DialogueOption("They really do. They were also sticklers about politeness. Are you like that too? ", 2, node5));
+	node2->dialogueOptions.push_back(DialogueOption("Let me guess, you're going to offer me a riddle too?.", 1, node4));
+	dialogueNodes.push_back(node2);
+
+	//Node 3
+	node3->dialogueOptions.push_back(DialogueOption("I admit, it can get pretty mundane over there, but I do want to go home. ", 2, node6));
+	node3->dialogueOptions.push_back(DialogueOption("Definitely not as many riddles as you guys. I feel like everyone here either talks in riddles, or gives me one!", 1, node4));
+	dialogueNodes.push_back(node3);
+
+	//node 4
+	node4->dialogueOptions.push_back(DialogueOption("I think I'll pass. ", 4, nullptr));
+	node4->dialogueOptions.push_back(DialogueOption("God, might as well. Another one won't hurt, as long as it helps me get home.", 5, nullptr));
+	dialogueNodes.push_back(node4);
+
+	//node 5
+	node5->dialogueOptions.push_back(DialogueOption("That's fair, could you please help me get home? ", 0, node6));
+	node5->dialogueOptions.push_back(DialogueOption("I don't care about you either, but I just want to get back home.", 5, node6));
+	dialogueNodes.push_back(node5);
+
+	//node 6
+	node6->dialogueOptions.push_back(DialogueOption("Not another riddle. I think I'll pass. ", 4, nullptr));
+	node6->dialogueOptions.push_back(DialogueOption("Let me guess, another riddle? I'll take what I can get.", 5, nullptr));
+	dialogueNodes.push_back(node6);
+
+
+	performDialogue(player, message);
+}
+
 void DialogueTree::destroyTree()
 {
 	for (int i = 0; i < dialogueNodes.size(); i++)
