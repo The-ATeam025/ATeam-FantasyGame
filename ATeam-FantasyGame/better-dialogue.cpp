@@ -235,6 +235,10 @@ int DialogueTree::consequences(int code, Player& player)
 		cout << "Fairy: You were nice, so you get an easy riddle. Your answer will be one word. Still, you only have three tries." << endl;
 		cout << "What has hands, but can't hold anything?" << endl;
 		cout << endl;
+
+		// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
 		for (int i = 2; i >= 0; i--)
 		{
 			cout << "What is your answer? Answer wisely, lest you anger the fairies." << endl;
