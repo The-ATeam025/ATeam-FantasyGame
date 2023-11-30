@@ -249,9 +249,23 @@ void DialogueTree::destroyTree()
 
 int DialogueTree::consequences(int code, Player& player)
 {
+	/*
+	* CASE 0: Fairy eats you 
+	* CASE 1: Fairy gives you a hard riddle
+	* CASE 2: Fairy gives you an easy riddle
+	* CASE 3: Cat outro text
+	* CASE 4: Hare does not give you a riddle
+	* CASE 5: Hare gives you a riddle
+	* CASE 6: Troll doesn't tell you how to tie bridle
+	* CASE 7: Troll tells you how to tie bridle from vine
+	*/
+
+
+
+
 	string answer;
 	switch (code) {
-		//Consequences for fairy: it eats you because you decline a riddle
+	
 	case 0:
 		system("CLS");
 		player.setShouldRestartGame(true);
@@ -260,8 +274,8 @@ int DialogueTree::consequences(int code, Player& player)
 		return code;
 	case 1:
 
-		cout << "Fairy: You were nice, so you get an easy riddle. Your answer will be one word. Still, you only have three tries." << endl;
-		cout << "What has hands, but can't hold anything?" << endl;
+		cout << "Insolent mortal! For your lack of manners, you will get a hard riddle and only three attempts to guess it." << endl;
+		cout << "What is both the beginning of eternity and the end of time and space, the beginning of every end and the end of every place?" << endl;
 		cout << endl;
 		for (int i = 2; i >= 0; i--)
 		{
@@ -372,6 +386,66 @@ int DialogueTree::consequences(int code, Player& player)
 		cout << endl;
 		return code;
 
+		break;
+	case 6:
+		cout << "Troll: You want me to show you how to tie a bridle without anything to tie? Get outta here!" << endl;
+		break;
+	case 7: 
+
+		cout << "Troll: First, lay the vine out flat on the ground" << endl;
+		cout << "Hint : What keyboard character looks like a flat piece of rope or string on a ground? The vine is long so enter it twice." << endl;
+
+		do {
+			// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+			getline(cin, answer);
+
+
+			if (answer != "__")
+			{
+				cout << "Not quite!" << endl;
+			}
+
+		} while (rope != "__");
+
+
+		cout << "Troll: Next, tie the left end of the rope into a circle." << endl;
+		cout << "Hint: Make a LARGE circle on the left side, and don’t forget to leave some leftover rope on the right side!" << endl;
+
+		do {
+			// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+			getline(cin, answer);
+
+			if (answer != "O_")
+			{
+				cout << "Not quite!" << endl;
+			}
+
+		} while (answer != "O_");
+
+
+		cout << "Troll: Lastly, tie the right end of the rope into a smaller circle, and leave some vine at the end so you can lead the kelpie. " << endl;
+		cout << "Hint : Add a SMALL circle and a SMALL amount of rope on the right side. " << endl;
+
+		do {
+			// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+			getline(cin, answer);
+
+			if (answer != "O_o-")
+			{
+				cout << "Not quite!" << endl;
+			}
+
+		} while (answer != "O_o-");
+
+		cout << "Troll: It's a bit odd looking, but it'll get the job done. Not sure why you'd want to, but this should pacify that beastly kelpie." << endl;
+
+		return code;
 		break;
 
 	default:
