@@ -1,7 +1,7 @@
 #include "GameWorld.h"
 
 //Constructor
-GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr), swamp(nullptr), nest(nullptr) {}
+GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr), swamp(nullptr), bridge(nullptr) {}
 
 //Deconstructor
 GameWorld::~GameWorld() {
@@ -33,6 +33,8 @@ void GameWorld::init(Player& player) {
         "The Culra Swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Light filters through the canopy, casting shifting shadows across the landscape.");
     nest = new Location("Nest",
         "A colossal intertwining of twisted branches, their gnarled forms interwoven with moss-covered stones weathered by the passage of countless seasons.\nWithin this labyrinthine structure, ethereal feathers, shimmering like the moonlit night, are delicately entwined");
+         bridge = new Location("Bridge",
+        "Whispering Wood Bridge, is an ancient structure of gnarled wood and creeping vines, blending seamlessly into the surrounding forest. Its timeworn planks, though sturdy, creak softly underfoot, adding to the sense of age and mystery. Moss and small flowers grow between the cracks, and the handrails are entwined with ivy, giving the bridge a wild, untamed look.");
 
     // Create an item
     // "Name", "Description", "Equipment Slot - If none, leave as none"
@@ -58,11 +60,14 @@ void GameWorld::init(Player& player) {
     NPC* Trechend = new NPC("Mythical Bird",
         "A colossal vulture with three regal heads catches your gaze. Towering wings, adorned with mystic symbols, stretch majestically, \ncasting shadows that ripple across the landscape.");
     NPC* Goddess = new NPC("Goddess", "Filler");
+    NPC* troll = new NPC("Troll",
+        "The troll's face is craggy and weathered, like an old boulder, with a prominent, crooked nose and deep-set eyes that glint with a grumpy disposition. His frown is almost permanent, etched into his face by countless years of solitude and the irritation of the rare disturbances caused by passersby.");
 
     // Add all NPCs to the npcs list
     npcs.push_back(redCap);
     npcs.push_back(fairies);
     npcs.push_back(oneEyedHare);
+    npcs.push_back(troll);
     npcs.push_back(Trechend);
     npcs.push_back(Goddess);
 
@@ -74,6 +79,7 @@ void GameWorld::init(Player& player) {
     DialogueNPC* DialogueRedCap = new redCapDialogue();
     DialogueNPC* Dialoguefairies = new fairyDialogue();
     DialogueNPC* DialogueOneEyedHare = new hareDialogue();
+    DialogueNPC* Dialoguetroll = new trollDialogue();
     DialogueNPC* DialogueTrechend = new TrechendDialogue();
     DialogueNPC* DialogueGoddess = new GoddessDialogue();
 
@@ -98,6 +104,10 @@ void GameWorld::init(Player& player) {
     // One Eyed Hare
     oneEyedHare->setLocation(swamp);
     oneEyedHare->setDialogue(DialogueOneEyedHare);
+
+    //troll
+    troll->setLocation(bridge);
+ 
 
     // Ellén Trechend
     Trechend->setLocation(nest);
@@ -129,6 +139,9 @@ void GameWorld::init(Player& player) {
     outside->addConnectedLocation(swamp);
 
     swamp->addConnectedLocation(outside);
+    swamp->addConnectedLocation(bridge);
+
+    bridge->addConnectedLocation(swamp);
 
     // Add pre-existing items to locations
 
@@ -153,6 +166,7 @@ Location* GameWorld::getRedCapDungeon() { return redCapDungeon; }
 Location* GameWorld::getBanquetHall() { return banquetHall; }
 Location* GameWorld::getOutside() { return outside; }
 Location* GameWorld::getSwamp() { return swamp; }
+Location* GameWorld::getBridge() { return bridge; }
 
 
 

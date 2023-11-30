@@ -185,53 +185,53 @@ void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make 
 {
 	string message = "Troll: Speak Correctly!"; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
-	cout << "As you approach the bridge, you see nothing but just mossy wooden planks. Everything is quiet... then suddenly a short hairy creature jumps out from under the bridge. " << endl;
+	cout << "As you approach the bridge, you see nothing but just mossy wooden planks. As you cautiously step onto the creaking wooden planks of the bridge, a deep, growling voice erupts from beneath it, stopping you in your tracks. Everything went quiet... then suddenly, a short hairy creature jumps out from under the bridge. " << endl;
 
 	cout << endl;
 
-	DialogueNode* node0 = new DialogueNode("Hare: That was a good carrot. You're an odd-looking creature. Are you a wingless fairy, or a hornless troll?");
-	DialogueNode* node1 = new DialogueNode("Hare: You're definitely from the boring world if you think I'm odd,");
-	DialogueNode* node2 = new DialogueNode("Hare: Ha! I see you've dealt with the Fae already. They sure love their riddles. ");
-	DialogueNode* node3 = new DialogueNode("Hare: We sure do.No magic over there.What do you people even do for fun, taxes ? ");
-	DialogueNode* node4 = new DialogueNode("Hare: I do love a good battle of wits, but I won't force you to listen to mine. Offer's up, though.");
-	DialogueNode* node5 = new DialogueNode("Hare: I don't care about you, so I don't care what you say. If you tick me off I'll just hop away.");
-	DialogueNode* node6 = new DialogueNode("Hare: You humans are always going on about going home. It's no fun if I just tell you how. I'll give you a hint though.");
+	DialogueNode* node0 = new DialogueNode("Troll: Who ventures upon my guarded bridge without my sanction ? This is no place for the unwatched and unguarded! Declare your purpose, lest you wander into peril under my watch!");
+	DialogueNode* node1 = new DialogueNode("Troll: Ah, a polite one! Trespass is not taken lightly here, but your manners show honor. Tell me, why does your journey bring you to this bridge?");
+	DialogueNode* node2 = new DialogueNode("Troll: A sacred site, you say? The lands beyond this bridge hold many ancient secrets and hallowed grounds. Few are those who tread such paths with pure intent. ");
+	DialogueNode* node3 = new DialogueNode("Troll: Ah.. I see. The only way to cross is by saying the magic word! ");
+	DialogueNode* node4 = new DialogueNode("Troll: In a rush, eh?");
+	DialogueNode* node5 = new DialogueNode("Troll: I hope they are.");
+	DialogueNode* node6 = new DialogueNode("Troll: If you tell me the magic word.. I will let you pass.");
 
 
 
 	//Node 0
-	node0->dialogueOptions.push_back(DialogueOption("Yes. I'm a wingless fairy. Obviously. God, more fucking riddles.", 1, node2));
-	node0->dialogueOptions.push_back(DialogueOption("I've never been called odd by a one eyed bunny rabbit before.", 0, node1));
+	node0->dialogueOptions.push_back(DialogueOption("My path leads me to a sacred site known to lie beyond this bridge.", 1, node2));
+	node0->dialogueOptions.push_back(DialogueOption("I'm so sorry. I didn't mean to trespass.", 0, node1));
 	dialogueNodes.push_back(node0);
 
 	//Node 1
-	node1->dialogueOptions.push_back(DialogueOption("The boring world? Is that what you call where I'm from?", 2, node3));
-	node1->dialogueOptions.push_back(DialogueOption("You can call my world boring, but at least people there don't offer me riddles threateningly.", 0, node3));
+	node1->dialogueOptions.push_back(DialogueOption("I am looking for Aine.", 2, node3));
+	node1->dialogueOptions.push_back(DialogueOption("Seems very serious. I am on a journey to get back home.", 0, node3));
 	dialogueNodes.push_back(node1);
 
 	//Node 2
-	node2->dialogueOptions.push_back(DialogueOption("They really do. They were also sticklers about politeness. Are you like that too? ", 2, node5));
-	node2->dialogueOptions.push_back(DialogueOption("Let me guess, you're going to offer me a riddle too?.", 1, node4));
+	node2->dialogueOptions.push_back(DialogueOption("I assure you, my intentions are pure and my respect for the sacred is profound. ", 2, node5));
+	node2->dialogueOptions.push_back(DialogueOption("Can you just let me pass through? I'm kind of in a hurry.", 1, node4));
 	dialogueNodes.push_back(node2);
 
 	//Node 3
-	node3->dialogueOptions.push_back(DialogueOption("I admit, it can get pretty mundane over there, but I do want to go home. ", 2, node6));
-	node3->dialogueOptions.push_back(DialogueOption("Definitely not as many riddles as you guys. I feel like everyone here either talks in riddles, or gives me one!", 1, node4));
+	node3->dialogueOptions.push_back(DialogueOption("Magic word? I don't have time for this! ", 2, node6));
+	node3->dialogueOptions.push_back(DialogueOption("At least it's not a riddle.", 1, node4));
 	dialogueNodes.push_back(node3);
 
 	//node 4
-	node4->dialogueOptions.push_back(DialogueOption("I think I'll pass. ", 4, nullptr));
+	node4->dialogueOptions.push_back(DialogueOption("Nevermind.. I'll come back with the magic word. ", 4, nullptr));
 	node4->dialogueOptions.push_back(DialogueOption("God, might as well. Another one won't hurt, as long as it helps me get home.", 5, nullptr));
 	dialogueNodes.push_back(node4);
 
 	//node 5
-	node5->dialogueOptions.push_back(DialogueOption("That's fair, could you please help me get home? ", 0, node6));
+	node5->dialogueOptions.push_back(DialogueOption("Can you give me a hint? ", 0, node6));
 	node5->dialogueOptions.push_back(DialogueOption("I don't care about you either, but I just want to get back home.", 5, node6));
 	dialogueNodes.push_back(node5);
 
 	//node 6
-	node6->dialogueOptions.push_back(DialogueOption("Not another riddle. I think I'll pass. ", 4, nullptr));
-	node6->dialogueOptions.push_back(DialogueOption("Let me guess, another riddle? I'll take what I can get.", 5, nullptr));
+	node6->dialogueOptions.push_back(DialogueOption("Sorry... I don't know the magic word. I'll come back later.", 4, nullptr));
+	node6->dialogueOptions.push_back(DialogueOption("I think I know it.", 5, nullptr));
 	dialogueNodes.push_back(node6);
 
 
