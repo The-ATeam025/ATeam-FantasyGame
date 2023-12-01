@@ -63,7 +63,7 @@
     <ClCompile Include="marbleBust.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TrenchendDialogue.cpp">
+    <ClCompile Include="goddessDialogue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -119,7 +119,7 @@
     <ClInclude Include="marbleBust.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TrechendDialogue.h">
+    <ClInclude Include="GoddessDialogue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
