@@ -60,6 +60,12 @@
     <ClCompile Include="hareDialogue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="marbleBust.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="goddessDialogue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Backstory.h">
@@ -108,6 +114,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="hareDialogue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="marbleBust.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GoddessDialogue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
