@@ -194,7 +194,7 @@ void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make 
 	DialogueNode* node2 = new DialogueNode("Troll: A sacred site, you say? The lands beyond this bridge hold many ancient secrets and hallowed grounds. Few are those who tread such paths with pure intent. ");
 	DialogueNode* node3 = new DialogueNode("Troll: Ah.. I see. The only way to cross is by saying the magic word! ");
 	DialogueNode* node4 = new DialogueNode("Troll: In a rush, eh?");
-	DialogueNode* node5 = new DialogueNode("Troll: I hope they are.");
+	DialogueNode* node5 = new DialogueNode("Troll: I hope they are. You only have a few chances..");
 	DialogueNode* node6 = new DialogueNode("Troll: If you tell me the magic word.. I will let you pass.");
 
 
@@ -221,12 +221,12 @@ void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make 
 
 	//node 4
 	node4->dialogueOptions.push_back(DialogueOption("Nevermind.. I'll come back with the magic word. ", 4, nullptr));
-	node4->dialogueOptions.push_back(DialogueOption("God, might as well. Another one won't hurt, as long as it helps me get home.", 5, nullptr));
+	node4->dialogueOptions.push_back(DialogueOption("I think I know it!", 5, nullptr));
 	dialogueNodes.push_back(node4);
 
 	//node 5
 	node5->dialogueOptions.push_back(DialogueOption("Can you give me a hint? ", 0, node6));
-	node5->dialogueOptions.push_back(DialogueOption("I don't care about you either, but I just want to get back home.", 5, node6));
+	node5->dialogueOptions.push_back(DialogueOption("It's worth a shot.", 5, node6));
 	dialogueNodes.push_back(node5);
 
 	//node 6
