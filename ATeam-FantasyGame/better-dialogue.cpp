@@ -238,6 +238,39 @@ void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make 
 	performDialogue(player, message);
 }
 
+void DialogueTree::init_goddess(Player& player) //set up tree with dialogue, make this one virtual?
+{
+	string message = "Its good to finally meet you."; //custom error message for this character interaction--the warning the player gets if the input is invalid 
+
+	cout << "You see a beautiful women in front of you wearing a silky garb with a cape";
+	cout << "She gestures for you to come closer";
+
+	DialogueNode* node0 = new DialogueNode("I have been watching your progress. I know you've been wanting to go home.");
+	DialogueNode* node1 = new DialogueNode("Never you mind how, do you want to go home or not?");
+	DialogueNode* node2 = new DialogueNode("I can help you get home, but first, I need you to do something for me.");
+	DialogueNode* node3 = new DialogueNode("Theres been a creature causing trouble for me. Bring me back its tooth as proof its been dealth with and we'll talk about getting you home.");
+
+	//Node 0
+	node0->dialogueOptions.push_back(DialogueOption("How have you been watching me?", 1, node1));
+	node0->dialogueOptions.push_back(DialogueOption("Yes I want to go home, can you help?", 1, node2));
+	dialogueNodes.push_back(node0);
+
+	//Node 1
+	node1->dialogueOptions.push_back(DialogueOption("Yes I would like to go home", 1, node2));
+	node1->dialogueOptions.push_back(DialogueOption("If you know how to get home just tell me please", 1, node2));
+	dialogueNodes.push_back(node1);
+
+	//Node 2
+	node2->dialogueOptions.push_back(DialogueOption("What is it you need?", 1, node3));
+	node2->dialogueOptions.push_back(DialogueOption("Another task? As long as you can help me get home, I'll do it.", 1, node3));
+	dialogueNodes.push_back(node2);
+
+	//Node 3
+	node3->dialogueOptions.push_back(DialogueOption("Consider it done", 1, nullptr));
+	node3->dialogueOptions.push_back(DialogueOption("I'll do this if it helps me get back home.", 1, nullptr));
+	dialogueNodes.push_back(node3);
+}
+	
 void DialogueTree::destroyTree()
 {
 	for (int i = 0; i < dialogueNodes.size(); i++)
