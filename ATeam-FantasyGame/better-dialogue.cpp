@@ -238,12 +238,13 @@ void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make 
 	performDialogue(player, message);
 }
 
-void DialogueTree::init_goddess(Player& player) //set up tree with dialogue, make this one virtual?
+void DialogueTree::init_goddess_1(Player& player) //set up tree with dialogue, make this one virtual?
 {
 	string message = "Its good to finally meet you."; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
 	cout << "You see a beautiful women in front of you wearing a silky garb with a cape";
 	cout << "She gestures for you to come closer";
+	cout << endl;
 
 	DialogueNode* node0 = new DialogueNode("I have been watching your progress. I know you've been wanting to go home.");
 	DialogueNode* node1 = new DialogueNode("Never you mind how, do you want to go home or not?");
@@ -269,8 +270,39 @@ void DialogueTree::init_goddess(Player& player) //set up tree with dialogue, mak
 	node3->dialogueOptions.push_back(DialogueOption("Consider it done", 1, nullptr));
 	node3->dialogueOptions.push_back(DialogueOption("I'll do this if it helps me get back home.", 1, nullptr));
 	dialogueNodes.push_back(node3);
+
+	performDialogue(player, message);
 }
-	
+void DialogueTree::init_goddess_2(Player& player) //set up tree with dialogue, make this one virtual?
+{
+	string message = "Its good to see you again."; //custom error message for this character interaction--the warning the player gets if the input is invalid 
+
+	cout << "You see a beautiful women in front of you wearing a silky garb with a cape";
+	cout << "She gestures for you to come closer";
+	cout << endl;
+
+	DialogueNode* node0 = new DialogueNode("Very good, I see you've taken care of the creature like I asked");
+	DialogueNode* node1 = new DialogueNode("Thank you very much, now I can do something for you");
+	DialogueNode* node2 = new DialogueNode("I can open a way for you to get back now");
+
+	//Node 0
+	node0->dialogueOptions.push_back(DialogueOption("Yes I have completed your task", 1, node1));
+	node0->dialogueOptions.push_back(DialogueOption("You said you could get me home?", 1, node2));
+	dialogueNodes.push_back(node0);
+
+	//Node 1
+	node1->dialogueOptions.push_back(DialogueOption("Yes can help me get back home?", 1, node2));
+	node1->dialogueOptions.push_back(DialogueOption("Finally, get me out of here please", 1, node2));
+	dialogueNodes.push_back(node1);
+
+	//Node 2
+	node2->dialogueOptions.push_back(DialogueOption("Please do", 1, nullptr));
+	node2->dialogueOptions.push_back(DialogueOption("Hurry up, I just want to get back home", 1, nullptr));
+	dialogueNodes.push_back(node2);
+
+	performDialogue(player, message);
+}
+
 void DialogueTree::destroyTree()
 {
 	for (int i = 0; i < dialogueNodes.size(); i++)
