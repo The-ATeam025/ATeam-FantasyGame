@@ -9,6 +9,7 @@
 #include "ArmoryChest.h"
 #include "marbleBust.h"
 #include "hareDialogue.h"
+#include "trollDialogue.h"
 #include "TrechendDialogue.h"
 #include "GoddessDialogue.h"
 #include <list>
@@ -28,6 +29,7 @@ private:
     Location* armory;
     Location* outside;
     Location* swamp;
+    Location* bridge;
     Location* nest;
     std::list<NPC*> npcs;
     std::list<Objects*> objects;
@@ -45,6 +47,7 @@ public:
     Location* getBanquetHall();
     Location* getOutside();
     Location* getSwamp();
+    Location* getBridge();
     Location* getNest();
 
     // Declarations for managing NPCs
