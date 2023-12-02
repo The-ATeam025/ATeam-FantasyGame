@@ -56,7 +56,7 @@ void GameWorld::init(Player& player) {
     NPC* oneEyedHare = new NPC("One Eyed Hare",
         "The one-eyed hare, with its silvery coat, moves gracefully through the forest, its solitary emerald eye gleaming with a mysterious wisdom.");
     NPC* troll = new NPC("Troll",
-        "The troll's face is craggy and weathered, like an old boulder, with a prominent, crooked nose and deep-set eyes that glint with a grumpy disposition. His frown is almost permanent, etched into his face by countless years of solitude and the irritation of the rare disturbances caused by passersby.");
+        "Sitting on an old tree stump. The troll's face is craggy and weathered, like an old boulder, with a crooked nose and deep-set eyes. His frown is almost permanent, etched into his face by countless years of solitude and the irritation of the rare disturbances caused by passersby.");
 
     // Add all NPCs to the npcs list
     npcs.push_back(redCap);

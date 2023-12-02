@@ -10,7 +10,7 @@ void trollDialogue::startDialogue(Player& player) {
 	string magicWord = " ";
 
 	if (talkedTo == false) {
-		cout << "As you cautiously step onto the creaking wooden planks of the bridge, a deep, growling voice erupts from across it, stopping you in your tracks. Then suddenly, the short hairy creature runs from across the bridge, almost scaring you to death. " << endl;
+		cout << "As you cautiously step onto the creaking wooden planks of the bridge, a deep, growling voice erupts, stopping you in your tracks. Then suddenly, the short hairy creature walks towards you, almost scaring you to death. " << endl;
 		cout << "Troll: WHAT'S THE MAGIC WORD?!?!" << endl;
 	}
 
