@@ -181,6 +181,63 @@ void DialogueTree::init_hare(Player& player) //set up tree with dialogue, make t
 	performDialogue(player, message);
 }
 
+void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make this one virtual?
+{
+	string message = "Troll: Speak Correctly!"; //custom error message for this character interaction--the warning the player gets if the input is invalid 
+
+
+	cout << endl;
+
+	DialogueNode* node0 = new DialogueNode("Troll: Who ventures upon my guarded bridge without my sanction ? This is no place for the unwatched and unguarded! Declare your purpose, lest you wander into peril under my watch!");
+	DialogueNode* node1 = new DialogueNode("Troll: Ah, a polite one! Trespass is not taken lightly here, but your manners show honor. Tell me, why does your journey bring you to this bridge?");
+	DialogueNode* node2 = new DialogueNode("Troll: A sacred site, you say? The lands beyond this bridge hold many ancient secrets and hallowed grounds. Few are those who tread such paths with pure intent. ");
+	DialogueNode* node3 = new DialogueNode("Troll: Ah.. I see. The only way to cross is by saying the magic word! ");
+	DialogueNode* node4 = new DialogueNode("Troll: In a rush, eh?");
+	DialogueNode* node5 = new DialogueNode("Troll: I hope they are. You only have a few chances..");
+	DialogueNode* node6 = new DialogueNode("Troll: If you tell me the magic word.. I will let you pass.");
+
+
+
+	//Node 0
+	node0->dialogueOptions.push_back(DialogueOption("My path leads me to a sacred site known to lie beyond this bridge.", 1, node2));
+	node0->dialogueOptions.push_back(DialogueOption("I'm so sorry. I didn't mean to trespass.", 0, node1));
+	dialogueNodes.push_back(node0);
+
+	//Node 1
+	node1->dialogueOptions.push_back(DialogueOption("I am looking for Aine.", 2, node3));
+	node1->dialogueOptions.push_back(DialogueOption("Seems very serious. I am on a journey to get back home.", 0, node3));
+	dialogueNodes.push_back(node1);
+
+	//Node 2
+	node2->dialogueOptions.push_back(DialogueOption("I assure you, my intentions are pure and my respect for the sacred is profound. ", 2, node5));
+	node2->dialogueOptions.push_back(DialogueOption("Can you just let me pass through? I'm kind of in a hurry.", 1, node4));
+	dialogueNodes.push_back(node2);
+
+	//Node 3
+	node3->dialogueOptions.push_back(DialogueOption("Magic word? I don't have time for this! ", 2, node6));
+	node3->dialogueOptions.push_back(DialogueOption("At least it's not a riddle.", 1, node4));
+	dialogueNodes.push_back(node3);
+
+	//node 4
+	node4->dialogueOptions.push_back(DialogueOption("Nevermind.. I'll come back with the magic word. ", 4, nullptr));
+	node4->dialogueOptions.push_back(DialogueOption("I think I know it!", 5, nullptr));
+	dialogueNodes.push_back(node4);
+
+	//node 5
+	node5->dialogueOptions.push_back(DialogueOption("Can you give me a hint? ", 0, node6));
+	node5->dialogueOptions.push_back(DialogueOption("It's worth a shot.", 5, node6));
+	dialogueNodes.push_back(node5);
+
+	//node 6
+	node6->dialogueOptions.push_back(DialogueOption("Sorry... I don't know the magic word. I'll come back later.", 4, nullptr));
+	node6->dialogueOptions.push_back(DialogueOption("I think I know it.", 5, nullptr));
+	dialogueNodes.push_back(node6);
+
+
+	performDialogue(player, message);
+}
+
+
 void DialogueTree::destroyTree()
 {
 	for (int i = 0; i < dialogueNodes.size(); i++)
@@ -312,6 +369,7 @@ int DialogueTree::consequences(int code, Player& player)
 				return code;
 
 			}
+
 		}
 		system("CLS");
 		cout << "You have messed up the riddle. You have lost the chance at getting important information!" << endl;
@@ -319,6 +377,66 @@ int DialogueTree::consequences(int code, Player& player)
 		cout << endl;
 		return code;
 
+		break;
+	case 6:
+		cout << "Troll: You want me to show you how to tie a bridle without anything to tie? Get outta here!" << endl;
+		break;
+	case 7:
+
+		cout << "Troll: First, lay the vine out flat on the ground" << endl;
+		cout << "Hint : What keyboard character looks like a flat piece of rope or string on a ground? The vine is long so enter it twice." << endl;
+
+		do {
+			// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+			getline(cin, answer);
+
+
+			if (answer != "__")
+			{
+				cout << "Not quite!" << endl;
+			}
+
+		} while (answer != "__");
+
+
+		cout << "Troll: Next, tie the left end of the rope into a circle." << endl;
+		cout << "Hint: Make a LARGE circle on the left side, and don?t forget to leave some leftover rope on the right side!" << endl;
+
+		do {
+			// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+			getline(cin, answer);
+
+			if (answer != "O_")
+			{
+				cout << "Not quite!" << endl;
+			}
+
+		} while (answer != "O_");
+
+
+		cout << "Troll: Lastly, tie the right end of the rope into a smaller circle, and leave some vine at the end so you can lead the kelpie. " << endl;
+		cout << "Hint : Add a SMALL circle and a SMALL amount of rope on the right side. " << endl;
+
+		do {
+			// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+			getline(cin, answer);
+
+			if (answer != "O_o-")
+			{
+				cout << "Not quite!" << endl;
+			}
+
+		} while (answer != "O_o-");
+
+		cout << "Troll: It's a bit odd looking, but it'll get the job done. Not sure why you'd want to, but this should pacify that beastly kelpie." << endl;
+
+		return code;
 		break;
 
 	default:

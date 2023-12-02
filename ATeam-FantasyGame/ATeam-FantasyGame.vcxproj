@@ -141,6 +141,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="redCapDialogue.cpp" />
+    <ClCompile Include="trollDialogue.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="Backstory.cpp" />
   </ItemGroup>
@@ -159,6 +160,7 @@
     <ClInclude Include="Objects.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="redCapDialogue.h" />
+    <ClInclude Include="trollDialogue.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="worldObjects.h" />
   </ItemGroup>
