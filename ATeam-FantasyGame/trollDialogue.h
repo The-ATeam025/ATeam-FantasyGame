@@ -15,4 +15,5 @@ public:
     // Define dialogue specific to this NPC
     void defeatedDialogue() override;
     // Defined the dialogue specific to the NPC being defeated
+    string randomResponse(); // generates a random response from the troll
 };
