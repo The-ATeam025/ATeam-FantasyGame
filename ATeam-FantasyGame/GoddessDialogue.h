@@ -1,13 +1,14 @@
 #pragma once
-//Class to override the npc dialogue for the Hare
+#include "DialogueNPC.h"
+#include "better-dialogue.h"
 
-class goddessDialogue : public DialogueNPC {
+class GoddessDialogue : public DialogueNPC {
 private:
     bool NPCDefeated;
-    bool talkedTo;
+    bool itemGiven;
     DialogueTree dtree;
 public:
-    goddessDialogue();
+    GoddessDialogue();
     void startDialogue(Player& player) override;
     // Define dialogue specific to this NPC
     void defeatedDialogue() override;
