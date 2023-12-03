@@ -8,8 +8,10 @@ class trollDialogue : public DialogueNPC {
 private:
     bool NPCDefeated;
     bool talkedTo;
+    bool convoCompleted;
     DialogueTree dtree;
 public:
+    bool checkConvoCompleted(); //checks if player already had full conversation with troll
     trollDialogue();
     void startDialogue(Player& player) override;
     // Define dialogue specific to this NPC
