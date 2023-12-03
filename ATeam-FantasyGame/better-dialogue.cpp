@@ -192,9 +192,9 @@ void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make 
 	DialogueNode* node1 = new DialogueNode("Troll: Ah, a polite one! Trespass is not taken lightly here, but your manners show honor. Tell me, why does your journey bring you to this bridge?");
 	DialogueNode* node2 = new DialogueNode("Troll: A sacred site, you say? The lands beyond this bridge hold many ancient secrets and hallowed grounds. Few are those who tread such paths with pure intent. ");
 	DialogueNode* node3 = new DialogueNode("Troll: Ah.. I see. In order to speak to her you will need to cross the lake. But you cannot swim in it, as the waters are filled with hungry water leeches and fog sprites that create disorienting fog over the lake, making navigation nearly impossible.");
-	DialogueNode* node4 = new DialogueNode("Troll: In a rush, eh?");
-	DialogueNode* node5 = new DialogueNode("Troll: Your best bet is to tame a Kelpie. In order to tame a kelpie, you will need a bridle.");
-	DialogueNode* node6 = new DialogueNode("Troll: If you tell me the magic word.. I will let you pass.");
+	DialogueNode* node4 = new DialogueNode("Troll: In a rush, eh? I guess you don't care about your safety..");
+	DialogueNode* node5 = new DialogueNode("Troll: Your best bet is to tame a Kelpie. In order to tame a kelpie, you will need a bridle. But BEWARE.. if the bridle is not secured properly, the keplie may drown you.");
+	DialogueNode* node6 = new DialogueNode("Troll: Let's check and see if you have a bridle!");
 
 
 
@@ -209,28 +209,28 @@ void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make 
 	dialogueNodes.push_back(node1);
 
 	//Node 2
-	node2->dialogueOptions.push_back(DialogueOption("I assure you, my intentions are pure and my respect for the sacred is profound. ", 2, node5));
+	node2->dialogueOptions.push_back(DialogueOption("I assure you, my intentions are pure. I am here to see Aine. ", 2, node3));
 	node2->dialogueOptions.push_back(DialogueOption("Can you just let me pass through? I'm kind of in a hurry.", 1, node4));
 	dialogueNodes.push_back(node2);
 
 	//Node 3
-	node3->dialogueOptions.push_back(DialogueOption("Wait, how will I be able to cross? ", 2, node6));
-	node3->dialogueOptions.push_back(DialogueOption("At least it's not a riddle.", 1, node4));
+	node3->dialogueOptions.push_back(DialogueOption("Wait, how will I be able to cross? ", 2, node5));
+	node3->dialogueOptions.push_back(DialogueOption("That sounds extremely terrifying...", 1, node5));
 	dialogueNodes.push_back(node3);
 
 	//node 4
-	node4->dialogueOptions.push_back(DialogueOption("Nevermind.. I'll come back with the magic word. ", 4, nullptr));
-	node4->dialogueOptions.push_back(DialogueOption("I think I know it!", 5, nullptr));
+	node4->dialogueOptions.push_back(DialogueOption("No, I do care about my safety. Please tell me what I need to do in order to talk to Aine. ", 4, node3));
+	node4->dialogueOptions.push_back(DialogueOption("Please help me, I can't stay here forever.", 5, node3));
 	dialogueNodes.push_back(node4);
 
 	//node 5
-	node5->dialogueOptions.push_back(DialogueOption("Can you give me a hint? ", 0, node6));
-	node5->dialogueOptions.push_back(DialogueOption("It's worth a shot.", 5, node6));
+	node5->dialogueOptions.push_back(DialogueOption("I'm tired of this weird world... let's just get it over with. ", 0, node6));
+	node5->dialogueOptions.push_back(DialogueOption("Nothing can stop me!", 5, node6));
 	dialogueNodes.push_back(node5);
 
 	//node 6
-	node6->dialogueOptions.push_back(DialogueOption("Sorry... I don't know the magic word. I'll come back later.", 6, nullptr));
-	node6->dialogueOptions.push_back(DialogueOption("I think I know it.", 7, nullptr));
+	node6->dialogueOptions.push_back(DialogueOption("I don't have one..", 6, nullptr));
+	node6->dialogueOptions.push_back(DialogueOption("I think I have the materials to make one.", 7, nullptr));
 	dialogueNodes.push_back(node6);
 
 
