@@ -21,8 +21,14 @@ void trollDialogue::startDialogue(Player& player) {
 		talkedTo = true;
 		cout << "As you cautiously step onto the creaking wooden planks of the bridge, a deep, growling voice erupts, stopping you in your tracks. Then suddenly, the short hairy creature walks towards you, almost scaring you to death. " << endl;
 		cout << "Troll: WHAT'S THE MAGIC WORD?!?!" << endl;
-		cin >> magicWord;
-		if (magicWord == "rathad") {
+		std::getline(std::cin, magicWord); //reads the whole line of input, including spaces, until it encounters a newline character.
+
+
+		//code to accept the user answer and transform answer into all lowercase, no matter how it is written.
+		std::string answerLowerCase = magicWord; // Make a copy of answer
+		std::transform(answerLowerCase.begin(), answerLowerCase.end(), answerLowerCase.begin(),
+			[](unsigned char c) { return std::tolower(c); });
+		if (answerLowerCase == "rathad") {
 			talkedTo = true;
 			dtree.init_troll(player);
 		}
