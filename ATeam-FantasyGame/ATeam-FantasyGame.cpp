@@ -24,19 +24,19 @@ int main() {
     Backstory backstory;
 
     // Display backstory
-    //backstory.displayIntro();
+    backstory.displayIntro();
 
 
-    //system("CLS");
+    system("CLS");
 
     // Create an instance of the Dialogue class
     DialogueTree catConvo;
 
     // Call the CatIntro function to continue the story 
-    //catConvo.init_cat(player);
+    catConvo.init_cat(player);
 
     // Prompt user to continue
-    //system("pause");
+    system("pause");
 
     // Clear the screen
     system("CLS");

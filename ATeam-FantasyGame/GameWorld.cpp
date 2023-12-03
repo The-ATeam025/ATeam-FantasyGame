@@ -1,7 +1,7 @@
 #include "GameWorld.h"
 
 //Constructor
-GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr), swamp(nullptr), nest(nullptr), bridge(nullptr) {}
+GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr), swamp(nullptr), nest(nullptr), bridge(nullptr), meadow(nullptr) {}
 
 //Deconstructor
 GameWorld::~GameWorld() {
@@ -35,7 +35,8 @@ void GameWorld::init(Player& player) {
         "A colossal intertwining of twisted branches, their gnarled forms interwoven with moss-covered stones weathered by the passage of countless seasons.\nWithin this labyrinthine structure, ethereal feathers, shimmering like the moonlit night, are delicately entwined");
     bridge = new Location("Bridge",
         "Whispering Wood Bridge, is an ancient structure of gnarled wood and creeping vines, blending seamlessly into the surrounding forest. Its timeworn planks, though sturdy, creak softly underfoot, adding to the sense of age and mystery. Moss and small flowers grow between the cracks, and the handrails are entwined with ivy, giving the bridge a wild, untamed look.");
-
+    meadow = new Location("Meadow", "After emerging from the swamp, you see a clearing among the trees. This place seems quiet and delightfully boring: you don't see any more talking creatures. You do notice some thick vines hanging from trees.");
+   
     // Create an item
     // "Name", "Description", "Equipment Slot - If none, leave as none"
     Item* rustyKey = new Item("Rusty Key", "A normal looking key, besides the rust covering its surface.", "hands");
@@ -44,7 +45,7 @@ void GameWorld::init(Player& player) {
     Item* helmet = new Item("Helmet", "A protective helmet for your head.", "head");
     Item* carrot = new Item("carrot", "Normal looking carrot","hands");
     Item* trechenTooth = new Item("Tooth", "One of Ellen Trechend's teeth", "none");
-
+    Item* vine = new Item("vine", "Thick piece of flexible vine a few feet long", "hands");
 
     // Create room Objects
     Objects* armoryChest = new ArmoryChest("Chest", "An old chest that has had its surface almost compleltely consumed by moss.");
@@ -105,7 +106,7 @@ void GameWorld::init(Player& player) {
     oneEyedHare->setLocation(swamp);
     oneEyedHare->setDialogue(DialogueOneEyedHare);
 
-    // Ellén Trechend
+    // Ell�n Trechend
     Trechend->setLocation(nest);
     Trechend->setItem(trechenTooth);
     Trechend->setDialogue(DialogueTrechend);
@@ -142,9 +143,10 @@ void GameWorld::init(Player& player) {
     outside->addConnectedLocation(swamp);
 
     swamp->addConnectedLocation(outside);
-    swamp->addConnectedLocation(bridge);
+    swamp->addConnectedLocation(meadow);
+    meadow->addConnectedLocation(bridge);
 
-    bridge->addConnectedLocation(swamp);
+    bridge->addConnectedLocation(meadow);
 
     // Add pre-existing items to locations
 
@@ -153,6 +155,9 @@ void GameWorld::init(Player& player) {
 
     //Outside
     outside->addItem(carrot);
+
+    //Meadow
+    meadow->addItem(vine);
 
     // Set the player's initial location
     player.walkToLocation(courtyard);

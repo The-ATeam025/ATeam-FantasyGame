@@ -30,6 +30,7 @@ private:
     Location* outside;
     Location* swamp;
     Location* bridge;
+    Location* meadow;
     Location* nest;
     std::list<NPC*> npcs;
     std::list<Objects*> objects;
@@ -48,6 +49,7 @@ public:
     Location* getOutside();
     Location* getSwamp();
     Location* getBridge();
+    Location* getMeadow();
     Location* getNest();
 
     // Declarations for managing NPCs
