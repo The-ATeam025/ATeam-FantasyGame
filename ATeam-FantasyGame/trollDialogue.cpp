@@ -11,6 +11,7 @@ using namespace std;
 trollDialogue::trollDialogue() : NPCDefeated(false), talkedTo(false) {
 }
 
+
 void trollDialogue::startDialogue(Player& player) {
 	string magicWord;
 
@@ -30,26 +31,33 @@ void trollDialogue::startDialogue(Player& player) {
 			[](unsigned char c) { return std::tolower(c); });
 		if (answerLowerCase == "rathad") {
 			talkedTo = true;
+			convoCompleted = true;
 			dtree.init_troll(player);
 		}
 		else {
 			cout << "Troll: Wrong! Go away and come back when you learn something!!" << endl;
 		}
 	}
-	else
+	else if((talkedTo==true) && (convoCompleted==false))
 	{
-		cout << "The troll is still there, leaning against the bridge and tapping its foot impatiently." << endl;
+		cout << "The troll is leaning against the bridge and tapping its foot impatiently." << endl;
 		cout << "Troll:" << randomResponse() << endl;
 		cin >> magicWord;
 		if (magicWord == "rathad") {
 			talkedTo = true;
+			convoCompleted = true;
 			dtree.init_troll(player);
 		}
 		else {
 			cout << "Troll: Wrong again!" << endl;
 			
 		}
-	};
+	}
+	//
+	else if (convoCompleted==true)
+	{
+		cout << "Vine test!" << endl;
+	}
 	
 }
 
@@ -87,3 +95,14 @@ string trollDialogue::randomResponse()
 	return reply;
 }
 
+bool trollDialogue::checkConvoCompleted()
+{
+	if (convoCompleted == false)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
