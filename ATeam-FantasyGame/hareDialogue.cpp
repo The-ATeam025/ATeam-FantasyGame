@@ -10,7 +10,7 @@ void hareDialogue::startDialogue(Player& player) {
     Item* hands = player.getWeaponSlot();
 
     // Checks the user's hands to be filled and checks if the user is holding a carrot
-    if (hands && hands->getName() == "carrot") {
+    if (hands && hands->getName() == "Carrot") {
         player.removeItem("hands");
         player.removeItemFromInventory(hands);
         talkedTo = true;

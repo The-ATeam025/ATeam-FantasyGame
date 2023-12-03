@@ -104,7 +104,7 @@ void GameWorld::init(Player& player) {
     // Connect the locations
     courtyard->addConnectedLocation(greatHall);
     // delete after testing
-    courtyard->addConnectedLocation(outside);
+    courtyard->addConnectedLocation(bridge);
 
     
     greatHall->addConnectedLocation(banquetHall);
@@ -117,9 +117,7 @@ void GameWorld::init(Player& player) {
 
     banquetHall->addConnectedLocation(greatHall);
     banquetHall->addConnectedLocation(redCapDungeon);
-    //test: testing: banquetHall->addConnectedLocation(outside);
     
-
     outside->addConnectedLocation(greatHall);
     outside->addConnectedLocation(swamp);
 
@@ -151,6 +149,7 @@ Location* GameWorld::getBanquetHall() { return banquetHall; }
 Location* GameWorld::getOutside() { return outside; }
 Location* GameWorld::getSwamp() { return swamp; }
 Location* GameWorld::getBridge() { return bridge; }
+Location* GameWorld::getMeadow() { return meadow; }
 
 
 
