@@ -34,15 +34,16 @@ void GameWorld::init(Player& player) {
         "The Culra Swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Light filters through the canopy, casting shifting shadows across the landscape.");
     bridge = new Location("Bridge",
         "Whispering Wood Bridge, is an ancient structure of gnarled wood and creeping vines, blending seamlessly into the surrounding forest. Its timeworn planks, though sturdy, creak softly underfoot, adding to the sense of age and mystery. Moss and small flowers grow between the cracks, and the handrails are entwined with ivy, giving the bridge a wild, untamed look.");
-
+    meadow = new Location("Meadow", "After emerging from the swamp, you see a clearing among the trees. This place seems quiet and delightfully boring: you don't see any more talking creatures. You do notice some thick vines hanging from trees.");
+   
     // Create an item
     // "Name", "Description", "Equipment Slot - If none, leave as null"
     Item* rustyKey = new Item("Rusty Key", "A normal looking key, besides the rust covering its surface.", "hands");
     Item* celticCross = new Item("Celtic Cross", "An ornate, ancient cross symbolizing Celtic heritage and spirituality.", "hands");
     Item* sword = new Item("Sword", "A sharp and sturdy sword for combat.", "hands");
     Item* helmet = new Item("Helmet", "A protective helmet for your head.", "head");
-    Item* carrot = new Item("carrot", "Normal looking carrot","hands");
-
+    Item* carrot = new Item("Carrot", "Normal looking carrot","hands");
+    Item* vine = new Item("vine", "Thick piece of flexible vine a few feet long", "hands");
 
     // Create room Objects
     Objects* armoryChest = new ArmoryChest("Chest", "An old chest that has had its surface almost compleltely consumed by moss.");
@@ -123,9 +124,10 @@ void GameWorld::init(Player& player) {
     outside->addConnectedLocation(swamp);
 
     swamp->addConnectedLocation(outside);
-    swamp->addConnectedLocation(bridge);
+    swamp->addConnectedLocation(meadow);
+    meadow->addConnectedLocation(bridge);
 
-    bridge->addConnectedLocation(swamp);
+    bridge->addConnectedLocation(meadow);
 
     // Add pre-existing items to locations
 
@@ -134,6 +136,9 @@ void GameWorld::init(Player& player) {
 
     //Outside
     outside->addItem(carrot);
+
+    //Meadow
+    meadow->addItem(vine);
 
     // Set the player's initial location
     player.walkToLocation(courtyard);
