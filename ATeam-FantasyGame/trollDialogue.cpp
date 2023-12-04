@@ -33,10 +33,10 @@ void trollDialogue::startDialogue(Player& player) {
 			dtree.init_troll(player);
 		}
 		else {
-			cout << "Troll: Wrong! Go away and come back when you learn something!!" << endl;
+			cout << "Troll: Wrong! Go away and come back when you learn something!!" << endl; //If word is given and is incorrect (and the player does not leave the bridge location)
 		}
-	}
-	else if((talkedTo==true) && (convoCompleted==false))
+	} 
+	else if((talkedTo==true) && (convoCompleted==false)) ///If word is given and is incorrect (and the player does leaves the bridge location and comes back)
 	{
 		cout << "The troll is leaning against the bridge and tapping its foot impatiently." << endl;
 		cout << "Troll:" << randomResponse() << endl;
@@ -52,9 +52,21 @@ void trollDialogue::startDialogue(Player& player) {
 		}
 	}
 	//
-	else if (convoCompleted==true)
+	else if (convoCompleted==true) //If the troll has talked to the player before (magic word was correct), but the player had to go back to get the vine 
 	{
-		cout << "Vine test!" << endl;
+		
+
+		Item* hands = player.getWeaponSlot();
+		if (hands && hands->getName() == "vine") //if player is holding vine
+		{
+			//INIT NEW CODE
+			dtree.consequences(6, player);
+		}
+		else
+		{
+			cout << "Troll: I don't you holding your materials!" << endl;
+
+		}
 	}
 	
 }
