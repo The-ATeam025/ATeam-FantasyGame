@@ -1,7 +1,7 @@
 #include "GameWorld.h"
 
 //Constructor
-GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr), swamp(nullptr) {}
+GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr), swamp(nullptr), nest(nullptr) {}
 
 //Deconstructor
 GameWorld::~GameWorld() {
@@ -10,10 +10,9 @@ GameWorld::~GameWorld() {
     delete greatHall;
     delete redCapDungeon;
     delete banquetHall;
-    delete armory; // Include this line if armory is dynamically allocated
-
-    // You might also need to delete other dynamically allocated resources
-    // related to the game world, like NPCs, items, dialogues, etc.
+    delete armory;
+    delete swamp;
+    delete nest;
 }
 
 void GameWorld::init(Player& player) {
@@ -30,16 +29,19 @@ void GameWorld::init(Player& player) {
         "In the armory, all that remains is a lonely chest. The nearby shelves are bare, and must have already been looted by someone or something.");
     outside = new Location("Outside",
         "An untamed, enigmatic forest lies ahead, teeming with otherwordly magic and energy you have never experienced.");
-         swamp = new Location("Swamp",
+    swamp = new Location("Swamp",
         "The Culra Swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Light filters through the canopy, casting shifting shadows across the landscape.");
+    nest = new Location("Nest",
+        "A colossal intertwining of twisted branches, their gnarled forms interwoven with moss-covered stones weathered by the passage of countless seasons.\nWithin this labyrinthine structure, ethereal feathers, shimmering like the moonlit night, are delicately entwined");
 
     // Create an item
-    // "Name", "Description", "Equipment Slot - If none, leave as null"
+    // "Name", "Description", "Equipment Slot - If none, leave as none"
     Item* rustyKey = new Item("Rusty Key", "A normal looking key, besides the rust covering its surface.", "hands");
     Item* celticCross = new Item("Celtic Cross", "An ornate, ancient cross symbolizing Celtic heritage and spirituality.", "hands");
     Item* sword = new Item("Sword", "A sharp and sturdy sword for combat.", "hands");
     Item* helmet = new Item("Helmet", "A protective helmet for your head.", "head");
     Item* carrot = new Item("carrot", "Normal looking carrot","hands");
+    Item* trechenTooth = new Item("Tooth", "One of Ellen Trechend's teeth", "none");
 
 
     // Create room Objects
@@ -53,12 +55,14 @@ void GameWorld::init(Player& player) {
         "Winged humanoid figures seated at a table, their radiant wings shimmering in the dim candlelight, laughing in hushed tones. Disturbingly enough, you notice their unnatural amount of sharp teeth.");
     NPC* oneEyedHare = new NPC("One Eyed Hare",
         "The one-eyed hare, with its silvery coat, moves gracefully through the forest, its solitary emerald eye gleaming with a mysterious wisdom.");
-
+    NPC* Trechend = new NPC("Mythical Bird",
+        "A colossal vulture with three regal heads catches your gaze. Towering wings, adorned with mystic symbols, stretch majestically, \ncasting shadows that ripple across the landscape.");
 
     // Add all NPCs to the npcs list
     npcs.push_back(redCap);
     npcs.push_back(fairies);
     npcs.push_back(oneEyedHare);
+    npcs.push_back(Trechend);
 
     // Add all objects to the objects list
     objects.push_back(armoryChest);
@@ -68,6 +72,7 @@ void GameWorld::init(Player& player) {
     DialogueNPC* DialogueRedCap = new redCapDialogue();
     DialogueNPC* Dialoguefairies = new fairyDialogue();
     DialogueNPC* DialogueOneEyedHare = new hareDialogue();
+    DialogueNPC* DialogueTrechend = new TrechendDialogue();
 
     // Add items/Dialogue/location to NPC/Object
     // Redcap
@@ -90,6 +95,11 @@ void GameWorld::init(Player& player) {
     // One Eyed Hare
     oneEyedHare->setLocation(swamp);
     oneEyedHare->setDialogue(DialogueOneEyedHare);
+
+    // Ellén Trechend
+    Trechend->setLocation(nest);
+    Trechend->setItem(trechenTooth);
+    Trechend->setDialogue(DialogueTrechend);
 
     // Connect the locations
     courtyard->addConnectedLocation(greatHall);
@@ -122,6 +132,10 @@ void GameWorld::init(Player& player) {
 
     // Set the player's initial location
     player.walkToLocation(courtyard);
+
+    // Test for battle
+    // player.wearItem(sword, "hands");
+    // player.walkToLocation(nest);
 }
 
 Location* GameWorld::getCourtyard() { return courtyard; }
