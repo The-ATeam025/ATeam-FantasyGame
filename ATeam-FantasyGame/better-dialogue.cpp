@@ -267,8 +267,8 @@ void DialogueTree::init_goddess_1(Player& player) //set up tree with dialogue, m
 	dialogueNodes.push_back(node2);
 
 	//Node 3
-	node3->dialogueOptions.push_back(DialogueOption("Consider it done", 1, nullptr));
-	node3->dialogueOptions.push_back(DialogueOption("I'll do this if it helps me get back home.", 1, nullptr));
+	node3->dialogueOptions.push_back(DialogueOption("Consider it done", -1, nullptr));
+	node3->dialogueOptions.push_back(DialogueOption("I'll do this if it helps me get back home.", -1, nullptr));
 	dialogueNodes.push_back(node3);
 
 	performDialogue(player, message);
@@ -296,8 +296,8 @@ void DialogueTree::init_goddess_2(Player& player) //set up tree with dialogue, m
 	dialogueNodes.push_back(node1);
 
 	//Node 2
-	node2->dialogueOptions.push_back(DialogueOption("Please do", 1, nullptr));
-	node2->dialogueOptions.push_back(DialogueOption("Hurry up, I just want to get back home", 1, nullptr));
+	node2->dialogueOptions.push_back(DialogueOption("Please do", -1, nullptr));
+	node2->dialogueOptions.push_back(DialogueOption("Hurry up, I just want to get back home", -1, nullptr));
 	dialogueNodes.push_back(node2);
 
 	performDialogue(player, message);
@@ -330,7 +330,9 @@ int DialogueTree::consequences(int code, Player& player)
 
 	string answer;
 	switch (code) {
-	
+		//Consequences for fairy: it eats you because you decline a riddle
+	case -1:
+		return code;
 	case 0:
 		system("CLS");
 		player.setShouldRestartGame(true);

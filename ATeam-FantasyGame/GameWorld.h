@@ -10,6 +10,7 @@
 #include "marbleBust.h"
 #include "hareDialogue.h"
 #include "TrechendDialogue.h"
+#include "GoddessDialogue.h"
 #include <list>
 #include <vector>
 

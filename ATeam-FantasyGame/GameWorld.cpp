@@ -57,12 +57,14 @@ void GameWorld::init(Player& player) {
         "The one-eyed hare, with its silvery coat, moves gracefully through the forest, its solitary emerald eye gleaming with a mysterious wisdom.");
     NPC* Trechend = new NPC("Mythical Bird",
         "A colossal vulture with three regal heads catches your gaze. Towering wings, adorned with mystic symbols, stretch majestically, \ncasting shadows that ripple across the landscape.");
+    NPC* Goddess = new NPC("Filler", "Filler");
 
     // Add all NPCs to the npcs list
     npcs.push_back(redCap);
     npcs.push_back(fairies);
     npcs.push_back(oneEyedHare);
     npcs.push_back(Trechend);
+    npcs.push_back(Goddess);
 
     // Add all objects to the objects list
     objects.push_back(armoryChest);
@@ -73,6 +75,7 @@ void GameWorld::init(Player& player) {
     DialogueNPC* Dialoguefairies = new fairyDialogue();
     DialogueNPC* DialogueOneEyedHare = new hareDialogue();
     DialogueNPC* DialogueTrechend = new TrechendDialogue();
+    DialogueNPC* DialogueGoddess = new GoddessDialogue();
 
     // Add items/Dialogue/location to NPC/Object
     // Redcap
@@ -100,6 +103,10 @@ void GameWorld::init(Player& player) {
     Trechend->setLocation(nest);
     Trechend->setItem(trechenTooth);
     Trechend->setDialogue(DialogueTrechend);
+
+    // Goddess
+    Goddess->setLocation(nest);
+    Goddess->setDialogue(DialogueGoddess);
 
     // Connect the locations
     courtyard->addConnectedLocation(greatHall);
@@ -134,8 +141,8 @@ void GameWorld::init(Player& player) {
     player.walkToLocation(courtyard);
 
     // Test for battle
-    // player.wearItem(sword, "hands");
-    // player.walkToLocation(nest);
+    player.wearItem(sword, "hands");
+    player.walkToLocation(nest);
 }
 
 Location* GameWorld::getCourtyard() { return courtyard; }
