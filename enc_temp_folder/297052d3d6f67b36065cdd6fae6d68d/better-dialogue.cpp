@@ -194,7 +194,7 @@ void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make 
 	DialogueNode* node3 = new DialogueNode("Troll: Ah.. I see. In order to speak to Aine you will need to cross the lake. But you cannot swim in it, as the waters are filled with hungry water leeches and fog sprites that create disorienting fog over the lake, making navigation nearly impossible.");
 	DialogueNode* node4 = new DialogueNode("Troll: In a rush, eh? I guess you don't care about your safety..");
 	DialogueNode* node5 = new DialogueNode("Troll: Your best bet is to tame a Kelpie. In order to tame a kelpie, you will need a bridle. But BEWARE.. if the bridle is not secured properly, the keplie may drown you.");
-	DialogueNode* node6 = new DialogueNode("Troll: Let's check and see if you have the materials to create a bridle!");
+	DialogueNode* node6 = new DialogueNode("Troll: Let's check and see if you have a bridle!");
 
 
 
@@ -229,8 +229,8 @@ void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make 
 	dialogueNodes.push_back(node5);
 
 	//node 6
-	node6->dialogueOptions.push_back(DialogueOption("I'm not sure I know how..", 6, nullptr));
-	node6->dialogueOptions.push_back(DialogueOption("How do I make one?", 6, nullptr));
+	node6->dialogueOptions.push_back(DialogueOption("I don't have one..", 6, nullptr));
+	node6->dialogueOptions.push_back(DialogueOption("I think I have the materials to make one.", 7, nullptr));
 	dialogueNodes.push_back(node6);
 
 
@@ -249,7 +249,6 @@ void DialogueTree::destroyTree()
 
 int DialogueTree::consequences(int code, Player& player)
 {
-	Item* hands = player.getWeaponSlot();
 	string answer;
 	switch (code) {
 		//Consequences for fairy: it eats you because you decline a riddle
@@ -380,6 +379,7 @@ int DialogueTree::consequences(int code, Player& player)
 
 		break;
 	case 6:
+
 		cout << "Troll: You want me to show you how to tie a bridle without anything to tie? Get outta here!" << endl;
 		break;
 	case 7:
@@ -399,13 +399,44 @@ int DialogueTree::consequences(int code, Player& player)
 				cout << "Not quite!" << endl;
 			}
 
-			tieBridle();
-		}
-		else
-		{
-			cout << "Troll: You want me to show you how to tie a bridle without anything to tie? You're empty-handed! Get outta here!" << endl;
-			
-		}
+		} while (answer != "__");
+
+
+		cout << "Troll: Next, tie the left end of the rope into a circle." << endl;
+		cout << "Hint: Make a LARGE circle on the left side, and don?t forget to leave some leftover rope on the right side!" << endl;
+
+		do {
+			// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+			getline(cin, answer);
+
+			if (answer != "O_")
+			{
+				cout << "Not quite!" << endl;
+			}
+
+		} while (answer != "O_");
+
+
+		cout << "Troll: Lastly, tie the right end of the rope into a smaller circle, and leave some vine at the end so you can lead the kelpie. " << endl;
+		cout << "Hint : Add a SMALL circle and a SMALL amount of rope on the right side. " << endl;
+
+		do {
+			// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+			getline(cin, answer);
+
+			if (answer != "O_o-")
+			{
+				cout << "Not quite!" << endl;
+			}
+
+		} while (answer != "O_o-");
+
+		cout << "Troll: It's a bit odd looking, but it'll get the job done. Not sure why you'd want to, but this should pacify that beastly kelpie." << endl;
+
 		return code;
 		break;
 
@@ -462,60 +493,3 @@ int DialogueTree::performDialogue(Player& player, string message)
 	}
 }
 
-void DialogueTree::tieBridle()
-{
-	string answer;
-	cout << "Troll: First, lay the vine out flat on the ground" << endl;
-	cout << "Hint : What keyboard character looks like a flat piece of rope or string on a ground? The vine is long so enter it twice." << endl;
-
-	do {
-		// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-		getline(cin, answer);
-
-
-		if (answer != "__")
-		{
-			cout << "Not quite!" << endl;
-		}
-
-	} while (answer != "__");
-
-
-	cout << "Troll: Next, tie the left end of the rope into a circle." << endl;
-	cout << "Hint: Make a LARGE circle on the left side, and don?t forget to leave some leftover rope on the right side!" << endl;
-
-	do {
-		// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-		getline(cin, answer);
-
-		if (answer != "O_")
-		{
-			cout << "Not quite!" << endl;
-		}
-
-	} while (answer != "O_");
-
-
-	cout << "Troll: Lastly, tie the right end of the rope into a smaller circle, and leave some vine at the end so you can lead the kelpie. " << endl;
-	cout << "Hint : Add a SMALL circle and a SMALL amount of rope on the right side. " << endl;
-
-	do {
-		// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-		getline(cin, answer);
-
-		if (answer != "O_o-")
-		{
-			cout << "Not quite!" << endl;
-		}
-
-	} while (answer != "O_o-");
-
-	cout << "Troll: It's a bit odd looking, but it'll get the job done. Not sure why you'd want to, but this should pacify that beastly kelpie." << endl;
-
-}
