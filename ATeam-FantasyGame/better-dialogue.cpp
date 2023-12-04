@@ -183,7 +183,7 @@ void DialogueTree::init_hare(Player& player) //set up tree with dialogue, make t
 
 void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make this one virtual?
 {
-	string message = "Troll: Speak Correctly!"; //custom error message for this character interaction--the warning the player gets if the input is invalid 
+	string message = "Troll: Speak Correctly! "; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
 
 	cout << endl;
@@ -516,6 +516,7 @@ void DialogueTree::tieBridle(Player &player)
 {
 	string answer;
 	cout << "Troll: First, lay the vine out flat on the ground" << endl;
+	cout << endl;
 	cout << "Hint : What keyboard character looks like a flat piece of rope or string on a ground? The vine is long so enter it twice." << endl;
 
 	do {
@@ -534,6 +535,7 @@ void DialogueTree::tieBridle(Player &player)
 
 
 	cout << "Troll: Next, tie the left end of the rope into a circle." << endl;
+	cout << endl;
 	cout << "Hint: Make a LARGE circle on the left side, and don?t forget to leave some leftover rope on the right side!" << endl;
 
 	do {
@@ -551,6 +553,7 @@ void DialogueTree::tieBridle(Player &player)
 
 
 	cout << "Troll: Lastly, tie the right end of the rope into a smaller circle, and leave some vine at the end so you can lead the kelpie. " << endl;
+	cout << endl;
 	cout << "Hint : Add a SMALL circle and a SMALL amount of rope on the right side. " << endl;
 
 	do {
@@ -567,6 +570,7 @@ void DialogueTree::tieBridle(Player &player)
 	} while (answer != "O_o-");
 
 	cout << "Troll: It's a bit odd looking, but it'll get the job done. Not sure why you'd want to, but this should pacify that beastly kelpie." << endl;
+	cout << endl;
 
 	
 	Location * crossedBridge = new Location("Other side of the bridge", "As you cross the bridge, bridle in hand, you notice a thick fog gather around you. When you get to the other side and turn to wave goodbye to the troll, you notice that the bridge has been entirely enshrouded in the mist. Ahead of you lies a gloomy-looking lake. ");
