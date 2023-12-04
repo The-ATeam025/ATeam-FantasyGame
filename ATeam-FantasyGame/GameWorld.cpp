@@ -42,7 +42,7 @@ void GameWorld::init(Player& player) {
     Item* sword = new Item("Sword", "A sharp and sturdy sword for combat.", "hands");
     Item* helmet = new Item("Helmet", "A protective helmet for your head.", "head");
     Item* carrot = new Item("Carrot", "Normal looking carrot","hands");
-    Item* vine = new Item("vine", "Thick piece of flexible vine a few feet long", "hands");
+    Item* vine = new Item("Vine", "Thick piece of flexible vine a few feet long", "hands");
 
     // Create room Objects
     Objects* armoryChest = new ArmoryChest("Chest", "An old chest that has had its surface almost compleltely consumed by moss.");
