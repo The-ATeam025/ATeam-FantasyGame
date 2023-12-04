@@ -380,35 +380,14 @@ int DialogueTree::consequences(int code, Player& player)
 
 		break;
 	case 6:
-		cout << "Troll: You want me to show you how to tie a bridle without anything to tie? Get outta here!" << endl;
-		break;
-	case 7:
-
-		cout << "Troll: First, lay the vine out flat on the ground" << endl;
-		cout << "Hint : What keyboard character looks like a flat piece of rope or string on a ground? The vine is long so enter it twice." << endl;
-
-		do {
-			// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-			getline(cin, answer);
-
-
-			if (answer != "__")
-			{
-				cout << "Not quite!" << endl;
-			}
-
+		if (hands && hands->getName() == "vine") //if player is holding vine
+		{
 			tieBridle();
 		}
 		else
-		{
-			cout << "Troll: You want me to show you how to tie a bridle without anything to tie? You're empty-handed! Get outta here!" << endl;
-			
-		}
-		return code;
+		cout << "Troll: You want me to show you how to tie a bridle without anything to tie? You're empty-handed! Get outta here!" << endl;
 		break;
-
+	
 	default:
 		cout << "Error: no code given" << endl;
 		break;
