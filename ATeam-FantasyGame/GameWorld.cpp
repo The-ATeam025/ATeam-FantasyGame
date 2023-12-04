@@ -134,8 +134,8 @@ void GameWorld::init(Player& player) {
     player.walkToLocation(courtyard);
 
     // Test for battle
-    player.wearItem(sword, "hands");
-    player.walkToLocation(nest);
+    // player.wearItem(sword, "hands");
+    // player.walkToLocation(nest);
 }
 
 Location* GameWorld::getCourtyard() { return courtyard; }
