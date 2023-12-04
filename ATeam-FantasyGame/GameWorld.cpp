@@ -57,7 +57,7 @@ void GameWorld::init(Player& player) {
         "The one-eyed hare, with its silvery coat, moves gracefully through the forest, its solitary emerald eye gleaming with a mysterious wisdom.");
     NPC* Trechend = new NPC("Mythical Bird",
         "A colossal vulture with three regal heads catches your gaze. Towering wings, adorned with mystic symbols, stretch majestically, \ncasting shadows that ripple across the landscape.");
-    NPC* Goddess = new NPC("Filler", "Filler");
+    NPC* Goddess = new NPC("Goddess", "Filler");
 
     // Add all NPCs to the npcs list
     npcs.push_back(redCap);

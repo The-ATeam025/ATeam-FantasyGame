@@ -22,7 +22,7 @@ void GoddessDialogue::startDialogue(Player& player) {
 
         // If the loop completes without finding the "Tooth" item
         if (!itemGiven) {
-            cout << "You need the item 'Tooth' to proceed." << endl;
+            cout << "She has nothing else to say to you. You must return with the creature's tooth." << endl;
         }
     }
     else {
