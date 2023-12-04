@@ -303,70 +303,8 @@ void DialogueTree::init_goddess_2(Player& player) //set up tree with dialogue, m
 	performDialogue(player, message);
 }
 
-void DialogueTree::init_goddess_1(Player& player) //set up tree with dialogue, make this one virtual?
-{
-	string message = "Its good to finally meet you."; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
-	cout << "You see a beautiful women in front of you wearing a silky garb with a cape";
-	cout << "She gestures for you to come closer";
-	cout << endl;
 
-	DialogueNode* node0 = new DialogueNode("Aine: I have been watching your progress. I know you've been wanting to go home.");
-	DialogueNode* node1 = new DialogueNode("Aine: Never you mind how, do you want to go home or not?");
-	DialogueNode* node2 = new DialogueNode("Aine: I can help you get home, but first, I need you to do something for me.");
-	DialogueNode* node3 = new DialogueNode("Aine: Theres been a creature causing trouble for me. Bring me back its tooth as proof its been dealth with and we'll talk about getting you home.");
-
-	//Node 0
-	node0->dialogueOptions.push_back(DialogueOption("How have you been watching me?", 1, node1));
-	node0->dialogueOptions.push_back(DialogueOption("Yes I want to go home, can you help?", 1, node2));
-	dialogueNodes.push_back(node0);
-
-	//Node 1
-	node1->dialogueOptions.push_back(DialogueOption("Yes I would like to go home", 1, node2));
-	node1->dialogueOptions.push_back(DialogueOption("If you know how to get home just tell me please", 1, node2));
-	dialogueNodes.push_back(node1);
-
-	//Node 2
-	node2->dialogueOptions.push_back(DialogueOption("What is it you need?", 1, node3));
-	node2->dialogueOptions.push_back(DialogueOption("Another task? As long as you can help me get home, I'll do it.", 1, node3));
-	dialogueNodes.push_back(node2);
-
-	//Node 3
-	node3->dialogueOptions.push_back(DialogueOption("Consider it done", 1, nullptr));
-	node3->dialogueOptions.push_back(DialogueOption("I'll do this if it helps me get back home.", 1, nullptr));
-	dialogueNodes.push_back(node3);
-
-	performDialogue(player, message);
-}
-void DialogueTree::init_goddess_2(Player& player) //set up tree with dialogue, make this one virtual?
-{
-	string message = "Its good to see you again."; //custom error message for this character interaction--the warning the player gets if the input is invalid 
-
-	cout << "You see a beautiful women in front of you wearing a silky garb with a cape";
-	cout << "She gestures for you to come closer";
-	cout << endl;
-
-	DialogueNode* node0 = new DialogueNode("Aine: Very good, I see you've taken care of the creature like I asked");
-	DialogueNode* node1 = new DialogueNode("Aine: Thank you very much, now I can do something for you");
-	DialogueNode* node2 = new DialogueNode("Aine: I can open a way for you to get back now");
-
-	//Node 0
-	node0->dialogueOptions.push_back(DialogueOption("Yes I have completed your task", 1, node1));
-	node0->dialogueOptions.push_back(DialogueOption("You said you could get me home?", 1, node2));
-	dialogueNodes.push_back(node0);
-
-	//Node 1
-	node1->dialogueOptions.push_back(DialogueOption("Yes can help me get back home?", 1, node2));
-	node1->dialogueOptions.push_back(DialogueOption("Finally, get me out of here please", 1, node2));
-	dialogueNodes.push_back(node1);
-
-	//Node 2
-	node2->dialogueOptions.push_back(DialogueOption("Please do", 1, nullptr));
-	node2->dialogueOptions.push_back(DialogueOption("Hurry up, I just want to get back home", 1, nullptr));
-	dialogueNodes.push_back(node2);
-
-	performDialogue(player, message);
-}
 
 void DialogueTree::destroyTree()
 {
@@ -543,7 +481,7 @@ int DialogueTree::consequences(int code, Player& player)
 				cout << "Not quite!" << endl;
 			}
 
-		} while (rope != "__");
+		} while (answer != "__");
 
 
 		cout << "Troll: Next, tie the left end of the rope into a circle." << endl;
