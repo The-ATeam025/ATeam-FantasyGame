@@ -461,7 +461,7 @@ int DialogueTree::consequences(int code, Player& player)
 		}
 		else
 		{
-			cout << "Troll: You want me to show you how to tie a bridle without anything to tie? Get outta here!" << endl;
+			cout << "Troll: You want me to show you how to tie a bridle without anything to tie? You're empty-handed! Get outta here!" << endl;
 			
 		}
 		return code;
