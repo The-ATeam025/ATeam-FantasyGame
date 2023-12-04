@@ -50,7 +50,7 @@ void TrechendDialogue::promptUserForInstructions(Player& player) {
     std::cout << "The creature stares at you. All three heads speak in harmony, 'You have brought this upon yourself'" << std::endl << std::endl;
     Item* weapon = player.getWeaponSlot();
     if (weapon && weapon->getName() == "Sword") {
-        std::cout << "A word will be appear on the screen, type the word to deal damage to the monster." << std::endl;
+        std::cout << "A word will appear on the screen, type the word to deal damage to the monster." << std::endl;
         std::cout << "You have a very limited time for each attack. If you are not quick enough, the creature will be able to strike." << std::endl << std::endl;
         std::cout << "You draw your sword and prepare to battle the beast." << std::endl;
         system("pause");
@@ -138,7 +138,7 @@ void TrechendDialogue::dealDamage() {
         std::cout << "Ellen Trechend winces in pain, showing the first signs of damage. ";
         break;
     case 5:
-        std::cout << "The monster shurgs the hit off, barely effected by your efforts. ";
+        std::cout << "The monster shrugs the hit off, barely affected by your efforts. ";
     default:
         break;
     }
@@ -159,7 +159,7 @@ void TrechendDialogue::defeatTrechend() {
     std::cout << "First Head continues, 'No desire for conflict, yet destiny's winds have chosen a somber path.'" << std::endl << std::endl;
     std::cout << "The Second Head, with a tone of fading wisdom, intones, 'Feathers fall, wisdom dissipates with the boundless sky.'" << std::endl;
     std::cout << "The Third Head, a final plea in its voice, concludes, 'In demise, a reminder: balance falters when harmony's dance is disrupted.'" << std::endl << std::endl;
-    std::cout << "The giant monster tumbles to the ground and its breath halts. Needing proof of your victory, you chop off one of its heads. It rolls towards you." << std::endl << std::endl;
+    std::cout << "The giant monster tumbles to the ground and its breath halts. With one last blow, the monster's teeth knock loose." << std::endl << std::endl;
     defeated = true;
     setNPCDefeated(true);
 }
@@ -182,7 +182,7 @@ void TrechendDialogue::hitPlayerRandomly(Player& player) {
         std::cout << "The creature tail-slaps you. ";
         break;
     case 4:
-        std::cout << "The beast flies in towards you, knocking you to the ground. ";
+        std::cout << "The beast flies towards you, knocking you to the ground. ";
         break;
     default:
         break;
@@ -199,16 +199,16 @@ void TrechendDialogue::hitPlayerRandomly(Player& player) {
     }
     else {
         std::cout << "You are badly beaten. The monster is much stronger than you, and you know you cannot be hit by it again." << std::endl;
-        std::cout << "You dig your feet in, prepared to charge once again." << std::endl;
+        std::cout << "You dig your feet in, prepared to charge again." << std::endl;
         system("pause");
         std::cout << std::endl;
     }
 }
 
 void TrechendDialogue::handleLoss(Player& player) {
-    std::cout << "As your vision fades to black, you see a black cat walking towards you on its hinds legs." << std::endl;
+    std::cout << "As your vision fades to black, you see a black cat walking towards you on its hind legs." << std::endl;
     std::cout << "The cat whispers to you 'This will not be your final resting place.'" << std::endl << std::endl;
-    std::cout << "A magical aura surrounds you, and you find yourself back before Ellen Trechend. It speaks to you as if you had never met." << std::endl;
+    std::cout << "A magical aura surrounds you, and you return before Ellen Trechend. It speaks to you as if you had never met." << std::endl;
 
     system("pause");
     system("CLS");
@@ -277,7 +277,7 @@ void TrechendDialogue::startDialogue(Player& player) {
 
 void TrechendDialogue::defeatedDialogue() {
     if (isNPCDefeated()) {
-        std::cout << "The rest of its body fades into ash. The large pile is quickly picked up by the wind, dissapating in thousands of direction." << std::endl;
+        std::cout << "The rest of its body fades into ash. The large pile is quickly picked up by the wind, dissipating in thousands of directions." << std::endl;
     }
 }
 
