@@ -12,6 +12,7 @@ public:
     Backstory(); // Constructor
     void displayIntro();
     void ApproachMushroomRing();
+    void epilogue();
 
 private:
     void displayTextAndWait(const std::string& text);
