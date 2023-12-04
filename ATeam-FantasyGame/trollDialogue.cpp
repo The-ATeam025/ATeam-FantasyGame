@@ -67,7 +67,7 @@ void trollDialogue::startDialogue(Player& player) {
 		}
 		else
 		{
-			cout << "Troll: I don't you holding your materials!" << endl;
+			cout << "Troll: I don't see you holding your materials!" << endl;
 
 		}
 	}
