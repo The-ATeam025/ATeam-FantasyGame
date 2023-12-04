@@ -15,10 +15,13 @@ trollDialogue::trollDialogue() : NPCDefeated(false), talkedTo(false) {
 void trollDialogue::startDialogue(Player& player) {
 	string magicWord;
 
+	// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 	if (talkedTo == false) {
 		talkedTo = true;
 		cout << "As you cautiously step onto the creaking wooden planks of the bridge, a deep, growling voice erupts, stopping you in your tracks. Then suddenly, the short hairy creature walks towards you, almost scaring you to death. " << endl;
+		cout << endl;
 		cout << "Troll: WHAT'S THE MAGIC WORD?!?!" << endl;
 		std::getline(std::cin, magicWord); //reads the whole line of input, including spaces, until it encounters a newline character.
 
@@ -36,10 +39,11 @@ void trollDialogue::startDialogue(Player& player) {
 		else {
 			cout << "Troll: Wrong! Go away and come back when you learn something!!" << endl; //If word is given and is incorrect (and the player does not leave the bridge location)
 		}
-	} 
-	else if((talkedTo==true) && (convoCompleted==false)) ///If word is given and is incorrect (and the player does leaves the bridge location and comes back)
+	}
+	else if ((talkedTo == true) && (convoCompleted == false)) ///If word is given and is incorrect (and the player does leaves the bridge location and comes back)
 	{
 		cout << "The troll is leaning against the bridge and tapping its foot impatiently." << endl;
+		cout << endl;
 		cout << "Troll:" << randomResponse() << endl;
 		cin >> magicWord;
 		if (magicWord == "rathad") {
@@ -49,22 +53,27 @@ void trollDialogue::startDialogue(Player& player) {
 		}
 		else {
 			cout << "Troll: Wrong again!" << endl;
-			
+
 		}
 	}
 	//
-	else if (convoCompleted==true)
+	else if (convoCompleted == true) //If the troll has talked to the player before (magic word was correct), but the player had to go back to get the vine 
 	{
-		cout << "Vine test!" << endl;
-		//somehow acces dialogue node6 and its options
-		//goes to switch case statement
-		//checks to see if inventory contains the vine
 
-		// OR
 
-		//create second dialogue tree and call it instead and the new node vchoice should either go directly to case 6 or 7
+		Item* hands = player.getWeaponSlot();
+		if (hands && hands->getName() == "vine") //if player is holding vine
+		{
+			//INIT NEW CODE
+			dtree.consequences(6, player);
+		}
+		else
+		{
+			cout << "Troll: I don't see you holding your materials!" << endl;
+
+		}
 	}
-	
+
 }
 
 void trollDialogue::defeatedDialogue() {
@@ -97,7 +106,7 @@ string trollDialogue::randomResponse()
 	{
 		reply = d;
 	}
-	
+
 	return reply;
 }
 
