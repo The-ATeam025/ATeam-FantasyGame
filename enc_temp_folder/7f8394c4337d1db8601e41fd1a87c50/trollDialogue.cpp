@@ -15,6 +15,8 @@ trollDialogue::trollDialogue() : NPCDefeated(false), talkedTo(false) {
 void trollDialogue::startDialogue(Player& player) {
 	string magicWord;
 
+	// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 	if (talkedTo == false) {
 		talkedTo = true;
@@ -34,10 +36,10 @@ void trollDialogue::startDialogue(Player& player) {
 			dtree.init_troll(player);
 		}
 		else {
-			cout << "Troll: Wrong! Go away and come back when you learn something!!" << endl; //If word is given and is incorrect (and the player does not leave the bridge location)
+			cout << "Troll: Wrong! Go away and come back when you learn something!!" << endl;
 		}
-	} 
-	else if((talkedTo==true) && (convoCompleted==false)) ///If word is given and is incorrect (and the player does leaves the bridge location and comes back)
+	}
+	else if((talkedTo==true) && (convoCompleted==false))
 	{
 		cout << "The troll is leaning against the bridge and tapping its foot impatiently." << endl;
 		cout << "Troll:" << randomResponse() << endl;
@@ -56,13 +58,6 @@ void trollDialogue::startDialogue(Player& player) {
 	else if (convoCompleted==true)
 	{
 		cout << "Vine test!" << endl;
-		//somehow acces dialogue node6 and its options
-		//goes to switch case statement
-		//checks to see if inventory contains the vine
-
-		// OR
-
-		//create second dialogue tree and call it instead and the new node vchoice should either go directly to case 6 or 7
 	}
 	
 }
