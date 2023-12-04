@@ -105,7 +105,8 @@ void GameWorld::init(Player& player) {
     Trechend->setDialogue(DialogueTrechend);
 
     // Goddess
-    Goddess->setLocation(nest);
+    // Test - 
+    // Goddess->setLocation(nest);
     Goddess->setDialogue(DialogueGoddess);
 
     // Connect the locations
@@ -141,8 +142,9 @@ void GameWorld::init(Player& player) {
     player.walkToLocation(courtyard);
 
     // Test for battle
-    player.wearItem(sword, "hands");
-    player.walkToLocation(nest);
+    // player.wearItem(sword, "hands");
+    // nest->addItem(trechenTooth);
+    // player.walkToLocation(nest);
 }
 
 Location* GameWorld::getCourtyard() { return courtyard; }
