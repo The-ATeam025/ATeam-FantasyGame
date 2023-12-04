@@ -246,10 +246,10 @@ void DialogueTree::init_goddess_1(Player& player) //set up tree with dialogue, m
 	cout << "She gestures for you to come closer";
 	cout << endl;
 
-	DialogueNode* node0 = new DialogueNode("I have been watching your progress. I know you've been wanting to go home.");
-	DialogueNode* node1 = new DialogueNode("Never you mind how, do you want to go home or not?");
-	DialogueNode* node2 = new DialogueNode("I can help you get home, but first, I need you to do something for me.");
-	DialogueNode* node3 = new DialogueNode("Theres been a creature causing trouble for me. Bring me back its tooth as proof its been dealth with and we'll talk about getting you home.");
+	DialogueNode* node0 = new DialogueNode("Aine: I have been watching your progress. I know you've been wanting to go home.");
+	DialogueNode* node1 = new DialogueNode("Aine: Never you mind how, do you want to go home or not?");
+	DialogueNode* node2 = new DialogueNode("Aine: I can help you get home, but first, I need you to do something for me.");
+	DialogueNode* node3 = new DialogueNode("Aine: Theres been a creature causing trouble for me. Bring me back its tooth as proof its been dealth with and we'll talk about getting you home.");
 
 	//Node 0
 	node0->dialogueOptions.push_back(DialogueOption("How have you been watching me?", 1, node1));
@@ -281,9 +281,9 @@ void DialogueTree::init_goddess_2(Player& player) //set up tree with dialogue, m
 	cout << "She gestures for you to come closer";
 	cout << endl;
 
-	DialogueNode* node0 = new DialogueNode("Very good, I see you've taken care of the creature like I asked");
-	DialogueNode* node1 = new DialogueNode("Thank you very much, now I can do something for you");
-	DialogueNode* node2 = new DialogueNode("I can open a way for you to get back now");
+	DialogueNode* node0 = new DialogueNode("Aine: Very good, I see you've taken care of the creature like I asked");
+	DialogueNode* node1 = new DialogueNode("Aine: Thank you very much, now I can do something for you");
+	DialogueNode* node2 = new DialogueNode("Aine: I can open a way for you to get back now");
 
 	//Node 0
 	node0->dialogueOptions.push_back(DialogueOption("Yes I have completed your task", 1, node1));
