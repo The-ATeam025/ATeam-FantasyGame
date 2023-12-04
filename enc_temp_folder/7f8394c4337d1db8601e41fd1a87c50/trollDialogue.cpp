@@ -58,13 +58,6 @@ void trollDialogue::startDialogue(Player& player) {
 	else if (convoCompleted==true)
 	{
 		cout << "Vine test!" << endl;
-		//somehow acces dialogue node6 and its options
-		//goes to switch case statement
-		//checks to see if inventory contains the vine
-
-		// OR
-
-		//create second dialogue tree and call it instead and the new node vchoice should either go directly to case 6 or 7
 	}
 	
 }

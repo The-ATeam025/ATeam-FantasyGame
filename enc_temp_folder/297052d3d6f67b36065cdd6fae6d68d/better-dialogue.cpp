@@ -194,7 +194,7 @@ void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make 
 	DialogueNode* node3 = new DialogueNode("Troll: Ah.. I see. In order to speak to Aine you will need to cross the lake. But you cannot swim in it, as the waters are filled with hungry water leeches and fog sprites that create disorienting fog over the lake, making navigation nearly impossible.");
 	DialogueNode* node4 = new DialogueNode("Troll: In a rush, eh? I guess you don't care about your safety..");
 	DialogueNode* node5 = new DialogueNode("Troll: Your best bet is to tame a Kelpie. In order to tame a kelpie, you will need a bridle. But BEWARE.. if the bridle is not secured properly, the keplie may drown you.");
-	DialogueNode* node6 = new DialogueNode("Troll: Let's check and see if you have the materials to create a bridle!");
+	DialogueNode* node6 = new DialogueNode("Troll: Let's check and see if you have a bridle!");
 
 
 
