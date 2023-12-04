@@ -48,7 +48,6 @@ public:
     Location* getSwamp();
     Location* getBridge();
     Location* getMeadow();
-    Location* getBridge();
 
     // Declarations for managing NPCs
     void addNPC(NPC* npc);
