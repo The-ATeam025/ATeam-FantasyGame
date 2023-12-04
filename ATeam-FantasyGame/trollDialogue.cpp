@@ -21,6 +21,7 @@ void trollDialogue::startDialogue(Player& player) {
 	if (talkedTo == false) {
 		talkedTo = true;
 		cout << "As you cautiously step onto the creaking wooden planks of the bridge, a deep, growling voice erupts, stopping you in your tracks. Then suddenly, the short hairy creature walks towards you, almost scaring you to death. " << endl;
+		cout << endl;
 		cout << "Troll: WHAT'S THE MAGIC WORD?!?!" << endl;
 		std::getline(std::cin, magicWord); //reads the whole line of input, including spaces, until it encounters a newline character.
 
@@ -42,6 +43,7 @@ void trollDialogue::startDialogue(Player& player) {
 	else if((talkedTo==true) && (convoCompleted==false)) ///If word is given and is incorrect (and the player does leaves the bridge location and comes back)
 	{
 		cout << "The troll is leaning against the bridge and tapping its foot impatiently." << endl;
+		cout << endl;
 		cout << "Troll:" << randomResponse() << endl;
 		cin >> magicWord;
 		if (magicWord == "rathad") {
