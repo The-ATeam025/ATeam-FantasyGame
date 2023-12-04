@@ -453,17 +453,7 @@ int DialogueTree::consequences(int code, Player& player)
 	case 6:
 		if (hands && hands->getName() == "vine") //if player is holding vine
 		{
-			// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-			getline(cin, answer);
-
-
-			if (answer != "__")
-			{
-				cout << "Not quite!" << endl;
-			}
-
+			cout << "Troll: See! The vines you are holding can be used to create a makeshift bridle for the kelpie." << endl;
 			tieBridle();
 		}
 		else

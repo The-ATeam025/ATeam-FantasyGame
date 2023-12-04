@@ -43,7 +43,7 @@ public:
 	void destroyTree(); //saves memory be deleting all nodes 
 	int performDialogue(Player& player, string errorMessage);
 	int consequences(int code, Player& player);
-	void tieBridle();
+	void tieBridle(Player& player);
 
 
 

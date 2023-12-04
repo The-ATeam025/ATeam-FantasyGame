@@ -1,7 +1,7 @@
 #include "GameWorld.h"
 
 //Constructor
-GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr), swamp(nullptr), nest(nullptr), bridge(nullptr), meadow(nullptr) {}
+GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr), nest(nullptr), meadow(nullptr), bridge(nullptr), swamp(nullptr), crossedBridge(nullptr) {}
 
 //Deconstructor
 GameWorld::~GameWorld() {
@@ -29,14 +29,11 @@ void GameWorld::init(Player& player) {
         "In the armory, all that remains is a lonely chest. The nearby shelves are bare, and must have already been looted by someone or something.");
     outside = new Location("Outside",
         "An untamed, enigmatic forest lies ahead, teeming with otherwordly magic and energy you have never experienced.");
-    swamp = new Location("Swamp",
-        "The Culra Swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Light filters through the canopy, casting shifting shadows across the landscape.");
-    nest = new Location("Nest",
-        "A colossal intertwining of twisted branches, their gnarled forms interwoven with moss-covered stones weathered by the passage of countless seasons.\nWithin this labyrinthine structure, ethereal feathers, shimmering like the moonlit night, are delicately entwined");
+    meadow = new Location("Meadow", "You see a pretty meadow.");
     bridge = new Location("Bridge",
-        "Whispering Wood Bridge, is an ancient structure of gnarled wood and creeping vines, blending seamlessly into the surrounding forest. Its timeworn planks, though sturdy, creak softly underfoot, adding to the sense of age and mystery. Moss and small flowers grow between the cracks, and the handrails are entwined with ivy, giving the bridge a wild, untamed look.");
-    meadow = new Location("Meadow", "After emerging from the swamp, you see a clearing among the trees. This place seems quiet and delightfully boring: you don't see any more talking creatures. You do notice some thick vines hanging from trees.");
-   
+        "A .");
+    swamp = new Location("Swamp", "The Culra Swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Thick vines grow from the trees.");
+    crossedBridge = new Location("Other side of the bridge","As you cross the bridge, bridle in hand, you notice a thick fog gather around you. When you get to the other side and turn to wave goodbye to the troll, you notice that the bridge has been entirely enshrouded in the mist. Ahead of you lies a gloomy-looking lake. ");
     // Create an item
     // "Name", "Description", "Equipment Slot - If none, leave as none"
     Item* rustyKey = new Item("Rusty Key", "A normal looking key, besides the rust covering its surface.", "hands");
@@ -57,10 +54,7 @@ void GameWorld::init(Player& player) {
     NPC* fairies = new NPC("Fairies",
         "Winged humanoid figures seated at a table, their radiant wings shimmering in the dim candlelight, laughing in hushed tones. Disturbingly enough, you notice their unnatural amount of sharp teeth.");
     NPC* oneEyedHare = new NPC("One Eyed Hare",
-        "The one-eyed hare, with its silvery coat, moves gracefully through the forest, its solitary emerald eye gleaming with a mysterious wisdom.");
-    NPC* Trechend = new NPC("Mythical Bird",
-        "A colossal vulture with three regal heads catches your gaze. Towering wings, adorned with mystic symbols, stretch majestically, \ncasting shadows that ripple across the landscape.");
-    NPC* Goddess = new NPC("Goddess", "Filler");
+        "The one-eyed hare, with its silvery coat, sniffs the air curiously. Its one emerald eye makes direct eye contact with you.");
     NPC* troll = new NPC("Troll",
         "Sitting on an old tree stump. The troll's face is craggy and weathered, like an old boulder, with a crooked nose and deep-set eyes. His frown is almost permanent, etched into his face by countless years of solitude and the irritation of the rare disturbances caused by passersby.");
 
@@ -103,7 +97,7 @@ void GameWorld::init(Player& player) {
     MarbleBust->setLocation(greatHall);
 
     // One Eyed Hare
-    oneEyedHare->setLocation(swamp);
+    oneEyedHare->setLocation(meadow);
     oneEyedHare->setDialogue(DialogueOneEyedHare);
 
     // Ell�n Trechend
@@ -138,13 +132,13 @@ void GameWorld::init(Player& player) {
     banquetHall->addConnectedLocation(redCapDungeon);
     
     outside->addConnectedLocation(greatHall);
-    outside->addConnectedLocation(swamp);
+    outside->addConnectedLocation(meadow);
 
-    swamp->addConnectedLocation(outside);
-    swamp->addConnectedLocation(meadow);
-    meadow->addConnectedLocation(bridge);
+    meadow->addConnectedLocation(outside);
+    meadow->addConnectedLocation(swamp);
+    swamp->addConnectedLocation(bridge);
 
-    bridge->addConnectedLocation(meadow);
+    bridge->addConnectedLocation(swamp);
 
     // Add pre-existing items to locations
 
@@ -155,7 +149,7 @@ void GameWorld::init(Player& player) {
     outside->addItem(carrot);
 
     //Meadow
-    meadow->addItem(vine);
+    swamp->addItem(vine);
 
     // Set the player's initial location
     player.walkToLocation(courtyard);
@@ -171,9 +165,9 @@ Location* GameWorld::getGreatHall() { return greatHall; }
 Location* GameWorld::getRedCapDungeon() { return redCapDungeon; }
 Location* GameWorld::getBanquetHall() { return banquetHall; }
 Location* GameWorld::getOutside() { return outside; }
-Location* GameWorld::getSwamp() { return swamp; }
+Location* GameWorld::getSwamp() { return meadow; }
 Location* GameWorld::getBridge() { return bridge; }
-Location* GameWorld::getMeadow() { return meadow; }
+Location* GameWorld::getMeadow() { return swamp; }
 
 
 
