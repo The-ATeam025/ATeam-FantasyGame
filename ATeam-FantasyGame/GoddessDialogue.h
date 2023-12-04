@@ -7,6 +7,7 @@ private:
     bool NPCDefeated;
     bool itemGiven;
     DialogueTree dtree;
+    bool talkedToGoddess;
 public:
     GoddessDialogue();
     void startDialogue(Player& player) override;
