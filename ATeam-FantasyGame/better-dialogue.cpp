@@ -382,6 +382,7 @@ int DialogueTree::consequences(int code, Player& player)
 	case 6:
 		if (hands && hands->getName() == "vine") //if player is holding vine
 		{
+			cout << "Troll: See! The vines you are holding can be used to create a makeshift bridle for the kelpie." << endl;
 			tieBridle();
 		}
 		else
