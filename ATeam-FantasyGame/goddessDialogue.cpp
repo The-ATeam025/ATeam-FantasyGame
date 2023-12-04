@@ -14,10 +14,10 @@ void GoddessDialogue::startDialogue(Player& player) {
             string itemName = inventoryItem->getName();
             if (itemName == "Tooth") {
                 player.removeItemFromInventory(inventoryItem);
-                itemGiven = true;
-                dtree.init_goddess_2(player);
+		itemGiven = true;
+		dtree.init_goddess_2(player);
                 break; // Exit the loop since we found the "Tooth" item
-            }
+	}
         }
 
         // If the loop completes without finding the "Tooth" item
@@ -27,9 +27,9 @@ void GoddessDialogue::startDialogue(Player& player) {
     }
     else {
         // Player hasn't talked to the goddess yet
-        dtree.init_goddess_1(player);
+		dtree.init_goddess_1(player);
         talkedToGoddess = true;
-    }
+	}
 }
 
 void GoddessDialogue::defeatedDialogue() {
