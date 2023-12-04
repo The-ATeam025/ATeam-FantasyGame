@@ -14,15 +14,15 @@ void GoddessDialogue::startDialogue(Player& player) {
             string itemName = inventoryItem->getName();
             if (itemName == "Tooth") {
                 player.removeItemFromInventory(inventoryItem);
-		itemGiven = true;
-		dtree.init_goddess_2(player);
+		        itemGiven = true;
+		        dtree.init_goddess_2(player);
                 break; // Exit the loop since we found the "Tooth" item
 	}
         }
 
         // If the loop completes without finding the "Tooth" item
         if (!itemGiven) {
-            cout << "You need the item 'Tooth' to proceed." << endl;
+            cout << "She has nothing else to say to you. You must return with the creature's tooth." << endl;
         }
     }
     else {
