@@ -454,7 +454,7 @@ int DialogueTree::consequences(int code, Player& player)
 		if (hands && hands->getName() == "vine") //if player is holding vine
 		{
 			cout << "Troll: See! The vines you are holding can be used to create a makeshift bridle for the kelpie." << endl;
-			tieBridle();
+			tieBridle(player);
 		}
 		else
 		cout << "Troll: You want me to show you how to tie a bridle without anything to tie? You're empty-handed! Get outta here!" << endl;
@@ -500,7 +500,6 @@ int DialogueTree::performDialogue(Player& player, string message)
 		input--;
 		if (currentNode->dialogueOptions[input].nextNode == nullptr)
 		{
-			//cout << "reee";
 			int code= currentNode ->dialogueOptions[input].returnCode;
 			consequences(code, player);
 			return code;
@@ -512,8 +511,8 @@ int DialogueTree::performDialogue(Player& player, string message)
 
 	}
 }
-
-void DialogueTree::tieBridle()
+ 
+void DialogueTree::tieBridle(Player &player)
 {
 	string answer;
 	cout << "Troll: First, lay the vine out flat on the ground" << endl;

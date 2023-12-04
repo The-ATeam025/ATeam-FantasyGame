@@ -32,6 +32,7 @@ private:
     Location* bridge;
     Location* swamp;
     Location* crossedBridge;
+    Location* nest;
     std::list<NPC*> npcs;
     std::list<Objects*> objects;
     std::list<Location*> outsideLocations;
@@ -48,7 +49,6 @@ public:
     Location* getBanquetHall();
     Location* getOutside();
     Location* getSwamp();
-    Location* getBridge();
     Location* getMeadow();
     Location* getBridge();
     Location* getNest();
