@@ -41,7 +41,7 @@ void GameWorld::init(Player& player) {
     Item* sword = new Item("Sword", "A sharp and sturdy sword for combat.", "hands");
     Item* helmet = new Item("Helmet", "A protective helmet for your head.", "head");
     Item* carrot = new Item("carrot", "Normal looking carrot","hands");
-    Item* trechenHead = new Item("Severed Head", "One of Ellen Trechend's three heads", "none");
+    Item* trechenTooth = new Item("Tooth", "One of Ellen Trechend's teeth", "none");
 
 
     // Create room Objects
@@ -96,9 +96,9 @@ void GameWorld::init(Player& player) {
     oneEyedHare->setLocation(swamp);
     oneEyedHare->setDialogue(DialogueOneEyedHare);
 
-    // Ellén Trechend
+    // EllÃ©n Trechend
     Trechend->setLocation(nest);
-    Trechend->setItem(trechenHead);
+    Trechend->setItem(trechenTooth);
     Trechend->setDialogue(DialogueTrechend);
 
     // Connect the locations
