@@ -134,7 +134,6 @@ void GameWorld::init(Player& player) {
     banquetHall->addConnectedLocation(redCapDungeon);
     //test: testing: banquetHall->addConnectedLocation(outside);
 
-
     outside->addConnectedLocation(greatHall);
     outside->addConnectedLocation(swamp);
 
