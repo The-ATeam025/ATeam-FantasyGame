@@ -573,8 +573,17 @@ void DialogueTree::tieBridle(Player &player)
 	cout << endl;
 
 	
-	
+	//Create bridle item, move to inventory, remove vine from hand slot and inventory
 
+	Item* hands = player.getWeaponSlot();
+	if (hands && hands->getName() == "Vine") //if player is holding vine
+	{
+		Item* bridle = new Item("Bridle", "Vine tied in the shape of a bridle", "hands"); 
+		player.removeItem("hands");
+		player.addItemToInventory(bridle);
+
+	}
+	
 
 	player.walkToLocation(player.getCurrentLocation()->hidden);
 

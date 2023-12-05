@@ -197,6 +197,7 @@ Location* GameWorld::getMeadow() { return swamp; }
 
 
 
+
 // Add's NPC's to the GameWorld instance
 void GameWorld::addNPC(NPC* npc) {
     npcs.push_back(npc);
