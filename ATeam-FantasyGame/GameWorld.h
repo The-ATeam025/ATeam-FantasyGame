@@ -35,6 +35,7 @@ private:
     Location* lake;
     Location* nest;
     Location* bridge1;
+    Location* goddessDwelling;
     std::list<NPC*> npcs;
     std::list<Objects*> objects;
     std::list<Location*> outsideLocations;

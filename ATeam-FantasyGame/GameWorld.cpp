@@ -1,7 +1,7 @@
 #include "GameWorld.h"
 
 //Constructor
-GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr), nest(nullptr), meadow(nullptr), bridge(nullptr), swamp(nullptr), crossedBridge(nullptr), lake(nullptr) {}
+GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr), nest(nullptr), meadow(nullptr), bridge(nullptr), swamp(nullptr), crossedBridge(nullptr), lake(nullptr), goddessDwelling(nullptr) {}
 
 //Deconstructor
 GameWorld::~GameWorld() {
@@ -17,6 +17,7 @@ GameWorld::~GameWorld() {
     delete lake;
     delete bridge;
     delete bridge1;
+    delete goddessDwelling;
 }
 
 
@@ -40,11 +41,11 @@ void GameWorld::init(Player& player) {
         "An untamed, enigmatic forest lies ahead, teeming with otherwordly magic and energy you have never experienced.");
     meadow = new Location("Meadow", "You see a pretty meadow.");
     bridge1 = new Location("Bridge", "Bridge you just crossed");
-
     bridge = new Location("Bridge",
         "The landscape becomes more and more rugged and swampy, until it becomes an impassable marsh. A wooden bridge connects this wetland to whatever lies up ahead, but it is guarded by a troll.", bridge1);
     nest = new Location("Nest",
         "A colossal intertwining of twisted branches, their gnarled forms interwoven with moss-covered stones weathered by the passage of countless seasons.\nWithin this labyrinthine structure, ethereal feathers, shimmering like the moonlit night, are delicately entwined");
+    goddessDwelling = new Location("The goddess's dwelling", "Magic tree or something");
     //  crossedBridge = new Location("Other side of the bridge","As you cross the bridge, bridle in hand, you notice a thick fog gather around you. When you get to the other side and turn to wave goodbye to the troll, you notice that the bridge has been entirely enshrouded in the mist. Ahead of you lies a gloomy-looking lake. ");
     
     // Create an item
@@ -127,7 +128,7 @@ void GameWorld::init(Player& player) {
 
     // Goddess
     // Test - 
-    //Goddess->setLocation(nest);
+    Goddess->setLocation(goddessDwelling);
     Goddess->setDialogue(DialogueGoddess);
 
     // troll
@@ -162,7 +163,8 @@ void GameWorld::init(Player& player) {
     bridge1->addConnectedLocation(crossedBridge);
     crossedBridge->addConnectedLocation(lake);
     
-    
+    nest->addConnectedLocation(goddessDwelling);
+    goddessDwelling->addConnectedLocation(nest);
 
     // Add pre-existing items to locations
 
