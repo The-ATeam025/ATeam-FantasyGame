@@ -137,8 +137,9 @@ void GameWorld::init(Player& player) {
 
     // Connect the locations
     courtyard->addConnectedLocation(greatHall);
-    // delete after testing
-    courtyard->addConnectedLocation(bridge);
+   
+    //TESTING
+    //courtyard->addConnectedLocation(bridge);
 
     
     greatHall->addConnectedLocation(banquetHall);
