@@ -45,7 +45,7 @@ void GameWorld::init(Player& player) {
         "The landscape becomes more and more rugged and swampy, until it becomes an impassable marsh. A wooden bridge connects this wetland to whatever lies up ahead, but it is guarded by a troll.", bridge1);
     nest = new Location("Nest",
         "A colossal intertwining of twisted branches, their gnarled forms interwoven with moss-covered stones weathered by the passage of countless seasons.\nWithin this labyrinthine structure, ethereal feathers, shimmering like the moonlit night, are delicately entwined");
-    goddessDwelling = new Location("The goddess's dwelling", "Magic tree or something");
+    goddessDwelling = new Location("The Goddess's Dwelling", "A celestial sanctuary, adorned with vibrant blossoms and iridescent flora. The air is filled with the sweet fragrance of blooming flowers");
     //  crossedBridge = new Location("Other side of the bridge","As you cross the bridge, bridle in hand, you notice a thick fog gather around you. When you get to the other side and turn to wave goodbye to the troll, you notice that the bridge has been entirely enshrouded in the mist. Ahead of you lies a gloomy-looking lake. ");
     
     // Create an item
