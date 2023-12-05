@@ -33,7 +33,8 @@ void GameWorld::init(Player& player) {
     bridge = new Location("Bridge",
         "The landscape becomes more and more rugged and swampy, until it becomes an impassable marsh. A wooden bridge connects this wetland to whatever lies up ahead, but it is guarded by a troll.");
     swamp = new Location("Swamp", "The Culra Swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Thick vines grow from the trees.");
-  //  crossedBridge = new Location("Other side of the bridge","As you cross the bridge, bridle in hand, you notice a thick fog gather around you. When you get to the other side and turn to wave goodbye to the troll, you notice that the bridge has been entirely enshrouded in the mist. Ahead of you lies a gloomy-looking lake. ");
+    //  crossedBridge = new Location("Other side of the bridge","As you cross the bridge, bridle in hand, you notice a thick fog gather around you. When you get to the other side and turn to wave goodbye to the troll, you notice that the bridge has been entirely enshrouded in the mist. Ahead of you lies a gloomy-looking lake. ");
+    
     // Create an item
     // "Name", "Description", "Equipment Slot - If none, leave as none"
     Item* rustyKey = new Item("Rusty Key", "A normal looking key, besides the rust covering its surface.", "hands");
