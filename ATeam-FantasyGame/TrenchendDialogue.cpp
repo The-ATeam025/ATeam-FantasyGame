@@ -87,7 +87,7 @@ void TrechendDialogue::processUserInput(Player& player) {
 
 
         // Adjust the timeout duration
-        constexpr int timeoutDuration = 2;
+        constexpr int timeoutDuration = 1;
 
         if (duration <= timeoutDuration && userInput == promptWord){
             dealDamage();
