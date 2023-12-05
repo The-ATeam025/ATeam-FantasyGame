@@ -1,7 +1,7 @@
 #include "GameWorld.h"
 
 //Constructor
-GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr), nest(nullptr), meadow(nullptr), bridge(nullptr), swamp(nullptr), crossedBridge(nullptr) {}
+GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr), nest(nullptr), meadow(nullptr), bridge(nullptr), swamp(nullptr), crossedBridge(nullptr), lake(nullptr) {}
 
 //Deconstructor
 GameWorld::~GameWorld() {
@@ -13,10 +13,19 @@ GameWorld::~GameWorld() {
     delete armory;
     delete swamp;
     delete nest;
+    delete crossedBridge;
+    delete lake;
+    delete bridge;
+    delete bridge1;
 }
+
+
 
 void GameWorld::init(Player& player) {
     // Initialize locations
+    crossedBridge = new Location("Other side of the bridge", "As you cross the bridge, bridle in hand, you notice a thick fog gather around you. When you get to the other side and turn to wave goodbye to the troll, you notice that the bridge has been entirely enshrouded in the mist. Ahead of you lies a gloomy-looking lake. ");
+    lake = new Location("Lake", "You see a kelpie in the lake, and prepare to capture it.");
+    swamp = new Location("Swamp", "The Culra Swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Thick vines grow from the trees.");
     courtyard = new Location("Courtyard",
         "You find yourself surrounded by a circle of dead grass replacing the mushrooms that brought you here. The air is filled with an otherworldly energy, and the sun is hidden behind the clouds");
     greatHall = new Location("Great Hall",
@@ -24,18 +33,18 @@ void GameWorld::init(Player& player) {
     redCapDungeon = new Location("Dungeon",
         "The air is damp and cold, and the stench of decay lingers in the underground chamber. An unsettling feeling creeps over you. ");
     banquetHall = new Location("Banquet Hall",
-        "The doors of this magnificent banquet hall are slightly tilted, but you can see light and hear laughter coming from within.");
+        "The doors of this magnificent banquet hall are slightly tilted, but you can see light and hear laughter coming from within.", swamp);
     armory = new Location("Armory",
         "In the armory, all that remains is a lonely chest. The nearby shelves are bare, and must have already been looted by someone or something.");
     outside = new Location("Outside",
         "An untamed, enigmatic forest lies ahead, teeming with otherwordly magic and energy you have never experienced.");
     meadow = new Location("Meadow", "You see a pretty meadow.");
+    bridge1 = new Location("Bridge", "Bridge you just crossed");
+
     bridge = new Location("Bridge",
-        "The landscape becomes more and more rugged and swampy, until it becomes an impassable marsh. A wooden bridge connects this wetland to whatever lies up ahead, but it is guarded by a troll.");
-    swamp = new Location("Swamp", "The Culra Swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Thick vines grow from the trees.");
+        "The landscape becomes more and more rugged and swampy, until it becomes an impassable marsh. A wooden bridge connects this wetland to whatever lies up ahead, but it is guarded by a troll.", bridge1);
     nest = new Location("Nest",
         "A colossal intertwining of twisted branches, their gnarled forms interwoven with moss-covered stones weathered by the passage of countless seasons.\nWithin this labyrinthine structure, ethereal feathers, shimmering like the moonlit night, are delicately entwined");
-
     //  crossedBridge = new Location("Other side of the bridge","As you cross the bridge, bridle in hand, you notice a thick fog gather around you. When you get to the other side and turn to wave goodbye to the troll, you notice that the bridge has been entirely enshrouded in the mist. Ahead of you lies a gloomy-looking lake. ");
     
     // Create an item
@@ -46,7 +55,7 @@ void GameWorld::init(Player& player) {
     Item* helmet = new Item("Helmet", "A protective helmet for your head.", "head");
     Item* carrot = new Item("carrot", "Normal looking carrot","hands");
     Item* trechenTooth = new Item("Tooth", "One of Ellen Trechend's teeth", "none");
-    Item* vine = new Item("vine", "Thick piece of flexible vine a few feet long", "hands");
+    Item* vine = new Item("Vine", "Thick piece of flexible vine a few feet long", "hands");
 
     // Create room Objects
     Objects* armoryChest = new ArmoryChest("Chest", "An old chest that has had its surface almost compleltely consumed by moss.");
@@ -150,7 +159,9 @@ void GameWorld::init(Player& player) {
     swamp->addConnectedLocation(bridge);
 
     bridge->addConnectedLocation(swamp);
-  //  bridge->addConnectedLocation(crossedBridge);
+    bridge1->addConnectedLocation(crossedBridge);
+    crossedBridge->addConnectedLocation(lake);
+    
     
 
     // Add pre-existing items to locations
@@ -165,7 +176,7 @@ void GameWorld::init(Player& player) {
     swamp->addItem(vine);
 
     // Set the player's initial location
-    //player.walkToLocation(courtyard);
+    player.walkToLocation(courtyard);
 
     // Test for battle
     //player.wearItem(sword, "hands");

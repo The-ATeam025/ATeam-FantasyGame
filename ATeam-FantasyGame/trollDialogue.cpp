@@ -62,7 +62,7 @@ void trollDialogue::startDialogue(Player& player) {
 
 
 		Item* hands = player.getWeaponSlot();
-		if (hands && hands->getName() == "vine") //if player is holding vine
+		if (hands && hands->getName() == "Vine") //if player is holding vine
 		{
 			//INIT NEW CODE
 			dtree.consequences(6, player);

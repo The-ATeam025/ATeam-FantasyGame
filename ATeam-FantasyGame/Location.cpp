@@ -16,6 +16,11 @@ Location::Location(string newName, string newDescription) : name(newName), descr
     // Initialize other members as needed...
 }
 
+//Constructor 2
+Location::Location(string newName, string newDescription, Location *loc) : name(newName), description(newDescription), hidden(loc){
+    // Initialize other members as needed...
+}
+
 
 // Returns a string of the Locations name
 string Location::getName()
