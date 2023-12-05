@@ -33,7 +33,7 @@ void GameWorld::init(Player& player) {
         "The Culra Swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Light filters through the canopy, casting shifting shadows across the landscape.");
     nest = new Location("Nest",
         "A colossal intertwining of twisted branches, their gnarled forms interwoven with moss-covered stones weathered by the passage of countless seasons.\nWithin this labyrinthine structure, ethereal feathers, shimmering like the moonlit night, are delicately entwined");
-         bridge = new Location("Bridge",
+    bridge = new Location("Bridge",
         "Whispering Wood Bridge, is an ancient structure of gnarled wood and creeping vines, blending seamlessly into the surrounding forest. Its timeworn planks, though sturdy, creak softly underfoot, adding to the sense of age and mystery. Moss and small flowers grow between the cracks, and the handrails are entwined with ivy, giving the bridge a wild, untamed look.");
 
     // Create an item
