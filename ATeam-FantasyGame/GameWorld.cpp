@@ -40,7 +40,7 @@ void GameWorld::init(Player& player) {
     outside = new Location("Outside",
         "An untamed, enigmatic forest lies ahead, teeming with otherwordly magic and energy you have never experienced.");
     meadow = new Location("Meadow", "You see a pretty meadow.");
-    bridge1 = new Location("Bridge", "Bridge you just crossed");
+    bridge1 = new Location("Bridge", "Same bridge. he troll has lumbered off into the distance.");
     bridge = new Location("Bridge",
         "The landscape becomes more and more rugged and swampy, until it becomes an impassable marsh. A wooden bridge connects this wetland to whatever lies up ahead, but it is guarded by a troll.", bridge1);
     nest = new Location("Nest",
