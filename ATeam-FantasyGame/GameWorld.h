@@ -9,7 +9,9 @@
 #include "ArmoryChest.h"
 #include "marbleBust.h"
 #include "hareDialogue.h"
+#include "trollDialogue.h"
 #include "TrechendDialogue.h"
+#include "GoddessDialogue.h"
 #include <list>
 #include <vector>
 
@@ -26,8 +28,14 @@ private:
     Location* banquetHall;
     Location* armory;
     Location* outside;
+    Location* meadow;
+    Location* bridge;
     Location* swamp;
+    Location* crossedBridge;
+    Location* lake;
     Location* nest;
+    Location* bridge1;
+    Location* goddessDwelling;
     std::list<NPC*> npcs;
     std::list<Objects*> objects;
     std::list<Location*> outsideLocations;
@@ -44,6 +52,11 @@ public:
     Location* getBanquetHall();
     Location* getOutside();
     Location* getSwamp();
+    Location* getMeadow();
+    Location* getBridge();
+    Location* getBridge1();
+    Location* getCrossedBridge;
+    Location* getLake();
     Location* getNest();
 
     // Declarations for managing NPCs

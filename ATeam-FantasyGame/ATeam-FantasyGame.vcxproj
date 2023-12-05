@@ -133,6 +133,7 @@
     <ClCompile Include="fairyDialogue.cpp" />
     <ClCompile Include="GameWorld.cpp" />
     <ClCompile Include="better-dialogue.cpp" />
+    <ClCompile Include="goddessDialogue.cpp" />
     <ClCompile Include="hareDialogue.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Location.cpp" />
@@ -141,6 +142,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="redCapDialogue.cpp" />
+    <ClCompile Include="trollDialogue.cpp" />
     <ClCompile Include="TrenchendDialogue.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="Backstory.cpp" />
@@ -152,6 +154,7 @@
     <ClInclude Include="DialogueNPC.h" />
     <ClInclude Include="fairyDialogue.h" />
     <ClInclude Include="GameWorld.h" />
+    <ClInclude Include="GoddessDialogue.h" />
     <ClInclude Include="hareDialogue.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Location.h" />
@@ -160,6 +163,7 @@
     <ClInclude Include="Objects.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="redCapDialogue.h" />
+    <ClInclude Include="trollDialogue.h" />
     <ClInclude Include="TrechendDialogue.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="worldObjects.h" />

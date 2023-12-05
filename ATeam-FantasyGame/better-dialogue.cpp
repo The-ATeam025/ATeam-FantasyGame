@@ -181,6 +181,132 @@ void DialogueTree::init_hare(Player& player) //set up tree with dialogue, make t
 	performDialogue(player, message);
 }
 
+void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make this one virtual?
+{
+	string message = "Troll: Speak Correctly! "; //custom error message for this character interaction--the warning the player gets if the input is invalid 
+
+
+	cout << endl;
+
+	DialogueNode* node0 = new DialogueNode("Troll: Who ventures upon my guarded bridge without my sanction ? This is no place for the unwatched and unguarded! Declare your purpose, lest you wander into peril under my watch!");
+	DialogueNode* node1 = new DialogueNode("Troll: Ah, a polite one! Trespass is not taken lightly here, but your manners show honor. Tell me, why does your journey bring you to this bridge?");
+	DialogueNode* node2 = new DialogueNode("Troll: A sacred site, you say? The lands beyond this bridge hold many ancient secrets and hallowed grounds. Few are those who tread such paths with pure intent. ");
+	DialogueNode* node3 = new DialogueNode("Troll: Ah.. I see. In order to speak to Aine you will need to cross the lake. But you cannot swim in it, as the waters are filled with hungry water leeches and fog sprites that create disorienting fog over the lake, making navigation nearly impossible.");
+	DialogueNode* node4 = new DialogueNode("Troll: In a rush, eh? I guess you don't care about your safety..");
+	DialogueNode* node5 = new DialogueNode("Troll: Your best bet is to tame a Kelpie. In order to tame a kelpie, you will need a bridle. But BEWARE.. if the bridle is not secured properly, the keplie may drown you.");
+	DialogueNode* node6 = new DialogueNode("Troll: Let's check and see if you have the materials to create a bridle!");
+
+
+
+	//Node 0
+	node0->dialogueOptions.push_back(DialogueOption("My path leads me to a sacred site known to lie beyond this bridge.", 1, node2));
+	node0->dialogueOptions.push_back(DialogueOption("I'm so sorry. I didn't mean to trespass.", 0, node1));
+	dialogueNodes.push_back(node0);
+
+	//Node 1
+	node1->dialogueOptions.push_back(DialogueOption("I am looking for Aine.", 2, node3));
+	node1->dialogueOptions.push_back(DialogueOption("Seems very serious. I am on a journey to get back home, but first I need to speak to Aine.", 0, node3));
+	dialogueNodes.push_back(node1);
+
+	//Node 2
+	node2->dialogueOptions.push_back(DialogueOption("I assure you, my intentions are pure. I am here to see Aine. ", 2, node3));
+	node2->dialogueOptions.push_back(DialogueOption("Can you just let me pass through? I'm kind of in a hurry.", 1, node4));
+	dialogueNodes.push_back(node2);
+
+	//Node 3
+	node3->dialogueOptions.push_back(DialogueOption("Wait, how will I be able to cross? ", 2, node5));
+	node3->dialogueOptions.push_back(DialogueOption("That sounds extremely terrifying...", 1, node5));
+	dialogueNodes.push_back(node3);
+
+	//node 4
+	node4->dialogueOptions.push_back(DialogueOption("No, I do care about my safety. Please tell me what I need to do in order to talk to Aine. ", 4, node3));
+	node4->dialogueOptions.push_back(DialogueOption("Please help me, I can't stay here forever.", 5, node1));
+	dialogueNodes.push_back(node4);
+
+	//node 5
+	node5->dialogueOptions.push_back(DialogueOption("I'm tired of this weird world... let's just get it over with. ", 0, node6));
+	node5->dialogueOptions.push_back(DialogueOption("Nothing can stop me!", 5, node6));
+	dialogueNodes.push_back(node5);
+
+	//node 6
+	node6->dialogueOptions.push_back(DialogueOption("I'm not sure I know how..", 6, nullptr));
+	node6->dialogueOptions.push_back(DialogueOption("How do I make one?", 6, nullptr));
+	dialogueNodes.push_back(node6);
+
+
+	performDialogue(player, message);
+}
+
+
+
+void DialogueTree::init_goddess_1(Player& player) //set up tree with dialogue, make this one virtual?
+{
+	string message = "Its good to finally meet you."; //custom error message for this character interaction--the warning the player gets if the input is invalid 
+
+	cout << "You see a beautiful women in front of you wearing a silky garb with a cape";
+	cout << "She gestures for you to come closer";
+	cout << endl;
+
+	DialogueNode* node0 = new DialogueNode("Aine: I have been watching your progress. I know you've been wanting to go home.");
+	DialogueNode* node1 = new DialogueNode("Aine: Never you mind how, do you want to go home or not?");
+	DialogueNode* node2 = new DialogueNode("Aine: I can help you get home, but first, I need you to do something for me.");
+	DialogueNode* node3 = new DialogueNode("Aine: Theres been a creature causing trouble for me. Bring me back its tooth as proof its been dealth with and we'll talk about getting you home.");
+
+	//Node 0
+	node0->dialogueOptions.push_back(DialogueOption("How have you been watching me?", 1, node1));
+	node0->dialogueOptions.push_back(DialogueOption("Yes I want to go home, can you help?", 1, node2));
+	dialogueNodes.push_back(node0);
+
+	//Node 1
+	node1->dialogueOptions.push_back(DialogueOption("Yes I would like to go home", 1, node2));
+	node1->dialogueOptions.push_back(DialogueOption("If you know how to get home just tell me please", 1, node2));
+	dialogueNodes.push_back(node1);
+
+	//Node 2
+	node2->dialogueOptions.push_back(DialogueOption("What is it you need?", 1, node3));
+	node2->dialogueOptions.push_back(DialogueOption("Another task? As long as you can help me get home, I'll do it.", 1, node3));
+	dialogueNodes.push_back(node2);
+
+	//Node 3
+	node3->dialogueOptions.push_back(DialogueOption("Consider it done", -1, nullptr));
+	node3->dialogueOptions.push_back(DialogueOption("I'll do this if it helps me get back home.", -1, nullptr));
+	dialogueNodes.push_back(node3);
+
+	performDialogue(player, message);
+}
+void DialogueTree::init_goddess_2(Player& player) //set up tree with dialogue, make this one virtual?
+{
+	string message = "Its good to see you again."; //custom error message for this character interaction--the warning the player gets if the input is invalid 
+
+	cout << "You see a beautiful women in front of you wearing a silky garb with a cape";
+	cout << "She gestures for you to come closer";
+	cout << endl;
+
+	DialogueNode* node0 = new DialogueNode("Aine: Very good, I see you've taken care of the creature like I asked");
+	DialogueNode* node1 = new DialogueNode("Aine: Thank you very much, now I can do something for you");
+	DialogueNode* node2 = new DialogueNode("Aine: I can open a way for you to get back now");
+
+	//Node 0
+	node0->dialogueOptions.push_back(DialogueOption("Yes I have completed your task", 1, node1));
+	node0->dialogueOptions.push_back(DialogueOption("You said you could get me home?", 1, node2));
+	dialogueNodes.push_back(node0);
+
+	//Node 1
+	node1->dialogueOptions.push_back(DialogueOption("Yes can help me get back home?", 1, node2));
+	node1->dialogueOptions.push_back(DialogueOption("Finally, get me out of here please", 1, node2));
+	dialogueNodes.push_back(node1);
+
+	//Node 2
+	node2->dialogueOptions.push_back(DialogueOption("Please do", -1, nullptr));
+	node2->dialogueOptions.push_back(DialogueOption("Hurry up, I just want to get back home", -1, nullptr));
+	dialogueNodes.push_back(node2);
+
+	performDialogue(player, message);
+}
+
+
+
+
 void DialogueTree::destroyTree()
 {
 	for (int i = 0; i < dialogueNodes.size(); i++)
@@ -192,9 +318,12 @@ void DialogueTree::destroyTree()
 
 int DialogueTree::consequences(int code, Player& player)
 {
+	Item* hands = player.getWeaponSlot();
 	string answer;
 	switch (code) {
 		//Consequences for fairy: it eats you because you decline a riddle
+	case -1:
+		return code;
 	case 0:
 		system("CLS");
 		player.setShouldRestartGame(true);
@@ -203,8 +332,8 @@ int DialogueTree::consequences(int code, Player& player)
 		return code;
 	case 1:
 
-		cout << "Fairy: You were nice, so you get an easy riddle. Your answer will be one word. Still, you only have three tries." << endl;
-		cout << "What has hands, but can't hold anything?" << endl;
+		cout << "Insolent mortal! For your lack of manners, you will get a hard riddle and only three attempts to guess it." << endl;
+		cout << "What is both the beginning of eternity and the end of time and space, the beginning of every end and the end of every place?" << endl;
 		cout << endl;
 		for (int i = 2; i >= 0; i--)
 		{
@@ -312,6 +441,7 @@ int DialogueTree::consequences(int code, Player& player)
 				return code;
 
 			}
+
 		}
 		system("CLS");
 		cout << "You have messed up the riddle. You have lost the chance at getting important information!" << endl;
@@ -320,7 +450,16 @@ int DialogueTree::consequences(int code, Player& player)
 		return code;
 
 		break;
-
+	case 6:
+		if (hands && hands->getName() == "Vine") //if player is holding vine
+		{
+			cout << "Troll: See! The vines you are holding can be used to create a makeshift bridle for the kelpie." << endl;
+			tieBridle(player);
+		}
+		else
+		cout << "Troll: You want me to show you how to tie a bridle without anything to tie? You're empty-handed! Get outta here!" << endl;
+		break;
+	
 	default:
 		cout << "Error: no code given" << endl;
 		break;
@@ -361,7 +500,6 @@ int DialogueTree::performDialogue(Player& player, string message)
 		input--;
 		if (currentNode->dialogueOptions[input].nextNode == nullptr)
 		{
-			//cout << "reee";
 			int code= currentNode ->dialogueOptions[input].returnCode;
 			consequences(code, player);
 			return code;
@@ -373,4 +511,71 @@ int DialogueTree::performDialogue(Player& player, string message)
 
 	}
 }
+ 
+void DialogueTree::tieBridle(Player &player)
+{
+	string answer;
+	cout << "Troll: First, lay the vine out flat on the ground" << endl;
+	cout << endl;
+	cout << "Hint : What keyboard character looks like a flat piece of rope or string on a ground? The vine is long so enter it twice." << endl;
 
+	do {
+		// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		cin >> answer;
+
+
+		if (answer != "__")
+		{
+			cout << "Not quite!" << endl;
+		}
+
+	} while (answer != "__");
+
+
+	cout << "Troll: Next, tie the left end of the rope into a circle." << endl;
+	cout << endl;
+	cout << "Hint: Make a LARGE circle on the left side, and don?t forget to leave some leftover rope on the right side!" << endl;
+
+	do {
+		// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		cin >> answer;
+
+		if (answer != "O_")
+		{
+			cout << "Not quite!" << endl;
+		}
+
+	} while (answer != "O_");
+
+
+	cout << "Troll: Lastly, tie the right end of the rope into a smaller circle, and leave some vine at the end so you can lead the kelpie. " << endl;
+	cout << endl;
+	cout << "Hint : Add a SMALL circle and a SMALL amount of rope on the right side. " << endl;
+
+	do {
+		// Before reading the answer using std::getline, we clear the input buffer to ensure no leftover characters (like newline from a previous input) are read as the answer.
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		cin >> answer;
+
+		if (answer != "O_o-")
+		{
+			cout << "Not quite!" << endl;
+		}
+
+	} while (answer != "O_o-");
+
+	cout << "Troll: It's a bit odd looking, but it'll get the job done. Not sure why you'd want to, but this should pacify that beastly kelpie." << endl;
+	cout << endl;
+
+	
+	
+
+
+	player.walkToLocation(player.getCurrentLocation()->hidden);
+
+}

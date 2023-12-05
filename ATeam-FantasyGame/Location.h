@@ -17,7 +17,9 @@ private:
 	list<Item*> items; // Conncet an item to a room
 
 public:
+	Location *hidden;
 	Location(string newName, string newDescription); // Location Constructor
+	Location(string newName, string newDescription, Location* loc); // Location Constructor
 	string getName(); // Returns a string Name
 	string getDescription();  // Returns a string Description
     void addConnectedLocation(Location* locationName); // Add a connected location to this location

@@ -87,3 +87,44 @@ void Backstory::wait(int seconds) {
     // std::this_thread::sleep_for is used to pause execution for a specific duration
     std::this_thread::sleep_for(seconds * 1s);
 }
+
+void Backstory::epilogue() {
+    // Display the epilogue of the game
+    system("CLS");
+    
+    // Define the epilogue texts
+    string epilogueTexts[5] = {
+        "As you stand within the mystical ring, the goddess manifests before you. A warm light surrounds her, and her presence exudes tranquility.",
+        "With a gentle smile, she opens a portal that shimmers with ethereal energy. The portal is your gateway back to the world you know.",
+        "Stepping through the portal, you find yourself back at Blarney Castle. The familiar sights and sounds of the tour group greet you, but your memory is hazy.",
+        "You finish your tour, and your mind still feels disconnected from the rest of your body. You can tell you do not remember something, but you are unable to figure out what it may be.",
+        "In the days that follow, you often see dreamlike visions of the otherworldly realm. The experiences linger in your mind, just out of grasp, like fragments of a fading dream."
+    };
+
+    // Loop through and display each epilogue text
+    for (const string& epilogueText : epilogueTexts) {
+        displayTextAndWait(epilogueText);
+    }
+
+    system("pause");
+
+    // Mention the recurring vision and the black cat
+    string epilogueTexts2[4] = {
+        "\nYou notice that visions of your otherworldly experiences continue to visit you in dreams, elusive and fleeting.",
+        "Among these dreams, a black cat with a distinct white spot appears, offering a mysterious comfort.",
+        "You disregard this, thinking it to be somre random manifestation of your subconscious. You go about your life, still feeling like there is a part of you lost to your subconcious.",
+        "That is until you see that same cat, sitting in front of your house. It almost looks like it is watching out for you."
+    };
+
+    for (const string& epilogueText : epilogueTexts2) {
+        displayTextAndWait(epilogueText);
+    }
+
+    // Pause to allow the player to read the epilogue
+    system("pause");
+    system("CLS");
+
+    cout << "Thank you for playing! This was a student project creted by: \nJack\nWeronika\nMelissa\nTim\nRob\nValerie";
+    cout << "\n\n Press any button to close the game";
+    exit(0);
+}
