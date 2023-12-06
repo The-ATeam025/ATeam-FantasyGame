@@ -72,5 +72,4 @@ void Kelpie::interactWithObject(Player& player) {
 			std::cout << "Invalid choice. Please enter a valid number." << std::endl;
 		}
 	}
-	player.walkToLocation(player.getCurrentLocation()->hidden);
 }
