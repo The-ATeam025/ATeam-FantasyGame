@@ -49,17 +49,18 @@ void Kelpie::interactWithObject(Player& player) {
 			if (itemName == "Bridle") {
 				system("CLS");
 				setDescription("The once life-threatening kelpie lowers to be bridled.");
-				std::cout << "You place the " << itemName << " on the Kelpie, and it extends it's back to accompany a rider.\n";
-				std::cout << "The kelpie is mounted and takes off without your discretion.\n";
-				std::cout << "In the distance you notice land that fits the description of Aine's domain.\n";
+				std::cout << "You place the " << itemName << " on the Kelpie, and it extends it's back to accompany a rider.\n\n";
+				std::cout << "The kelpie is mounted and takes off without your discretion. In the distance you notice land that fits the description of Aine's domain.\n";
 
-				// Iterate through player's inventory to place items on the bust
+				// Iterate through player's inventory to place items on the kelpie
 				std::cout << "After crossing the lake, you arrive at the neverseen domain of Aine.\n";
 
-				// Connect the hidden location when the bust is activated
+				// Connect the hidden location when the bridle is placed on the kelpie
 				player.getCurrentLocation()->addConnectedLocation(hiddenLocation);
 				items.push_back(chosenItem);
 				player.removeItemFromInventory(chosenItem);
+
+
 			}
 			else {
 				std::cout << "Hooves fly as you attempt to put the " << itemName << " on the kelpie.\n";
@@ -71,4 +72,5 @@ void Kelpie::interactWithObject(Player& player) {
 			std::cout << "Invalid choice. Please enter a valid number." << std::endl;
 		}
 	}
+	player.walkToLocation(player.getCurrentLocation()->hidden);
 }

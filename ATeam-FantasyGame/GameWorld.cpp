@@ -25,7 +25,7 @@ GameWorld::~GameWorld() {
 void GameWorld::init(Player& player) {
     // Initialize locations
     crossedBridge = new Location("Other side of the bridge", "As you cross the bridge, bridle in hand, you notice a thick fog gather around you. When you get to the other side and turn to wave goodbye to the troll, you notice that the bridge has been entirely enshrouded in the mist. Ahead of you lies a gloomy-looking lake. ");
-    lake = new Location("Lake", "You see a kelpie in the lake, and prepare to capture it.");
+    lake = new Location("Lake", "You see a kelpie in the lake, and prepare to capture it.", goddessDwelling);
     swamp = new Location("Swamp", "The Culra Swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Thick vines grow from the trees.");
     courtyard = new Location("Courtyard",
         "You find yourself surrounded by a circle of dead grass replacing the mushrooms that brought you here. The air is filled with an otherworldly energy, and the sun is hidden behind the clouds");

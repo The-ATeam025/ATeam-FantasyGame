@@ -1,5 +1,5 @@
 #pragma once
-#include "Objects.h"  // Include necessary headers
+#include "Objects.h" // Include necessary headers
 
 // Class handles all interactions with the kelpie inside the Lake
 // Derived from the Objects.h class, redifined virtual function
