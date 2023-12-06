@@ -11,7 +11,7 @@ void Backstory::displayIntro() {
 
     // Define the introduction texts
     string introTexts[6] = {
-        "It is summer vacation, and you are visiting Ireland. You have been looking forward to sight-seeing for a while now. You decided to take a tour of Blarney Castle, a medieval stronghold",
+        "It is summer vacation, and you are visiting Ireland. You have been looking forward to sightseeing for a while now. You decided to take a tour of Blarney Castle, a medieval stronghold",
         "You have reached the Grand Hall. You can see a door leading outside and suddenly, you want to take a breath of fresh air. You step away from the tour group and make your way outside.",
         "You see a stone path into the garden and decide to take it. When looking down, you are now next to a large ring of mushrooms.",
         "The mushroom circle before you beckons with an eerie allure. The air around it crackles with a strange, otherworldly energy, and you feel a compelling urge to step closer.",
@@ -112,7 +112,7 @@ void Backstory::epilogue() {
     string epilogueTexts2[4] = {
         "\nYou notice that visions of your otherworldly experiences continue to visit you in dreams, elusive and fleeting.",
         "Among these dreams, a black cat with a distinct white spot appears, offering a mysterious comfort.",
-        "You disregard this, thinking it to be somre random manifestation of your subconscious. You go about your life, still feeling like there is a part of you lost to your subconcious.",
+        "You disregard this, thinking it to be some random manifestation of your subconscious. You go about your life, still feeling like there is a part of you lost to your subconscious.",
         "That is until you see that same cat, sitting in front of your house. It almost looks like it is watching out for you."
     };
 
@@ -124,7 +124,7 @@ void Backstory::epilogue() {
     system("pause");
     system("CLS");
 
-    cout << "Thank you for playing! This was a student project creted by: \nJack\nWeronika\nMelissa\nTim\nRob\nValerie";
+    cout << "Thank you for playing! This was a student project created by: \nJack\nWeronika\nMelissa\nTim\nRob\nValerie";
     cout << "\n\n Press any button to close the game";
     exit(0);
 }
