@@ -243,7 +243,7 @@ void DialogueTree::init_goddess_1(Player& player) //set up tree with dialogue, m
 {
 	string message = "Its good to finally meet you."; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
-	cout << "You see a beautiful women in front of you wearing a silky garb with a cape";
+	cout << "You see a beautiful women in front of you wearing a silky garb with a cape. ";
 	cout << "She gestures for you to come closer";
 	cout << endl;
 
@@ -278,7 +278,7 @@ void DialogueTree::init_goddess_2(Player& player) //set up tree with dialogue, m
 {
 	string message = "Its good to see you again."; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
-	cout << "You see a beautiful women in front of you wearing a silky garb with a cape";
+	cout << "You see a beautiful women in front of you wearing a silky garb with a cape. ";
 	cout << "She gestures for you to come closer";
 	cout << endl;
 
