@@ -60,8 +60,8 @@ void GameWorld::init(Player& player) {
 
     // Create room Objects
     Objects* armoryChest = new ArmoryChest("Chest", "An old chest that has had its surface almost compleltely consumed by moss.");
-    Objects* MarbleBust = new marbleBust("Marble Bust", "A pristine looking statued of a head you do not recognize. It's eyes somehow seem to follow you around.", outside);
-    
+    Objects* MarbleBust = new marbleBust("Marble Bust", "A pristine looking statued of a head you do not recognize. It's eyes somehow seem to follow you around.", outside); 
+    Objects* kelpie = new Kelpie("Kelpie", "A powerful horse like creature is watching your every movement from the lake shore.", goddessDwelling);
     //Send hidden location
     // 
     // 
@@ -90,6 +90,7 @@ void GameWorld::init(Player& player) {
     // Add all objects to the objects list
     objects.push_back(armoryChest);
     objects.push_back(MarbleBust);
+    objects.push_back(kelpie);
 
     // Initalize Dialogues
     DialogueNPC* DialogueRedCap = new redCapDialogue();
@@ -134,6 +135,9 @@ void GameWorld::init(Player& player) {
     // troll
     troll->setLocation(bridge);
     troll->setDialogue(DialogueTroll);
+
+    // kelpie
+    kelpie->setLocation(lake);
 
     // Connect the locations
     courtyard->addConnectedLocation(greatHall);

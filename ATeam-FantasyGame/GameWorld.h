@@ -12,6 +12,7 @@
 #include "trollDialogue.h"
 #include "TrechendDialogue.h"
 #include "GoddessDialogue.h"
+#include "Kelpie.h"
 #include <list>
 #include <vector>
 
