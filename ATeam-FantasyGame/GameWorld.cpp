@@ -1,7 +1,7 @@
 #include "GameWorld.h"
 
 //Constructor
-GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr), nest(nullptr), meadow(nullptr), bridge(nullptr), swamp(nullptr), crossedBridge(nullptr), lake(nullptr), goddessDwelling(nullptr) {}
+GameWorld::GameWorld() : courtyard(nullptr), greatHall(nullptr), redCapDungeon(nullptr), banquetHall(nullptr), armory(nullptr), outside(nullptr), nest(nullptr), meadow(nullptr), bridge(nullptr), swamp(nullptr), crossedBridge(nullptr), lake(nullptr), lake1(nullptr), crossedLake(nullptr), goddessDwelling(nullptr) {}
 
 //Deconstructor
 GameWorld::~GameWorld() {
@@ -15,6 +15,8 @@ GameWorld::~GameWorld() {
     delete nest;
     delete crossedBridge;
     delete lake;
+    delete lake1;
+    delete crossedLake;
     delete bridge;
     delete bridge1;
     delete goddessDwelling;
@@ -25,7 +27,9 @@ GameWorld::~GameWorld() {
 void GameWorld::init(Player& player) {
     // Initialize locations
     crossedBridge = new Location("Other side of the bridge", "As you cross the bridge, bridle in hand, you notice a thick fog gather around you. When you get to the other side and turn to wave goodbye to the troll, you notice that the bridge has been entirely enshrouded in the mist. Ahead of you lies a gloomy-looking lake. ");
-    lake = new Location("Lake", "You see a kelpie in the lake, and prepare to capture it.", goddessDwelling);
+    lake = new Location("Lake", "You see a Kelpie in the lake, and prepare to capture it.", lake1);
+    lake1 = new Location("Lake", "The Kelpie is inviting you on its back as a way reaching your next destination.");
+    crossedLake = new Location("Other side of the lake", "The Kelpie is lending its back to you as a way to cross the gloomy lake. In the distance you notice land that fits the description of Aine's domain and you decided to approach the mysterious shore.");
     swamp = new Location("Swamp", "The Culra Swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Thick vines grow from the trees.");
     courtyard = new Location("Courtyard",
         "You find yourself surrounded by a circle of dead grass replacing the mushrooms that brought you here. The air is filled with an otherworldly energy, and the sun is hidden behind the clouds");
@@ -61,7 +65,7 @@ void GameWorld::init(Player& player) {
     // Create room Objects
     Objects* armoryChest = new ArmoryChest("Chest", "An old chest that has had its surface almost compleltely consumed by moss.");
     Objects* MarbleBust = new marbleBust("Marble Bust", "A pristine looking statued of a head you do not recognize. It's eyes somehow seem to follow you around.", outside); 
-    Objects* kelpie = new Kelpie("Kelpie", "A powerful horse like creature is watching your every movement from the lake shore.", goddessDwelling);
+    Objects* kelpie = new Kelpie("Kelpie", "A powerful horse like creature is watching your every movement from the lake shore.", crossedLake);
     //Send hidden location
     // 
     // 
@@ -145,7 +149,6 @@ void GameWorld::init(Player& player) {
     //TESTING
     //courtyard->addConnectedLocation(bridge);
 
-    
     greatHall->addConnectedLocation(banquetHall);
     greatHall->addConnectedLocation(courtyard);
     greatHall->addConnectedLocation(armory);
@@ -167,6 +170,9 @@ void GameWorld::init(Player& player) {
     bridge->addConnectedLocation(swamp);
     bridge1->addConnectedLocation(crossedBridge);
     crossedBridge->addConnectedLocation(lake);
+
+    lake1->addConnectedLocation(crossedLake);
+    crossedLake->addConnectedLocation(goddessDwelling);
     
     nest->addConnectedLocation(goddessDwelling);
     goddessDwelling->addConnectedLocation(nest);
