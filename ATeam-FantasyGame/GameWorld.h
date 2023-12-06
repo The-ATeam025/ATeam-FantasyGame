@@ -12,6 +12,7 @@
 #include "trollDialogue.h"
 #include "TrechendDialogue.h"
 #include "GoddessDialogue.h"
+#include "Kelpie.h"
 #include <list>
 #include <vector>
 
@@ -33,6 +34,8 @@ private:
     Location* swamp;
     Location* crossedBridge;
     Location* lake;
+    Location* lake1;
+    Location* crossedLake;
     Location* nest;
     Location* bridge1;
     Location* goddessDwelling;
@@ -57,6 +60,8 @@ public:
     Location* getBridge1();
     Location* getCrossedBridge;
     Location* getLake();
+    Location* getLake1();
+    Location* getCrossedLake;
     Location* getNest();
 
     // Declarations for managing NPCs

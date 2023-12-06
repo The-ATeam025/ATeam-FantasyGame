@@ -32,7 +32,7 @@ int main() {
     DialogueTree catConvo;
 
     // Call the CatIntro function to continue the story 
-   catConvo.init_cat(player);
+    catConvo.init_cat(player);
 
     // Prompt user to continue
     system("pause");
