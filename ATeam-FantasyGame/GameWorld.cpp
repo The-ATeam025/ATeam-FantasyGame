@@ -58,7 +58,7 @@ void GameWorld::init(Player& player) {
     Item* celticCross = new Item("Celtic Cross", "An ornate, ancient cross symbolizing Celtic heritage and spirituality.", "hands");
     Item* sword = new Item("Sword", "A sharp and sturdy sword for combat.", "hands");
     Item* helmet = new Item("Helmet", "A protective helmet for your head.", "head");
-    Item* carrot = new Item("carrot", "Normal looking carrot","hands");
+    Item* carrot = new Item("Carrot", "Normal looking carrot","hands");
     Item* trechenTooth = new Item("Tooth", "One of Ellen Trechend's teeth", "none");
     Item* vine = new Item("Vine", "Thick piece of flexible vine a few feet long", "hands");
 
