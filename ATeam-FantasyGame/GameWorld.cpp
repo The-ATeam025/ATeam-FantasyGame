@@ -166,6 +166,7 @@ void GameWorld::init(Player& player) {
     meadow->addConnectedLocation(outside);
     meadow->addConnectedLocation(swamp);
     swamp->addConnectedLocation(bridge);
+    swamp->addConnectedLocation(meadow);
 
     bridge->addConnectedLocation(swamp);
     bridge1->addConnectedLocation(crossedBridge);
