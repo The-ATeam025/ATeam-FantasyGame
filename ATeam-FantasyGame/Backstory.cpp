@@ -7,6 +7,29 @@ Backstory::Backstory() {
 }
 
 void Backstory::displayIntro() {
+    //Display the title
+
+string title =
+    R"(
+      
+                                *
+*
+         _____      _ _   _        _____     _     _                                 
+        /  __ \    | | | (_)      |  _  |   | |   | |                               *
+        | /  \/ ___| | |_ _  ___  | | | | __| | __| |_   _ ___ ___  ___ _   _       
+        | |    / _ \ | __| |/ __| | | | |/ _` |/ _` | | | / __/ __|/ _ \ | | |      
+        | \__/ \  __/ | |_| | (__ \ \_/ / (_| | (_| | |_| \__ \__ \  __/ |_| |                  *
+        \____/ \___|_|\__|_|\___|  \___/ \__,_|\__,_|\__, |___/___/\___|\__, |      
+                                                      __/ |              __/ |      
+                         *                           |___/              |___/       
+	)";
+    cout << title;
+    cout << endl<<endl<<endl;
+    system("pause");
+    wait(5);
+    system("CLS");
+
+
     // Display the game introduction
 
     // Define the introduction texts

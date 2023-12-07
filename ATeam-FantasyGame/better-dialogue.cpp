@@ -31,9 +31,9 @@ void DialogueTree::init_fairy(Player& player) //set up tree with dialogue, make 
 {
 	string message = "It's not very polite to mumble. "; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
-	cout << "As you enter the room, you see a group of figures around a table laden with all sorts of delicious foods and wines. \n \n This is odd, because the rest of the room is dusty and abandoned, but what is even stranger than the food are the people seated there. " << endl;
+	cout << "As you enter the room, you see a group of figures around a table laden with all sorts of delicious foods and wines. \n \nThis is odd, because the rest of the room is dusty and abandoned, but what is even stranger than the food are the people seated there. " << endl;
 
-	cout << "\nA group of humanoid creatures with shimmering wings are enjoying the feast, but there is a sinister air that contrasts with their beautiful appearance. \n\n You get the feeling that you do not want to mess with them. As you stand hesitantly in the corner, one fairy notices you." << endl;
+	cout << "\nA group of humanoid creatures with shimmering wings are enjoying the feast, but there's a sinister air that contrasts with their beautiful appearance. \n\n You get the feeling that you do not want to mess with them. As you stand hesitantly in the corner, one fairy notices you." << endl;
 
 	cout << endl;
 
@@ -128,7 +128,7 @@ void DialogueTree::init_hare(Player& player) //set up tree with dialogue, make t
 {
 	string message = "Hare: Sorry, what did you say?"; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
-	cout << "As you hold out the carrot, the hare approaches it and eats it from your hand. \n After crunching down on it for a few minutes, it begins to speak. " << endl;
+	cout << "As you hold out the carrot, the hare approaches it and eats it from your hand. \nAfter crunching down on it for a few minutes, it begins to speak. " << endl;
 
 	cout << endl;
 
@@ -282,18 +282,18 @@ void DialogueTree::init_goddess_1(Player& player) //set up tree with dialogue, m
 	dialogueNodes.push_back(node0);
 
 	//Node 1
-	node1->dialogueOptions.push_back(DialogueOption("Yes I would like to go home", 1, node2));
-	node1->dialogueOptions.push_back(DialogueOption("If you know how to get home just tell me please", 1, node2));
+	node1->dialogueOptions.push_back(DialogueOption("Yes, I would like to go home, please.", 1, node2));
+	node1->dialogueOptions.push_back(DialogueOption("Look, if there's anything you know about how I can go back, tell me.", 1, node2));
 	dialogueNodes.push_back(node1);
 
 	//Node 2
-	node2->dialogueOptions.push_back(DialogueOption("What is it you need?", 1, node3));
+	node2->dialogueOptions.push_back(DialogueOption("What is it that you need?", 1, node3));
 	node2->dialogueOptions.push_back(DialogueOption("Another task? As long as you can help me get home, I'll do it.", 1, node3));
 	dialogueNodes.push_back(node2);
 
 	//Node 3
-	node3->dialogueOptions.push_back(DialogueOption("Consider it done", -1, nullptr));
-	node3->dialogueOptions.push_back(DialogueOption("I'll do this if it helps me get back home.", -1, nullptr));
+	node3->dialogueOptions.push_back(DialogueOption("Consider it done!", -1, nullptr));
+	node3->dialogueOptions.push_back(DialogueOption("I'll do this, but I'll hold you to that promise.", -1, nullptr));
 	dialogueNodes.push_back(node3);
 
 	performDialogue(player, message);
@@ -306,23 +306,24 @@ void DialogueTree::init_goddess_2(Player& player) //set up tree with dialogue, m
 	cout << "She gestures for you to come closer";
 	cout << endl;
 
-	DialogueNode* node0 = new DialogueNode("Aine: Wonderful! I see you've taken care of the creature like I asked");
-	DialogueNode* node1 = new DialogueNode("Aine: Much appreciated, now I can do something for you");
+	DialogueNode* node0 = new DialogueNode("Aine: Wonderful! I see you've taken care of the creature, like I asked.");
+	DialogueNode* node1 = new DialogueNode("Aine: Some things are beyond your mortal understading. It is still much appreciated. What can I do for you?");
 	DialogueNode* node2 = new DialogueNode("Aine: I don't see why you'd want to go back to your boring old world, but I can open a way for you to get back now");
 
+
 	//Node 0
-	node0->dialogueOptions.push_back(DialogueOption("Yes, I have completed your task", 1, node1));
-	node0->dialogueOptions.push_back(DialogueOption("You said you could get me home?", 1, node2));
+	node0->dialogueOptions.push_back(DialogueOption("Yes, I have completed your task, but it grieved me to do so. I didn't like killing it.", 1, node1));
+	node0->dialogueOptions.push_back(DialogueOption("Yeah, said you could get me home?", 1, node2));
 	dialogueNodes.push_back(node0);
 
 	//Node 1
-	node1->dialogueOptions.push_back(DialogueOption("Yes, can you help me get back home?", 1, node2));
-	node1->dialogueOptions.push_back(DialogueOption("Finally, get me out of here please", 1, node2));
+	node1->dialogueOptions.push_back(DialogueOption("Fair enough. I would like to return to where I came from.", 1, node2));
+	node1->dialogueOptions.push_back(DialogueOption("Get me out of here, please.", 1, node2));
 	dialogueNodes.push_back(node1);
 
 	//Node 2
-	node2->dialogueOptions.push_back(DialogueOption("Please do", -1, nullptr));
-	node2->dialogueOptions.push_back(DialogueOption("Hurry up, I just want to get back home", -1, nullptr));
+	node2->dialogueOptions.push_back(DialogueOption("Please do!", -1, nullptr));
+	node2->dialogueOptions.push_back(DialogueOption("Thank you.", -1, nullptr));
 	dialogueNodes.push_back(node2);
 
 	performDialogue(player, message);
@@ -358,7 +359,7 @@ int DialogueTree::consequences(int code, Player& player)
 
 {
 	Item* hands = player.getWeaponSlot();
-	Item* Dandelion = new Item("Dandelion", "Dandelion", "hands"); //another carrot to add to the location
+	Item* Dandelion = new Item("Dandelion", "Plain old yellow dandelion. Would probably taste good if you were a rabbit.", "hands"); //another carrot to add to the location
 	string answer;
 	switch (code) {
 	case -1:
