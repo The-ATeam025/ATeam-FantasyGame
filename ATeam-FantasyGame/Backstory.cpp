@@ -111,7 +111,7 @@ void Backstory::epilogue() {
     // Mention the recurring vision and the black cat
     string epilogueTexts2[4] = {
         "\nYou notice that visions of your otherworldly experiences continue to visit you in dreams, elusive and fleeting.",
-        "Among these dreams, a black cat with a distinct white spot appears, offering a mysterious comfort.",
+        "Among these dreams, a black cat with a curiously familiar expression often appears, offering a mysterious comfort.",
         "You disregard this, thinking it to be some random manifestation of your subconscious. You go about your life, still feeling like there is a part of you lost to your subconscious.",
         "That is until you see that same cat, sitting in front of your house. It almost looks like it is watching out for you."
     };

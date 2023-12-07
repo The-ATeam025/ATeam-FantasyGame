@@ -31,9 +31,9 @@ void DialogueTree::init_fairy(Player& player) //set up tree with dialogue, make 
 {
 	string message = "It's not very polite to mumble. "; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
-	cout << "As you enter the room, you see a group of figures around a table laden with all sorts of delicious foods and wines. This is odd, because the rest of the room is dusty and abandoned, but what is even stranger than the food are the people seated there. " << endl;
+	cout << "As you enter the room, you see a group of figures around a table laden with all sorts of delicious foods and wines. \n \n This is odd, because the rest of the room is dusty and abandoned, but what is even stranger than the food are the people seated there. " << endl;
 
-	cout << "A group of humanoid creatures with shimmering wings are enjoying the feast, but there is a sinister air that contrasts with their beautiful appearance.You get the feeling that you do not want to mess with them. As you stand hesitantly in the corner, one fairy notices you." << endl;
+	cout << "\nA group of humanoid creatures with shimmering wings are enjoying the feast, but there is a sinister air that contrasts with their beautiful appearance. \n\n You get the feeling that you do not want to mess with them. As you stand hesitantly in the corner, one fairy notices you." << endl;
 
 	cout << endl;
 
@@ -70,10 +70,10 @@ void DialogueTree::init_cat(Player& player) //set up tree with dialogue, make th
 {
 	string message = "Cat got your tongue? "; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
-	cout << "As you emerge in this new and altered version of the garden, the atmosphere feels denser and the surroundings take on an otherworldly hue. Amidst" << endl;
-	cout << "the mystical setting, your gaze is drawn to a striking sight - a towering black cat, standing upright on its hind legs, seemingly unfazed by your" << endl;
-	cout << "sudden appearance. Unsure of what to do next, you start walking towards it, wondering if it has some sort of spine condition causing it to stand" << endl;
-	cout << " like that. Your attempts at applying logic to your situation fail as the cat opens its mouth and starts speaking to you in a human voice." << endl;
+	cout << "As you emerge in this new and altered version of the garden, the atmosphere feels denser and the surroundings take on an otherworldly hue." << endl << endl;
+	cout << "Amidst the mystical setting, your gaze is drawn to a striking sight - a black cat, standing on its hind legs, unfazed by your sudden appearance." << endl << endl;
+	cout << "Unsure of what to do next, you start walking towards it, wondering if it has some sort of condition causing it to stand like that" << endl << endl;
+	cout << "Your attempts at applying logic to your situation fail as the cat opens its mouth and starts speaking to you in a human voice." << endl << endl;
 	cout << endl;
 
 	DialogueNode* node0 = new DialogueNode("CAT: Hello there. Lost, aren't ya?");
@@ -128,7 +128,7 @@ void DialogueTree::init_hare(Player& player) //set up tree with dialogue, make t
 {
 	string message = "Hare: Sorry, what did you say?"; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
-	cout << "As you hold out the carrot, the hare approaches it and eats it from your hand. After crunching down on it for a few minutes, it begins to speak. " << endl;
+	cout << "As you hold out the carrot, the hare approaches it and eats it from your hand. \n After crunching down on it for a few minutes, it begins to speak. " << endl;
 
 	cout << endl;
 
@@ -207,17 +207,17 @@ void DialogueTree::init_hare2(Player& player) //set up tree with dialogue, make 
 
 void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make this one virtual?
 {
-	string message = "Troll: Speak Correctly! "; //custom error message for this character interaction--the warning the player gets if the input is invalid 
+	string message = "Troll: Speak correctly! "; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
 
 	cout << endl;
 
-	DialogueNode* node0 = new DialogueNode("Troll: Who ventures upon my guarded bridge without my sanction ? This is no place for the unwatched and unguarded! Declare your purpose, lest you wander into peril under my watch!");
-	DialogueNode* node1 = new DialogueNode("Troll: Ah, a polite one! Trespass is not taken lightly here, but your manners show honor. Tell me, why does your journey bring you to this bridge?");
-	DialogueNode* node2 = new DialogueNode("Troll: A sacred site, you say? The lands beyond this bridge hold many ancient secrets and hallowed grounds. Few are those who tread such paths with pure intent. ");
-	DialogueNode* node3 = new DialogueNode("Troll: Ah.. I see. In order to speak to Aine you will need to cross the lake. But you cannot swim in it, as the waters are filled with hungry water leeches and fog sprites that create disorienting fog over the lake, making navigation nearly impossible.");
+	DialogueNode* node0 = new DialogueNode("Troll: Who goes there? This is no place for fools! Declare your purpose, unlucky traveller!");
+	DialogueNode* node1 = new DialogueNode("Troll: Ah, a polite one! I don't take trespassing lightly, but your manners show honor. Tell me, why does your journey bring you here?");
+	DialogueNode* node2 = new DialogueNode("Troll: A sacred site, you say? The lands beyond this bridge hold many ancient secrets and sacred grounds. You need to be pure of heart to enter! ");
+	DialogueNode* node3 = new DialogueNode("Troll: Ah... I see. In order to speak to Aine you will need to cross the lake.Its waters are treacherous and its depths dark.");
 	DialogueNode* node4 = new DialogueNode("Troll: In a rush, eh? I guess you don't care about your safety..");
-	DialogueNode* node5 = new DialogueNode("Troll: Your best bet is to tame a Kelpie. In order to tame a kelpie, you will need a bridle. But BEWARE.. if the bridle is not secured properly, the keplie may drown you.");
+	DialogueNode* node5 = new DialogueNode("Troll: Your best bet is to tame a Kelpie. In order to tame a kelpie, you will need a bridle. But BEWARE... if the bridle is not secured properly,\nthe keplie may drown you.");
 	DialogueNode* node6 = new DialogueNode("Troll: Let's check and see if you have the materials to create a bridle!");
 
 
@@ -233,13 +233,13 @@ void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make 
 	dialogueNodes.push_back(node1);
 
 	//Node 2
-	node2->dialogueOptions.push_back(DialogueOption("I assure you, my intentions are pure. I am here to see Aine. ", 2, node3));
+	node2->dialogueOptions.push_back(DialogueOption("I promise, my intentions are pure. I am here to see Aine. ", 2, node3));
 	node2->dialogueOptions.push_back(DialogueOption("Can you just let me pass through? I'm kind of in a hurry.", 1, node4));
 	dialogueNodes.push_back(node2);
 
 	//Node 3
 	node3->dialogueOptions.push_back(DialogueOption("Wait, how will I be able to cross? ", 2, node5));
-	node3->dialogueOptions.push_back(DialogueOption("That sounds extremely terrifying...", 1, node5));
+	node3->dialogueOptions.push_back(DialogueOption("I won't lie, that sounds terrifying...", 1, node5));
 	dialogueNodes.push_back(node3);
 
 	//node 4
@@ -248,7 +248,7 @@ void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make 
 	dialogueNodes.push_back(node4);
 
 	//node 5
-	node5->dialogueOptions.push_back(DialogueOption("I'm tired of this weird world... let's just get it over with. ", 0, node6));
+	node5->dialogueOptions.push_back(DialogueOption("I'm getting homesick.... let's just get it over with. ", 0, node6));
 	node5->dialogueOptions.push_back(DialogueOption("Nothing can stop me!", 5, node6));
 	dialogueNodes.push_back(node5);
 
@@ -265,16 +265,16 @@ void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make 
 
 void DialogueTree::init_goddess_1(Player& player) //set up tree with dialogue, make this one virtual?
 {
-	string message = "Its good to finally meet you."; //custom error message for this character interaction--the warning the player gets if the input is invalid 
+	string message = "Aine: I did not understand that."; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
-	cout << "You see a beautiful women in front of you wearing a silky garb with a cape. ";
+	cout << "You see a beautiful woman in front of you wearing a flowing, snow-white robe with a sky-blue cape. ";
 	cout << "She gestures for you to come closer";
 	cout << endl;
 
-	DialogueNode* node0 = new DialogueNode("Aine: I have been watching your progress. I know you've been wanting to go home.");
+	DialogueNode* node0 = new DialogueNode("Aine: Oh, it's you! I have been watching your progress. I know you've been wanting to go home, for some reason.");
 	DialogueNode* node1 = new DialogueNode("Aine: Never you mind how, do you want to go home or not?");
 	DialogueNode* node2 = new DialogueNode("Aine: I can help you get home, but first, I need you to do something for me.");
-	DialogueNode* node3 = new DialogueNode("Aine: Theres been a creature causing trouble for me. Bring me back its tooth as proof its been dealth with and we'll talk about getting you home.");
+	DialogueNode* node3 = new DialogueNode("Aine: Theres been a creature causing trouble for me. Bring me back its tooth as proof its been dealt with, and we'll talk about getting you home.");
 
 	//Node 0
 	node0->dialogueOptions.push_back(DialogueOption("How have you been watching me?", 1, node1));
@@ -300,23 +300,23 @@ void DialogueTree::init_goddess_1(Player& player) //set up tree with dialogue, m
 }
 void DialogueTree::init_goddess_2(Player& player) //set up tree with dialogue, make this one virtual?
 {
-	string message = "Its good to see you again."; //custom error message for this character interaction--the warning the player gets if the input is invalid 
+	string message = "Aine: I did not understand that."; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
-	cout << "You see a beautiful woman in front of you wearing a silky garb with a cape";
+	cout << "Aine is sitting on a tree branch, playing with her hair. She gets up when she sees you approach.";
 	cout << "She gestures for you to come closer";
 	cout << endl;
 
-	DialogueNode* node0 = new DialogueNode("Aine: Very good, I see you've taken care of the creature like I asked");
-	DialogueNode* node1 = new DialogueNode("Aine: Thank you very much, now I can do something for you");
-	DialogueNode* node2 = new DialogueNode("Aine: I can open a way for you to get back now");
+	DialogueNode* node0 = new DialogueNode("Aine: Wonderful! I see you've taken care of the creature like I asked");
+	DialogueNode* node1 = new DialogueNode("Aine: Much appreciated, now I can do something for you");
+	DialogueNode* node2 = new DialogueNode("Aine: I don't see why you'd want to go back to your boring old world, but I can open a way for you to get back now");
 
 	//Node 0
-	node0->dialogueOptions.push_back(DialogueOption("Yes I have completed your task", 1, node1));
+	node0->dialogueOptions.push_back(DialogueOption("Yes, I have completed your task", 1, node1));
 	node0->dialogueOptions.push_back(DialogueOption("You said you could get me home?", 1, node2));
 	dialogueNodes.push_back(node0);
 
 	//Node 1
-	node1->dialogueOptions.push_back(DialogueOption("Yes can help me get back home?", 1, node2));
+	node1->dialogueOptions.push_back(DialogueOption("Yes, can you help me get back home?", 1, node2));
 	node1->dialogueOptions.push_back(DialogueOption("Finally, get me out of here please", 1, node2));
 	dialogueNodes.push_back(node1);
 
@@ -386,7 +386,7 @@ int DialogueTree::consequences(int code, Player& player)
 			}
 			else
 			{
-				cout << "That's correct. For your reward, I'll give you a little information" << endl;
+				cout << "Fairy: That's correct. For your reward, I'll give you a little information:" << endl;
 				cout << "If you havent met him already, the Redcap in the dungeon is a nasty fellow." << endl;
 				cout << "I have heard if you hold up a Celtic Cross to him though, he does not fare so well." << endl << endl;
 				return code;
@@ -419,7 +419,7 @@ int DialogueTree::consequences(int code, Player& player)
 			}
 			else
 			{
-				cout << "That's correct. For your reward, I'll give you a little information" << endl;
+				cout << "Fairy: That's correct. For your reward, I'll give you a little information:" << endl;
 				cout << "If you havent met him already, the Redcap in the dungeon is a nasty fellow." << endl;
 				cout << "I have heard if you hold up a Celtic Cross to him though, he does not fare so well." << endl << endl;
 				return code;
@@ -431,6 +431,7 @@ int DialogueTree::consequences(int code, Player& player)
 
 		break;
 	case 3:
+		cout << endl;
 		cout << "CAT: Look, I don't care about you, or your home. I just like to watch you mortals try to to escape, it's so fun. Here's a hint: stop by the castle, you're gonna need a Celtic cross for later." << endl;
 		cout << endl;
 		cout << "Before you can say anything, the cat turns around and melts into the shadows, leaving you questioning your own sanity. Did it really talk to you?" << endl;
@@ -619,7 +620,7 @@ void DialogueTree::tieBridle(Player &player)
 
 	} while (answer != "O_o-");
 
-	cout << "Troll: It's a bit odd looking, but it'll get the job done. Not sure why you'd want to, but this should pacify that beastly kelpie." << endl;
+	cout << "Troll: It's a bit odd looking, but it'll get the job done. This should pacify that beastly kelpie." << endl;
 	cout << endl;
 
 	

@@ -93,7 +93,7 @@ void TrechendDialogue::processUserInput(Player& player) {
             dealDamage();
         }
         else if (duration >= timeoutDuration){
-            std::cout << std::endl << "You could not react in time, leaving yourself open to the Vulture's attack." << std::endl;
+            std::cout << std::endl << "You could not react in time, leaving yourself open to the creature's attack." << std::endl;
             hitPlayerRandomly(player);
             return;
         }

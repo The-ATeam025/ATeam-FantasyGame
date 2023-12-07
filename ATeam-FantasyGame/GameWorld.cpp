@@ -26,11 +26,11 @@ GameWorld::~GameWorld() {
 
 void GameWorld::init(Player& player) {
     // Initialize locations
-    crossedBridge = new Location("Other side of the bridge", "As you cross the bridge, bridle in hand, you notice a thick fog gather around you. When you get to the other side and turn to wave goodbye to the troll, you notice that the bridge has been entirely enshrouded in the mist. Ahead of you lies a gloomy-looking lake. ");
-    lake = new Location("Lake", "You see a Kelpie in the lake, and prepare to capture it.", lake1);
-    lake1 = new Location("Lake", "The Kelpie is inviting you on its back as a way reaching your next destination.");
+    crossedBridge = new Location("other side of the bridge", "As you cross the bridge, bridle in hand, you notice thick fog gathering around you. \nWhen you get to the other side and turn to wave goodbye to the troll, you notice that the bridge has been entirely enshrouded in the mist. \nAhead of you lies a gloomy-looking lake. ");
+    lake = new Location("Lake", "A scaled horse-like creature is standing on the lake's rocky shore. You realize that this must be the kelpie, and prepare to capture it.", lake1);
+    lake1 = new Location("Lake", "Now subdued, the kelpie bends its head, as if inviting you onto its back. you on its back as a way reaching your next destination.");
     crossedLake = new Location("Other side of the lake", "The Kelpie is lending its back to you as a way to cross the gloomy lake. In the distance you notice land that fits the description of Aine's domain and you decided to approach the mysterious shore.");
-    swamp = new Location("Swamp", "The Culra Swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Thick vines grow from the trees.");
+    swamp = new Location("Swamp", "The swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Thick vines grow from the trees.");
     courtyard = new Location("Courtyard",
         "You find yourself surrounded by a circle of dead grass replacing the mushrooms that brought you here. The air is filled with an otherworldly energy, and the sun is hidden behind the clouds");
     greatHall = new Location("Great Hall",
@@ -42,16 +42,15 @@ void GameWorld::init(Player& player) {
     armory = new Location("Armory",
         "In the armory, all that remains is a lonely chest. The nearby shelves are bare, and must have already been looted by someone or something.");
     outside = new Location("Outside",
-        "An untamed, enigmatic forest lies ahead, teeming with otherwordly magic and energy you have never experienced.");
-    meadow = new Location("Meadow", "You see a pretty meadow.");
-    bridge1 = new Location("Bridge", "Same bridge. he troll has lumbered off into the distance.");
+        "A refreshing breeze hits your face, in stark contrast to the musty air of the castle. A meadow lies ahead, and you can see a forest in the distance.");
+    meadow = new Location("Meadow", "The meadow contains fields of wildflowers and tall grasses. The wind blows through them, making a soft rustling noise.");
+    bridge1 = new Location("Bridge", "Same bridge. The troll has lumbered off back to his tree stump.");
     bridge = new Location("Bridge",
-        "The landscape becomes more and more rugged and swampy, until it becomes an impassable marsh. A wooden bridge connects this wetland to whatever lies up ahead, but it is guarded by a troll.", bridge1);
+        "The landscape becomes more and more swampy, until it becomes an impassable marsh. \nAn old stone bridge connects this wetland to whatever lies up ahead, but it is guarded by a troll.", bridge1);
     nest = new Location("Nest",
         "A colossal intertwining of twisted branches, their gnarled forms interwoven with moss-covered stones weathered by the passage of countless seasons.\nWithin this labyrinthine structure, ethereal feathers, shimmering like the moonlit night, are delicately entwined");
-    goddessDwelling = new Location("The Goddess's Dwelling", "A celestial sanctuary, adorned with vibrant blossoms and iridescent flora. The air is filled with the sweet fragrance of blooming flowers");
-    //  crossedBridge = new Location("Other side of the bridge","As you cross the bridge, bridle in hand, you notice a thick fog gather around you. When you get to the other side and turn to wave goodbye to the troll, you notice that the bridge has been entirely enshrouded in the mist. Ahead of you lies a gloomy-looking lake. ");
-    
+    goddessDwelling = new Location("The Goddess's Dwelling", "A celestial sanctuary, adorned with vibrant blossoms and other ethereal flora. \nThe air is filled with the sweet fragrance of blooming flowers");
+   
     // Create an item
     // "Name", "Description", "Equipment Slot - If none, leave as none"
     Item* rustyKey = new Item("Rusty Key", "A normal looking key, besides the rust covering its surface.", "hands");
@@ -59,13 +58,13 @@ void GameWorld::init(Player& player) {
     Item* sword = new Item("Sword", "A sharp and sturdy sword for combat.", "hands");
     Item* helmet = new Item("Helmet", "A protective helmet for your head.", "head");
     Item* carrot = new Item("Carrot", "Normal looking carrot","hands");
-    Item* trechenTooth = new Item("Tooth", "One of Ellen Trechend's teeth", "none");
+    Item* trechenTooth = new Item("Tooth", "One of the monster's teeth", "none");
     Item* vine = new Item("Vine", "Thick piece of flexible vine a few feet long", "hands");
 
     // Create room Objects
     Objects* armoryChest = new ArmoryChest("Chest", "An old chest that has had its surface almost compleltely consumed by moss.");
-    Objects* MarbleBust = new marbleBust("Marble Bust", "A pristine looking statued of a head you do not recognize. It's eyes somehow seem to follow you around.", outside); 
-    Objects* kelpie = new Kelpie("Kelpie", "A powerful horse like creature is watching your every movement from the lake shore.", crossedLake);
+    Objects* MarbleBust = new marbleBust("Marble Bust", "A pristine looking statued of a head you do not recognize. Its eyes somehow seem to follow you around.", outside); 
+    Objects* kelpie = new Kelpie("Kelpie", "A scaled, horse-like creature with glowing red eyes is watching your every movement from the shore.", crossedLake);
     //Send hidden location
     // 
     // 
@@ -74,14 +73,14 @@ void GameWorld::init(Player& player) {
     NPC* redCap = new NPC("Redcap", 
         "Its skin is as red as fresh blood, and its eyes gleam with sinister intent. Dressed in tattered rags, it carries an aura of malevolence.");
     NPC* fairies = new NPC("Fairies",
-        "Winged humanoid figures seated at a table, their radiant wings shimmering in the dim candlelight, laughing in hushed tones. Disturbingly enough, you notice their unnatural amount of sharp teeth.");
+        "Winged humanoid figures seated at a table, their radiant wings shimmering in the dim candlelight, laughing in hushed tones.\nDisturbingly enough, you notice their unnatural amount of sharp teeth.");
     NPC* oneEyedHare = new NPC("One Eyed Hare",
         "The one-eyed hare, with its silvery coat, sniffs the air curiously. Its one emerald eye makes direct eye contact with you.");
     NPC* troll = new NPC("Troll",
-        "Sitting on an old tree stump. The troll's face is craggy and weathered, like an old boulder, with a crooked nose and deep-set eyes. His frown is almost permanent, etched into his face by countless years of solitude and the irritation of the rare disturbances caused by passersby.");
+        "Sitting on an old tree stump. The troll's face is craggy and weathered, like an old boulder, with a crooked nose and small eyes. \n His frown is almost permanent, etched into his face by countless years of irritation at passerbys.");
     NPC* Trechend = new NPC("Mythical Bird",
         "A colossal vulture with three regal heads catches your gaze. Towering wings, adorned with mystic symbols, stretch majestically, \ncasting shadows that ripple across the landscape.");
-    NPC* Goddess = new NPC("Aine", "A radiant figure with flowing golden hair, adorned in a shimmering gown");
+    NPC* Goddess = new NPC("Aine", "A radiant figure with flowing golden hair, adorned in a shimmering white and blue mantle.");
 
     // Add all NPCs to the npcs list
     npcs.push_back(redCap);
@@ -147,6 +146,7 @@ void GameWorld::init(Player& player) {
     courtyard->addConnectedLocation(greatHall);
 
     greatHall->addConnectedLocation(banquetHall);
+
     greatHall->addConnectedLocation(courtyard);
     greatHall->addConnectedLocation(armory);
 

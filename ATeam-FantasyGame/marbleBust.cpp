@@ -50,8 +50,8 @@ void marbleBust::interactWithObject(Player& player) {
             if (itemName == "Helmet") {
                 system("CLS");
                 setDescription("A magical aura surrounds the activated marble bust.");
-                std::cout<< "You place the " << itemName << " on the marble bust, and its magical aura consumes the room." << std::endl;
-                std::cout << "A power beyond your comprehension connects to the helmet, and ties it to the bust." << std::endl;
+                std::cout<< "You place the " << itemName << " on the marble bust, and its magical aura consumes the room.\n" << std::endl;
+                std::cout << "A power beyond your comprehension connects to the helmet, and ties it to the bust.\n" << std::endl;
 
                 // Iterate through player's inventory to place items on the bust
                 std::cout << "A section of the wall slides open, and a new passageway leading back outside opens up." << std::endl;

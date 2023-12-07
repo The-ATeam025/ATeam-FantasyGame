@@ -43,8 +43,8 @@ void Kelpie::interactWithObject(Player& player) {
 			if (itemName == "Bridle") {
 				system("CLS");
 				noBridle = false;
-				setDescription("The once life-threatening Kelpie is now bridled.");
-				std::cout << "You place the " << itemName << " on the Kelpie, and it extends it's back to accompany a rider.\n\n";
+				setDescription("The once threatening kelpie is now bridled.");
+				std::cout << "You rush to place the " << itemName << " on the Kelpie, and to your suprise, it turns docile and kneels down, as if to accomodate a rider.\n\n";
 
 				// Connect the hidden location when the bridle is placed on the kelpie
 				player.getCurrentLocation()->addConnectedLocation(hiddenLocation);
