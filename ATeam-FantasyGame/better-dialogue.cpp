@@ -185,7 +185,7 @@ void DialogueTree::init_hare2(Player& player) //set up tree with dialogue, make 
 {
 	string message = "Hare: Sorry, what did you say?"; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
-	cout << "As you hold out another carrot the hare, it approaches and nibbles at it.  " << endl;
+	cout << "As you hold out the dandelion towards the hare, it approaches you again and nibbles at it.  " << endl;
 
 	this->destroyTree();//deletes node from init_hare1
 
@@ -358,7 +358,7 @@ int DialogueTree::consequences(int code, Player& player)
 
 {
 	Item* hands = player.getWeaponSlot();
-	Item* infiniteCarrot = new Item("Another carrot", "Another carrot", "hands"); //another carrot to add to the location
+	Item* Dandelion = new Item("Dandelion", "Dandelion", "hands"); //another carrot to add to the location
 	string answer;
 	switch (code) {
 	case -1:
@@ -439,10 +439,11 @@ int DialogueTree::consequences(int code, Player& player)
 	case 4:
 		cout << "\nThe Hare did not like your answer." << endl;
 		cout << "\nHare: No riddle, eh? Fine then. You will regret this." << endl;
+		cout << "The hare hops away." << endl;
 
 		//Infinite carrots
 		
-		player.getCurrentLocation()->addItem(infiniteCarrot);
+		player.getCurrentLocation()->addItem(Dandelion);
 
 		return code;
 		break;
@@ -489,11 +490,11 @@ int DialogueTree::consequences(int code, Player& player)
 
 		}
 		system("CLS");
-		cout << "You have messed up the riddle. You have lost the chance at getting important information!" << endl;
+		cout << "You have messed up the riddle." << endl;
 		cout << "The Hare shakes his head in disbelief and hops away." << endl;
 
 		//Infinite carrots
-		player.getCurrentLocation()->addItem(infiniteCarrot);
+		player.getCurrentLocation()->addItem(Dandelion);
 
 		cout << endl;
 		return code;

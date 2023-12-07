@@ -18,7 +18,7 @@ void hareDialogue::startDialogue(Player& player) {
         talkedTo = true;
         dtree.init_hare(player);
     }
-    else if (hands && hands->getName() == "Another carrot") {
+    else if (hands && hands->getName() == "Dandelion") {
         player.removeItem("hands");
         player.removeItemFromInventory(hands);
         talkedTo = true;
