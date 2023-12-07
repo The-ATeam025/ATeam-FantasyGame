@@ -24,7 +24,7 @@ int main() {
     Backstory backstory;
 
     // Display backstory
-   //backstory.displayIntro();
+   backstory.displayIntro();
 
     system("CLS");
 
