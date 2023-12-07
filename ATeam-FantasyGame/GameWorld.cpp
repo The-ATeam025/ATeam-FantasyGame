@@ -144,7 +144,6 @@ void GameWorld::init(Player& player) {
 
     // Connect the locations
     courtyard->addConnectedLocation(greatHall);
-    courtyard->addConnectedLocation(crossedLake);
 
     greatHall->addConnectedLocation(banquetHall);
 
