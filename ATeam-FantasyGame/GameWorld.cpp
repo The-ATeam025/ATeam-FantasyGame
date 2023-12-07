@@ -26,13 +26,13 @@ GameWorld::~GameWorld() {
 
 void GameWorld::init(Player& player) {
     // Initialize locations
-    crossedBridge = new Location("other side of the bridge", "As you cross the bridge, bridle in hand, you notice thick fog gathering around you. \nWhen you get to the other side and turn to wave goodbye to the troll, you notice that the bridge has been entirely enshrouded in the mist. \nAhead of you lies a gloomy-looking lake. ");
+    crossedBridge = new Location("Other side of the bridge", "As you cross the bridge, bridle in hand, you notice thick fog gathering around you. \nWhen you get to the other side and turn to wave goodbye to the troll, you notice that the bridge has been entirely enshrouded in the mist. \nAhead of you lies a gloomy-looking lake. ");
     lake = new Location("Lake", "A scaled horse-like creature is standing on the lake's rocky shore. You realize that this must be the kelpie, and prepare to capture it.", lake1);
     lake1 = new Location("Lake", "Now subdued, the kelpie bends its head, as if inviting you onto its back. you on its back as a way reaching your next destination.");
     crossedLake = new Location("Other side of the lake", "The Kelpie is lending its back to you as a way to cross the gloomy lake. In the distance you notice land that fits the description of Aine's domain. \nAs if reading your mind, the kelpie starts swimming across the lake as soon as you sit on it.");
     swamp = new Location("Swamp", "The swamp is a quiet expanse of twisted trees and still waters, alive with the hums of insects and the croaks of hidden creatures. Thick vines grow from the trees.");
     courtyard = new Location("Courtyard",
-        "You find yourself surrounded by a circle of dead grass replacing the mushrooms that brought you here. The air is filled with an otherworldly energy, and the sun is hidden behind the clouds");
+        "You find yourself surrounded by a circle of dead grass, replacing the mushrooms that brought you here. \nThe air is filled with an otherworldly energy, and the sun is hidden behind the clouds");
     greatHall = new Location("Great Hall",
         "You step into a grand chamber adorned with towering arches and elaborately decorated walls. A sense of history and mystery fills the air.");
     redCapDungeon = new Location("Dungeon",
@@ -48,7 +48,7 @@ void GameWorld::init(Player& player) {
     bridge = new Location("Bridge",
         "The landscape becomes more and more swampy, until it becomes an impassable marsh. \nAn old stone bridge connects this wetland to whatever lies up ahead, but it is guarded by a troll.", bridge1);
     nest = new Location("Nest",
-        "A colossal intertwining of twisted branches, their gnarled forms interwoven with moss-covered stones weathered by the passage of countless seasons.\nWithin this labyrinthine structure, ethereal feathers, shimmering like the moonlit night, are delicately entwined");
+        "A colossal intertwining of twisted branches, their gnarled forms interwoven with moss-covered stones weathered by the passage of countless seasons.\nWithin this labyrinthine structure, feathers, shimmering like the moonlit night, are delicately entwined");
     goddessDwelling = new Location("The Goddess's Dwelling", "A celestial sanctuary, adorned with vibrant blossoms and other ethereal flora. \nThe air is filled with the sweet fragrance of blooming flowers");
    
     // Create an item
