@@ -147,7 +147,7 @@ void GameWorld::init(Player& player) {
     courtyard->addConnectedLocation(greatHall);
    
     //TESTING
-    //courtyard->addConnectedLocation(bridge);
+    courtyard->addConnectedLocation(outside);
 
     greatHall->addConnectedLocation(banquetHall);
     greatHall->addConnectedLocation(courtyard);
@@ -184,7 +184,7 @@ void GameWorld::init(Player& player) {
     greatHall->addItem(celticCross);
 
     //Outside
-    outside->addItem(carrot);
+    meadow->addItem(carrot);
 
     //Meadow
     swamp->addItem(vine);

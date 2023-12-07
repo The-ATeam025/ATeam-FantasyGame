@@ -181,6 +181,30 @@ void DialogueTree::init_hare(Player& player) //set up tree with dialogue, make t
 	performDialogue(player, message);
 }
 
+void DialogueTree::init_hare2(Player& player) //set up tree with dialogue, make this one virtual?
+{
+	string message = "Hare: Sorry, what did you say?"; //custom error message for this character interaction--the warning the player gets if the input is invalid 
+
+	cout << "As you hold out another carrot the hare, it approaches and nibbles at it.  " << endl;
+
+	this->destroyTree();//deletes node from init_hare1
+
+	cout << endl;
+
+	DialogueNode* node0 = new DialogueNode("Hare: Back already, huh? Want another go at the riddle?");
+	
+
+	//Node 0
+	node0->dialogueOptions.push_back(DialogueOption("Yeah, I learned my lesson.", 5, nullptr));
+	node0->dialogueOptions.push_back(DialogueOption("Yes, I want to give it a shot.", 5, nullptr));
+	dialogueNodes.push_back(node0);
+
+	
+
+
+	performDialogue(player, message);
+}
+
 void DialogueTree::init_troll(Player& player) //set up tree with dialogue, make this one virtual?
 {
 	string message = "Troll: Speak Correctly! "; //custom error message for this character interaction--the warning the player gets if the input is invalid 
@@ -278,7 +302,7 @@ void DialogueTree::init_goddess_2(Player& player) //set up tree with dialogue, m
 {
 	string message = "Its good to see you again."; //custom error message for this character interaction--the warning the player gets if the input is invalid 
 
-	cout << "You see a beautiful women in front of you wearing a silky garb with a cape. ";
+	cout << "You see a beautiful woman in front of you wearing a silky garb with a cape";
 	cout << "She gestures for you to come closer";
 	cout << endl;
 
@@ -317,11 +341,26 @@ void DialogueTree::destroyTree()
 }
 
 int DialogueTree::consequences(int code, Player& player)
+
+/*
+* -1: No consequence
+* 0: Fairies eat you because you are rude to them
+* 1: Fairies give you a hard riddle
+* 2: Fairies give you an easy riddle
+* 3: Cat conclusion sequence
+* 4: The hare is upset you did not accept the riddle
+* 5: The hare gives you a riddle
+* 6: The troll checks if you are holding the vine, and tells you how to tie it if you do
+* 
+*/
+
+
+
 {
 	Item* hands = player.getWeaponSlot();
+	Item* infiniteCarrot = new Item("Another carrot", "Another carrot", "hands"); //another carrot to add to the location
 	string answer;
 	switch (code) {
-		//Consequences for fairy: it eats you because you decline a riddle
 	case -1:
 		return code;
 	case 0:
@@ -400,6 +439,11 @@ int DialogueTree::consequences(int code, Player& player)
 	case 4:
 		cout << "\nThe Hare did not like your answer." << endl;
 		cout << "\nHare: No riddle, eh? Fine then. You will regret this." << endl;
+
+		//Infinite carrots
+		
+		player.getCurrentLocation()->addItem(infiniteCarrot);
+
 		return code;
 		break;
 	case 5:
@@ -438,6 +482,7 @@ int DialogueTree::consequences(int code, Player& player)
 				cout << "Hare: That's correct. For your reward, I'll give you a little information." << endl;
 				cout << "Rathad! If you want to leave the underworld, you will need to speak to Aine, the most beautiful goddess there is." << endl;
 				cout << "She will help you get out of here. While you're there, mind asking her on a date for me? I get really shy around her." << endl << endl;
+
 				return code;
 
 			}
@@ -446,6 +491,10 @@ int DialogueTree::consequences(int code, Player& player)
 		system("CLS");
 		cout << "You have messed up the riddle. You have lost the chance at getting important information!" << endl;
 		cout << "The Hare shakes his head in disbelief and hops away." << endl;
+
+		//Infinite carrots
+		player.getCurrentLocation()->addItem(infiniteCarrot);
+
 		cout << endl;
 		return code;
 
