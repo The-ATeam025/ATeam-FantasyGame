@@ -28,6 +28,15 @@ void GoddessDialogue::startDialogue(Player& player) {
 
     // If the loop completes without finding the "Tooth" item
     if (!itemGiven) {
+        for (Item* inventoryItem : player.getInventory()) {
+            string itemName = inventoryItem->getName();
+            if (itemName == "Tooth") {
+                itemGiven = true;
+                dtree2.init_goddess_2(player);
+                Backstory backstory;
+                backstory.epilogue();
+            }
+        }
         cout << "She has nothing else to say to you. You must return with the creature's tooth." << endl;
     }
 }

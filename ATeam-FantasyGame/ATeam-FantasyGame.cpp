@@ -24,7 +24,7 @@ int main() {
     Backstory backstory;
 
     // Display backstory
-   backstory.displayIntro();
+    //backstory.displayIntro();
 
     system("CLS");
 
@@ -32,10 +32,10 @@ int main() {
     DialogueTree catConvo;
 
     // Call the CatIntro function to continue the story 
-   catConvo.init_cat(player);
+    //catConvo.init_cat(player);
 
     // Prompt user to continue
-    system("pause");
+    //system("pause");
 
     // Clear the screen
     system("CLS");
@@ -76,8 +76,7 @@ int main() {
             UI::displayInventory(player);
             break;
         case 6:
-            system("CLS");
-            UI::equipmentMenu(player);
+            UI::equipItem(player);
             break;
         default:
             cout << "Invalid choice. Please select a valid option." << endl;

@@ -306,7 +306,7 @@ void DialogueTree::init_goddess_2(Player& player) //set up tree with dialogue, m
 	cout << "She gestures for you to come closer";
 	cout << endl;
 
-	DialogueNode* node0 = new DialogueNode("Aine: Wonderful! I see you've taken care of the creature, like I asked.");
+	DialogueNode* node0 = new DialogueNode("Aine: Is that correct?.");
 	DialogueNode* node1 = new DialogueNode("Aine: Some things are beyond your mortal understading. It is still much appreciated. What can I do for you?");
 	DialogueNode* node2 = new DialogueNode("Aine: I don't see why you'd want to go back to your boring old world, but I can open a way for you to get back now");
 
@@ -630,7 +630,7 @@ void DialogueTree::tieBridle(Player &player)
 	Item* hands = player.getWeaponSlot();
 	if (hands && hands->getName() == "Vine") //if player is holding vine
 	{
-		Item* bridle = new Item("Bridle", "Vine tied in the shape of a bridle", "hands"); 
+		Item* bridle = new Item("Bridle", "Vine tied in the shape of a bridle", "none"); 
 		player.removeItem("hands");
 		player.addItemToInventory(bridle);
 

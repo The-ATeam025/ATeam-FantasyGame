@@ -14,6 +14,7 @@ public:
     static void displayInventory(const Player& player); // Handle displaying the user's current inventory
     static void displayEquipment(const ::Player& player); // Display the player's current equipment.
     static void equipItem(Player& player); // Prompt the player to equip an item.
+    static void chooseItemEquip(Player& player); // Prompt the player to choose their item to equip
     static void unequipItem(Player& player); // Prompt the player to unequip an item.
     static void equipmentMenu(Player& player); //Displays the users equipment
     static void interactWith(Player& player, GameWorld& world); // Shows the interactions and causes the interactions between players and NPC/Objects
