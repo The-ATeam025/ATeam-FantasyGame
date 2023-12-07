@@ -13,6 +13,7 @@ void UI::displayCurrentLocation(Player& player) {
     Location* currentLocation = player.getCurrentLocation();
 
     if (currentLocation != nullptr) {
+        currentLocation->printImage();
         // If the current location exists:
         cout << "You are in the " << currentLocation->getName() << endl;
         // Display the name of the location.
@@ -66,6 +67,7 @@ void UI::movePlayer(Player& player) {
         list<Location*>::iterator it = connectedLocations.begin();
         advance(it, choice - 1);
         player.walkToLocation(*it);
+        player.getCurrentLocation()->printImage();
         cout << "You have moved to the " << player.getCurrentLocation()->getName() << "." << endl;
         Location* newLocation = player.getCurrentLocation();
         cout << newLocation->getDescription() << endl;

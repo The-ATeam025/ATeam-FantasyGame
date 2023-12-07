@@ -28,4 +28,5 @@ public:
 	list<Item*> getItems() const; // Get an item
 	bool removeItem(Item* item); // Remove an item from a location
 	bool hasItem(const Item* item) const; // Check if an item is in a location
+	void printImage();
 };

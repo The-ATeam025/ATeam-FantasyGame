@@ -20,7 +20,7 @@ void trollDialogue::startDialogue(Player& player) {
 
 	if (talkedTo == false) {
 		talkedTo = true;
-		cout << "As you cautiously step onto the creaking wooden planks of the bridge, a deep, growling voice erupts, stopping you in your tracks. Then suddenly, the short hairy creature walks towards you, almost scaring you to death. " << endl;
+		cout << "As you cautiously step onto the creaking wooden planks of the bridge, a deep, growling voice erupts, stopping you in your tracks. \nThen suddenly, the short hairy creature walks towards you, almost scaring you to death. " << endl;
 		cout << endl;
 		cout << "Troll: WHAT'S THE MAGIC WORD?!?!" << endl;
 		std::getline(std::cin, magicWord); //reads the whole line of input, including spaces, until it encounters a newline character.
