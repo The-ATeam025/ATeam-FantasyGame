@@ -306,7 +306,7 @@ void DialogueTree::init_goddess_2(Player& player) //set up tree with dialogue, m
 	cout << "She gestures for you to come closer";
 	cout << endl;
 
-	DialogueNode* node0 = new DialogueNode("Aine: Is that correct?.");
+	DialogueNode* node0 = new DialogueNode("Aine: Wonderful! I see that you have slain the creature, and brought me its tooth.");
 	DialogueNode* node1 = new DialogueNode("Aine: Some things are beyond your mortal understading. It is still much appreciated. What can I do for you?");
 	DialogueNode* node2 = new DialogueNode("Aine: I don't see why you'd want to go back to your boring old world, but I can open a way for you to get back now");
 
