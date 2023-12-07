@@ -171,7 +171,6 @@ void GameWorld::init(Player& player) {
 
     lake1->addConnectedLocation(crossedLake);
     crossedLake->addConnectedLocation(goddessDwelling);
-    goddessDwelling->addConnectedLocation(crossedLake);
     
     nest->addConnectedLocation(goddessDwelling);
     goddessDwelling->addConnectedLocation(nest);
